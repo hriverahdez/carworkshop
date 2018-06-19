@@ -44,10 +44,34 @@ export class AddClientSuccess implements Action {
   constructor(public payload: Client) {}
 }
 
+// DELETE
+
+export const DELETE_CLIENT = "[Mechanic] Delete Client";
+export const DELETE_CLIENT_FAIL = "[Mechanic] Delete Client Fail";
+export const DELETE_CLIENT_SUCCESS = "[Mechanic] Delete Client Success";
+
+export class DeleteClient implements Action {
+  readonly type = DELETE_CLIENT;
+  constructor(public payload: Client) {}
+}
+
+export class DeleteClientFail implements Action {
+  readonly type = DELETE_CLIENT_FAIL;
+  constructor(public payload: any) {}
+}
+
+export class DeleteClientSuccess implements Action {
+  readonly type = DELETE_CLIENT_SUCCESS;
+  constructor(public payload: Client) {}
+}
+
 export type ClientActions =
   | LoadClients
   | LoadClientsFail
   | LoadClientsSuccess
   | AddClient
   | AddClientFail
-  | AddClientSuccess;
+  | AddClientSuccess
+  | DeleteClient
+  | DeleteClientFail
+  | DeleteClientSuccess;

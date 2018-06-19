@@ -22,11 +22,13 @@ export function reducer(
   action: fromClients.ClientActions
 ) {
   switch (action.type) {
+    case fromClients.DELETE_CLIENT:
     case fromClients.ADD_CLIENT:
     case fromClients.LOAD_CLIENTS: {
       return { ...state, loading: true };
     }
 
+    case fromClients.DELETE_CLIENT_FAIL:
     case fromClients.ADD_CLIENT_FAIL:
     case fromClients.LOAD_CLIENTS_FAIL: {
       const error = action.payload;
@@ -45,6 +47,11 @@ export function reducer(
     case fromClients.ADD_CLIENT_SUCCESS: {
       const newClient = action.payload;
       return adapter.addOne(newClient, { ...state, loading: false });
+    }
+
+    case fromClients.DELETE_CLIENT_SUCCESS: {
+      const deletedClient = action.payload;
+      return adapter.removeOne(deletedClient.id, state);
     }
 
     default: {

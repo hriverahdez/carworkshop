@@ -22,4 +22,16 @@ export class MechanicHomeComponent implements OnInit {
   fullname(client: Client) {
     return `${client.nombre} ${client.apellidos}`;
   }
+
+  deleteClient(client: Client) {
+    if (
+      window.confirm(
+        `¿Está seguro que desea eliminar a ${client.nombre} ${
+          client.apellidos
+        }?`
+      )
+    ) {
+      this.store.dispatch(new fromStore.DeleteClient(client));
+    }
+  }
 }
