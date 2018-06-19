@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "cws",
       "schematics": {},
       "architect": {
         "build": {
@@ -23,6 +23,14 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/css/bootstrap.css",
+              "src/assets/css/helpers.css",
+              "src/assets/css/style.css",
+              "src/assets/css/landing-2.css",
+              "src/assets/fonts/ionicons/css/ionicons.min.css",
+              "src/assets/fonts/fontawesome/css/font-awesome.min.css",
+              "src/assets/fonts/flaticons/flaticon.css",
+              "src/assets/css/custom.css",
               "src/styles.css"
             ],
             "scripts": []

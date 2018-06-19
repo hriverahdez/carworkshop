@@ -1,0 +1,106 @@
+<div style="color: #424242">
+  <div class="row" *ngIf="isCompany">
+      <div class="col-12">
+          <strong>Nombre Empresa:</strong> {{ client.nombre_comercial }} ({{ client.web }}) <br>
+          <b>Cargo del contacto:</b> {{ client.cargo }}
+      </div>
+  </div>
+  <div class="mb-4" :class="{ 'mt-4': isCompany }">
+      <h6>Datos personales{{ isCompany ? ' del contacto:' : ':' }}</h6>
+      <hr style="width: 30%" align="left">
+  </div>
+  <div class="row mb-3">
+      <div class="col-12">
+          <h6>
+              <span class="title"><strong>Nombre y Apellidos: </strong></span> {{ fullname }}
+              <span *ngIf="client.vinculado" class="text-muted"> | Vinculado a: {{ client.vinculado }}</span>
+          </h6>                
+      </div>
+      <div class="col-6"><span class="title">e-mail:</span> {{ client.correo }}</div>
+      <div class="col-6"><span class="title">Fecha de alta:</span> {{ client.fecha_de_alta }}</div>
+  </div>
+  <div class="row">
+      <div class="col-4">
+          <span class="title">Fecha de alta:</span> {{ client.dni || '---' }}
+      </div>
+      <div class="col-4">
+          <span class="title">Sexo:</span> {{ client.sexo === 'M' ? 'Masculino' : 'Femenino' }}
+      </div>
+      <div class="col-4">
+          <span class="title">Cumpleaños:</span> {{ client.cumpleannos || '---' }}
+      </div>
+  </div>
+  <div class="row mt-2" *ngIf="displayAddressRow">
+      <div class="col-6">
+          <span class="title">Dirección:</span> <br> {{ client.direccion || '---' }}
+      </div>
+      <div class="col-3">
+          <span class="title">Localidad:</span> <br> {{ client.localidad || '---' }}
+      </div>
+      <div class="col-3">
+          <span class="title">Código Postal:</span> <br> {{ client.codigo_postal || '---' }}
+      </div>
+  </div>
+  <div class="row mt-2" *ngIf="displayPhoneRow">
+      <div class="col-4">
+          <span class="title">Telef (Casa):</span> {{ client.telef_casa }}
+      </div>
+      <div class="col-4">
+          <span class="title">Telef (Movil):</span> {{ client.telef_movil }}
+      </div>
+      <div class="col-4">
+          <span class="title">Telef (Otro):</span> {{ client.telef_otro }}
+      </div>
+  </div>
+  <div class="mb-4 mt-5">
+      <h6>Datos del coche:</h6>
+      <hr style="width: 30%" align="left">
+  </div>
+  <div class="row">
+      <div class="col-4"><span class="title">Matrícula: </span> {{ car.matricula }}</div>
+      <div class="col-4"><span class="title">Marca: </span> {{ car.marca }}</div>
+      <div class="col-4"><span class="title">Modelo: </span> {{ car.modelo }}</div>
+  </div>
+  <div class="row" *ngIf="displayCarModelSpecificsRow">
+      <div class="col-4"><span class="title">Variante: </span> {{ car.variante || '---' }}</div>
+      <div class="col-4"><span class="title">Tipo: </span> {{ car.tipo || '---' }}</div>
+      <div class="col-4"><span class="title">Version: </span> {{ car.version || '---' }}</div>
+  </div>
+
+  <div class="row mt-3">
+      <div class="col-4"><span class="title">Primera matriculación: </span><br> {{ car.primera_matriculacion || '---' }}</div>
+      <div class="col-4"><span class="title">Número bastidor (VIN): </span><br> {{ car.numero_bastidor || '---' }}</div>
+      <div class="col-4"><span class="title">Combustible: </span><br> {{ car.combustible || '---' }}</div>
+  </div>
+  <div class="row mt-3">
+      <div class="col-4"><span class="title">Marca del motor: </span><br>{{ car.marca_motor || '---' }}</div>
+      <div class="col-4"><span class="title">Código del motor: </span><br>{{ car.codigo_motor || '---' }}</div>
+      <div class="col-4"><span class="title">Categoría: </span><br>{{ car.categoria || '---' }}</div>
+  </div>
+  <div class="row mt-3">
+      <div class="col-4"><span class="title">Número de cilindros:</span><br> {{ car.numero_cilindros || '---' }}</div>
+      <div class="col-4"><span class="title">Cilindrada (cm. cúbicos):</span><br> {{ car.cilindrada || '---' }}</div>
+      <div class="col-4"><span class="title">Neumáticos:</span><br> {{ car.neumaticos || '---' }}</div>
+  </div>
+  <div class="row mt-3">
+      <div class="col-4"><span class="title">Potencia (KW):</span><br> {{ car.potencia_kw || '---' }}</div>
+      <div class="col-4"><span class="title">Potencia (CV):</span><br> {{ car.potencia_cv || '---' }}</div>
+      <div class="col-4"><span class="title">Nivel de Emisiones:</span><br> {{ car.nivel_emisiones || '---' }}</div>
+  </div>
+  <div class="row mt-3">
+      <div class="col-6"><span class="title">Código de Radio: </span><br> {{ car.codigo_radio || '---' }}</div>
+      <div class="col-6"><span class="title">Código de Llaves: </span><br> {{ car.codigo_llaves || '---' }}</div>
+  </div>
+  <div class="row mt-2" *ngIf="car.reset_mantenimiento">
+      <div class="col-12">
+          <span class="title">Reset Mantenimiento</span><br>
+          <p>{{ car.reset_mantenimiento }}</p>
+      </div>            
+  </div>
+  <div class="row mt-2" *ngIf="car.observaciones">
+      <div class="col-12">
+          <span class="title">Observaciones</span><br>
+          <p>{{ car.observaciones }}</p>
+      </div>
+  </div>
+</div>

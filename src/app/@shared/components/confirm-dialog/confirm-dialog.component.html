@@ -1,0 +1,20 @@
+<div id="rst__confirm-dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable">
+  <div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle">
+    <span id="ui-id-1" class="ui-dialog-title">{{ data.title }}</span>
+    <button type="button" 
+      class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close"
+      title="Close" (click)="onCancel()">
+      <span class="ui-button-icon ui-icon ui-icon-closethick"></span>
+      <span class="ui-button-icon-space"> </span>Cerrar</button>
+  </div>
+  <div id="dialog1" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 13.875px; max-height: none; height: auto;">
+    <p>
+      <i class="zmdi zmdi-info-outline"></i>{{ data.message }}</p>
+  </div>
+  <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+    <div class="ui-dialog-buttonset">
+      <button type="button" class="ui-button ui-corner-all ui-widget" (click)="onCancel()">Cancelar</button>
+      <button type="button" class="ui-button ui-corner-all ui-widget" (click)="onAccept()">Eliminar</button>
+    </div>
+  </div>
+</div>
