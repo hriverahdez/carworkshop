@@ -22,10 +22,12 @@ export function reducer(
   action: fromClients.ClientActions
 ) {
   switch (action.type) {
+    case fromClients.ADD_CLIENT:
     case fromClients.LOAD_CLIENTS: {
       return { ...state, loading: true };
     }
 
+    case fromClients.ADD_CLIENT_FAIL:
     case fromClients.LOAD_CLIENTS_FAIL: {
       const error = action.payload;
       return { ...state, error };
@@ -38,6 +40,11 @@ export function reducer(
         loading: false,
         loaded: true
       });
+    }
+
+    case fromClients.ADD_CLIENT_SUCCESS: {
+      const newClient = action.payload;
+      return adapter.addOne(newClient, { ...state, loading: false });
     }
 
     default: {

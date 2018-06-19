@@ -1,0 +1,21 @@
+<div class="row">
+        
+  <div class="col-12">
+      <div class="card">
+          <div class="card-header">
+              <!-- {{ !isEdit ? 'Crear nuevo cliente' : 'Editando los datos de ' + `${client.nombre} ${client.apellidos}` }} -->
+              Create new
+              <br>
+              <small>Los campos marcados con * son requeridos</small>
+          </div>
+          <div class="card-body">
+              
+              <cws-client-form 
+                [client]="client$ | async"
+                (onCreate)="create($event)"></cws-client-form>
+              
+          </div>
+      </div>
+  </div>
+
+</div> 

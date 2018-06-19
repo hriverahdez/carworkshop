@@ -1,8 +1,11 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { MechanicHomeComponent } from "./containers/mechanic-home/mechanic-home.component";
-import { ClientDetailsComponent } from "./containers";
+import {
+  MechanicHomeComponent,
+  ClientDetailsComponent,
+  ClientItemComponent
+} from "./containers";
 
 const ROUTES: Routes = [
   {
@@ -12,6 +15,14 @@ const ROUTES: Routes = [
   {
     path: "details/:clientId",
     component: ClientDetailsComponent
+  },
+  {
+    path: "client",
+    component: ClientItemComponent
+  },
+  {
+    path: "client/:clientId",
+    component: ClientItemComponent
   }
 ];
 

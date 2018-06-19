@@ -1,0 +1,159 @@
+<div [formGroup]="carForm">
+  <div class="mb-4 mt-5">
+      <h6 class="text-muted">Información del coche</h6>
+      <small>Seleccione los campos que quiere que se muestren en la ficha de cliente</small>
+      <hr>
+  </div>
+  <div class="form-group row">
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="matricula_visible" formControlName="matricula_visible" class="checkbox">
+          <label for="plate">Matrícula *</label>
+          <input type="text" name="matricula" formControlName="matricula"
+              class="form-control" id="plate" name="firstname" placeholder="2589HJK">
+      </div>
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="marca_visible" formControlName="marca_visible" checked class="checkbox">
+          <label for="brand">Marca *</label>
+          <input type="text" name="marca" formControlName="marca"
+              class="form-control" id="brand" name="lastname" placeholder="Volkswagen">
+      </div>
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="modelo_visible" formControlName="modelo_visible" checked class="checkbox">
+          <label for="model">Modelo *</label>
+          <input type="email" name="modelo" formControlName="modelo"
+              class="form-control" id="model" placeholder="Golf">
+      </div>
+  </div>
+  <div class="form-group row">
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="variante_visible" formControlName="variante_visible" class="checkbox">
+          <label for="variant">Variante</label>
+          <input type="text" name="variante" formControlName="variante"
+              class="form-control" id="variant" placeholder="VI">
+      </div>    
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="tipo_visible" formControlName="tipo_visible" class="checkbox">
+          <label for="type">Tipo</label>
+          <input type="text" name="tipo" formControlName="tipo"
+              class="form-control" id="type" placeholder="5K1">
+      </div>  
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="version_visible" formControlName="version_visible" class="checkbox">
+          <label for="version">Versión</label>
+          <input type="text" name="version" formControlName="version"
+              class="form-control" id="version" placeholder="1.6 TDI">
+      </div>    
+  </div>
+  <div class="form-group row">
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="primera_matriculacion_visible" formControlName="primera_matriculacion_visible" class="checkbox">
+          <label for="firstRegistration">Primera Matriculación</label>
+          <input type="date" name="primera_matriculacion" formControlName="primera_matriculacion"
+              class="form-control" id="firstRegistration" name="firstRegistration" placeholder="DD/MM/YYYY">
+      </div>
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="numero_bastidor_visible" formControlName="numero_bastidor_visible" class="checkbox">
+          <label for="frameSerial">Número Bastidor (VIN)</label>
+          <input type="text" name="numero_bastidor" formControlName="numero_bastidor"
+              class="form-control" id="frameSerial" name="frameSerial" placeholder="WVWZZZ5K1JY87458778">
+      </div>
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="combustible_visible" formControlName="combustible_visible" class="checkbox">
+          <label for="fuel">Combustible</label>
+          <input type="text" name="combustible" formControlName="combustible"
+              class="form-control" placeholder="Diesel">
+      </div>
+  </div>                            
+  <div class="form-group row">
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="marca_motor_visible" formControlName="marca_motor_visible" class="checkbox">
+          <label for="engineBrand">Marca del Motor</label>
+          <input type="text" name="marca_motor" formControlName="marca_motor"
+              class="form-control" placeholder="VAG">
+      </div>
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="codigo_motor_visible" formControlName="codigo_motor_visible" class="checkbox">
+          <label for="engineSerial">Código del motor</label>
+          <input type="text" name="codigo_motor" formControlName="codigo_motor"
+              class="form-control" placeholder="CAYB">
+      </div>
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="numero_cilindros_visible" formControlName="numero_cilindros_visible" class="checkbox">
+          <label for="cilinders">Número de Cilindros</label>
+          <input type="text" name="numero_cilindros" formControlName="numero_cilindros"
+              class="form-control" placeholder="4">
+      </div>
+  </div>
+
+  <div class="form-group row">
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="cilindrada_visible" formControlName="cilindrada_visible" class="checkbox">
+          <label for="cilinderVolume">Cilindrada (cm. cúbicos)</label>
+          <input type="text" name="cilindrada" formControlName="cilindrada"
+              class="form-control" placeholder="1600">
+      </div>
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="potencia_kw_visible" formControlName="potencia_kw_visible" class="checkbox">
+          <label for="potency">Potencia (KW)</label>
+          <input type="text" name="potencia_kw" formControlName="potencia_kw"
+              class="form-control" placeholder="60">
+      </div>
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="potencia_cv_visible" formControlName="potencia_cv_visible" class="checkbox">
+          <label for="potency2">Potencia (CV)</label>
+          <input type="text" name="potencia_cv" formControlName="potencia_cv"
+              class="form-control" placeholder="90">
+      </div>
+  </div>
+
+  <div class="form-group row">
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="neumaticos_visible" formControlName="neumaticos_visible" class="checkbox">
+          <label for="tires">Neumáticos</label>
+          <input type="text" name="neumaticos" formControlName="neumaticos"
+              class="form-control" placeholder="205/55 R16 91V">
+      </div>
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="categoria_visible" formControlName="categoria_visible" class="checkbox">
+          <label for="category">Categoría del vehículo</label>
+          <input type="text" name="categoria" formControlName="categoria"
+              class="form-control" placeholder="Cupé">
+      </div>
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="nivel_emisiones_visible" formControlName="nivel_emisiones_visible" class="checkbox">
+          <label for="emisionLevel">Nivel de emisiones</label>
+          <input type="text" name="nivel_emisiones" formControlName="nivel_emisiones"
+              class="form-control" placeholder="EURO5">
+      </div>
+  </div>
+
+  <div class="form-group row">
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="codigo_radio_visible" formControlName="codigo_radio_visible" class="checkbox">
+          <label for="radioCode">Código de Radio</label>
+          <input type="text" name="codigo_radio" formControlName="codigo_radio"
+              class="form-control" placeholder="5897">
+      </div>
+      <div class="form-group col-md-4">
+          <input type="checkbox" name="codigo_llaves_visible" formControlName="codigo_llaves_visible" class="checkbox">
+          <label for="keyCode">Código de Llaves</label>
+          <input type="text" name="codigo_llaves" formControlName="codigo_llaves"
+              class="form-control" placeholder="58771569825">
+      </div>                               
+  </div>
+
+  <div class="form-group row">
+      <div class="form-group col-md-6">
+          <input type="checkbox" name="reset_mantenimiento_visible" formControlName="reset_mantenimiento_visible" class="checkbox">
+          <label for="radioCode">Reset Mantenimiento</label>
+          <textarea name="reset_mantenimiento" formControlName="reset_mantenimiento"
+              class="form-control" rows="3"></textarea>
+      </div>
+      <div class="form-group col-md-6">
+          <input type="checkbox" name="observaciones_visible" formControlName="observaciones_visible" class="checkbox">
+          <label for="radioCode">Observaciones</label>
+          <textarea name="observaciones" formControlName="observaciones"
+              class="form-control" rows="3"></textarea>
+      </div>                                
+  </div>
+</div>

@@ -6,6 +6,8 @@ import * as fromClients from "../actions/client.actions";
 import { switchMap, map, catchError } from "rxjs/operators";
 import { of } from "rxjs";
 
+import * as fromRoot from "../../../@core/store";
+
 @Injectable()
 export class ClientEffects {
   constructor(
@@ -25,20 +27,16 @@ export class ClientEffects {
     )
   );
 
-  //   @Effect()
-  //   createBrand$ = this.actions$
-  //     .ofType(fromBrands.ADD_BRAND)
-  //     .pipe(
-  //       map((action: fromBrands.AddBrand) => action.payload),
-  //       switchMap(brand =>
-  //         this.brandsService
-  //           .addAsFormData(brand)
-  //           .pipe(
-  //             map(newBrand => new fromBrands.AddBrandSuccess(newBrand)),
-  //             catchError(error => of(new fromBrands.AddBrandFail(error)))
-  //           )
-  //       )
-  //     );
+  @Effect()
+  addClient$ = this.actions$.ofType(fromClients.ADD_CLIENT).pipe(
+    map((action: fromClients.AddClient) => action.payload),
+    switchMap(client =>
+      this.clientsService.add(client).pipe(
+        map(newClient => new fromClients.AddClientSuccess(newClient)),
+        catchError(error => of(new fromClients.AddClientFail(error)))
+      )
+    )
+  );
 
   //   @Effect()
   //   updateBrand$ = this.actions$
@@ -70,16 +68,10 @@ export class ClientEffects {
   //       )
   //     );
 
-  //   @Effect()
-  //   handleBrandSuccess$ = this.actions$
-  //     .ofType(
-  //       fromBrands.ADD_BRAND_SUCCESS,
-  //       fromBrands.UPDATE_BRAND_SUCCESS,
-  //       fromBrands.DELETE_BRAND_SUCCESS
-  //     )
-  //     .pipe(
-  //       switchMap(() => [new fromUI.CloseModal(), new fromUI.HideProgressBar()])
-  //     );
+  @Effect()
+  handleSuccess$ = this.actions$
+    .ofType(fromClients.ADD_CLIENT_SUCCESS)
+    .pipe(map(() => new fromRoot.Go({ path: ["/mechanic"] })));
 
   //   @Effect()
   //   handleBrandFailure$ = this.actions$

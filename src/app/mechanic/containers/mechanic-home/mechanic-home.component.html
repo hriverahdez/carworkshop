@@ -3,7 +3,7 @@
       <h5>Mis Clientes</h5>
   </div>
   <div class="col-4 text-right mb-4">
-      <a href="/client" class="btn btn-primary pb_btn-pill">
+      <a routerLink="./client" class="btn btn-primary pb_btn-pill">
           <i class="fa fa-plus"></i>
           Agregar
       </a>
@@ -45,7 +45,7 @@
                       <a [routerLink]="['./details', client.id]"
                           class="__cst_link-btn" ><i class="fa fa-eye"></i></a>
                       |
-                      <a :href="`/client/${client.id}`">
+                      <a [routerLink]="['./client', client.id]">
                           <i class="fa fa-edit"></i>
                       </a>
                       |

@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { ReactiveFormsModule } from "@angular/forms";
+
 import { MechanicRoutingModule } from "./mechanic-routing.module";
 
 import { StoreModule } from "@ngrx/store";
@@ -17,6 +19,7 @@ import * as fromComponents from "./components";
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MechanicRoutingModule,
     SharedModule,
 
