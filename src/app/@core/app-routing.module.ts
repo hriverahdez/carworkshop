@@ -1,20 +1,40 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { LayoutComponent, LoginComponent } from "./containers";
 
 const ROUTES: Routes = [
   {
-    path: "mechanic",
-    loadChildren: "../mechanic/mechanic.module#MechanicModule"
+    path: "login",
+    component: LoginComponent
   },
   {
     path: "",
-    redirectTo: "/mechanic",
-    pathMatch: "full"
-  },
-  {
-    path: "**",
-    redirectTo: "mechanic"
+    component: LayoutComponent,
+    children: [
+      {
+        path: "admin",
+        loadChildren: "../admin/admin.module#AdminModule"
+      },
+      {
+        path: "",
+        redirectTo: "/admin",
+        pathMatch: "full"    
+      },
+      {
+        path: "**",
+        redirectTo: "admin"
+      }
+    ]
   }
+  // {
+  //   path: "",
+  //   redirectTo: "/",
+  //   pathMatch: "full"
+  // },
+  // {
+  //   path: "**",
+  //   redirectTo: ""
+  // }
 ];
 
 @NgModule({

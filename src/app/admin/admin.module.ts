@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 
-import { MechanicRoutingModule } from "./mechanic-routing.module";
+import { AdminRoutingModule } from "./admin-routing.module";
 
 import { StoreModule } from "@ngrx/store";
 import { reducers, effects } from "./store";
@@ -20,7 +20,7 @@ import * as fromComponents from "./components";
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MechanicRoutingModule,
+    AdminRoutingModule,
     SharedModule,
 
     StoreModule.forFeature("clients", reducers),
@@ -29,4 +29,4 @@ import * as fromComponents from "./components";
   declarations: [...fromContainers.containers, ...fromComponents.components],
   providers: []
 })
-export class MechanicModule {}
+export class AdminModule {}

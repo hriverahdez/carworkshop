@@ -16,8 +16,11 @@ import {
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { HttpClientModule } from "@angular/common/http";
 
+// containers
+import * as fromContainers from "./containers";
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ...fromContainers.containers],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
