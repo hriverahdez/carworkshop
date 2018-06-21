@@ -6,6 +6,7 @@ import {
   ClientDetailsComponent,
   ClientItemComponent
 } from "./containers";
+import { ClientResolver } from "./shared/client.resolver";
 
 const ROUTES: Routes = [
   {
@@ -14,15 +15,27 @@ const ROUTES: Routes = [
   },
   {
     path: "details/:clientId",
-    component: ClientDetailsComponent
+    component: ClientDetailsComponent,
+    data: {
+      breadcrumb: "Details"
+    }
   },
   {
     path: "client",
-    component: ClientItemComponent
+    component: ClientItemComponent,
+    data: {
+      breadcrumb: "Add Client"
+    }
   },
   {
     path: "client/:clientId",
-    component: ClientItemComponent
+    component: ClientItemComponent,
+    data: {
+      breadcrumb: "Edit "
+    }
+    // resolve: {
+    //   client: ClientResolver
+    // }
   }
 ];
 

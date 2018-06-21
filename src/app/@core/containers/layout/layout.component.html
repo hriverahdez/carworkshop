@@ -5,8 +5,7 @@
     
       <ul class="navbar-nav ml-auto">                        
         <li class="nav-item">
-          <span class="nav-link" 
-            v-bind:style="{ color: activeColor }">Mi Username</span>
+          <span class="nav-link" >Mi Username</span>
         </li>
         <li class="nav-item">              
           <a v-on:click="logout" class="nav-link" style="cursor: pointer"><i class="ion-log-out"></i></a>
@@ -17,6 +16,18 @@
 </nav>
 
 <div id="wrapper">
+
+  <div class="container-fluid bg-light" style="margin-top: 10vh">
+    <ol class="breadcrumb">
+      <li *ngFor="let breadcrumb of breadcrumbs$ | async"
+          class="breadcrumb-item">
+        <a [routerLink]="[breadcrumb.url]">
+          {{ breadcrumb.label }}
+        </a>
+      </li>
+    </ol>
+
+  </div>
   
   <div class="__cst_content container">
       <router-outlet></router-outlet>

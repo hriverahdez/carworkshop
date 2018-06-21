@@ -8,6 +8,7 @@ import { StoreModule } from "@ngrx/store";
 import { reducers, effects } from "./store";
 import { EffectsModule } from "@ngrx/effects";
 
+import { AppInterceptor } from "../@shared/utils/interceptor/token.interceptor";
 import { SharedModule } from "../@shared/shared.module";
 
 // containers
@@ -15,6 +16,9 @@ import * as fromContainers from "./containers";
 
 // components
 import * as fromComponents from "./components";
+
+// services
+import * as fromServices from "./services";
 
 @NgModule({
   imports: [
@@ -27,6 +31,6 @@ import * as fromComponents from "./components";
     EffectsModule.forFeature(effects)
   ],
   declarations: [...fromContainers.containers, ...fromComponents.components],
-  providers: []
+  providers: [...fromServices.services]
 })
 export class AdminModule {}

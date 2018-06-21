@@ -1,6 +1,8 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from "@angular/common/http";
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
@@ -14,16 +16,20 @@ import {
   RouterStateSerializer
 } from "@ngrx/router-store";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
-import { HttpClientModule } from "@angular/common/http";
 
 // containers
 import * as fromContainers from "./containers";
+
+// guards
+import * as fromGuards from "./guards";
+import { AppInterceptor } from "../@shared/utils/interceptor/token.interceptor";
 
 @NgModule({
   declarations: [AppComponent, ...fromContainers.containers],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
 
     HttpClientModule,
     AppRoutingModule,
@@ -32,7 +38,11 @@ import * as fromContainers from "./containers";
     StoreRouterConnectingModule,
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
+  providers: [
+    { provide: RouterStateSerializer, useClass: CustomSerializer },
+    ...fromGuards.guards,
+    AppInterceptor
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

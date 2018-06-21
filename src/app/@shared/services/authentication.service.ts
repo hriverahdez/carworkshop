@@ -6,11 +6,12 @@ import { environment } from "../../../environments/environment";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 
-// import { User } from "../../@core/models/user.model";
-
 import { map } from "rxjs/operators";
+import { AuthUser } from "../../@core/models/auth-user.model";
 
-@Injectable()
+@Injectable({
+  providedIn: "root"
+})
 export class AuthenticationService {
   constructor(private http: HttpClient) {}
 
@@ -18,9 +19,9 @@ export class AuthenticationService {
     return localStorage.getItem("token");
   }
 
-  // getCurrentUser(): User {
-  //   return JSON.parse(localStorage.getItem("currentUser"));
-  // }
+  getCurrentUser(): AuthUser {
+    return JSON.parse(localStorage.getItem("currentUser"));
+  }
 
   updateCurrentUserInfo(user) {
     localStorage.setItem("currentUser", JSON.stringify(user));
@@ -29,27 +30,28 @@ export class AuthenticationService {
   isAuthenticated() {
     const token = this.getToken();
     // return tokenNotExpired(null, token);
-    return null;
+    return !!token;
   }
 
-  // login(user: User): Observable<User> {
-  //   let authEncoded = btoa(user.email + ":" + user.password);
-  //   let headers: HttpHeaders = new HttpHeaders({
-  //     Authorization: "Basic " + authEncoded
-  //   });
-  //   return this.http
-  //     .post<User>(
-  //       `${environment.apiURL}/auth`,
-  //       { access_token: environment.masterKey },
-  //       { headers: headers, reportProgress: true }
-  //     )
-  //     .pipe(
-  //       map((loginResponse: any) => {
-  //         this.storeUserInfo(loginResponse.token, loginResponse.user);
-  //         return loginResponse.user;
-  //       })
-  //     );
-  // }
+  login(user: AuthUser): Observable<AuthUser> {
+    return this.http.post<AuthUser>(`${environment.apiURL}/login`, user).pipe(
+      map(
+        (loginResponse: {
+          success: boolean;
+          data: { user: AuthUser; token: string };
+        }) => {
+          // console.log("LOGIN RESPONSE::", loginResponse);
+          if (loginResponse.success) {
+            this.storeUserInfo(
+              loginResponse.data.token,
+              loginResponse.data.user
+            );
+            return loginResponse.data.user;
+          }
+        }
+      )
+    );
+  }
 
   // register(user: User): Observable<User> {
   //   let authEncoded = btoa(user.email + ":" + user.password);
