@@ -10,6 +10,7 @@ import { BreadCrumb } from "../../models/breadcrumb.model";
 import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store";
+import { AuthUser } from "../../models/auth-user.model";
 
 @Component({
   selector: "cws-layout",
@@ -18,10 +19,12 @@ import * as fromStore from "../../store";
 })
 export class LayoutComponent implements OnInit {
   breadcrumbs$: Observable<BreadCrumb[]>;
+  currentUser$: Observable<AuthUser>
 
   constructor(private store: Store<fromStore.AppState>) {}
 
   ngOnInit() {
+    this.currentUser$ = this.store.select(fromStore.selectCurrentUser);
     this.breadcrumbs$ = this.store.select(fromStore.selectBreadcrumbs);
   }
 }

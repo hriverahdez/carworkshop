@@ -1,4 +1,30 @@
-<div class="container">
+<div class="panel panel-login">
+  <div class="panel-body">
+      <h4 class="text-center">Credenciales de Acceso</h4>
+      <div [formGroup]="loginForm">
+          <div class="form-row">
+              <label for="">Correo Electrónico</label>
+              <input type="text" class="form-control" placeholder="juan@ejemplo.com"
+                name="email" formControlName="email">
+          </div>
+          <div class="form-row">
+              <label for="">Contraseña</label>
+              <input type="password" class="form-control" placeholder="Contraseña"
+                name="password" formControlName="password">
+          </div>
+          <div class="form-row mt-xs">
+              <a (click)="login(loginForm)" class="btn btn-block btn-lg btn-success">Entrar
+              </a>
+          </div>
+          <div class="form-row text-center">
+              <a href="clients.html" class="small text-success">¿Perdiste tu contraseña?</a>
+          </div>
+      </div>
+  </div>
+
+</div>
+
+<!-- <div class="container">
   <div class="row text-center">
     <div class="col-12" [formGroup]="loginForm">
       <div class="form-group">
@@ -14,4 +40,4 @@
       <button type="button" (click)="login(loginForm)">LOGIN</button>
     </div>
   </div>
-</div>
+</div> -->

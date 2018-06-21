@@ -20,12 +20,19 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 // containers
 import * as fromContainers from "./containers";
 
+// components
+import * as fromComponents from "./components";
+
 // guards
 import * as fromGuards from "./guards";
 import { AppInterceptor } from "../@shared/utils/interceptor/token.interceptor";
 
 @NgModule({
-  declarations: [AppComponent, ...fromContainers.containers],
+  declarations: [
+    AppComponent,
+    ...fromContainers.containers,
+    ...fromComponents.components
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -1,21 +1,27 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { LayoutComponent, LoginComponent } from "./containers";
-import { AuthGuard } from "./guards/auth.guard";
+import {
+  LayoutComponent,
+  LoginComponent,
+  LandingPageComponent
+} from "./containers";
+
+// guards
+import * as fromGuards from "./guards";
 
 const ROUTES: Routes = [
   {
-    path: "login",
-    component: LoginComponent,
+    path: "home",
+    component: LandingPageComponent,
     data: {
-      breadcrumb: "login"
+      breadcrumb: "Home"
     }
   },
   {
     path: "app",
     component: LayoutComponent,
-    canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard],
+    canActivate: [fromGuards.AuthGuard, fromGuards.SessionNotExpiredGuard],
+    canActivateChild: [fromGuards.AuthGuard],
     children: [
       {
         path: "admin",
@@ -40,12 +46,12 @@ const ROUTES: Routes = [
   },
   {
     path: "",
-    redirectTo: "/login",
+    redirectTo: "/home",
     pathMatch: "full"
   },
   {
     path: "**",
-    redirectTo: "login"
+    redirectTo: "home"
   }
 ];
 
