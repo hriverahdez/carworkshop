@@ -1,0 +1,8 @@
+.bcrumb-link::after {
+    content: ' / ';
+    display: inline;
+}
+
+.bcrumb-link:last-child::after {
+    content: none
+}

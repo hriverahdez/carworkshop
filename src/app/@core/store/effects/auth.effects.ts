@@ -80,7 +80,7 @@ export class AuthEffects {
     map(() => {
       this.authService.logOut();
       return new fromRouter.Go({
-        path: ["/login"]
+        path: ["/home"]
       });
     })
   );

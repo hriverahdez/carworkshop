@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 
 import { map, tap, finalize } from "rxjs/operators";
-import { AuthUser } from "../../@core/models/auth-user.model";
+import { AuthUser } from "../models/auth-user.model";
 import { Router } from "@angular/router";
 
 @Injectable({
@@ -117,10 +117,14 @@ export class AuthenticationService {
   //     );
   // }
 
-  logOut() {
+  /**
+   * Log out user
+   * @param redirect Redirect after logout. Default false
+   */
+  logOut(redirect = false) {
     this.http.get(`${environment.apiURL}/logout`);
     localStorage.removeItem("token");
     localStorage.removeItem("currentUser");
-    this.router.navigateByUrl(this.logoutRedirectUrl);
+    if (redirect) this.router.navigateByUrl(this.logoutRedirectUrl);
   }
 }

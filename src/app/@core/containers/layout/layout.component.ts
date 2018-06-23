@@ -5,20 +5,14 @@ import {
   NavigationEnd,
   ActivatedRouteSnapshot
 } from "@angular/router";
+
 import { filter, distinctUntilChanged, map } from "rxjs/operators";
 import { BreadCrumb } from "../../models/breadcrumb.model";
 import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store";
-import { AuthUser } from "../../models/auth-user.model";
 
-import {
-  state,
-  trigger,
-  style,
-  transition,
-  animate
-} from "@angular/animations";
+import { AuthUser } from "../../../@shared/models/auth-user.model";
 
 @Component({
   selector: "cws-layout",
@@ -36,5 +30,9 @@ export class LayoutComponent implements OnInit {
   ngOnInit() {
     this.currentUser$ = this.store.select(fromStore.selectCurrentUser);
     this.breadcrumbs$ = this.store.select(fromStore.selectBreadcrumbs);
+  }
+
+  logout() {
+    this.store.dispatch(new fromStore.Logout());
   }
 }

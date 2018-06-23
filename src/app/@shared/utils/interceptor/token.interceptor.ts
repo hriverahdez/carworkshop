@@ -15,6 +15,7 @@ import { map, mergeMap, catchError } from "rxjs/operators";
 export class TokenInterceptor implements HttpInterceptor {
   private auth: AuthenticationService;
 
+  // Add '*' to exclude all requests
   private excluded = ["/login"];
 
   constructor(private injector: Injector) {
@@ -55,7 +56,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
         // Server sends 403 when token is blacklisted
         if (error.status === 403) {
-          this.auth.logOut();
+          this.auth.logOut(true);
         }
 
         return Observable.throw(error);
@@ -64,6 +65,9 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   requestExcluded(request: HttpRequest<any>) {
+    const hasWildcard = this.excluded.indexOf("*") !== -1;
+    if (hasWildcard) return true;
+
     const reqUrl = request.url;
     return !!this.excluded.find((url: string) => reqUrl.includes(url));
   }

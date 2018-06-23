@@ -1,5 +1,5 @@
-import { AuthUser } from "../../models/auth-user.model";
 import * as fromUser from "../actions";
+import { AuthUser } from "../../../@shared/models/auth-user.model";
 
 import { CustomError } from "../../../@shared/utils/custom-error";
 import { httpErrorMessages } from "../../../@shared/utils/http-error-messages";

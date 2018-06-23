@@ -2,7 +2,6 @@ import { createSelector } from "@ngrx/store";
 
 import * as fromUser from "../reducers/auth.reducer";
 import * as fromRoot from "../reducers";
-import { AuthUser } from "../../models/auth-user.model";
 
 export const selectIsLoggedIn = createSelector(
   fromRoot.getAuthState,
