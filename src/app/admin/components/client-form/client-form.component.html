@@ -2,7 +2,7 @@
     <div class="form-group row mb-5">
         <div class="col">
             <label for="inputLastName">Seleccione el tipo de cliente</label>
-            <select name="tipo" formControlName="tipo" class="form-control">
+            <select name="type" formControlName="type" class="form-control">
                 <option [value]="'HOMEUSER'">Particular</option>
                 <option [value]="'COMPANY'">Empresa</option>
             </select>
@@ -15,21 +15,21 @@
     </div>
     <div class="form-group row" *ngIf="isCompany">
         <div class="form-group col-md-4">
-            <input type="checkbox" name="cargo_visible" formControlName="cargo_visible" checked class="checkbox">
+            <input type="checkbox" name="positionIsVisible" formControlName="positionIsVisible" checked class="checkbox">
             <label for="inputFirstName">Cargo del Contacto</label>
-            <input type="text" name="cargo" formControlName="cargo" class="form-control" name="firstname" placeholder="CEO">
+            <input type="text" name="position" formControlName="position" class="form-control" placeholder="CEO">
         </div>
         <div class="form-group col-md-4">
-            <input type="checkbox" name="nombre_comercial_visible" 
-                formControlName="nombre_comercial_visible" checked class="checkbox">
+            <input type="checkbox" name="companyNameIsVisible" 
+                formControlName="companyNameIsVisible" checked class="checkbox">
             <label for="inputLastName">Nombre comercial</label>
-            <input type="text" name="nombre_comercial" 
-                formControlName="nombre_comercial" class="form-control" name="lastname" placeholder="MiEmpresa, Inc">
+            <input type="text" name="companyName" 
+                formControlName="companyName" class="form-control" name="lastname" placeholder="MiEmpresa, Inc">
         </div>
         <div class="form-group col-md-4">
-            <input type="checkbox" name="web_visible" formControlName="web_visible" checked class="checkbox">
+            <input type="checkbox" name="webIsVisible" formControlName="webIsVisible" checked class="checkbox">
             <label for="web">Web</label>
-            <input type="email" name="web" formControlName="web" class="form-control" placeholder="www.miempresa.com">
+            <input type="text" name="web" formControlName="web" class="form-control" placeholder="www.miempresa.com">
         </div>
     </div>
     <div [ngClass]="{ 'mb-4 mt-5': isCompany }">
@@ -41,47 +41,47 @@
     </div>
     <div class="form-group row">
         <div class="form-group" [ngClass]="{ 'col-md-4': !isEdit, 'col-md-6': isEdit }">
-            <input type="checkbox" name="nombre_visible" formControlName="nombre_visible" checked class="checkbox">
+            <input type="checkbox" name="firstNameIsVisible" formControlName="firstNameIsVisible" checked class="checkbox">
             <label for="inputFirstName">Nombre *</label>
-            <input type="text" name="nombre" 
-                formControlName="nombre" class="form-control" id="inputFirstName" name="firstname" placeholder="Juan">
+            <input type="text" name="firstName" 
+                formControlName="firstName" class="form-control" placeholder="Juan">
         </div>
         <div class="form-group" [ngClass]="{ 'col-md-4': !isEdit, 'col-md-6': isEdit }">
-            <input type="checkbox" name="apellidos_visible" formControlName="apellidos_visible" checked class="checkbox">
+            <input type="checkbox" name="lastNameIsVisible" formControlName="lastNameIsVisible" checked class="checkbox">
             <label for="inputLastName">Apellidos *</label>
-            <input type="text" name="apellidos" 
-                formControlName="apellidos" class="form-control" id="inputLastName" name="lastname" placeholder="Pérez">
+            <input type="text" name="lastName" 
+                formControlName="lastName" class="form-control" placeholder="Pérez">
         </div>
         <div class="form-group col-md-4" *ngIf="!isEdit">
-            <input type="checkbox" name="fecha_de_alta_visible" 
-                formControlName="fecha_de_alta_visible" checked class="checkbox">
+            <input type="checkbox" name="registrationDateIsVisible" 
+                formControlName="registrationDateIsVisible" checked class="checkbox">
             <label for="position">Fecha de Alta</label>
-            <input type="date" name="fecha_de_alta" 
-                formControlName="fecha_de_alta" class="form-control" id="registrationDate" placeholder="">
+            <input type="date" name="registrationDate" 
+                formControlName="registrationDate" class="form-control" id="registrationDate" placeholder="">
         </div>
     </div>
     <div class="form-group row">
         <div class="form-group" [ngClass]="{ 'col-md-4': !isEdit, 'col-md-6': isEdit }">
-            <input type="checkbox" name="correo_visible" formControlName="correo_visible" checked class="checkbox">
+            <input type="checkbox" name="emailIsVisible" formControlName="emailIsVisible" checked class="checkbox">
             <label for="inputEmail4">Email *</label>
-            <input type="email" name="correo" 
+            <input type="email" name="email" 
                 [ngClass]="{ 'is-invalid': emailControlInvalid }"
-                formControlName="correo" class="form-control" id="inputEmail" placeholder="juan@example.com">
+                formControlName="email" class="form-control" id="inputEmail" placeholder="juan@example.com">
             <div class="invalid-feedback">
                 Introduzca un correo válido
             </div>
         </div>
         <div class="form-group col-md-6" *ngIf="isEdit">
-            <input type="checkbox" name="fecha_de_alta_visible" formControlName="fecha_de_alta_visible" checked class="checkbox">
+            <input type="checkbox" name="registrationDateIsVisible" formControlName="registrationDateIsVisible" checked class="checkbox">
             <label for="position">Fecha de Alta</label>
-            <input type="date" name="fecha_de_alta" 
-                formControlName="fecha_de_alta" class="form-control" id="registrationDate" placeholder="">
+            <input type="date" name="registrationDate" 
+                formControlName="registrationDate" class="form-control" id="registrationDate" placeholder="">
         </div>
 
         <div formGroupName="passwordGroup" class="form-group col-md-4" *ngIf="!isEdit">
             <label for="inputPassword">Contraseña *</label>
-            <input type="password" name="contrasenna" 
-                formControlName="contrasenna" [ngClass]="{ 'is-invalid': passwordsDontMatch }"
+            <input type="password" name="password" 
+                formControlName="password" [ngClass]="{ 'is-invalid': passwordsDontMatch }"
                 class="form-control" id="inputPassword" placeholder="Contraseña">
             <div class="invalid-feedback">
                 Las contraseñas no coinciden
@@ -89,8 +89,8 @@
         </div>
         <div formGroupName="passwordGroup" class="form-group col-md-4" *ngIf="!isEdit">
             <label for="inputPasswordRepeat">Repetir Contraseña *</label>
-            <input type="password" name="contrasenna_repeat" 
-                formControlName="contrasenna_repeat" [ngClass]="{ 'is-invalid': passwordsDontMatch }"
+            <input type="password" name="passwordRepeat" 
+                formControlName="passwordRepeat" [ngClass]="{ 'is-invalid': passwordsDontMatch }"
                 class="form-control" id="inputPasswordRepeat" placeholder="Contraseña">
             <div class="invalid-feedback">
                 Las contraseñas no coinciden
@@ -100,69 +100,69 @@
     </div>
     <div class="form-group row">
         <div class="form-group col-md-4">
-            <input type="checkbox" name="dni_visible" formControlName="dni_visible" class="checkbox">
+            <input type="checkbox" name="dniIsVisible" formControlName="dniIsVisible" class="checkbox">
             <label for="DNINIF">DNI o NIF</label>
             <input type="text" name="dni" formControlName="dni" 
                 class="form-control" id="DNINIF" name="dninif" placeholder="98790989">
         </div>
         <div class="form-group col-md-4">
-            <input type="checkbox" name="sexo_visible" formControlName="sexo_visible" class="checkbox">
+            <input type="checkbox" name="genderIsVisible" formControlName="genderIsVisible" class="checkbox">
             <label for="inputLastName">Género</label>
-            <select class="form-control" name="sexo" formControlName="sexo">
+            <select class="form-control" name="gender" formControlName="gender">
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
             </select>
         </div>
         <div class="form-group col-md-4">
-            <input type="checkbox" name="cumpleannos_visible" formControlName="cumpleannos_visible" class="checkbox">
+            <input type="checkbox" name="birthdayIsVisible" formControlName="birthdayIsVisible" class="checkbox">
             <label for="birthday">Cumpleaños</label>
-            <input type="date" name="cumpleannos" formControlName="cumpleannos" class="form-control" placeholder="">
+            <input type="date" name="birthday" formControlName="birthday" class="form-control" placeholder="">
         </div>
     </div>
     <div class="form-group row">
         <div class="form-group col-12">
-            <input type="checkbox" name="direccion_visible" formControlName="direccion_visible" class="checkbox">
+            <input type="checkbox" name="addressIsVisible" formControlName="addressIsVisible" class="checkbox">
             <label for="inputAddress">Dirección</label>
-            <input type="text" name="direccion" formControlName="direccion" class="form-control" placeholder="1234 Main St">
+            <input type="text" name="address" formControlName="address" class="form-control" placeholder="1234 Main St">
         </div>
     </div>
     <div class="form-group row">
         <div class="form-group col-md-4">
-            <input type="checkbox" name="vinculado_visible" formControlName="vinculado_visible" class="checkbox">
+            <input type="checkbox" name="linkedToIsVisible" formControlName="linkedToIsVisible" class="checkbox">
             <label for="inputAddress">Vinculado a</label>
-            <input type="text" name="vinculado" formControlName="vinculado" class="form-control" placeholder="Alfredo Martínez">
+            <input type="text" name="linkedTo" formControlName="linkedTo" class="form-control" placeholder="Alfredo Martínez">
         </div>
         <div class="form-group col-md-4">
-            <input type="checkbox" name="localidad_visible" formControlName="localidad_visible" class="checkbox">
+            <input type="checkbox" name="localityIsVisible" formControlName="localityIsVisible" class="checkbox">
             <label for="inputAddress">Localidad</label>
-            <input type="text" name="localidad" formControlName="localidad" class="form-control" placeholder="Barcelona">
+            <input type="text" name="locality" formControlName="locality" class="form-control" placeholder="Barcelona">
         </div>
         <div class="form-group col-md-4">
-            <input type="checkbox" name="codigo_postal_visible" formControlName="codigo_postal_visible" class="checkbox">
+            <input type="checkbox" name="zipCodeIsVisible" formControlName="zipCodeIsVisible" class="checkbox">
             <label for="zipCode">Código Postal</label>
-            <input type="text" name="codigo_postal" formControlName="codigo_postal" class="form-control" placeholder="70100">
+            <input type="text" name="zipCode" formControlName="zipCode" class="form-control" placeholder="70100">
         </div>
     </div>
 
     <div class="form-group row">
         <div class="form-group col-md-4">
-            <input type="checkbox" name="telef_casa_visible" formControlName="telef_casa_visible" class="checkbox">
+            <input type="checkbox" name="homePhoneIsVisible" formControlName="homePhoneIsVisible" class="checkbox">
             <label for="homephone">Teléfono (CASA)</label>
-            <input type="text" name="telef_casa" formControlName="telef_casa" class="form-control" placeholder="364597">
+            <input type="text" name="homePhone" formControlName="homePhone" class="form-control" placeholder="364597">
         </div>
         <div class="form-group col-md-4">
-            <input type="checkbox" name="telef_movil_visible" formControlName="telef_movil_visible" class="checkbox">
+            <input type="checkbox" name="mobilePhoneIsVisible" formControlName="mobilePhoneIsVisible" class="checkbox">
             <label for="mobilephone">Teléfono (MOVIL)</label>
-            <input type="text" name="telef_movil" formControlName="telef_movil" class="form-control" placeholder="364597">
+            <input type="text" name="mobilePhone" formControlName="mobilePhone" class="form-control" placeholder="364597">
         </div>
         <div class="form-group col-md-4">
-            <input type="checkbox" name="telef_otro_visible" formControlName="telef_otro_visible" class="checkbox">
+            <input type="checkbox" name="otherPhoneIsVisible" formControlName="otherPhoneIsVisible" class="checkbox">
             <label for="otherphone">Teléfono (OTRO)</label>
-            <input type="text" name="telef_otro" formControlName="telef_otro" class="form-control" placeholder="364597">
+            <input type="text" name="otherPhone" formControlName="otherPhone" class="form-control" placeholder="364597">
         </div>
     </div>
 
-    <cws-car-form [parent]="clientForm" [car]="client?.carro"></cws-car-form>
+    <cws-car-form [parent]="clientForm" [car]="client?.car"></cws-car-form>
 
     <div class="col-12 text-center">
         <input type="button" (click)="save(clientForm)" 

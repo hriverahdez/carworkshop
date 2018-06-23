@@ -1,8 +1,8 @@
 <div style="color: #424242">
   <div class="row" *ngIf="isCompany">
       <div class="col-12">
-          <strong>Nombre Empresa:</strong> {{ client.nombre_comercial }} ({{ client.web }}) <br>
-          <b>Cargo del contacto:</b> {{ client.cargo }}
+          <strong>Nombre Empresa:</strong> {{ client.companyName }} ({{ client.web }}) <br>
+          <b>Cargo del contacto:</b> {{ client.position }}
       </div>
   </div>
   <div class="mb-4" :class="{ 'mt-4': isCompany }">
@@ -13,43 +13,43 @@
       <div class="col-12">
           <h6>
               <span class="title"><strong>Nombre y Apellidos: </strong></span> {{ fullname }}
-              <span *ngIf="client.vinculado" class="text-muted"> | Vinculado a: {{ client.vinculado }}</span>
+              <span *ngIf="client.linkedTo" class="text-muted"> | Vinculado a: {{ client.linkedTo }}</span>
           </h6>                
       </div>
-      <div class="col-6"><span class="title">e-mail:</span> {{ client.correo }}</div>
-      <div class="col-6"><span class="title">Fecha de alta:</span> {{ client.fecha_de_alta }}</div>
+      <div class="col-6"><span class="title">e-mail:</span> {{ client.email }}</div>
+      <div class="col-6"><span class="title">Fecha de alta:</span> {{ client.registrationDate }}</div>
   </div>
   <div class="row">
       <div class="col-4">
           <span class="title">Fecha de alta:</span> {{ client.dni || '---' }}
       </div>
       <div class="col-4">
-          <span class="title">Sexo:</span> {{ client.sexo === 'M' ? 'Masculino' : 'Femenino' }}
+          <span class="title">Sexo:</span> {{ client.gender === 'M' ? 'Masculino' : 'Femenino' }}
       </div>
       <div class="col-4">
-          <span class="title">Cumpleaños:</span> {{ client.cumpleannos || '---' }}
+          <span class="title">Cumpleaños:</span> {{ client.birthday || '---' }}
       </div>
   </div>
   <div class="row mt-2" *ngIf="displayAddressRow">
       <div class="col-6">
-          <span class="title">Dirección:</span> <br> {{ client.direccion || '---' }}
+          <span class="title">Dirección:</span> <br> {{ client.address || '---' }}
       </div>
       <div class="col-3">
-          <span class="title">Localidad:</span> <br> {{ client.localidad || '---' }}
+          <span class="title">Localidad:</span> <br> {{ client.locality || '---' }}
       </div>
       <div class="col-3">
-          <span class="title">Código Postal:</span> <br> {{ client.codigo_postal || '---' }}
+          <span class="title">Código Postal:</span> <br> {{ client.zipCode || '---' }}
       </div>
   </div>
   <div class="row mt-2" *ngIf="displayPhoneRow">
       <div class="col-4">
-          <span class="title">Telef (Casa):</span> {{ client.telef_casa }}
+          <span class="title">Telef (Casa):</span> {{ client.homePhone }}
       </div>
       <div class="col-4">
-          <span class="title">Telef (Movil):</span> {{ client.telef_movil }}
+          <span class="title">Telef (Movil):</span> {{ client.mobilePhone }}
       </div>
       <div class="col-4">
-          <span class="title">Telef (Otro):</span> {{ client.telef_otro }}
+          <span class="title">Telef (Otro):</span> {{ client.otherPhone }}
       </div>
   </div>
   <div class="mb-4 mt-5">
@@ -57,50 +57,50 @@
       <hr style="width: 30%" align="left">
   </div>
   <div class="row">
-      <div class="col-4"><span class="title">Matrícula: </span> {{ car.matricula }}</div>
-      <div class="col-4"><span class="title">Marca: </span> {{ car.marca }}</div>
-      <div class="col-4"><span class="title">Modelo: </span> {{ car.modelo }}</div>
+      <div class="col-4"><span class="title">Matrícula: </span> {{ car.plateNumber }}</div>
+      <div class="col-4"><span class="title">Marca: </span> {{ car.brand }}</div>
+      <div class="col-4"><span class="title">Modelo: </span> {{ car.model }}</div>
   </div>
   <div class="row" *ngIf="displayCarModelSpecificsRow">
-      <div class="col-4"><span class="title">Variante: </span> {{ car.variante || '---' }}</div>
-      <div class="col-4"><span class="title">Tipo: </span> {{ car.tipo || '---' }}</div>
+      <div class="col-4"><span class="title">Variante: </span> {{ car.variant || '---' }}</div>
+      <div class="col-4"><span class="title">Tipo: </span> {{ car.type || '---' }}</div>
       <div class="col-4"><span class="title">Version: </span> {{ car.version || '---' }}</div>
   </div>
 
   <div class="row mt-3">
-      <div class="col-4"><span class="title">Primera matriculación: </span><br> {{ car.primera_matriculacion || '---' }}</div>
-      <div class="col-4"><span class="title">Número bastidor (VIN): </span><br> {{ car.numero_bastidor || '---' }}</div>
-      <div class="col-4"><span class="title">Combustible: </span><br> {{ car.combustible || '---' }}</div>
+      <div class="col-4"><span class="title">Primera matriculación: </span><br> {{ car.firstRegistration || '---' }}</div>
+      <div class="col-4"><span class="title">Número bastidor (VIN): </span><br> {{ car.vinNumber || '---' }}</div>
+      <div class="col-4"><span class="title">Combustible: </span><br> {{ car.fuel || '---' }}</div>
   </div>
   <div class="row mt-3">
-      <div class="col-4"><span class="title">Marca del motor: </span><br>{{ car.marca_motor || '---' }}</div>
-      <div class="col-4"><span class="title">Código del motor: </span><br>{{ car.codigo_motor || '---' }}</div>
-      <div class="col-4"><span class="title">Categoría: </span><br>{{ car.categoria || '---' }}</div>
+      <div class="col-4"><span class="title">Marca del motor: </span><br>{{ car.engineBrand || '---' }}</div>
+      <div class="col-4"><span class="title">Código del motor: </span><br>{{ car.engineCode || '---' }}</div>
+      <div class="col-4"><span class="title">Categoría: </span><br>{{ car.category || '---' }}</div>
   </div>
   <div class="row mt-3">
-      <div class="col-4"><span class="title">Número de cilindros:</span><br> {{ car.numero_cilindros || '---' }}</div>
-      <div class="col-4"><span class="title">Cilindrada (cm. cúbicos):</span><br> {{ car.cilindrada || '---' }}</div>
-      <div class="col-4"><span class="title">Neumáticos:</span><br> {{ car.neumaticos || '---' }}</div>
+      <div class="col-4"><span class="title">Número de cilindros:</span><br> {{ car.cilinderAmount || '---' }}</div>
+      <div class="col-4"><span class="title">Cilindrada (cm. cúbicos):</span><br> {{ car.cilinderAmount || '---' }}</div>
+      <div class="col-4"><span class="title">Neumáticos:</span><br> {{ car.tires || '---' }}</div>
   </div>
   <div class="row mt-3">
-      <div class="col-4"><span class="title">Potencia (KW):</span><br> {{ car.potencia_kw || '---' }}</div>
-      <div class="col-4"><span class="title">Potencia (CV):</span><br> {{ car.potencia_cv || '---' }}</div>
-      <div class="col-4"><span class="title">Nivel de Emisiones:</span><br> {{ car.nivel_emisiones || '---' }}</div>
+      <div class="col-4"><span class="title">Potencia (KW):</span><br> {{ car.potencyKW || '---' }}</div>
+      <div class="col-4"><span class="title">Potencia (CV):</span><br> {{ car.potencyCV || '---' }}</div>
+      <div class="col-4"><span class="title">Nivel de Emisiones:</span><br> {{ car.emisionLevel || '---' }}</div>
   </div>
   <div class="row mt-3">
-      <div class="col-6"><span class="title">Código de Radio: </span><br> {{ car.codigo_radio || '---' }}</div>
-      <div class="col-6"><span class="title">Código de Llaves: </span><br> {{ car.codigo_llaves || '---' }}</div>
+      <div class="col-6"><span class="title">Código de Radio: </span><br> {{ car.radioCode || '---' }}</div>
+      <div class="col-6"><span class="title">Código de Llaves: </span><br> {{ car.keyCode || '---' }}</div>
   </div>
-  <div class="row mt-2" *ngIf="car.reset_mantenimiento">
+  <div class="row mt-2" *ngIf="car.maintenanceReset">
       <div class="col-12">
           <span class="title">Reset Mantenimiento</span><br>
-          <p>{{ car.reset_mantenimiento }}</p>
+          <p>{{ car.maintenanceReset }}</p>
       </div>            
   </div>
-  <div class="row mt-2" *ngIf="car.observaciones">
+  <div class="row mt-2" *ngIf="car.observations">
       <div class="col-12">
           <span class="title">Observaciones</span><br>
-          <p>{{ car.observaciones }}</p>
+          <p>{{ car.observations }}</p>
       </div>
   </div>
 </div>

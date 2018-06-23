@@ -12,6 +12,14 @@ import { Store } from "@ngrx/store";
 import * as fromStore from "../../store";
 import { AuthUser } from "../../models/auth-user.model";
 
+import {
+  state,
+  trigger,
+  style,
+  transition,
+  animate
+} from "@angular/animations";
+
 @Component({
   selector: "cws-layout",
   templateUrl: "./layout.component.html",
@@ -19,7 +27,9 @@ import { AuthUser } from "../../models/auth-user.model";
 })
 export class LayoutComponent implements OnInit {
   breadcrumbs$: Observable<BreadCrumb[]>;
-  currentUser$: Observable<AuthUser>
+  currentUser$: Observable<AuthUser>;
+
+  isCollapsed: boolean = true;
 
   constructor(private store: Store<fromStore.AppState>) {}
 

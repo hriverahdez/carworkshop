@@ -56,12 +56,12 @@ export class ClientFormComponent implements OnInit, OnChanges {
 
   clearCompanyFields(client: Client) {
     const {
-      cargo,
-      cargo_visible,
+      position,
+      positionIsVisible,
       web,
-      web_visible,
-      nombre_comercial,
-      nombre_comercial_visible,
+      webIsVisible,
+      companyName,
+      companyNameIsVisible,
       ...rest
     } = client;
 
@@ -70,57 +70,57 @@ export class ClientFormComponent implements OnInit, OnChanges {
 
   toFormGroup(): FormGroup {
     return this.fb.group({
-      tipo: ["HOMEUSER"],
+      type: ["HOMEUSER"],
 
-      cargo: [""],
-      cargo_visible: [false],
-      nombre_comercial: [""],
-      nombre_comercial_visible: [false],
+      position: [""],
+      positionIsVisible: [false],
+      companyName: [""],
+      companyNameIsVisible: [false],
       web: [""],
-      web_visible: [false],
+      webIsVisible: [false],
 
-      nombre: ["", Validators.required],
-      nombre_visible: [true],
-      apellidos: ["", Validators.required],
-      apellidos_visible: [true],
-      fecha_de_alta: [""],
-      fecha_de_alta_visible: [false],
-      correo: ["", [Validators.required, Validators.email]],
-      correo_visible: [false],
+      firstName: ["", Validators.required],
+      firstNameIsVisible: [true],
+      lastName: ["", Validators.required],
+      lastNameIsVisible: [true],
+      registrationDate: [""],
+      registrationDateIsVisible: [false],
+      email: ["", [Validators.required, Validators.email]],
+      emailIsVisible: [false],
       passwordGroup: this.fb.group(
         {
-          contrasenna: ["", Validators.required],
-          contrasenna_repeat: ["", Validators.required]
+          password: ["", Validators.required],
+          passwordRepeat: ["", Validators.required]
         },
         {
           validator: CustomValidator.childrenEqual
         }
       ),
       dni: [""],
-      dni_visible: [false],
-      sexo: ["M"],
-      sexo_visible: [false],
-      cumpleannos: [""],
-      cumpleannos_visible: [false],
-      direccion: [""],
-      direccion_visible: [false],
-      localidad: [""],
-      localidad_visible: [false],
-      codigo_postal: [""],
-      codigo_postal_visible: [false],
-      vinculado: [""],
-      vinculado_visible: [false],
-      telef_casa: [""],
-      telef_casa_visible: [false],
-      telef_movil: [""],
-      telef_movil_visible: [false],
-      telef_otro: [""],
-      telef_otro_visible: [false]
+      dniIsVisible: [false],
+      gender: ["M"],
+      genderIsVisible: [false],
+      birthday: [""],
+      birthdayIsVisible: [false],
+      address: [""],
+      addressIsVisible: [false],
+      locality: [""],
+      localityIsVisible: [false],
+      zipCode: [""],
+      zipCodeIsVisible: [false],
+      linkedTo: [""],
+      linkedToIsVisible: [false],
+      homePhone: [""],
+      homePhoneIsVisible: [false],
+      mobilePhone: [""],
+      mobilePhoneIsVisible: [false],
+      otherPhone: [""],
+      otherPhoneIsVisible: [false]
     });
   }
 
   get clientType() {
-    return this.clientForm.get("tipo") as FormControl;
+    return this.clientForm.get("type") as FormControl;
   }
 
   get isCompany() {
@@ -128,7 +128,7 @@ export class ClientFormComponent implements OnInit, OnChanges {
   }
 
   get emailControl() {
-    return this.clientForm.get("correo") as FormControl;
+    return this.clientForm.get("email") as FormControl;
   }
 
   get emailControlInvalid() {

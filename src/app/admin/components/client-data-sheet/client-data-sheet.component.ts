@@ -14,39 +14,35 @@ export class ClientDataSheetComponent implements OnInit {
   ngOnInit() {}
 
   get fullname() {
-    return `${this.client.nombre} ${this.client.apellidos}`;
+    return `${this.client.firstName} ${this.client.lastName}`;
   }
 
   get isCompany() {
-    return this.client.web || this.client.cargo || this.client.nombre_comercial;
+    return this.client.web || this.client.position || this.client.companyName;
   }
 
   get displayAddressRow() {
-    if (
-      !this.client.direccion &&
-      !this.client.localidad &&
-      !this.client.codigo_postal
-    )
+    if (!this.client.address && !this.client.locality && !this.client.zipCode)
       return false;
     else return true;
   }
 
   get displayPhoneRow() {
     if (
-      !this.client.telef_casa &&
-      !this.client.telef_movil &&
-      !this.client.telef_otro
+      !this.client.homePhone &&
+      !this.client.mobilePhone &&
+      !this.client.otherPhone
     )
       return false;
     else return true;
   }
 
   get car() {
-    return this.client.carro || {};
+    return this.client.car || {};
   }
 
   get displayCarModelSpecificsRow() {
-    if (!this.car.variante && !this.car.tipo && !this.car.version) return false;
+    if (!this.car.variant && !this.car.type && !this.car.version) return false;
     else return true;
   }
 }

@@ -8,11 +8,13 @@
   <div class="container">
       <nav class="navbar" role="navigation">
           <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+              <button type="button" class="navbar-toggle" 
+                (click)="isCollapsed = !isCollapsed"
+                data-toggle="collapse" data-target="#navbar-collapse-01">
                 <span class="sr-only">Toggle navigation</span>
               </button>
           </div>
-          <div class="collapse navbar-collapse" id="navbar-collapse-01">
+          <div class="collapse navbar-collapse" [ngClass]="{'in': !isCollapsed}" id="navbar-collapse-01">
               <ul class="nav navbar-nav navbar-left bcrumb">
                   <!-- <li><a href="#">Inicio</a></li> -->
 
@@ -28,10 +30,10 @@
               <ul class="nav navbar-nav navbar-right">
                   <li><a href="#fakelink">
                       <span class="fui-new"></span></a></li>
-                  <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ (currentUser$ | async).name }} <b class="caret"></b></a>
+                  <li ngbDropdown class="dropdown">
+                      <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">{{ (currentUser$ | async).name }} <b class="caret"></b></a>
                       <span class="dropdown-arrow"></span>
-                      <ul class="dropdown-menu">
+                      <ul class="dropdown-menu" ngbDropdownMenu>
                           <li><a href="#">My Profile</a></li>
                           <li><a href="index2.html">View Site</a></li>
                           <li class="divider"></li>

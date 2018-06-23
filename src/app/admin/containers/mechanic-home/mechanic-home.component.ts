@@ -20,15 +20,14 @@ export class MechanicHomeComponent implements OnInit {
   }
 
   fullname(client: Client) {
-    return `${client.nombre} ${client.apellidos}`;
+    return `${client.firstName} ${client.lastName}`;
   }
 
   deleteClient(client: Client) {
     if (
       window.confirm(
-        `¿Está seguro que desea eliminar a ${client.nombre} ${
-          client.apellidos
-        }?`
+        `¿Está seguro que desea eliminar a 
+          ${client.firstName} ${client.lastName}?`
       )
     ) {
       this.store.dispatch(new fromStore.DeleteClient(client));
