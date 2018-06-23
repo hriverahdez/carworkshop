@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Injector } from "@angular/core";
 import {
   HttpRequest,
   HttpHandler,
@@ -8,25 +8,64 @@ import {
 } from "@angular/common/http";
 
 import { Observable } from "rxjs";
+import { AuthenticationService } from "../../services";
+import { map, mergeMap, catchError } from "rxjs/operators";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  constructor() {}
+  private auth: AuthenticationService;
+
+  private excluded = ["/login"];
+
+  constructor(private injector: Injector) {
+    this.auth = this.injector.get(AuthenticationService);
+  }
+
+  setHeaders(request: HttpRequest<any>) {
+    return function(token: string) {
+      return request.clone({
+        setHeaders: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`
+        }
+      });
+    };
+  }
 
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    request = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${this.token}`
-      }
-    });
-    return next.handle(request);
+    if (this.requestExcluded(request)) {
+      return next.handle(request);
+    }
+
+    return this.auth.getToken().pipe(
+      map(this.setHeaders(request)),
+      mergeMap(req => next.handle(req)),
+
+      catchError(error => {
+        // Server sends 419 when token expires
+        if (error.status === 419) {
+          return this.auth.refreshToken().pipe(
+            map(this.setHeaders(request)),
+            mergeMap(req => next.handle(req))
+          );
+        }
+
+        // Server sends 403 when token is blacklisted
+        if (error.status === 403) {
+          this.auth.logOut();
+        }
+
+        return Observable.throw(error);
+      })
+    );
   }
 
-  get token() {
-    return localStorage.getItem("token");
+  requestExcluded(request: HttpRequest<any>) {
+    const reqUrl = request.url;
+    return !!this.excluded.find((url: string) => reqUrl.includes(url));
   }
 }
 

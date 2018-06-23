@@ -3,34 +3,81 @@ import { Injectable } from "@angular/core";
 // import { tokenNotExpired } from "angular2-jwt";
 import { RequestOptions } from "@angular/http";
 import { environment } from "../../../environments/environment";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
+import { Observable, of } from "rxjs";
 
-import { map } from "rxjs/operators";
+import { map, tap, finalize } from "rxjs/operators";
 import { AuthUser } from "../../@core/models/auth-user.model";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthenticationService {
-  constructor(private http: HttpClient) {}
+  private refreshTokenCall;
+  private logoutRedirectUrl = "/home";
 
-  getToken() {
+  constructor(private http: HttpClient, private router: Router) {}
+
+  private getTokenFromLocalStorage(): string {
     return localStorage.getItem("token");
   }
 
+  /**
+   * Get the current user's information saved in Local Storage
+   */
   getCurrentUser(): AuthUser {
     return JSON.parse(localStorage.getItem("currentUser"));
   }
 
-  updateCurrentUserInfo(user) {
+  isAuthenticated() {
+    const token = this.getTokenFromLocalStorage();
+    return !!token;
+  }
+
+  private saveTokenInLocalStorage(token: string) {
+    localStorage.setItem("token", token);
+  }
+
+  /**
+   * Stores the current user's information in Local Storage
+   * @param user AuthUser
+   */
+  storeUserInfo(user: AuthUser) {
     localStorage.setItem("currentUser", JSON.stringify(user));
   }
 
-  isAuthenticated() {
-    const token = this.getToken();
-    // return tokenNotExpired(null, token);
-    return !!token;
+  /**
+   * Returns an Observable of JWT Token. Attempts to retrieve the token from Local Storage
+   * and if it fails calls refreshToken()
+   */
+  getToken(): Observable<string> {
+    if (localStorage.getItem("token")) {
+      return of(this.getTokenFromLocalStorage());
+    }
+
+    return this.refreshToken();
+  }
+
+  /**
+   * Attempts to refresh a token calling the API. If it succeeds it
+   * will save the new token in Local Storage to be used in subsequent requests
+   */
+  refreshToken(): Observable<string> {
+    if (!this.refreshTokenCall) {
+      this.refreshTokenCall = this.http
+        .get(`${environment.apiURL}/refresh`)
+        .pipe(
+          map((response: any) => this.getTokenFromRefreshResponse(response)),
+          tap(this.saveTokenInLocalStorage),
+          finalize(() => (this.refreshTokenCall = null))
+        );
+    }
+    return this.refreshTokenCall;
+  }
+
+  private getTokenFromRefreshResponse(response): string {
+    return response.token;
   }
 
   login(user: AuthUser): Observable<AuthUser> {
@@ -42,10 +89,8 @@ export class AuthenticationService {
         }) => {
           // console.log("LOGIN RESPONSE::", loginResponse);
           if (loginResponse.success) {
-            this.storeUserInfo(
-              loginResponse.data.token,
-              loginResponse.data.user
-            );
+            this.storeUserInfo(loginResponse.data.user);
+            this.saveTokenInLocalStorage(loginResponse.data.token);
             return loginResponse.data.user;
           }
         }
@@ -72,13 +117,10 @@ export class AuthenticationService {
   //     );
   // }
 
-  storeUserInfo(token, user) {
-    localStorage.setItem("token", token);
-    localStorage.setItem("currentUser", JSON.stringify(user));
-  }
-
   logOut() {
+    this.http.get(`${environment.apiURL}/logout`);
     localStorage.removeItem("token");
     localStorage.removeItem("currentUser");
+    this.router.navigateByUrl(this.logoutRedirectUrl);
   }
 }

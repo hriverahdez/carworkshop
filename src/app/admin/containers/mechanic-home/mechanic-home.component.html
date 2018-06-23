@@ -1,62 +1,62 @@
 <div class="container">
-        <div class="row">
-                <div class="col-8 clients-headline">
-                    <h5>Mis Clientes</h5>
-                </div>
-                <div class="col-4 text-right mb-4">
-                    <a routerLink="./client" class="btn btn-primary pb_btn-pill">
-                        <i class="fa fa-plus"></i>
-                        Agregar
-                    </a>
-                </div>
-                <div class="table-responsive col-12">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                            <th>#</th>
-                            <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Historial</th>
-                            <th>Mantenimientos</th>
-                            <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngIf="(clients$ | async).length === 0">
-                                <td colspan="6" class="text-center">
-                                    <b>No ha agregado clientes</b>
-                                </td>
-                            </tr>
-                            <tr *ngFor="let client of clients$ | async; let i = index">
-                                <th scope="row">{{ i + 1 }}</th>
-                                <td>
-                                    {{ fullname(client) }}
-                                </td>
-                                <td>{{ client.correo }}</td>
-                                <td>
-                                    <a href="`/oilHistory/${client.id}`">
-                                        Cambios de aceites
-                                    </a> | 
-                                    <a href="`/filterChanges/${client.id}`">Cambios de filtros</a>
-                                </td>
-                                <td>
-                                    <a href="`/nextMaintenances/${client.id}`">Prox. Mantenimiento</a>                       
-                                </td>
-                                <td>                      
-                                    <a [routerLink]="['./details', client.id]"
-                                        class="__cst_link-btn" ><i class="fa fa-eye"></i></a>
-                                    |
-                                    <a [routerLink]="['./client', client.id]">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    |
-                                    <a class="__cst_link-btn" (click)="deleteClient(client)">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>                    
-                        </tbody>
-                    </table>
-                </div>
-              </div>
+    <div class="row">
+        <div class="col-8 clients-headline">
+            <h5>Mis Clientes</h5>
+        </div>
+        <div class="col-4 text-right mb-4">
+            <a routerLink="./client" class="btn btn-primary pb_btn-pill">
+                <i class="fa fa-plus"></i>
+                Agregar
+            </a>                    
+        </div>
+        <div class="table-responsive col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Historial</th>
+                    <th>Mantenimientos</th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="(clients$ | async).length === 0">
+                        <td colspan="6" class="text-center">
+                            <b>No ha agregado clientes</b>
+                        </td>
+                    </tr>
+                    <tr *ngFor="let client of clients$ | async; let i = index">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>
+                            {{ fullname(client) }}
+                        </td>
+                        <td>{{ client.email }}</td>
+                        <td>
+                            <a href="`/oilHistory/${client.id}`">
+                                Cambios de aceites
+                            </a> | 
+                            <a href="`/filterChanges/${client.id}`">Cambios de filtros</a>
+                        </td>
+                        <td>
+                            <a href="`/nextMaintenances/${client.id}`">Prox. Mantenimiento</a>                       
+                        </td>
+                        <td>                      
+                            <a [routerLink]="['./details', client.id]"
+                                class="__cst_link-btn" ><i class="fa fa-eye"></i></a>
+                            |
+                            <a [routerLink]="['./client', client.id]">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            |
+                            <a class="__cst_link-btn" (click)="deleteClient(client)">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>                    
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
