@@ -23,8 +23,6 @@ export class LayoutComponent implements OnInit {
   breadcrumbs$: Observable<BreadCrumb[]>;
   currentUser$: Observable<AuthUser>;
 
-  isCollapsed: boolean = true;
-
   constructor(private store: Store<fromStore.AppState>) {}
 
   ngOnInit() {

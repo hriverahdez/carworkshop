@@ -13,6 +13,7 @@ const ROUTES: Routes = [
   {
     path: "home",
     component: LandingPageComponent,
+    // canActivate: [fromGuards.RedirectIfLoggedInGuard],
     data: {
       breadcrumb: "Home"
     }
@@ -26,8 +27,17 @@ const ROUTES: Routes = [
       {
         path: "admin",
         loadChildren: "../admin/admin.module#AdminModule",
+        canActivate: [fromGuards.AdminGuard],
+        canActivateChild: [fromGuards.AdminGuard],
         data: {
           breadcrumb: "Dashboard"
+        }
+      },
+      {
+        path: "client",
+        loadChildren: "../client/client.module#ClientModule",
+        data: {
+          breadcrumb: "Inicio"
         }
       },
       {

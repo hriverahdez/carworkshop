@@ -54,12 +54,11 @@ export class AuthEffects {
   loginSuccess$ = this.actions$
     .ofType(authActions.LOGIN_SUCCESS, authActions.REGISTER_SUCCESS)
     .pipe(
-      map(
-        () =>
-          new fromRouter.Go({
-            path: ["/app/admin"]
-          })
-      )
+      map((action: authActions.LoginSuccess) => {
+        return new fromRouter.Go({
+          path: ["/app/admin"]
+        });
+      })
     );
 
   //   @Effect({ dispatch: false })

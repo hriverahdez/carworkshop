@@ -8,6 +8,8 @@ import { AuthUser } from "../../../@shared/models/auth-user.model";
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit {
+  isCollapsed: boolean = true;
+
   @Input() currentUser: AuthUser;
   @Input() breadcrumbs: BreadCrumb[];
   @Output() onLogout = new EventEmitter();
