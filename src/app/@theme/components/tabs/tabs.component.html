@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs mt-xs" role="tablist">
+  <li *ngFor="let tab of tabs" [class]="tab.active">
+    <a (click)="selectTab(tab)" role="tab" [title]="tab.title">
+      <span [class]="tab.icon"></span><ng-container *ngIf="tab.hasBadge">&nbsp;<span class="signal signal-danger">&nbsp;</span></ng-container>
+    </a>
+  </li>  
+</ul>
+<div class="tab-content mt-xs" role="tablist">
+  <ng-content></ng-content>
+</div>
