@@ -7,6 +7,7 @@ import {
   MatDialogConfig
 } from "@angular/material";
 import { ConfirmDialogComponent } from "../../components/confirm-dialog/confirm-dialog.component";
+import { ConfirmDialogData } from "../../models/confirm-dialog-data.model";
 
 @Injectable()
 export class DialogService {
@@ -17,10 +18,10 @@ export class DialogService {
     // disableClose: true
   };
 
-  confirm({ message, title }) {
+  confirm(data: ConfirmDialogData) {
     let confirmDialogConfig: MatDialogConfig = {
       disableClose: true,
-      data: { message, title }
+      data
     };
 
     return this.openDialog(

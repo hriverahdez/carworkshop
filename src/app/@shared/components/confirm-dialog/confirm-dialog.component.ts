@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-
-declare var jQuery: any;
+import { ConfirmDialogData } from "../../models/confirm-dialog-data.model";
 
 @Component({
   selector: "rst-confirm-dialog",
@@ -9,14 +8,15 @@ declare var jQuery: any;
   styleUrls: ["./confirm-dialog.component.scss"]
 })
 export class ConfirmDialogComponent implements OnInit {
+  defaultTitle = "Delete";
+  defaultMessage = "Are you sure you want to delete this?";
+
   constructor(
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogData
   ) {}
 
-  ngOnInit(): void {
-    jQuery(".mat-dialog-container").draggable();
-  }
+  ngOnInit(): void {}
 
   onAccept() {
     this.dialogRef.close(true);
