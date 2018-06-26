@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-sm-2 col-sm-offset-10 text-center">
+        <div class="btn-group">
+            <button (click)="changeViewType('TILES')" class="btn btn-default" [ngClass]="{ 'btn-inverse': (currentViewType$ | async) === 'TILES' }">
+                <i class="fui-list-large-thumbnails"></i>
+            </button>
+            <button (click)="changeViewType('TABLE')" class="btn btn-default" [ngClass]="{ 'btn-inverse': (currentViewType$ | async) === 'TABLE' }">
+                <i class="fui-list-columned"></i>
+            </button>
+        </div>
+    </div>
+</div>

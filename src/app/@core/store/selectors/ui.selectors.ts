@@ -11,3 +11,8 @@ export const selectBreadcrumbs = createSelector(
   fromFeature.getUIState,
   fromUI.selectBreadcrumbs
 );
+
+export const selectClientsViewType = createSelector(
+  fromFeature.getUIState,
+  fromUI.selectClientViewType
+);

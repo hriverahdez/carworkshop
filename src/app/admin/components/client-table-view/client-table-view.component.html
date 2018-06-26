@@ -1,0 +1,32 @@
+<table class="table" [hidden]="!active">
+    <thead>
+        <tr>
+            <th>Nombre y Apellidos</th>
+            <th></th>
+            <th>Correo Electronico</th>
+            <th>Alta</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let client of clients">
+            <td>
+                <a href="#">
+                    <strong>{{ isCompany(client) ? client.companyName : fullname(client) }}</strong>
+                </a>
+            </td>
+            <td>
+                <small class="badge text-uppercase">{{ isCompany(client) ? 'compañía' : 'particular' }}</small>
+            </td>
+            <td>
+                <a [href]="'mailto:' + client.email">{{ client.email }}</a>
+            </td>
+            <td>{{ client.firstRegistration || '---' }}</td>
+            <td>
+                <a href="#" class="text-danger">
+                    <span class="fui-trash"></span>
+                </a>
+            </td>
+        </tr>        
+    </tbody>
+</table>
