@@ -8,6 +8,7 @@ import {
   DashboardComponent
 } from "./containers";
 import { ClientResolver } from "./shared/client.resolver";
+import { ClientExistsGuard } from "./guards";
 
 const ROUTES: Routes = [
   {
@@ -16,17 +17,26 @@ const ROUTES: Routes = [
   },
   {
     path: "clients",
-    component: ClientListComponent,
     data: {
       breadcrumb: "Clientes"
-    }
-  },
-  {
-    path: "details/:clientId",
-    component: ClientDetailsComponent,
-    data: {
-      breadcrumb: "Detalles"
-    }
+    },
+    children: [
+      {
+        path: "",
+        component: ClientListComponent
+      },
+      {
+        path: "details/:clientId",
+        component: ClientDetailsComponent,
+        canActivate: [ClientExistsGuard],
+        data: {
+          breadcrumb: "Detalles"
+        }
+        // resolve: {
+        //   dynamic: ClientResolver
+        // }
+      }
+    ]
   },
   {
     path: "client",
@@ -41,9 +51,6 @@ const ROUTES: Routes = [
     data: {
       breadcrumb: "Editar Cliente"
     }
-    // resolve: {
-    //   client: ClientResolver
-    // }
   }
 ];
 

@@ -3,6 +3,7 @@ import { createSelector } from "@ngrx/store";
 import * as fromRoot from "../../../@core/store";
 import * as fromFeature from "../reducers";
 import * as fromClient from "../reducers/clients.reducer";
+import { Client } from "../../models/client.model";
 
 export const getState = createSelector(
   fromFeature.selectClientsState,
@@ -39,5 +40,13 @@ export const selectCurrentClient = createSelector(
   fromRoot.getRouterState,
   (entities, router) => {
     return router.state && entities[router.state.params.clientId];
+  }
+);
+
+export const selectCurrentClientName = createSelector(
+  selectClientEntities,
+  fromRoot.getRouterState,
+  (entities, router) => {
+    return router.state && entities[router.state.params.clientId].firstName;
   }
 );

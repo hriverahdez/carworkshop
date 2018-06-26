@@ -25,6 +25,7 @@ import * as fromComponents from "./components";
     EffectsModule.forFeature(effects)
   ],
   declarations: [...fromContainers.containers, ...fromComponents.components],
+  exports: [...fromComponents.components],
   providers: [ClientsService]
 })
 export class ClientModule {}

@@ -3,9 +3,9 @@ import { Client } from "../../models/client.model";
 
 // LOAD
 
-export const LOAD_CLIENTS = "[Mechanic] Load Clients";
-export const LOAD_CLIENTS_FAIL = "[Mechanic] Load Clients Fail";
-export const LOAD_CLIENTS_SUCCESS = "[Mechanic] Load Clients Success";
+export const LOAD_CLIENTS = "[Admin] Load Clients";
+export const LOAD_CLIENTS_FAIL = "[Admin] Load Clients Fail";
+export const LOAD_CLIENTS_SUCCESS = "[Admin] Load Clients Success";
 
 export class LoadClients implements Action {
   readonly type = LOAD_CLIENTS;
@@ -25,9 +25,9 @@ export class LoadClientsSuccess implements Action {
 
 // ADD
 
-export const ADD_CLIENT = "[Mechanic] Add Client";
-export const ADD_CLIENT_FAIL = "[Mechanic] Add Client Fail";
-export const ADD_CLIENT_SUCCESS = "[Mechanic] Add Client Success";
+export const ADD_CLIENT = "[Admin] Add Client";
+export const ADD_CLIENT_FAIL = "[Admin] Add Client Fail";
+export const ADD_CLIENT_SUCCESS = "[Admin] Add Client Success";
 
 export class AddClient implements Action {
   readonly type = ADD_CLIENT;
@@ -46,9 +46,9 @@ export class AddClientSuccess implements Action {
 
 // DELETE
 
-export const DELETE_CLIENT = "[Mechanic] Delete Client";
-export const DELETE_CLIENT_FAIL = "[Mechanic] Delete Client Fail";
-export const DELETE_CLIENT_SUCCESS = "[Mechanic] Delete Client Success";
+export const DELETE_CLIENT = "[Admin] Delete Client";
+export const DELETE_CLIENT_FAIL = "[Admin] Delete Client Fail";
+export const DELETE_CLIENT_SUCCESS = "[Admin] Delete Client Success";
 
 export class DeleteClient implements Action {
   readonly type = DELETE_CLIENT;

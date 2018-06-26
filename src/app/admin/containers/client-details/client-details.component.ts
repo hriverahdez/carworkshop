@@ -6,10 +6,10 @@ import * as fromStore from "../../store";
 
 @Component({
   selector: "cws-client-details",
-  // templateUrl: "./client-details.component.html",
-  template: `
-    <cws-client-data-sheet [client]="client$ | async"></cws-client-data-sheet>
-  `,
+  templateUrl: "./client-details.component.html",
+  //   template: `
+  //     <cws-client-data-sheet [client]="client$ | async"></cws-client-data-sheet>
+  //   `,
   styleUrls: ["./client-details.component.css"]
 })
 export class ClientDetailsComponent implements OnInit {

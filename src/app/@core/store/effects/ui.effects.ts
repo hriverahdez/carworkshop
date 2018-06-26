@@ -58,9 +58,9 @@ export class UIEffects {
     let path =
       route.routeConfig && route.routeConfig.data ? route.routeConfig.path : "";
 
-    if (this.pathHasParams(path)) {
+    if (route.paramMap.keys.length > 0) {
       path = this.replaceParamInPath(path, route);
-      // label = this.getResolvedData(route);
+      //   label = route.data["dynamic"] ? route.data["dynamic"] : path;
     }
 
     if (label === "") {

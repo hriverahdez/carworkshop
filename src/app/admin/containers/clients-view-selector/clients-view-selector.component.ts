@@ -19,7 +19,6 @@ export class ClientsViewSelectorComponent implements OnInit {
   }
 
   changeViewType(type: ClientsViewTypes) {
-    console.log(type);
     this.uiStore.dispatch(new fromRoot.SetClientsViewType(type));
   }
 }
