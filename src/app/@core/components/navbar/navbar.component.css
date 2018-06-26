@@ -6,3 +6,7 @@
 .bcrumb-link:last-child::after {
     content: none
 }
+
+.dropdown-menu {
+    left: initial !important
+}

@@ -1,39 +1,49 @@
 <div class=" navbar-default">
-  <div class="container">
-      <nav class="navbar" role="navigation">
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle" 
-                (click)="isCollapsed = !isCollapsed"
-                data-toggle="collapse" data-target="#navbar-collapse-01">
-                <span class="sr-only">Toggle navigation</span>
-              </button>
-          </div>
-          <div class="collapse navbar-collapse" [ngClass]="{'in': !isCollapsed}" id="navbar-collapse-01">
-              <ul class="nav navbar-nav navbar-left bcrumb">
+    <div class="container">
+        <nav class="navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" (click)="isCollapsed = !isCollapsed" data-toggle="collapse" data-target="#navbar-collapse-01">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" [ngClass]="{'in': !isCollapsed}" id="navbar-collapse-01">
+                <ul class="nav navbar-nav navbar-left bcrumb">
+                    <li *ngFor="let breadcrumb of breadcrumbs" class="bcrumb-link">
+                        <a [routerLink]="[breadcrumb.url]" style="display: inline-block !important;">
+                            {{ breadcrumb.label }}
+                        </a>
+                    </li>
+                </ul>
 
-                  <li *ngFor="let breadcrumb of breadcrumbs" class="bcrumb-link">
-                    <a [routerLink]="[breadcrumb.url]" style="display: inline-block !important;">
-                      {{ breadcrumb.label }}
-                    </a>                    
-                  </li>
-
-              </ul>
-
-              <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#fakelink">
-                      <span class="fui-new"></span></a></li>
-                  <li ngbDropdown class="dropdown">
-                      <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">{{ currentUser.name }} <b class="caret"></b></a>
-                      <span class="dropdown-arrow"></span>
-                      <ul class="dropdown-menu" ngbDropdownMenu>
-                          <li><a href="#">My Profile</a></li>
-                          <li><a href="index2.html">View Site</a></li>
-                          <li class="divider"></li>
-                          <li><a (click)="logout()">Logout</a></li>
-                      </ul>
-                  </li>
-              </ul>
-          </div>
-      </nav>
-  </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li *ngIf="!isClient">
+                        <a href="#fakelink">
+                            <span class="fui-new"></span>
+                        </a>
+                    </li>
+                    <li ngbDropdown class="dropdown">
+                        <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">{{ currentUser.name }}
+                            <b class="caret"></b>
+                        </a>
+                        <span class="dropdown-arrow"></span>
+                        <ul class="dropdown-menu" ngbDropdownMenu>
+                            <li *ngIf="isClient">
+                                <a routerLink="./client/profile">
+                                    <span class="fui-user"></span>&nbsp;&nbsp;Mi Perfil
+                                </a>
+                            </li>
+                            <li><a href="index2.html"><span class="fui-gear"></span>&nbsp;&nbsp; Cambiar Contraseña</a></li>
+                            <li>
+                                <a routerLink="/home">View Site</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a (click)="logout()"><span class="fui-exit"></span>&nbsp;&nbsp; Cerrar Sesión</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 </div>

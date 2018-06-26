@@ -18,9 +18,10 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     if (this.authService.isAuthenticated()) {
       return true;
     } else {
+      console.log("now");
       this.store.dispatch(
         new fromRoot.Go({
-          path: ["/login"]
+          path: ["/home"]
         })
       );
       return false;

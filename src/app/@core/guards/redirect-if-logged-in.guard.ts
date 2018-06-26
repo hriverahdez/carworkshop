@@ -2,7 +2,8 @@ import { Injectable } from "@angular/core";
 import {
   CanActivate,
   RouterStateSnapshot,
-  ActivatedRouteSnapshot
+  ActivatedRouteSnapshot,
+  Router
 } from "@angular/router";
 
 import { map, tap } from "rxjs/operators";
@@ -18,7 +19,8 @@ import { AuthUser } from "../../@shared/models/auth-user.model";
 export class RedirectIfLoggedInGuard implements CanActivate {
   constructor(
     private store: Store<fromStore.AppState>,
-    private authService: fromSharedServices.AuthenticationService
+    private authService: fromSharedServices.AuthenticationService,
+    private router: Router
   ) {}
 
   canActivate(
@@ -34,10 +36,11 @@ export class RedirectIfLoggedInGuard implements CanActivate {
         return user && user.name ? user : this.authService.getCurrentUser();
       }),
       map(user => {
+        console.log("USER:", user);
         if (user) {
           this.isAdmin(user)
-            ? this.store.dispatch(new fromStore.Go({ path: ["/app/admin"] }))
-            : this.store.dispatch(new fromStore.Go({ path: ["/app/client"] }));
+            ? this.router.navigateByUrl("/app/admin")
+            : this.router.navigateByUrl("/app/client");
         }
         return true;
       })

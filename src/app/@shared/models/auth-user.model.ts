@@ -10,4 +10,5 @@ export interface AuthUser {
   email?: string;
   password?: string;
   role?: Role;
+  clientID?: string | number;
 }

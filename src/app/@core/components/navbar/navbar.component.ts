@@ -18,6 +18,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {}
 
+  get isClient() {
+    return this.currentUser.role.name === "client";
+  }
+
   logout() {
     this.onLogout.emit();
   }

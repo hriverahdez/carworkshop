@@ -55,9 +55,14 @@ export class AuthEffects {
     .ofType(authActions.LOGIN_SUCCESS, authActions.REGISTER_SUCCESS)
     .pipe(
       map((action: authActions.LoginSuccess) => {
-        return new fromRouter.Go({
-          path: ["/app/admin"]
-        });
+        const user = action.payload;
+        return user.role.name === "mechanic"
+          ? new fromRouter.Go({
+              path: ["/app/admin"]
+            })
+          : new fromRouter.Go({
+              path: ["/app/client"]
+            });
       })
     );
 

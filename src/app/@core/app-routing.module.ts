@@ -13,7 +13,7 @@ const ROUTES: Routes = [
   {
     path: "home",
     component: LandingPageComponent,
-    // canActivate: [fromGuards.RedirectIfLoggedInGuard],
+    canActivate: [fromGuards.SessionNotExpiredGuard],
     data: {
       breadcrumb: "Home"
     }
@@ -56,12 +56,12 @@ const ROUTES: Routes = [
   },
   {
     path: "",
-    redirectTo: "/home",
+    redirectTo: "/app/admin",
     pathMatch: "full"
   },
   {
     path: "**",
-    redirectTo: "home"
+    redirectTo: "/app/admin"
   }
 ];
 

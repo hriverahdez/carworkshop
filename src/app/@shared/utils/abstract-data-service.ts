@@ -21,7 +21,7 @@ export abstract class AbstractDataService<T> {
    * Makes an Http GET request to obtain 1 item
    * @param id Item id
    */
-  getOne(id: string): Observable<T> {
+  getOne(id: string | number): Observable<T> {
     return this.http
       .get<T>(`${environment.apiURL}/${this.endpointName}/${id}`)
       .pipe(catchError(error => Observable.throw(error)));
