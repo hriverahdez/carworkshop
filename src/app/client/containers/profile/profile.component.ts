@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { Client, UserType } from "../../../admin/models/client.model";
+import { Client, ClientType } from "../../../admin/models/client.model";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store";
 

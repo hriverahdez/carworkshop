@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row mt-sm">
+        <div class="col-sm-3">
+            <cws-filtered-search></cws-filtered-search>
+        </div>
+        <div class="col-sm-8 col-sm-offset-1">
+            <cws-clients-view-selector></cws-clients-view-selector>
+            <hr>
+            <cws-client-tile-view  
+                [active]="(currentViewType$ | async) === 'TILES'"
+                [clients]="clients$ | async"></cws-client-tile-view>
+            <cws-client-table-view 
+                [active]="(currentViewType$ | async) === 'TABLE'"
+                [clients]="clients$ | async"></cws-client-table-view>
+        </div>
+    </div>
+</div>

@@ -1,19 +1,7 @@
 <h4>Información adicional</h4>
 <hr>
-<div class="row mt-xs">
-    <div class="col-md-6" *ngIf="isCompany">
-        <strong>Nombre y Apellidos del contacto</strong>
-        <p>{{ fullname }}</p>
-    </div>
-    <div class="col-md-6" *ngIf="isCompany">
-        <strong>Cargo Laboral</strong>
-        <p>{{ client.position }}</p>
-    </div>
-    <div class="col-md-4" *ngIf="isCompany">
-        <strong>Correo Electrónico</strong>
-        <p>Masculino</p>
-    </div>
-    <div [ngClass]="{ 'col-md-8': isCompany, 'col-md-12': !isCompany }">
+<div class="row mt-xs">    
+    <div class="col-md-12">
         <strong>Dirección</strong>
         <p>{{ client.address }}</p>
     </div>

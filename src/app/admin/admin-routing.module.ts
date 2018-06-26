@@ -2,36 +2,44 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import {
-  MechanicHomeComponent,
+  ClientListComponent,
   ClientDetailsComponent,
-  ClientItemComponent
+  ClientItemComponent,
+  DashboardComponent
 } from "./containers";
 import { ClientResolver } from "./shared/client.resolver";
 
 const ROUTES: Routes = [
   {
     path: "",
-    component: MechanicHomeComponent
+    component: DashboardComponent
+  },
+  {
+    path: "clients",
+    component: ClientListComponent,
+    data: {
+      breadcrumb: "Clientes"
+    }
   },
   {
     path: "details/:clientId",
     component: ClientDetailsComponent,
     data: {
-      breadcrumb: "Details"
+      breadcrumb: "Detalles"
     }
   },
   {
     path: "client",
     component: ClientItemComponent,
     data: {
-      breadcrumb: "Add Client"
+      breadcrumb: "Agregar Cliente"
     }
   },
   {
     path: "client/:clientId",
     component: ClientItemComponent,
     data: {
-      breadcrumb: "Edit "
+      breadcrumb: "Editar Cliente"
     }
     // resolve: {
     //   client: ClientResolver

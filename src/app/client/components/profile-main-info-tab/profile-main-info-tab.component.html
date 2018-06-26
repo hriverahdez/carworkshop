@@ -2,8 +2,16 @@
 <hr>
 <div class="row mt-xs">
     <div class="col-md-12" *ngIf="isCompany">
-        <strong>Nombre Comercial</strong>
-        <p>{{ client.companyName || '---' }}</p>
+        <strong>Nombre y Apellidos del contacto</strong>
+        <p>{{ fullname }}</p>
+    </div>
+    <div class="col-md-6" *ngIf="isCompany">
+        <strong>Cargo Laboral</strong>
+        <p>{{ client.position || '---' }}</p>
+    </div>
+    <div class="col-md-6" *ngIf="isCompany">
+        <strong>Correo Electrónico</strong>
+        <p>{{ client.email }}</p>
     </div>    
     <div class="col-md-6">
         <strong>DNI / NIF</strong>

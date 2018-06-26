@@ -15,8 +15,6 @@ import * as fromContainers from "./containers";
 
 // components
 import * as fromComponents from "./components";
-import { ProfileMainInfoTabComponent } from './components/profile-main-info-tab/profile-main-info-tab.component';
-import { ProfileAdditionalInfoTabComponent } from './components/profile-additional-info-tab/profile-additional-info-tab.component';
 
 @NgModule({
   imports: [
@@ -26,7 +24,7 @@ import { ProfileAdditionalInfoTabComponent } from './components/profile-addition
     StoreModule.forFeature("client", reducers),
     EffectsModule.forFeature(effects)
   ],
-  declarations: [...fromContainers.containers, ...fromComponents.components, ProfileMainInfoTabComponent, ProfileAdditionalInfoTabComponent],
+  declarations: [...fromContainers.containers, ...fromComponents.components],
   providers: [ClientsService]
 })
 export class ClientModule {}

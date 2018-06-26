@@ -1,6 +1,6 @@
 import { Car } from "./car.model";
 
-export enum UserType {
+export enum ClientType {
   Company = "COMPANY",
   Regular = "HOMEUSER"
 }
@@ -37,7 +37,7 @@ export interface Client {
   otherPhoneIsVisible?: boolean;
   linkedTo?: string;
   linkedToIsVisible?: boolean;
-  type?: UserType;
+  type?: ClientType;
   companyName?: string;
   companyNameIsVisible?: boolean;
   position?: string;
