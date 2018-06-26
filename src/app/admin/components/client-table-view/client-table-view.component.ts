@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Client, ClientType } from "../../models/client.model";
 
 @Component({
@@ -9,6 +9,7 @@ import { Client, ClientType } from "../../models/client.model";
 export class ClientTableViewComponent implements OnInit {
   @Input() active: boolean;
   @Input() clients: Client[];
+  @Output() onDeleteRequest = new EventEmitter<Client>();
 
   constructor() {}
 
@@ -20,5 +21,9 @@ export class ClientTableViewComponent implements OnInit {
 
   fullname(client: Client) {
     return `${client.firstName} ${client.lastName}`;
+  }
+
+  requestDelete(client: Client) {
+    this.onDeleteRequest.emit(client);
   }
 }

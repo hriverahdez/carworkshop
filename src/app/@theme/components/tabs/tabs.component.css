@@ -1,0 +1,12 @@
+li.featured-tab-btn {
+    float: right;
+}
+
+li.featured-tab-btn a {
+    background: #2c3e50;
+    color: white
+}
+
+li.featured-tab-btn a:hover { 
+    background: #415b76;
+}

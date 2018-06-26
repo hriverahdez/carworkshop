@@ -21,9 +21,9 @@
             <td>
                 <a [href]="'mailto:' + client.email">{{ client.email }}</a>
             </td>
-            <td>{{ client.firstRegistration || '---' }}</td>
+            <td>{{ client.registrationDate || '---' }}</td>
             <td>
-                <a href="#" class="text-danger">
+                <a (click)="requestDelete(client)" class="text-danger">
                     <span class="fui-trash"></span>
                 </a>
             </td>

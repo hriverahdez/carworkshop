@@ -5,7 +5,10 @@ import {
   QueryList,
   ComponentFactoryResolver,
   ViewChild,
-  ViewContainerRef
+  ViewContainerRef,
+  Input,
+  Output,
+  EventEmitter
 } from "@angular/core";
 import { TabComponent } from "../tab/tab.component";
 
@@ -22,6 +25,10 @@ export class TabsComponent implements OnInit {
   @ViewChild("dynamicTab", { read: ViewContainerRef })
   dynamicTabPlaceholder;
 
+  @Input() hasFeaturedButton: boolean = false;
+  @Input() featuredButtonText: string;
+  @Output() onFeaturedButtonClick = new EventEmitter();
+
   constructor(private _componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit() {}
@@ -35,5 +42,9 @@ export class TabsComponent implements OnInit {
 
     // activate the tab the user has clicked on.
     tab.active = true;
+  }
+
+  featuredButtonClick() {
+    this.onFeaturedButtonClick.emit();
   }
 }

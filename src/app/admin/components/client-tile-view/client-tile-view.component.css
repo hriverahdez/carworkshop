@@ -1,0 +1,35 @@
+.tile .tile-image.big-illustration {
+    transition: all .15s ease-in
+}
+
+.tile:hover .tile-image.big-illustration {
+    width: 115px;
+    height: 115px;
+}
+
+.tile-delete-btn {
+    /* position: absolute;
+    top: -4px;
+    right: -5px;
+    display: block;
+    width: 56px;
+    background: transparent;
+    border: none;
+    height: 45px;
+    font-size: 20px; */
+
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: block;
+    width: 40px;
+    border: none;
+    padding: 0;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 0 4px 0 0;
+}
+
+/* .tile-delete-btn:hover {
+    color: black;
+} */

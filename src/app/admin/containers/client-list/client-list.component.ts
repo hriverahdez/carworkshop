@@ -1,23 +1,27 @@
-import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Observable, Subscription } from "rxjs";
 import { Client } from "../../models/client.model";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store";
 import * as fromRoot from "../../../@core/store";
 import { ClientsViewTypes } from "../../../@core/store/shared/ui-clients-view-types";
+import { DialogService } from "../../../@shared/services";
 
 @Component({
   selector: "cws-client-list",
   templateUrl: "./client-list.component.html",
   styleUrls: ["./client-list.component.css"]
 })
-export class ClientListComponent implements OnInit {
+export class ClientListComponent implements OnInit, OnDestroy {
   clients$: Observable<Client[]>;
   currentViewType$: Observable<ClientsViewTypes>;
 
+  dialogSubs: Subscription;
+
   constructor(
     private store: Store<fromStore.ClientsState>,
-    private uiStore: Store<fromRoot.AppState>
+    private uiStore: Store<fromRoot.AppState>,
+    private dialogService: DialogService
   ) {}
 
   ngOnInit() {
@@ -27,13 +31,25 @@ export class ClientListComponent implements OnInit {
   }
 
   deleteClient(client: Client) {
-    if (
-      window.confirm(
-        `¿Está seguro que desea eliminar a 
-            ${client.firstName} ${client.lastName}?`
-      )
-    ) {
-      this.store.dispatch(new fromStore.DeleteClient(client));
-    }
+    this.dialogSubs = this.dialogService
+      .confirm({
+        message: "¿Está seguro que desea eliminar este cliente?",
+        supportMessage: `
+        ${client.firstName} ${client.lastName} 
+        - Coche: ${client.car.brand} ${client.car.model}`,
+        title: "Eliminar Cliente"
+      })
+      .subscribe(
+        dialogResult =>
+          dialogResult
+            ? this.store.dispatch(new fromStore.DeleteClient(client))
+            : null
+      );
+
+    this.store.dispatch(new fromStore.DeleteClient(client));
+  }
+
+  ngOnDestroy(): void {
+    this.dialogSubs ? this.dialogSubs.unsubscribe : null;
   }
 }

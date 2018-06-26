@@ -3,7 +3,10 @@
     <a (click)="selectTab(tab)" role="tab" [title]="tab.title">
       <span [class]="tab.icon"></span><ng-container *ngIf="tab.hasBadge">&nbsp;<span class="signal signal-danger">&nbsp;</span></ng-container>
     </a>
-  </li>  
+  </li>
+  <li *ngIf="hasFeaturedButton" class="featured-tab-btn">
+    <a (click)="featuredButtonClick()">{{ featuredButtonText }}</a>
+  </li>
 </ul>
 <div class="tab-content mt-xs" role="tablist">
   <ng-content></ng-content>
