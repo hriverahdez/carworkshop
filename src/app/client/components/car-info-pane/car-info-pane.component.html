@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <img src="assets/img/icons/256-a.png" alt="" class="img-responsive img-circle image">
+    </div>
+</div>
+<div class="row mb-md">
+    <div class="col-sm-12">
+        <h2 class="mt-lg">{{ car?.plateNumber | uppercase }}
+            <br>
+            <p class="text-uppercase">
+                <strong>{{ car?.brand | uppercase }}</strong>
+            </p>
+        </h2>
+        <p class="mt-xs">
+            <strong>Propietario</strong>
+            <br>{{ fullname }}</p>
+        <p class="mt-xsx">
+            <strong>Primera matriculación</strong>
+            <br>{{ car?.firstRegistration }}</p>
+        <p class="mt-xsx" *ngIf="car?.category">
+            <strong>Categoría</strong>
+            <br>{{ car?.category }}</p>
+
+        <a href="profile.html" class="btn btn-inverse mt-sm">Descargar Ficha Técnica</a>
+    </div>
+</div>

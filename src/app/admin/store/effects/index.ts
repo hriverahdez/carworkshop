@@ -1,5 +1,5 @@
-import { ClientEffects } from "./client.effects";
+import { ClientsEffects } from "./client.effects";
 
-export const effects: any[] = [ClientEffects];
+export const effects: any[] = [ClientsEffects];
 
 export * from "./client.effects";

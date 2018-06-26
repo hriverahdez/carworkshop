@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <img *ngIf="isCompany" src="assets/img/icons/company.png" alt="" class="img-responsive img-circle image">
+    <img *ngIf="!isCompany" src="assets/img/icons/user.png" alt="" class="img-responsive img-circle image">
+  </div>
+</div>
+<div class="row mb-md">
+  <div class="col-sm-12">
+    <h4 class="mt-lg"> 
+      {{ isCompany ? client.companyName : fullname }} <br>
+      <small *ngIf="isCompany" class="badge text-uppercase"><strong>Compañía</strong></small>
+    </h4>
+    <p class="mt-xs"><strong>Correo Electrónico</strong><br>{{ client.email }}</p>
+    <p class="mt-xsx"><strong>Fecha de Alta</strong><br>{{ client.registrationDate || '---' }}</p>
+    <a href="profile.html" class="btn btn-inverse mt-xs">Imprimir Perfil</a>
+  </div>
+</div>

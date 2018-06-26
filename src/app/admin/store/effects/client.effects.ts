@@ -14,7 +14,7 @@ import {
 import { Client } from "../../models/client.model";
 
 @Injectable()
-export class ClientEffects {
+export class ClientsEffects {
   constructor(
     private actions$: Actions,
     private clientsService: ClientsService
