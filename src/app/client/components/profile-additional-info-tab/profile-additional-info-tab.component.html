@@ -1,0 +1,51 @@
+<h4>Información adicional</h4>
+<hr>
+<div class="row mt-xs">
+    <div class="col-md-6" *ngIf="isCompany">
+        <strong>Nombre y Apellidos del contacto</strong>
+        <p>{{ fullname }}</p>
+    </div>
+    <div class="col-md-6" *ngIf="isCompany">
+        <strong>Cargo Laboral</strong>
+        <p>{{ client.position }}</p>
+    </div>
+    <div class="col-md-4" *ngIf="isCompany">
+        <strong>Correo Electrónico</strong>
+        <p>Masculino</p>
+    </div>
+    <div [ngClass]="{ 'col-md-8': isCompany, 'col-md-12': !isCompany }">
+        <strong>Dirección</strong>
+        <p>{{ client.address }}</p>
+    </div>
+    <div class="col-md-6">
+        <strong>Localidad</strong>
+        <p>{{ client.locality }}</p>
+    </div>
+    <div class="col-md-6">
+        <strong>Código Postal</strong>
+        <p>{{ client.zipCode }}</p>
+    </div>
+    <div class="col-md-6">
+        <strong>Género</strong>
+        <p>Masculino</p>
+    </div>
+    <div class="col-md-6">
+        <strong>Cumpleaños</strong>
+        <p>24-05-1986</p>
+    </div>
+</div>
+<div class="row">
+    <hr>
+    <div class="col-md-6">
+        <strong>Telefono (Casa)</strong>
+        <p>{{ client.homePhone || '---' }}</p>
+    </div>
+    <div class="col-md-6">
+        <strong>Telefono (Movil)</strong>
+        <p>{{ client.mobilePhone }}</p>
+    </div>
+    <div class="col-md-6">
+        <strong>Telefono (Otro)</strong>
+        <p>{{ client.otherPhone }}</p>
+    </div>    
+</div>

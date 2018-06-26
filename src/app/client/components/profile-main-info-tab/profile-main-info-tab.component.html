@@ -1,0 +1,26 @@
+<h4>Información Principal</h4>
+<hr>
+<div class="row mt-xs">
+    <div class="col-md-12" *ngIf="isCompany">
+        <strong>Nombre Comercial</strong>
+        <p>{{ client.companyName || '---' }}</p>
+    </div>    
+    <div class="col-md-6">
+        <strong>DNI / NIF</strong>
+        <p>{{ client.dni || '---' }}</p>
+    </div>
+    <div class="col-md-6" *ngIf="client.linkedTo && client.linkedToIsVisible">
+        <strong>Vinculado a</strong>
+        <p>{{ client.linkedTo }}</p>
+    </div>    
+    <div class="col-md-12">
+        <strong>Razón Social</strong>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.</p>
+    </div>
+    <div class="col-md-12">
+        <strong>Observaciones</strong>
+        <p>{{ client.observartions || '---' }}</p>
+    </div>
+</div>

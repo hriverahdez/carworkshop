@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { Client, UserType } from "../../../admin/models/client.model";
+import { Store } from "@ngrx/store";
+import * as fromStore from "../../store";
 
 @Component({
   selector: "cws-profile",
@@ -8,17 +10,12 @@ import { Client, UserType } from "../../../admin/models/client.model";
   styleUrls: ["./profile.component.css"]
 })
 export class ProfileComponent implements OnInit {
-  // client$: Observable<Client>
-  client: Client = {
-    firstName: "Helian",
-    lastName: "Rivera",
-    companyName: "Mi Company, INC",
-    type: UserType.Company,
-    email: "hrivera@gmail.com",
-    registrationDate: "24-04-2018"
-  };
+  client$: Observable<Client>;
 
-  constructor() {}
+  constructor(private store: Store<fromStore.ClientState>) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.client$ = this.store.select(fromStore.selectClientData);
+    this.store.dispatch(new fromStore.LoadClientData());
+  }
 }

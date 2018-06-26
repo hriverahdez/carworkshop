@@ -6,11 +6,15 @@
 </div>
 <div class="row mb-md">
   <div class="col-sm-12">
-    <h4 class="mt-lg"> 
+    <h4 class="mt-lg" *ngIf="!client.id">
+    ---
+    </h4>
+    <h4 class="mt-lg" *ngIf="client.id"> 
       {{ isCompany ? client.companyName : fullname }} <br>
       <small *ngIf="isCompany" class="badge text-uppercase"><strong>Compañía</strong></small>
     </h4>
-    <p class="mt-xs"><strong>Correo Electrónico</strong><br>{{ client.email }}</p>
+    <p class="mt-xs" *ngIf="!isCompany"><strong>Correo Electrónico</strong><br>{{ client.email || '---' }}</p>
+    <p class="mt-xs" *ngIf="isCompany"><strong>Sitio web</strong><br>{{ client.web || '---' }}</p>
     <p class="mt-xsx"><strong>Fecha de Alta</strong><br>{{ client.registrationDate || '---' }}</p>
     <a href="profile.html" class="btn btn-inverse mt-xs">Imprimir Perfil</a>
   </div>

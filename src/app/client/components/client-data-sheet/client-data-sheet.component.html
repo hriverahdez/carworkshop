@@ -1,80 +1,80 @@
 <h4>Ficha Técnica</h4>
 <hr>
 <div class="row mt-xs">
-    <div class="col-md-3" *ngIf="car.modelIsVisible">
+    <div class="col-md-3" *ngIf="car && car.modelIsVisible">
         <strong>Modelo</strong>
-        <p>{{ car?.model }}</p>
+        <p>{{ car.model }}</p>
     </div>
-    <div class="col-md-3" *ngIf="car.vinNumber && car.vinNumberIsVisible">
+    <div class="col-md-3" *ngIf="car && car.vinNumber && car.vinNumberIsVisible">
         <strong>Número de bastidor (VIN)</strong>
-        <p>{{ car?.vinNumber }}</p>
+        <p>{{ car.vinNumber }}</p>
     </div>
-    <div class="col-md-3" *ngIf="car.variant && car.variantIsVisible">
+    <div class="col-md-3" *ngIf="car && car.variant && car.variantIsVisible">
         <strong>Variante</strong>
-        <p>{{ car?.variant || '---' }}</p>
+        <p>{{ car.variant || '---' }}</p>
     </div>
-    <div class="col-md-3" *ngIf="car.type && car.typeIsVisible">
+    <div class="col-md-3" *ngIf="car && car.type && car.typeIsVisible">
         <strong>Tipo</strong>
-        <p>{{ car?.type || '---' }}</p>
+        <p>{{ car.type || '---' }}</p>
     </div>
 </div>
 <div class="row mt-xs">
-    <div class="col-md-3" *ngIf="car.version && car.versionIsVisible">
+    <div class="col-md-3" *ngIf="car && car.version && car.versionIsVisible">
         <strong>Versión</strong>
-        <p>{{ car?.version || '---' }}</p>
+        <p>{{ car.version || '---' }}</p>
     </div>
-    <div class="col-md-3" *ngIf="car.engineBrand && car.engineBrandIsVisible">
+    <div class="col-md-3" *ngIf="car && car.engineBrand && car.engineBrandIsVisible">
         <strong>Marca del motor</strong>
-        <p>{{ car?.engineBrand }}</p>
+        <p>{{ car.engineBrand }}</p>
     </div>
-    <div class="col-md-3" *ngIf="car.engineCode && car.engineCodeIsVisible">
+    <div class="col-md-3" *ngIf="car && car.engineCode && car.engineCodeIsVisible">
         <strong>Código del motor</strong>
-        <p>{{ car?.engineCode }}</p>
+        <p>{{ car.engineCode }}</p>
     </div>
-    <div class="col-md-3" *ngIf="car.tires && car.tiresIsVisible">
+    <div class="col-md-3" *ngIf="car && car.tires && car.tiresIsVisible">
         <strong>Neumáticos</strong>
-        <p>{{ car?.tires }}</p>
+        <p>{{ car.tires }}</p>
     </div>
 </div>
 <div class="row mt-xs">
-    <div class="col-md-3" *ngIf="car.cilinderAmount && car.cilinderAmountIsVisible">
+    <div class="col-md-3" *ngIf="car && car.cilinderAmount && car.cilinderAmountIsVisible">
         <strong>Número de cilindros</strong>
-        <p>{{ car?.cilinderAmount }}</p>
+        <p>{{ car.cilinderAmount }}</p>
     </div>
-    <div class="col-md-3" *ngIf="car.cilinderVolume && car.cilinderVolumeIsVisible">
+    <div class="col-md-3" *ngIf="car && car.cilinderVolume && car.cilinderVolumeIsVisible">
         <strong>Cilindrada</strong>
-        <p>{{ car?.cilinderVolume }}</p>
+        <p>{{ car.cilinderVolume }}</p>
     </div>
-    <div class="col-md-3" *ngIf="car.potencyKW && car.potencyKWIsVisible">
+    <div class="col-md-3" *ngIf="car && car.potencyKW && car.potencyKWIsVisible">
         <strong>Potencia KW</strong>
-        <p>{{ car?.potencyKW }}</p>
+        <p>{{ car.potencyKW }}</p>
     </div>
-    <div class="col-md-3" *ngIf="car.potencyCV && car.potencyCVIsVisible">
+    <div class="col-md-3" *ngIf="car && car.potencyCV && car.potencyCVIsVisible">
         <strong>Potencia CV</strong>
-        <p>{{ car?.potencyCV }}</p>
+        <p>{{ car.potencyCV }}</p>
     </div>
-    <div class="col-md-3" *ngIf="car.emisionLevel && car.emisionLevelIsVisible">
+    <div class="col-md-3" *ngIf="car && car.emisionLevel && car.emisionLevelIsVisible">
         <strong>Nivel de emisiones</strong>
-        <p>{{ car?.emisionLevel }}</p>
+        <p>{{ car.emisionLevel }}</p>
     </div>
-    <div class="col-md-3" *ngIf="car.fuel && car.fuelIsVisible">
+    <div class="col-md-3" *ngIf="car && car.fuel && car.fuelIsVisible">
         <strong>Combustible</strong>
-        <p>{{ car?.fuel }}</p>
+        <p>{{ car.fuel }}</p>
     </div>
-    <div class="col-md-3" *ngIf="car.radioCode && car.radioCodeIsVisible">
+    <div class="col-md-3" *ngIf="car && car.radioCode && car.radioCodeIsVisible">
         <strong>Código de radio</strong>
-        <p>{{ car?.radioCode }}</p>
+        <p>{{ car.radioCode }}</p>
     </div>
-    <div class="col-md-3" *ngIf="car.keyCode && car.keyCodeIsVisible">
+    <div class="col-md-3" *ngIf="car && car.keyCode && car.keyCodeIsVisible">
         <strong>Código de llaves</strong>
-        <p>{{ car?.keyCode }}</p>
+        <p>{{ car.keyCode }}</p>
     </div>    
-    <div class="col-md-12" *ngIf="car.observations && car.observationsIsVisible">
+    <div class="col-md-12" *ngIf="car && car.observations && car.observationsIsVisible">
         <strong>Observaciones</strong>
-        <p>{{ car?.observations }}</p>
+        <p>{{ car.observations }}</p>
     </div>
-    <div class="col-md-12" *ngIf="car.maintenanceReset && car.maintenanceResetIsVisible">
+    <div class="col-md-12" *ngIf="car && car.maintenanceReset && car.maintenanceResetIsVisible">
         <strong>Reset Mantenimiento</strong>
-        <p>{{ car?.maintenanceReset }}</p>
+        <p>{{ car.maintenanceReset }}</p>
     </div>
 </div>

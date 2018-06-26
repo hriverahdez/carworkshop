@@ -2,90 +2,19 @@
 
   <div class="row mt-sm">
       <div class="col-sm-3 text-center">
-        <cws-client-info-pane [client]="client"></cws-client-info-pane>
+        <cws-client-info-pane [client]="client$ | async"></cws-client-info-pane>
       </div>
       <div class="col-sm-8 col-sm-offset-1">
         
         <cws-tabs>
           <cws-tab [title]="'Información'" [icon]="'fui-info-circle'" [active]="true">
-            
 
-              <h4>Información</h4>
-              <hr>
-              <div class="row mt-xs">
-                <div class="col-md-12">
-                  <strong>Nombre Comercial</strong>
-                  <p>Inter Globe LTD</p>
-                </div>
-                <div class="col-md-6">
-                  <strong>DNI / NIF</strong>
-                  <p>627-4672-36475</p>
-                </div>
-                <div class="col-md-6">
-                  <strong>Web</strong>
-                  <p>www.inter-global.com</p>
-                </div>
-                <div class="col-md-12">
-                  <strong>Razón Social</strong>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div class="col-md-12">
-                  <strong>Observaciones</strong>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-              </div>
-
-
+            <cws-profile-main-info-tab [client]="client$ | async"></cws-profile-main-info-tab>
 
           </cws-tab>
           <cws-tab [title]="'Contactos'" [icon]="'fui-link'">
             
-            
-              <h4>Contactos</h4>
-              <hr>
-              <div class="row mt-xs">
-                <div class="col-md-6">
-                  <strong>Nombre y Apellidos</strong>
-                  <p>Manolo Lopez Triana</p>
-                </div>
-                <div class="col-md-6">
-                  <strong>Cargo Laboral</strong>
-                  <p>Director Ejecutivo</p>
-                </div>
-                <div class="col-md-6">
-                  <strong>Género</strong>
-                  <p>Masculino</p>
-                </div>
-                <div class="col-md-6">
-                  <strong>Cumpleaños</strong>
-                  <p>24-05-1986</p>
-                </div>
-                <div class="col-md-6">
-                  <strong>Correo Electrónico</strong>
-                  <p>Masculino</p>
-                </div>
-                <div class="col-md-6">
-                  <strong>Telefono (Casa)</strong>
-                  <p>2324051986</p>
-                </div>
-                <div class="col-md-6">
-                  <strong>Telefono (Movil)</strong>
-                  <p>-</p>
-                </div>
-                <div class="col-md-6">
-                  <strong>Telefono (Otro)</strong>
-                  <p>-</p>
-                </div>
-                <div class="col-md-12">
-                  <strong>Vinculado</strong>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div class="col-md-12">
-                  <strong>Campo Libre</strong>
-                  <p>-</p>
-                </div>
-              </div>
-
+            <cws-profile-additional-info-tab [client]="client$ | async"></cws-profile-additional-info-tab>
 
           </cws-tab>      
         </cws-tabs>
