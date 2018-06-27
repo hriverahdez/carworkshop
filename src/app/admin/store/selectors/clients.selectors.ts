@@ -5,33 +5,33 @@ import * as fromFeature from "../reducers";
 import * as fromClient from "../reducers/clients.reducer";
 import { Client } from "../../models/client.model";
 
-export const getState = createSelector(
+export const getClientsState = createSelector(
   fromFeature.selectClientsState,
-  (state: fromFeature.ClientsState) => state.clients
+  (state: fromFeature.AdminState) => state.clients
 );
 
 export const selectClientEntities = createSelector(
-  getState,
+  getClientsState,
   fromClient.selectClientEntities
 );
 
 export const selectClientIds = createSelector(
-  getState,
+  getClientsState,
   fromClient.selectClientIds
 );
 
 export const selectAllClients = createSelector(
-  getState,
+  getClientsState,
   fromClient.selectAllClients
 );
 
 export const selectClientTotal = createSelector(
-  getState,
+  getClientsState,
   fromClient.selectClientTotal
 );
 
 export const selectClientsLoaded = createSelector(
-  getState,
+  getClientsState,
   fromClient.selectClientsLoaded
 );
 

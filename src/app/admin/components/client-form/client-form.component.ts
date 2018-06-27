@@ -23,6 +23,7 @@ import { CustomValidator } from "../../../@shared/utils/custom-validation";
   styleUrls: ["./client-form.component.css"]
 })
 export class ClientFormComponent implements OnInit, OnChanges {
+  submitted = false;
   @Input() client: Client;
   @Output() onCreate = new EventEmitter<Client>();
 
@@ -45,7 +46,7 @@ export class ClientFormComponent implements OnInit, OnChanges {
     if (valid) {
       if (!this.isEdit) {
         const client = !this.isCompany ? this.clearCompanyFields(value) : value;
-
+        this.submitted = true;
         this.onCreate.emit({
           ...client,
           contrasenna: value.passwordGroup.contrasenna

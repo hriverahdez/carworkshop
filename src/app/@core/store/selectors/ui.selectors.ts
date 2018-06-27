@@ -2,7 +2,7 @@ import { createSelector } from "@ngrx/store";
 import * as fromFeature from "../reducers";
 import * as fromUI from "../reducers/ui.reducers";
 
-export const getAppIsLoading = createSelector(
+export const selectAppIsLoading = createSelector(
   fromFeature.getUIState,
   fromUI.selectAppIsLoading
 );

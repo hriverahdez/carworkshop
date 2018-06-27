@@ -14,17 +14,19 @@ import { DialogService } from "../../../@shared/services";
 })
 export class ClientListComponent implements OnInit, OnDestroy {
   clients$: Observable<Client[]>;
+  isLoading$: Observable<boolean>;
   currentViewType$: Observable<ClientsViewTypes>;
 
   dialogSubs: Subscription;
 
   constructor(
-    private store: Store<fromStore.ClientsState>,
+    private store: Store<fromStore.AdminState>,
     private uiStore: Store<fromRoot.AppState>,
     private dialogService: DialogService
   ) {}
 
   ngOnInit() {
+    this.isLoading$ = this.uiStore.select(fromRoot.selectAppIsLoading);
     this.currentViewType$ = this.uiStore.select(fromRoot.selectClientsViewType);
     this.clients$ = this.store.select(fromStore.selectAllClients);
     this.store.dispatch(new fromStore.LoadClients());
@@ -45,8 +47,6 @@ export class ClientListComponent implements OnInit, OnDestroy {
             ? this.store.dispatch(new fromStore.DeleteClient(client))
             : null
       );
-
-    this.store.dispatch(new fromStore.DeleteClient(client));
   }
 
   ngOnDestroy(): void {

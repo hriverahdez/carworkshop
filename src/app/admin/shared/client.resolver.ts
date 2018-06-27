@@ -7,7 +7,7 @@ import { filter } from "rxjs/operators";
 
 @Injectable()
 export class ClientResolver implements Resolve<any> {
-  constructor(private store: Store<fromStore.ClientsState>) {}
+  constructor(private store: Store<fromStore.AdminState>) {}
 
   resolve(route: ActivatedRouteSnapshot) {
     console.log("ON RESOLVER:", route);

@@ -13,7 +13,7 @@ import { tap } from "rxjs/operators";
 export class ClientItemComponent implements OnInit {
   client$: Observable<Client>;
 
-  constructor(private store: Store<fromStore.ClientsState>) {}
+  constructor(private store: Store<fromStore.AdminState>) {}
 
   ngOnInit() {
     this.client$ = this.store

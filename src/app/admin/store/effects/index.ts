@@ -1,5 +1,7 @@
-import { ClientsEffects } from "./client.effects";
+import { ClientsEffects } from "./clients.effects";
+import { MaintenancesEffects } from "./maintenances.effects";
 
-export const effects: any[] = [ClientsEffects];
+export const effects: any[] = [ClientsEffects, MaintenancesEffects];
 
-export * from "./client.effects";
+export * from "./clients.effects";
+export * from "./maintenances.effects";

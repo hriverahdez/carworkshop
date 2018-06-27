@@ -30,7 +30,8 @@ const ROUTES: Routes = [
         canActivate: [fromGuards.AdminGuard],
         canActivateChild: [fromGuards.AdminGuard],
         data: {
-          breadcrumb: "Dashboard"
+          //   breadcrumb: "Dashboard"
+          breadcrumb: "Clientes"
         }
       },
       {

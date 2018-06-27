@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
 
 @Injectable()
 export class ClientExistsGuard implements CanActivate {
-  constructor(private store: Store<fromStore.ClientsState>) {}
+  constructor(private store: Store<fromStore.AdminState>) {}
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return this.checkStore().pipe(

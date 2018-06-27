@@ -1,1 +1,2 @@
-export * from "./client.actions";
+export * from "./clients.actions";
+export * from "./maintenances.actions";

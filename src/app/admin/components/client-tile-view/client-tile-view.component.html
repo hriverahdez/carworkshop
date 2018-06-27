@@ -1,13 +1,13 @@
 <div class="row demo-tiles" [hidden]="!active">
     
-    <div class="col-sm-4" *ngFor="let client of clients">
+    <div class="col-sm-3" *ngFor="let client of clients">
         <a [routerLink]="['./details', client.id]">
             <div class="tile">
 
                 <!-- <img src="assets/img/tile/ribbon.png" alt="Compas" class="tile-hot-ribbon"> -->
-                <button type="button" (click)="requestDelete(client)" class="tile-delete-btn btn btn-danger" aria-label="Close">
+                <!-- <button type="button" (click)="requestDelete(client)" class="tile-delete-btn btn btn-danger" aria-label="Close">
                     <span class="fui-trash"></span>
-                </button>
+                </button> -->
 
                 <img *ngIf="isCompany(client)" 
                     src="assets/img/icons/company.png" alt="Compañía" class="tile-image big-illustration img-circle">

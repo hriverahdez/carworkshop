@@ -1,6 +1,6 @@
 <form [formGroup]="clientForm">
     <div class="form-group row mb-5">
-        <div class="col">
+        <div class="col-sm-12">
             <label for="inputLastName">Seleccione el tipo de cliente</label>
             <select name="type" formControlName="type" class="form-control">
                 <option [value]="'HOMEUSER'">Particular</option>
@@ -61,13 +61,12 @@
         </div>
     </div>
     <div class="form-group row">
-        <div class="form-group" [ngClass]="{ 'col-md-4': !isEdit, 'col-md-6': isEdit }">
+        <div class="form-group" [ngClass]="{ 'col-md-4': !isEdit, 'col-md-6': isEdit, 'has-error': emailControlInvalid }">
             <input type="checkbox" name="emailIsVisible" formControlName="emailIsVisible" checked class="checkbox">
             <label for="inputEmail4">Email *</label>
-            <input type="email" name="email" 
-                [ngClass]="{ 'is-invalid': emailControlInvalid }"
+            <input type="email" name="email"                 
                 formControlName="email" class="form-control" id="inputEmail" placeholder="juan@example.com">
-            <div class="invalid-feedback">
+            <div class="help-block" *ngIf="emailControlInvalid">
                 Introduzca un correo válido
             </div>
         </div>
@@ -78,21 +77,25 @@
                 formControlName="registrationDate" class="form-control" id="registrationDate" placeholder="">
         </div>
 
-        <div formGroupName="passwordGroup" class="form-group col-md-4" *ngIf="!isEdit">
+        <div formGroupName="passwordGroup" class="form-group col-md-4"
+            [ngClass]="{'has-error': passwordsDontMatch}" 
+            *ngIf="!isEdit">
             <label for="inputPassword">Contraseña *</label>
             <input type="password" name="password" 
-                formControlName="password" [ngClass]="{ 'is-invalid': passwordsDontMatch }"
+                formControlName="password"
                 class="form-control" id="inputPassword" placeholder="Contraseña">
-            <div class="invalid-feedback">
+            <div class="help-block" *ngIf="passwordsDontMatch">
                 Las contraseñas no coinciden
             </div>
         </div>
-        <div formGroupName="passwordGroup" class="form-group col-md-4" *ngIf="!isEdit">
+        <div formGroupName="passwordGroup" class="form-group col-md-4" 
+            [ngClass]="{'has-error': passwordsDontMatch}" 
+            *ngIf="!isEdit">
             <label for="inputPasswordRepeat">Repetir Contraseña *</label>
             <input type="password" name="passwordRepeat" 
-                formControlName="passwordRepeat" [ngClass]="{ 'is-invalid': passwordsDontMatch }"
+                formControlName="passwordRepeat"
                 class="form-control" id="inputPasswordRepeat" placeholder="Contraseña">
-            <div class="invalid-feedback">
+            <div class="help-block" *ngIf="passwordsDontMatch">
                 Las contraseñas no coinciden
             </div>
         </div>
@@ -120,7 +123,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <div class="form-group col-12">
+        <div class="form-group col-sm-12">
             <input type="checkbox" name="addressIsVisible" formControlName="addressIsVisible" class="checkbox">
             <label for="inputAddress">Dirección</label>
             <input type="text" name="address" formControlName="address" class="form-control" placeholder="1234 Main St">
@@ -164,9 +167,10 @@
 
     <cws-car-form [parent]="clientForm" [car]="client?.car"></cws-car-form>
 
-    <div class="col-12 text-center">
+    <div class="col-sm-12 text-center">
         <input type="button" (click)="save(clientForm)" 
-            [disabled]="!clientForm.valid" class="btn btn-primary pb_btn-pill" value="Guardar">
-        <a routerLink="/mechanic" class="btn btn-default btn-secondary pb_btn-pill">Cancelar</a>
+            style="margin-right: 20px"
+            [disabled]="!clientForm.valid || submitted" class="btn btn-inverse" value="Guardar">
+        <a routerLink="./" class="btn btn-default">Cancelar</a>
     </div>
 </form>

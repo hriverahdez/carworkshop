@@ -1,1 +1,2 @@
-export * from "./client.selectors";
+export * from "./clients.selectors";
+export * from "./maintenances.selectors";

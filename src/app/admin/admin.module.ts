@@ -36,7 +36,7 @@ import { ClientResolver } from "./shared/client.resolver";
     ThemeModule,
     ClientModule,
 
-    StoreModule.forFeature("clients", reducers),
+    StoreModule.forFeature("adminState", reducers),
     EffectsModule.forFeature(effects)
   ],
   declarations: [...fromContainers.containers, ...fromComponents.components],
