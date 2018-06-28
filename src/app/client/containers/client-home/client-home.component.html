@@ -22,7 +22,9 @@
         </cws-tab>
         <cws-tab [title]="'Historial'" [icon]="'fui-folder'"> 
           
-          <cws-maintenance-history [maintenanceHistory]="maintenances$ | async"></cws-maintenance-history>
+          <cws-maintenance-history  
+            [maintenanceCategories]="maintenanceCategories$ | async"
+            [maintenanceHistory]="maintenances$ | async"></cws-maintenance-history>
 
         </cws-tab>
         <cws-tab [title]="'Recomendaciones'" [icon]="'fui-heart'">
