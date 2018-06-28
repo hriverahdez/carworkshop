@@ -1,3 +1,4 @@
+<!-- <cws-loader *ngIf="appLoading$ | async"></cws-loader> -->
 <header>
     <div class="container">
         <h1><img src="assets/img/logo.png" class="img-responsive logo"></h1>
@@ -7,7 +8,6 @@
 <cws-navbar [currentUser]="currentUser$ | async" 
             [breadcrumbs]="breadcrumbs$ | async"
             (onLogout)="logout()"></cws-navbar>
-
 
 <div class="content-body">
     <router-outlet></router-outlet>

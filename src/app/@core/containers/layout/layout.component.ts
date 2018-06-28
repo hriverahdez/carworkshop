@@ -22,12 +22,15 @@ import { AuthUser } from "../../../@shared/models/auth-user.model";
 export class LayoutComponent implements OnInit {
   breadcrumbs$: Observable<BreadCrumb[]>;
   currentUser$: Observable<AuthUser>;
+  appLoading$: Observable<boolean>;
 
   constructor(private store: Store<fromStore.AppState>) {}
 
   ngOnInit() {
     this.currentUser$ = this.store.select(fromStore.selectCurrentUser);
     this.breadcrumbs$ = this.store.select(fromStore.selectBreadcrumbs);
+    this.appLoading$ = this.store.select(fromStore.selectAppIsLoadingFull);
+    // this.appLoading$.subscribe(v => console.log(v));
   }
 
   logout() {

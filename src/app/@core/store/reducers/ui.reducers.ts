@@ -3,30 +3,46 @@ import { BreadCrumb } from "../../models/breadcrumb.model";
 import { ClientsViewTypes } from "../shared/ui-clients-view-types";
 
 export interface State {
-  isLoading: boolean;
+  isLoadingFull: boolean;
+  isLoadingBox: boolean;
   breadcrumbs: BreadCrumb[];
   clientsView: ClientsViewTypes;
 }
 
 export const initialState: State = {
-  isLoading: false,
+  isLoadingFull: false,
+  isLoadingBox: false,
   breadcrumbs: [],
   clientsView: ClientsViewTypes.Tiles
 };
 
 export function reducer(state = initialState, action: fromUI.UIActions) {
   switch (action.type) {
-    case fromUI.DISPLAY_PROGRESS_BAR: {
+    case fromUI.SHOW_FULLSCREEN_LOADER: {
       return {
         ...state,
-        isLoading: true
+        isLoadingFull: true
       };
     }
 
-    case fromUI.HIDE_PROGRESS_BAR: {
+    case fromUI.HIDE_FULLSCREEN_LOADER: {
       return {
         ...state,
-        isLoading: false
+        isLoadingFull: false
+      };
+    }
+
+    case fromUI.SHOW_LOADING_BOX: {
+      return {
+        ...state,
+        isLoadingBox: true
+      };
+    }
+
+    case fromUI.HIDE_LOADING_BOX: {
+      return {
+        ...state,
+        isLoadingBox: false
       };
     }
 
@@ -46,6 +62,7 @@ export function reducer(state = initialState, action: fromUI.UIActions) {
   return state;
 }
 
-export const selectAppIsLoading = (state: State) => state.isLoading;
+export const selectAppIsLoadingFull = (state: State) => state.isLoadingFull;
+export const selectAppIsLoadingBox = (state: State) => state.isLoadingBox;
 export const selectBreadcrumbs = (state: State) => state.breadcrumbs;
 export const selectClientViewType = (state: State) => state.clientsView;

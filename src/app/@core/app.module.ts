@@ -31,6 +31,7 @@ import * as fromComponents from "./components";
 
 // guards
 import * as fromGuards from "./guards";
+import { ThemeModule } from "../@theme/theme.module";
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import * as fromGuards from "./guards";
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ThemeModule,
 
     AppRoutingModule,
     StoreModule.forRoot(reducers),

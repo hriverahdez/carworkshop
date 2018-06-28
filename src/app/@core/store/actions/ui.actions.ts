@@ -2,16 +2,28 @@ import { Action } from "@ngrx/store";
 import { BreadCrumb } from "../../models/breadcrumb.model";
 import { ClientsViewTypes } from "../shared/ui-clients-view-types";
 
-// Progress Bar
-export const DISPLAY_PROGRESS_BAR = "[UI] Display Progress Bar";
-export const HIDE_PROGRESS_BAR = "[UI] Hide Progress Bar";
+// Fullscreen loader
+export const SHOW_FULLSCREEN_LOADER = "[UI] Show Fullscreen loader";
+export const HIDE_FULLSCREEN_LOADER = "[UI] Hide Fullscreen loader";
 
-export class DisplayProgressBar implements Action {
-  readonly type = DISPLAY_PROGRESS_BAR;
+export class ShowFullscreenLoader implements Action {
+  readonly type = SHOW_FULLSCREEN_LOADER;
 }
 
-export class HideProgressBar implements Action {
-  readonly type = HIDE_PROGRESS_BAR;
+export class HideFullscreenLoader implements Action {
+  readonly type = HIDE_FULLSCREEN_LOADER;
+}
+
+// Loading box
+export const SHOW_LOADING_BOX = "[UI] Show Loading Box";
+export const HIDE_LOADING_BOX = "[UI] Hide Loading Box";
+
+export class ShowLoadingBox implements Action {
+  readonly type = SHOW_LOADING_BOX;
+}
+
+export class HideLoadingBox implements Action {
+  readonly type = HIDE_LOADING_BOX;
 }
 
 // Breadcrumbs
@@ -31,7 +43,9 @@ export class SetClientsViewType implements Action {
 }
 
 export type UIActions =
-  | DisplayProgressBar
-  | HideProgressBar
+  | ShowFullscreenLoader
+  | HideFullscreenLoader
+  | ShowLoadingBox
+  | HideLoadingBox
   | SetBreadcrumbs
   | SetClientsViewType;
