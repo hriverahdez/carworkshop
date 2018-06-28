@@ -1,0 +1,9 @@
+<label *ngIf="hasLabel">
+    <strong>{{ label }}</strong>
+</label>
+<select class="form-control" [ngModel]="value" (ngModelChange)="selectCategory($event)" >
+    <option *ngIf="!showDefault" disabled [ngValue]="null">.:: Seleccione ::.</option>
+    <option *ngIf="showDefault" [ngValue]="null">Todos</option>
+    <option *ngFor="let category of categories" 
+            [ngValue]="category">{{ category.name }}</option>
+</select> 
