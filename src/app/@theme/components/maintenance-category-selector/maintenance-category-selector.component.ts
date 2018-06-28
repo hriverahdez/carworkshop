@@ -4,7 +4,8 @@ import {
   Input,
   forwardRef,
   EventEmitter,
-  Output
+  Output,
+  OnChanges
 } from "@angular/core";
 import { MaintenanceCategory } from "../../../admin/models/maintenance-category.model";
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
@@ -23,7 +24,7 @@ const MAINTENANCE_CATEGORIES_ACCESSOR = {
 })
 export class MaintenanceCategorySelectorComponent
   implements OnInit, ControlValueAccessor {
-  value: MaintenanceCategory = null;
+  @Input() value: MaintenanceCategory = null;
 
   private onTouch: Function;
   private onModelChange: Function;
@@ -45,8 +46,8 @@ export class MaintenanceCategorySelectorComponent
   }
 
   selectCategory(selected) {
-    this.value = selected;
-    this.onSelectedCategory.emit(selected);
+    this.value = selected ? selected : null;
+    this.onSelectedCategory.emit(this.value);
     this.onTouch;
     this.onModelChange(this.value);
   }
@@ -54,4 +55,8 @@ export class MaintenanceCategorySelectorComponent
   constructor() {}
 
   ngOnInit() {}
+
+  compareFn(c1: MaintenanceCategory, c2: MaintenanceCategory): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
 }
