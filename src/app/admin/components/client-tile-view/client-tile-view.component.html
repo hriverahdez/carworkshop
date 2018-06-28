@@ -14,7 +14,7 @@
                 <img *ngIf="!isCompany(client)" 
                     src="assets/img/icons/user.png" alt="Cliente" class="tile-image big-illustration img-circle">
                 <h3 class="tile-title">{{ isCompany(client) ? client.companyName : fullname(client) }}</h3>
-                <small class="badge text-uppercase">{{ isCompany(client) ? 'Compañía' : 'Particular' }}</small>
+                <small class="badge text-uppercase">{{ isCompany(client) ? 'Compañía' : 'Regular' }}</small>
                 <div class="mt-xsx">
                     <a [href]="'mailto:'+client.email" class="">{{ client.email }}</a>
                 </div>

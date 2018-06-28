@@ -44,10 +44,10 @@ export const selectMaintenanceCategoriesLoaded = createSelector(
   fromMaintenance.selectMaintenanceCategoriesLoaded
 );
 
-// export const selectCurrentMaintenance = createSelector(
-//   selectMaintenanceEntities,
-//   fromRoot.getRouterState,
-//   (entities, router) => {
-//     return router.state && entities[router.state.params.clientId];
-//   }
-// );
+export const selectCurrentMaintenance = createSelector(
+  selectMaintenanceEntities,
+  fromRoot.getRouterState,
+  (entities, router) => {
+    return router.state && entities[router.state.params.maintenanceId];
+  }
+);

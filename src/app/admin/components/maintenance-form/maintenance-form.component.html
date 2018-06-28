@@ -12,6 +12,7 @@
             </select> --> 
             
             <cws-maintenance-category-selector 
+                [value]="maintenanceCategory"
                 formControlName="category"
                 [showDefault]="false"
                 [hasLabel]="true" [label]="'Categoría del Servicio'"
@@ -30,16 +31,25 @@
                 <span class="input-group-addon" (click)="d.toggle()">
                     <span class="fui-calendar"></span>                        
                 </span>
-                <input class="form-control" placeholder="yyyy-mm-dd"
-                    name="date" formControlName="date" ngbDatepicker #d="ngbDatepicker">
+                <input class="form-control" placeholder="yyyy-mm-dd" (blur)="d.close()"                    
+                    name="date" formControlName="date" ngbDatepicker [autoClose]="true" #d="ngbDatepicker">
             </div>
-            <!-- {{ convertDate(maintenanceForm.get('date').value) | date:'long' }} -->
         </div>
     </div>
 </div>
+<!-- <div class="form-row col-md-3">            
+        <label for=""><strong>Fecha</strong></label>
+        <div class="input-group">
+            <span class="input-group-addon" (click)="d.toggle()">
+                <span class="fui-calendar"></span>                        
+            </span>
+            <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="test" (blur)="d.close()"                    
+                name="date"  ngbDatepicker [autoClose]="true" #d="ngbDatepicker">
+        </div>
+    </div> -->
 <hr>
 <button class="btn btn-primary" 
-    [disabled]="formInvalid || !maintenanceForm.valid"
-    (click)="save(maintenanceForm)">
-    Guardar
+(click)="save(maintenanceForm)">
+Guardar
+<!-- [disabled]="!maintenanceForm.valid" -->
 </button>

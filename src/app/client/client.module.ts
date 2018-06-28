@@ -5,7 +5,7 @@ import { ClientRoutingModule } from "./client-routing.module";
 
 import { ThemeModule } from "../@theme/theme.module";
 
-import { ClientsService } from "../admin/services";
+import { ClientsService, MaintenancesHelperService } from "../admin/services";
 
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
@@ -22,11 +22,11 @@ import * as fromComponents from "./components";
     CommonModule,
     ClientRoutingModule,
     ThemeModule,
-    StoreModule.forFeature("client", reducers),
+    StoreModule.forFeature("clientState", reducers),
     EffectsModule.forFeature(effects)
   ],
   declarations: [...fromContainers.containers, ...fromComponents.components],
   exports: [...fromComponents.components],
-  providers: [ClientsService]
+  providers: [ClientsService, MaintenancesHelperService]
 })
 export class ClientModule {}

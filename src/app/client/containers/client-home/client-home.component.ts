@@ -5,6 +5,7 @@ import * as fromStore from "../../store";
 import { Observable } from "rxjs";
 import { Client } from "../../../admin/models/client.model";
 import { Maintenance } from "../../../admin/models/maintenance.model";
+import { MaintenanceCategory } from "../../../admin/models/maintenance-category.model";
 
 @Component({
   selector: "cws-client-home",
@@ -14,6 +15,7 @@ import { Maintenance } from "../../../admin/models/maintenance.model";
 export class ClientHomeComponent implements OnInit {
   client$: Observable<Client>;
   maintenances$: Observable<Maintenance[]>;
+  maintenanceCategories$: Observable<MaintenanceCategory[]>;
 
   constructor(private store: Store<fromStore.ClientState>) {}
 
@@ -21,5 +23,8 @@ export class ClientHomeComponent implements OnInit {
     this.store.dispatch(new fromStore.LoadClientData());
     this.client$ = this.store.select(fromStore.selectClientData);
     this.maintenances$ = this.store.select(fromStore.selectClientMaintenances);
+    this.maintenanceCategories$ = this.store.select(
+      fromStore.selectActiveCategories
+    );
   }
 }

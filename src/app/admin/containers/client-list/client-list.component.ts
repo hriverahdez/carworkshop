@@ -6,6 +6,7 @@ import * as fromStore from "../../store";
 import * as fromRoot from "../../../@core/store";
 import { ClientsViewTypes } from "../../../@core/store/shared/ui-clients-view-types";
 import { DialogService } from "../../../@shared/services";
+import { MaintenancesHelperService } from "../../services";
 
 @Component({
   selector: "cws-client-list",
@@ -26,7 +27,7 @@ export class ClientListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.isLoading$ = this.uiStore.select(fromRoot.selectAppIsLoading);
+    this.isLoading$ = this.uiStore.select(fromRoot.selectAppIsLoadingBox);
     this.currentViewType$ = this.uiStore.select(fromRoot.selectClientsViewType);
     this.clients$ = this.store.select(fromStore.selectAllClients);
     this.store.dispatch(new fromStore.LoadClients());
@@ -34,12 +35,15 @@ export class ClientListComponent implements OnInit, OnDestroy {
   }
 
   deleteClient(client: Client) {
+    const supportMessage = `
+        ${client.firstName} ${client.lastName} 
+        - Coche: ${client.car.brand} ${client.car.model}
+    `;
+
     this.dialogSubs = this.dialogService
       .confirm({
         message: "¿Está seguro que desea eliminar este cliente?",
-        supportMessage: `
-        ${client.firstName} ${client.lastName} 
-        - Coche: ${client.car.brand} ${client.car.model}`,
+        supportMessage,
         title: "Eliminar Cliente"
       })
       .subscribe(

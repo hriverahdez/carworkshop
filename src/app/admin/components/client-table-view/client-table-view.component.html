@@ -16,13 +16,16 @@
                 </a>
             </td>
             <td>
-                <small class="badge text-uppercase">{{ isCompany(client) ? 'compañía' : 'particular' }}</small>
+                <small class="badge text-uppercase">{{ isCompany(client) ? 'compañía' : 'regular' }}</small>
             </td>
             <td>
                 <a [href]="'mailto:' + client.email">{{ client.email }}</a>
             </td>
             <td>{{ client.registrationDate || '---' }}</td>
             <td>
+                <a [routerLink]="['./client', client.id]" class="text-primary">
+                    <span class="fui-new"></span>
+                </a> |
                 <a (click)="requestDelete(client)" class="text-danger">
                     <span class="fui-trash"></span>
                 </a>

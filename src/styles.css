@@ -4,3 +4,7 @@
 a {
     cursor: pointer;
 }
+
+.cws_block-scroll {
+    overflow: hidden !important;
+}

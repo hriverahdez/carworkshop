@@ -5,6 +5,7 @@ import * as fromStore from "../../store";
 import { Observable } from "rxjs";
 import { MaintenanceCategory } from "../../models/maintenance-category.model";
 import { Maintenance } from "../../models/maintenance.model";
+import { tap } from "rxjs/operators";
 
 @Component({
   selector: "cws-maintenance-item",
@@ -14,6 +15,8 @@ import { Maintenance } from "../../models/maintenance.model";
 export class MaintenanceItemComponent implements OnInit {
   maintenanceCategories$: Observable<MaintenanceCategory[]>;
   carId;
+  maintenance$: Observable<Maintenance>;
+
   constructor(
     private route: ActivatedRoute,
     private store: Store<fromStore.AdminState>
@@ -21,6 +24,10 @@ export class MaintenanceItemComponent implements OnInit {
 
   ngOnInit() {
     // console.log(this.route.snapshot.paramMap.get("carId"));
+    this.maintenance$ = this.store
+      .select(fromStore.selectCurrentMaintenance)
+      .pipe(tap((maintenance: Maintenance = null) => maintenance));
+
     this.carId = this.route.snapshot.paramMap.get("carId");
     this.maintenanceCategories$ = this.store.select(
       fromStore.selectMaintenanceCategories

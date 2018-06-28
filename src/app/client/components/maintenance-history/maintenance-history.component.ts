@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 import { Maintenance } from "../../../admin/models/maintenance.model";
 import { MaintenanceCategory } from "../../../admin/models/maintenance-category.model";
 
@@ -8,10 +8,13 @@ import { MaintenanceCategory } from "../../../admin/models/maintenance-category.
   styleUrls: ["./maintenance-history.component.css"]
 })
 export class MaintenanceHistoryComponent implements OnInit {
+  currentFilter = null;
+
   @Input() maintenanceHistory: Maintenance[];
   @Input() maintenanceCategories: MaintenanceCategory[];
 
-  currentFilter = null;
+  @Input() userIsAdmin: boolean = false;
+  @Output() onDeleteRequest = new EventEmitter<Maintenance>();
 
   constructor() {}
 
@@ -27,13 +30,7 @@ export class MaintenanceHistoryComponent implements OnInit {
     this.currentFilter = category ? category : null;
   }
 
-  //   get categories() {
-  //     return this.maintenanceHistory
-  //       ? this.maintenanceHistory
-  //           .map(m => m.category)
-  //           .reduce((acc: any[], item) => {
-  //             return acc.find(i => i.name === item.name) ? acc : [...acc, item];
-  //           }, [])
-  //       : [];
-  //   }
+  requestDelete(maintenance) {
+    this.onDeleteRequest.emit(maintenance);
+  }
 }

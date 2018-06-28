@@ -2,11 +2,13 @@ import * as fromClient from "./client.reducer";
 import { ActionReducerMap, createFeatureSelector } from "@ngrx/store";
 
 export interface ClientState {
-  client: fromClient.State;
+  currentClientData: fromClient.State;
 }
 
 export const reducers: ActionReducerMap<ClientState> = {
-  client: fromClient.reducer
+  currentClientData: fromClient.reducer
 };
 
-export const selectClientsState = createFeatureSelector<ClientState>("client");
+export const selectClientsState = createFeatureSelector<ClientState>(
+  "clientState"
+);

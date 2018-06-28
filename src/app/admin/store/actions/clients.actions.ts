@@ -44,6 +44,27 @@ export class AddClientSuccess implements Action {
   constructor(public payload: Client) {}
 }
 
+// UPDATE
+
+export const UPDATE_CLIENT = "[Admin] Update Client";
+export const UPDATE_CLIENT_FAIL = "[Admin] Update Client Fail";
+export const UPDATE_CLIENT_SUCCESS = "[Admin] Update Client Success";
+
+export class UpdateClient implements Action {
+  readonly type = UPDATE_CLIENT;
+  constructor(public payload: Client) {}
+}
+
+export class UpdateClientFail implements Action {
+  readonly type = UPDATE_CLIENT_FAIL;
+  constructor(public payload: any) {}
+}
+
+export class UpdateClientSuccess implements Action {
+  readonly type = UPDATE_CLIENT_SUCCESS;
+  constructor(public payload: Client) {}
+}
+
 // DELETE
 
 export const DELETE_CLIENT = "[Admin] Delete Client";
@@ -72,6 +93,9 @@ export type ClientActions =
   | AddClient
   | AddClientFail
   | AddClientSuccess
+  | UpdateClient
+  | UpdateClientFail
+  | UpdateClientSuccess
   | DeleteClient
   | DeleteClientFail
   | DeleteClientSuccess;

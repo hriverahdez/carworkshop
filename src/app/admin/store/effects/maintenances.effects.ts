@@ -16,6 +16,7 @@ import * as fromRoot from "../../../@core/store";
 
 import { MaintenancesService } from "../../services";
 import { Client } from "../../models/client.model";
+import { Maintenance } from "../../models/maintenance.model";
 
 @Injectable()
 export class MaintenancesEffects {
@@ -79,31 +80,38 @@ export class MaintenancesEffects {
     )
   );
 
-  //   @Effect()
-  //   updateBrand$ = this.actions$
-  //     .ofType(fromBrands.UPDATE_BRAND)
-  //     .pipe(
-  //       map((action: fromBrands.UpdateBrand) => action.payload),
-  //       switchMap((brand: Brand) =>
-  //         this.brandsService
-  //           .updateAsFormData(brand)
-  //           .pipe(
-  //             map(brand => new fromBrands.UpdateBrandSuccess(brand)),
-  //             catchError(error => of(new fromBrands.UpdateBrandFail(error)))
-  //           )
-  //       )
-  //     );
+  @Effect()
+  updateMaintenance$ = this.actions$
+    .ofType(fromMaintenance.UPDATE_MAINTENANCE)
+    .pipe(
+      map((action: fromMaintenance.UpdateMaintenance) => action.payload),
+      switchMap((maintenance: Maintenance) =>
+        this.maintenancesService.update(maintenance).pipe(
+          map(
+            maintenance =>
+              new fromMaintenance.UpdateMaintenanceSuccess(maintenance)
+          ),
+          catchError(error =>
+            of(new fromMaintenance.UpdateMaintenanceFail(error))
+          )
+        )
+      )
+    );
 
-  //   @Effect()
-  //   deleteBrand$ = this.actions$.ofType(fromMaintenance.DELETE_CLIENT).pipe(
-  //     map((action: fromMaintenance.DeleteClient) => action.payload),
-  //     switchMap(client =>
-  //       this.clientsService.delete(client).pipe(
-  //         map(() => new fromMaintenance.DeleteClientSuccess(client)),
-  //         catchError(error => of(new fromMaintenance.DeleteClientFail(error)))
-  //       )
-  //     )
-  //   );
+  @Effect()
+  deleteMaintenance$ = this.actions$
+    .ofType(fromMaintenance.DELETE_MAINTENANCE)
+    .pipe(
+      map((action: fromMaintenance.DeleteMaintenance) => action.payload),
+      switchMap(maintenance =>
+        this.maintenancesService.delete(maintenance).pipe(
+          map(() => new fromMaintenance.DeleteMaintenanceSuccess(maintenance)),
+          catchError(error =>
+            of(new fromMaintenance.DeleteMaintenanceFail(error))
+          )
+        )
+      )
+    );
 
   @Effect()
   handleSuccess$ = this.actions$
@@ -113,7 +121,7 @@ export class MaintenancesEffects {
   @Effect()
   showLoader$ = this.actions$
     .ofType(fromMaintenance.LOAD_CLIENT_MAINTENANCES)
-    .pipe(map(() => new fromRoot.DisplayProgressBar()));
+    .pipe(map(() => new fromRoot.ShowFullscreenLoader()));
 
   @Effect()
   hideLoader$ = this.actions$
@@ -121,5 +129,5 @@ export class MaintenancesEffects {
       fromMaintenance.LOAD_CLIENT_MAINTENANCES_SUCCESS,
       fromMaintenance.LOAD_CLIENT_MAINTENANCES_FAIL
     )
-    .pipe(map(() => new fromRoot.HideProgressBar()));
+    .pipe(map(() => new fromRoot.HideFullscreenLoader()));
 }

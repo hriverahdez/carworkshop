@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, OnDestroy } from "@angular/core";
 
 @Component({
   selector: "cws-loader",
   templateUrl: "./loader.component.html",
   styleUrls: ["./loader.component.css"]
 })
-export class LoaderComponent implements OnInit {
+export class LoaderComponent implements OnInit, OnDestroy {
   defaultMinWidth: 250;
   defaultMinHeight: 250;
 
@@ -19,5 +19,13 @@ export class LoaderComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    document.getElementsByTagName("body")[0].classList.add("cws_block-scroll");
+  }
+
+  ngOnDestroy(): void {
+    document
+      .getElementsByTagName("body")[0]
+      .classList.remove(".cws_block-scroll");
+  }
 }

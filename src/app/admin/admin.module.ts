@@ -37,7 +37,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     SharedModule,
     ThemeModule,
     ClientModule,
-    NgbModule.forRoot(),
+    // NgbModule.forRoot(),
 
     StoreModule.forFeature("adminState", reducers),
     EffectsModule.forFeature(effects)

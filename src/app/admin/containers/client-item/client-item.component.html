@@ -9,7 +9,10 @@
             <h4>Los campos marcados con * son requeridos</h4>
             <div class="card-body">
 
-                <cws-client-form [client]="client$ | async" (onCreate)="create($event)"></cws-client-form>
+                <cws-client-form 
+                    [client]="client$ | async" 
+                    (onCreate)="create($event)"
+                    (onUpdate)="update($event)"></cws-client-form>
 
             </div>
         </div>

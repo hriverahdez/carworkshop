@@ -1,7 +1,7 @@
 import { MaintenanceCategory } from "./maintenance-category.model";
 
 export interface Maintenance {
-  id?: string | number;
+  id?: number;
   date?: string;
   mileage?: number;
   category?: MaintenanceCategory;

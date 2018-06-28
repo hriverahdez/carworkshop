@@ -70,6 +70,46 @@ export class AddMaintenanceSuccess implements Action {
   constructor(public payload: Maintenance) {}
 }
 
+// UPDATE
+export const UPDATE_MAINTENANCE = "[Admin] Update Maintenance";
+export const UPDATE_MAINTENANCE_FAIL = "[Admin] Update Maintenance Fail";
+export const UPDATE_MAINTENANCE_SUCCESS = "[Admin] Update Maintenance Success";
+
+export class UpdateMaintenance implements Action {
+  readonly type = UPDATE_MAINTENANCE;
+  constructor(public payload: Maintenance) {}
+}
+
+export class UpdateMaintenanceFail implements Action {
+  readonly type = UPDATE_MAINTENANCE_FAIL;
+  constructor(public payload: any) {}
+}
+
+export class UpdateMaintenanceSuccess implements Action {
+  readonly type = UPDATE_MAINTENANCE_SUCCESS;
+  constructor(public payload: Maintenance) {}
+}
+
+// DELETE
+export const DELETE_MAINTENANCE = "[Admin] Delete Maintenance";
+export const DELETE_MAINTENANCE_FAIL = "[Admin] Delete Maintenance Fail";
+export const DELETE_MAINTENANCE_SUCCESS = "[Admin] Delete Maintenance Success";
+
+export class DeleteMaintenance implements Action {
+  readonly type = DELETE_MAINTENANCE;
+  constructor(public payload: Maintenance) {}
+}
+
+export class DeleteMaintenanceFail implements Action {
+  readonly type = DELETE_MAINTENANCE_FAIL;
+  constructor(public payload: any) {}
+}
+
+export class DeleteMaintenanceSuccess implements Action {
+  readonly type = DELETE_MAINTENANCE_SUCCESS;
+  constructor(public payload: Maintenance) {}
+}
+
 export type MaintenanceActions =
   | LoadClientMaintenances
   | LoadClientMaintenancesFail
@@ -79,4 +119,10 @@ export type MaintenanceActions =
   | LoadMaintenanceCategoriesSuccess
   | AddMaintenance
   | AddMaintenanceFail
-  | AddMaintenanceSuccess;
+  | AddMaintenanceSuccess
+  | UpdateMaintenance
+  | UpdateMaintenanceFail
+  | UpdateMaintenanceSuccess
+  | DeleteMaintenance
+  | DeleteMaintenanceFail
+  | DeleteMaintenanceSuccess;

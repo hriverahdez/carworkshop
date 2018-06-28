@@ -22,7 +22,11 @@ export class ClientItemComponent implements OnInit {
   }
 
   create(client: Client) {
-    console.log("CLIENT::", client);
     this.store.dispatch(new fromStore.AddClient(client));
+  }
+
+  update(client: Client) {
+    console.log("CLIENT::", client);
+    this.store.dispatch(new fromStore.UpdateClient(client));
   }
 }

@@ -3,6 +3,7 @@
         <div class="col-md-12">
 
             <cws-maintenance-form 
+                [maintenance]="maintenance$ | async"
                 [carId]="carId" 
                 [maintenanceCategories]="maintenanceCategories$ | async"
                 (onCreate)="create($event)"></cws-maintenance-form>

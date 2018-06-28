@@ -9,9 +9,9 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import * as fromComponents from "./components";
 
 @NgModule({
-  imports: [CommonModule, FormsModule],
-  
+  imports: [CommonModule, FormsModule, NgbModule.forRoot()],
+
   declarations: [...fromComponents.components],
-  exports: [...fromComponents.components]
+  exports: [...fromComponents.components, NgbModule]
 })
 export class ThemeModule {}

@@ -1,5 +1,5 @@
 export interface MaintenanceCategory {
-  id?: string | number;
+  id?: number;
   name?: string;
   timePeriodicity?: number;
   mileagePeriodicity?: number;

@@ -1,5 +1,6 @@
 import { Action } from "@ngrx/store";
 import { Client } from "../../../admin/models/client.model";
+import { MaintenanceCategory } from "../../../admin/models/maintenance-category.model";
 
 export const LOAD_CLIENT_DATA = "[Client] Load Client Data";
 export const LOAD_CLIENT_DATA_FAIL = "[Client] Load Client Data Fail";
@@ -21,7 +22,16 @@ export class LoadClientDataSuccess implements Action {
   constructor(public payload: Client) {}
 }
 
+// SET CATEGORIES
+export const SET_ACTIVE_CATEGORIES = "[Client] Set Active Categories";
+
+export class SetActiveCategories implements Action {
+  readonly type = SET_ACTIVE_CATEGORIES;
+  constructor(public payload: MaintenanceCategory[]) {}
+}
+
 export type ClientActions =
   | LoadClientData
   | LoadClientDataFail
-  | LoadClientDataSuccess;
+  | LoadClientDataSuccess
+  | SetActiveCategories;

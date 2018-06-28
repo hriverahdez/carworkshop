@@ -48,20 +48,16 @@ export class ClientsEffects {
     )
   );
 
-  //   @Effect()
-  //   updateBrand$ = this.actions$
-  //     .ofType(fromBrands.UPDATE_BRAND)
-  //     .pipe(
-  //       map((action: fromBrands.UpdateBrand) => action.payload),
-  //       switchMap((brand: Brand) =>
-  //         this.brandsService
-  //           .updateAsFormData(brand)
-  //           .pipe(
-  //             map(brand => new fromBrands.UpdateBrandSuccess(brand)),
-  //             catchError(error => of(new fromBrands.UpdateBrandFail(error)))
-  //           )
-  //       )
-  //     );
+  @Effect()
+  updateClient$ = this.actions$.ofType(fromClients.UPDATE_CLIENT).pipe(
+    map((action: fromClients.UpdateClient) => action.payload),
+    switchMap((client: Client) =>
+      this.clientsService.update(client).pipe(
+        map(client => new fromClients.UpdateClientSuccess(client)),
+        catchError(error => of(new fromClients.UpdateClientFail(error)))
+      )
+    )
+  );
 
   @Effect()
   deleteBrand$ = this.actions$.ofType(fromClients.DELETE_CLIENT).pipe(
@@ -80,12 +76,27 @@ export class ClientsEffects {
     .pipe(map(() => new fromRoot.Go({ path: ["/mechanic"] })));
 
   @Effect()
-  showLoader$ = this.actions$
-    .ofType(fromClients.LOAD_CLIENTS)
-    .pipe(map(() => new fromRoot.DisplayProgressBar()));
+  showFullscreenLoader$ = this.actions$
+    .ofType(fromClients.ADD_CLIENT, fromClients.UPDATE_CLIENT)
+    .pipe(map(() => new fromRoot.ShowFullscreenLoader()));
 
   @Effect()
-  hideLoader$ = this.actions$
+  hideFullscreenLoader$ = this.actions$
+    .ofType(
+      fromClients.ADD_CLIENT_SUCCESS,
+      fromClients.ADD_CLIENT_FAIL,
+      fromClients.UPDATE_CLIENT_SUCCESS,
+      fromClients.UPDATE_CLIENT_FAIL
+    )
+    .pipe(map(() => new fromRoot.HideFullscreenLoader()));
+
+  @Effect()
+  showLoadingBox$ = this.actions$
+    .ofType(fromClients.LOAD_CLIENTS)
+    .pipe(map(() => new fromRoot.ShowLoadingBox()));
+
+  @Effect()
+  hideLoadingBox$ = this.actions$
     .ofType(fromClients.LOAD_CLIENTS_SUCCESS, fromClients.LOAD_CLIENTS_FAIL)
-    .pipe(map(() => new fromRoot.HideProgressBar()));
+    .pipe(map(() => new fromRoot.HideLoadingBox()));
 }

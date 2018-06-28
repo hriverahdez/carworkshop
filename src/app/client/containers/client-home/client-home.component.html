@@ -16,7 +16,8 @@
         </cws-tab>        
         <cws-tab [title]="'Próximos Mantenimientos'" [icon]="'fui-calendar'">
           
-          <cws-next-maintenances></cws-next-maintenances>
+          <cws-next-maintenances 
+            [maintenances]="maintenances$ | async" ></cws-next-maintenances>
 
         </cws-tab>
         <cws-tab [title]="'Historial'" [icon]="'fui-folder'"> 
@@ -26,7 +27,8 @@
         </cws-tab>
         <cws-tab [title]="'Recomendaciones'" [icon]="'fui-heart'">
           
-          <cws-maintenance-recommends></cws-maintenance-recommends>
+          <cws-maintenance-recommends
+            [maintenanceCategories]="maintenanceCategories$ | async"></cws-maintenance-recommends>
 
         </cws-tab>
       </cws-tabs>

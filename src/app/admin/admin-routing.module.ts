@@ -73,7 +73,15 @@ const ROUTES: Routes = [
         component: MaintenanceItemComponent,
         canActivate: [MaintenanceCategoriesExistGuard],
         data: {
-          breadcrumb: "Mantenimiento"
+          breadcrumb: "Agregar Mantenimiento"
+        }
+      },
+      {
+        path: "editMaintenance/:maintenanceId",
+        component: MaintenanceItemComponent,
+        canActivate: [MaintenanceCategoriesExistGuard],
+        data: {
+          breadcrumb: "Editar Mantenimiento"
         }
       }
     ]
@@ -88,6 +96,7 @@ const ROUTES: Routes = [
   {
     path: "client/:clientId",
     component: ClientItemComponent,
+    canActivate: [ClientExistsGuard],
     data: {
       breadcrumb: "Editar Cliente"
     }

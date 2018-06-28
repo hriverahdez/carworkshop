@@ -23,7 +23,7 @@
                 [clients]="clients$ | async"
                 (onDeleteRequest)="deleteClient($event)"></cws-client-table-view>
 
-            <cws-loader *ngIf="isLoading$ | async"></cws-loader>
+            <cws-loading-box *ngIf="isLoading$ | async"></cws-loading-box>
         </div>
     </div>
 </div>

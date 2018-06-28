@@ -1,18 +1,21 @@
 import * as fromClient from "../actions/client.actions";
 import { Client } from "../../../admin/models/client.model";
+import { MaintenanceCategory } from "../../../admin/models/maintenance-category.model";
 
 export interface State {
   client: Client;
   loaded: boolean;
   loading: boolean;
   error: any;
+  activeCategories: MaintenanceCategory[];
 }
 
 export const initialState: State = {
   client: {},
   loaded: false,
   loading: false,
-  error: {}
+  error: {},
+  activeCategories: []
 };
 
 export function reducer(
@@ -46,6 +49,12 @@ export function reducer(
       };
     }
 
+    case fromClient.SET_ACTIVE_CATEGORIES: {
+      const activeCategories = action.payload;
+
+      return { ...state, activeCategories };
+    }
+
     default: {
       return state;
     }
@@ -54,3 +63,4 @@ export function reducer(
 
 export const selectClient = (state: State) => state.client;
 export const selectClientLoaded = (state: State) => state.client;
+export const selectActiveCategories = (state: State) => state.activeCategories;

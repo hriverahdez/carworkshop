@@ -26,6 +26,7 @@ export class ClientFormComponent implements OnInit, OnChanges {
   submitted = false;
   @Input() client: Client;
   @Output() onCreate = new EventEmitter<Client>();
+  @Output() onUpdate = new EventEmitter<Client>();
 
   clientForm: FormGroup = this.toFormGroup();
   isEdit: boolean = false;
@@ -38,18 +39,37 @@ export class ClientFormComponent implements OnInit, OnChanges {
     if (this.client) {
       this.isEdit = true;
       this.clientForm.patchValue(this.client);
+      this.clearPassValidation();
     }
+  }
+
+  clearPassValidation() {
+    const passGroup = this.clientForm.get("passwordGroup") as FormGroup;
+    passGroup.clearValidators();
+    passGroup.get("password").clearValidators();
+    passGroup.get("passwordRepeat").clearValidators();
   }
 
   save(form: FormGroup) {
     const { valid, value } = form;
     if (valid) {
       if (!this.isEdit) {
-        const client = !this.isCompany ? this.clearCompanyFields(value) : value;
+        const newClient = !this.isCompany
+          ? this.clearCompanyFields(value)
+          : value;
         this.submitted = true;
         this.onCreate.emit({
-          ...client,
+          ...newClient,
           password: value.passwordGroup.password
+        });
+      } else {
+        const updatedClient = !this.isCompany
+          ? this.clearCompanyFields(value)
+          : value;
+        this.submitted = true;
+        this.onUpdate.emit({
+          id: this.client.id,
+          ...updatedClient
         });
       }
     }

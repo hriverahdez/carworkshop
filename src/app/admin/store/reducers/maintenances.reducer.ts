@@ -29,6 +29,8 @@ export function reducer(
   action: fromMaintenances.MaintenanceActions
 ) {
   switch (action.type) {
+    case fromMaintenances.DELETE_MAINTENANCE_FAIL:
+    case fromMaintenances.UPDATE_MAINTENANCE_FAIL:
     case fromMaintenances.ADD_MAINTENANCE_FAIL:
     case fromMaintenances.LOAD_MAINTENANCE_CATEGORIES_FAIL:
     case fromMaintenances.LOAD_CLIENT_MAINTENANCES_FAIL: {
@@ -41,6 +43,8 @@ export function reducer(
     }
 
     // case fromMaintenances.LOAD_MAINTENANCE_CATEGORIES:
+    case fromMaintenances.DELETE_MAINTENANCE:
+    case fromMaintenances.UPDATE_MAINTENANCE:
     case fromMaintenances.ADD_MAINTENANCE:
     case fromMaintenances.LOAD_CLIENT_MAINTENANCES: {
       return {
@@ -51,7 +55,8 @@ export function reducer(
 
     case fromMaintenances.LOAD_CLIENT_MAINTENANCES_SUCCESS: {
       const maintenances = action.payload;
-      return adapter.addAll(maintenances, { ...state, loading: false });
+
+      return adapter.addMany(maintenances, { ...state, loading: false });
     }
 
     case fromMaintenances.LOAD_MAINTENANCE_CATEGORIES_SUCCESS: {
@@ -62,6 +67,19 @@ export function reducer(
     case fromMaintenances.ADD_MAINTENANCE_SUCCESS: {
       const newMaintenance = action.payload;
       return adapter.addOne(newMaintenance, { ...state, loading: false });
+    }
+
+    case fromMaintenances.UPDATE_MAINTENANCE_SUCCESS: {
+      const updatedMaintenance = action.payload;
+      return adapter.updateOne(
+        { id: updatedMaintenance.id, changes: updatedMaintenance },
+        { ...state, loading: false }
+      );
+    }
+
+    case fromMaintenances.DELETE_MAINTENANCE_SUCCESS: {
+      const deletedMaintenance = action.payload;
+      return adapter.removeOne(deletedMaintenance.id, state);
     }
 
     default: {
