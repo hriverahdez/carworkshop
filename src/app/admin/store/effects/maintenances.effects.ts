@@ -48,16 +48,36 @@ export class MaintenancesEffects {
       )
     );
 
-  //   @Effect()
-  //   addClient$ = this.actions$.ofType(fromMaintenance.ADD_CLIENT).pipe(
-  //     map((action: fromMaintenance.AddClient) => action.payload),
-  //     switchMap(client =>
-  //       this.clientsService.add(client).pipe(
-  //         map(newClient => new fromMaintenance.AddClientSuccess(newClient)),
-  //         catchError(error => of(new fromMaintenance.AddClientFail(error)))
-  //       )
-  //     )
-  //   );
+  @Effect()
+  loadCategories$ = this.actions$
+    .ofType(fromMaintenance.LOAD_MAINTENANCE_CATEGORIES)
+    .pipe(
+      switchMap(() =>
+        this.maintenancesService.getAllCategories().pipe(
+          map(
+            categories =>
+              new fromMaintenance.LoadMaintenanceCategoriesSuccess(categories)
+          ),
+          catchError(error =>
+            of(new fromMaintenance.LoadMaintenanceCategoriesFail(error))
+          )
+        )
+      )
+    );
+
+  @Effect()
+  addMaintenance$ = this.actions$.ofType(fromMaintenance.ADD_MAINTENANCE).pipe(
+    map((action: fromMaintenance.AddMaintenance) => action.payload),
+    switchMap(maintenance =>
+      this.maintenancesService.add(maintenance).pipe(
+        map(
+          newMaintenance =>
+            new fromMaintenance.AddMaintenanceSuccess(newMaintenance)
+        ),
+        catchError(error => of(new fromMaintenance.AddMaintenanceFail(error)))
+      )
+    )
+  );
 
   //   @Effect()
   //   updateBrand$ = this.actions$
@@ -85,10 +105,10 @@ export class MaintenancesEffects {
   //     )
   //   );
 
-  //   @Effect()
-  //   handleSuccess$ = this.actions$
-  //     .ofType(fromMaintenance.ADD_CLIENT_SUCCESS)
-  //     .pipe(map(() => new fromRoot.Go({ path: ["/mechanic"] })));
+  @Effect()
+  handleSuccess$ = this.actions$
+    .ofType(fromMaintenance.ADD_MAINTENANCE_SUCCESS)
+    .pipe(map(() => new fromRoot.Back()));
 
   @Effect()
   showLoader$ = this.actions$

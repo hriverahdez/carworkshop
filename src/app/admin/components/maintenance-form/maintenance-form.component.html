@@ -1,0 +1,45 @@
+<h4>Información del Mantenimiento</h4>
+<hr>
+<div class="row">
+    <div class="form" [formGroup]="maintenanceForm">
+        <div class="form-row col-md-5">
+            <!-- <label for="">
+                <strong>Cliente</strong>
+            </label>
+            <select class="form-control" name="">
+                <option value="1">Cliente 1</option>
+                <option value="2">Cliente 2</option>
+            </select> --> 
+            
+            <cws-maintenance-category-selector 
+                formControlName="category"
+                [showDefault]="false"
+                [hasLabel]="true" [label]="'Categoría del Servicio'"
+                [categories]="maintenanceCategories"></cws-maintenance-category-selector>
+        </div>
+        <div class="form-row col-md-4">
+            <label for="">
+                <strong>Kilometraje</strong>
+            </label>
+            <input type="text" class="form-control" placeholder="10000"
+                name="mileage" formControlName="mileage">
+        </div>
+        <div class="form-row col-md-3">            
+            <label for=""><strong>Fecha</strong></label>
+            <div class="input-group">
+                <span class="input-group-addon" (click)="d.toggle()">
+                    <span class="fui-calendar"></span>                        
+                </span>
+                <input class="form-control" placeholder="yyyy-mm-dd"
+                    name="date" formControlName="date" ngbDatepicker #d="ngbDatepicker">
+            </div>
+            <!-- {{ convertDate(maintenanceForm.get('date').value) | date:'long' }} -->
+        </div>
+    </div>
+</div>
+<hr>
+<button class="btn btn-primary" 
+    [disabled]="formInvalid || !maintenanceForm.valid"
+    (click)="save(maintenanceForm)">
+    Guardar
+</button>

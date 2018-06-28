@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <cws-maintenance-form 
+                [carId]="carId" 
+                [maintenanceCategories]="maintenanceCategories$ | async"
+                (onCreate)="create($event)"></cws-maintenance-form>
+
+        </div>
+    </div>
+</div>
