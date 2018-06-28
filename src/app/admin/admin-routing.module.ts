@@ -5,10 +5,11 @@ import {
   ClientListComponent,
   ClientDetailsComponent,
   ClientItemComponent,
-  DashboardComponent
+  DashboardComponent,
+  MaintenanceItemComponent
 } from "./containers";
 
-import { ClientExistsGuard } from "./guards";
+import { ClientExistsGuard, MaintenanceCategoriesExistGuard } from "./guards";
 
 // const ROUTES: Routes = [
 //   {
@@ -62,9 +63,17 @@ const ROUTES: Routes = [
       {
         path: "details/:clientId",
         component: ClientDetailsComponent,
-        canActivate: [ClientExistsGuard],
+        canActivate: [ClientExistsGuard, MaintenanceCategoriesExistGuard],
         data: {
           breadcrumb: "Detalles"
+        }
+      },
+      {
+        path: "addMaintenance/:carId",
+        component: MaintenanceItemComponent,
+        canActivate: [MaintenanceCategoriesExistGuard],
+        data: {
+          breadcrumb: "Mantenimiento"
         }
       }
     ]

@@ -8,9 +8,6 @@ import { ReactiveFormsModule } from "@angular/forms";
 // CONFIG
 import { environment } from "../../environments/environment";
 
-// BOOTSTRAP
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-
 // STORE
 import { reducers, effects, CustomSerializer } from "./store";
 import { StoreModule } from "@ngrx/store";
@@ -46,8 +43,6 @@ import * as fromGuards from "./guards";
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
-    NgbModule.forRoot(),
 
     AppRoutingModule,
     StoreModule.forRoot(reducers),

@@ -49,7 +49,7 @@ export class ClientFormComponent implements OnInit, OnChanges {
         this.submitted = true;
         this.onCreate.emit({
           ...client,
-          contrasenna: value.passwordGroup.contrasenna
+          password: value.passwordGroup.password
         });
       }
     }

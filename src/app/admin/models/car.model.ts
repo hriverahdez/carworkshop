@@ -1,3 +1,5 @@
+import { Maintenance } from "./maintenance.model";
+
 export interface Car {
   id?: number;
   plateNumber?: string;
@@ -46,4 +48,5 @@ export interface Car {
   observationsIsVisible?: boolean;
   created_at?: string;
   updated_at?: string;
+  maintenances?: Maintenance[];
 }

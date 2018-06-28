@@ -11,6 +11,7 @@ import { Observable } from "rxjs";
 })
 export class ClientsViewSelectorComponent implements OnInit {
   currentViewType$: Observable<ClientsViewTypes>;
+  viewTypes = ClientsViewTypes;
 
   constructor(private uiStore: Store<fromRoot.AppState>) {}
 

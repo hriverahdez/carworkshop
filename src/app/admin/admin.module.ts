@@ -25,7 +25,9 @@ import * as fromServices from "./services";
 
 // guards
 import * as fromGuards from "./guards";
-import { ClientResolver } from "./shared/client.resolver";
+
+// BOOTSTRAP
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   imports: [
@@ -35,11 +37,13 @@ import { ClientResolver } from "./shared/client.resolver";
     SharedModule,
     ThemeModule,
     ClientModule,
+    NgbModule.forRoot(),
 
     StoreModule.forFeature("adminState", reducers),
     EffectsModule.forFeature(effects)
   ],
   declarations: [...fromContainers.containers, ...fromComponents.components],
-  providers: [...fromServices.services, ...fromGuards.guards, ClientResolver]
+  providers: [...fromServices.services, ...fromGuards.guards],
+  entryComponents: [fromContainers.MaintenanceItemComponent]
 })
 export class AdminModule {}

@@ -70,6 +70,7 @@ const ROUTES: Routes = [
   imports: [
     RouterModule.forRoot(ROUTES, {
       enableTracing: false,
+      useHash: true,
       preloadingStrategy: PreloadAllModules
     })
   ],
