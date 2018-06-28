@@ -12,3 +12,10 @@ export const selectClientData = createSelector(
   getState,
   fromClient.selectClient
 );
+
+export const selectClientMaintenances = createSelector(
+  selectClientData,
+  client => {
+    return client && client.car ? client.car.maintenances : [];
+  }
+);

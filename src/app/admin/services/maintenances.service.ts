@@ -5,11 +5,20 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
 import { catchError } from "rxjs/operators";
+import { MaintenanceCategory } from "../models/maintenance-category.model";
 
 @Injectable()
 export class MaintenancesService extends AbstractDataService<Maintenance> {
   constructor(public http: HttpClient) {
     super(http, "maintenances");
+  }
+
+  getAllCategories() {
+    return this.http
+      .get<MaintenanceCategory[]>(
+        `${environment.apiURL}/maintenances/categories`
+      )
+      .pipe(catchError(error => Observable.throw(error)));
   }
 
   getByClientId(id: string | number): Observable<Maintenance[]> {

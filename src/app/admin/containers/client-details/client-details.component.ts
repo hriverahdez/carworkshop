@@ -4,6 +4,7 @@ import { Client } from "../../models/client.model";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store";
 import { MaintenanceCategory } from "../../models/maintenance-category.model";
+import { Maintenance } from "../../models/maintenance.model";
 
 @Component({
   selector: "cws-client-details",
@@ -13,6 +14,7 @@ import { MaintenanceCategory } from "../../models/maintenance-category.model";
 export class ClientDetailsComponent implements OnInit {
   client$: Observable<Client>;
   maintenanceHistory$: Observable<MaintenanceCategory[]>;
+  maintenanceCategories$: Observable<Maintenance[]>;
 
   constructor(private store: Store<fromStore.AdminState>) {}
 
@@ -20,6 +22,10 @@ export class ClientDetailsComponent implements OnInit {
     this.client$ = this.store.select(fromStore.selectCurrentClient);
     this.maintenanceHistory$ = this.store.select(
       fromStore.selectAllMaintenances
+    );
+
+    this.maintenanceCategories$ = this.store.select(
+      fromStore.selectMaintenanceCategories
     );
     this.store.dispatch(new fromStore.LoadClientMaintenances(this.client$));
   }

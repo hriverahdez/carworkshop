@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
 
 import { ClientRoutingModule } from "./client-routing.module";
 
@@ -21,7 +20,6 @@ import * as fromComponents from "./components";
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     ClientRoutingModule,
     ThemeModule,
     StoreModule.forFeature("client", reducers),

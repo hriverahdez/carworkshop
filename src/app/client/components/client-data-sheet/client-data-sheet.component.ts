@@ -15,13 +15,7 @@ export class ClientDataSheetComponent implements OnInit {
   ngOnInit() {}
 
   fieldIsVisible(fieldName: string) {
-    if (this.car) return true;
-    // console.log("Car::", this.car);
-    // console.log("Field:", fieldName);
-    // console.log("On car:", this.car["fieldName"]);
-    // if (this.userIsAdmin) return true;
-    // return (
-    //   this.car && this.car["fieldName"] && this.car[`${fieldName}IsVisible`]
-    // );
+    if (this.userIsAdmin) return true;
+    return this.car && this.car[fieldName] && this.car[`${fieldName}IsVisible`];
   }
 }

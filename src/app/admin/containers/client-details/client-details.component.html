@@ -33,22 +33,24 @@
           <cws-tabs>
             <cws-tab [title]="'Ficha Técnica'" [icon]="'fui-document'" [active]="true">
               
-              <cws-client-data-sheet [car]="(client$ | async).car"></cws-client-data-sheet>
+              <cws-client-data-sheet [car]="(client$ | async).car" [userIsAdmin]="true"></cws-client-data-sheet>
             
             </cws-tab>        
             <cws-tab [title]="'Próximos Mantenimientos'" [icon]="'fui-calendar'">
               
-              <cws-next-maintenances></cws-next-maintenances>
+              <cws-next-maintenances [userIsAdmin]="true" [car]="(client$ | async).car"></cws-next-maintenances>
     
             </cws-tab>
             <cws-tab [title]="'Historial'" [icon]="'fui-folder'"> 
               
-              <cws-maintenance-history [maintenanceHistory]="maintenanceHistory$ | async"></cws-maintenance-history>
+              <cws-maintenance-history
+                [maintenanceCategories]="maintenanceCategories$ | async"
+                [maintenanceHistory]="maintenanceHistory$ | async"></cws-maintenance-history>
     
             </cws-tab>
             <cws-tab [title]="'Recomendaciones'" [icon]="'fui-heart'">
               
-              <cws-maintenance-recommends></cws-maintenance-recommends>
+              <cws-maintenance-recommends [maintenanceCategories]="maintenanceCategories$ | async"></cws-maintenance-recommends>
     
             </cws-tab>
           </cws-tabs>
