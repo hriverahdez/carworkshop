@@ -115,7 +115,10 @@ export class MaintenancesEffects {
 
   @Effect()
   handleSuccess$ = this.actions$
-    .ofType(fromMaintenance.ADD_MAINTENANCE_SUCCESS)
+    .ofType(
+      fromMaintenance.ADD_MAINTENANCE_SUCCESS,
+      fromMaintenance.UPDATE_MAINTENANCE_SUCCESS
+    )
     .pipe(map(() => new fromRoot.Back()));
 
   @Effect()

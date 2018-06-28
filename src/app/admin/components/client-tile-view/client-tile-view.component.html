@@ -1,7 +1,8 @@
 <div class="row demo-tiles" [hidden]="!active">
     
     <div class="col-sm-3" *ngFor="let client of clients">
-        <a [routerLink]="['./details', client.id]">
+        <!-- <a [routerLink]="['./details', client.id]"> -->
+        <a (click)="checkClient(client)">
             <div class="tile">
 
                 <!-- <img src="assets/img/tile/ribbon.png" alt="Compas" class="tile-hot-ribbon"> -->

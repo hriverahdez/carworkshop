@@ -6,7 +6,8 @@
                 [maintenance]="maintenance$ | async"
                 [carId]="carId" 
                 [maintenanceCategories]="maintenanceCategories$ | async"
-                (onCreate)="create($event)"></cws-maintenance-form>
+                (onCreate)="create($event)"
+                (onUpdate)="update($event)"></cws-maintenance-form>
 
         </div>
     </div>

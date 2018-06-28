@@ -66,7 +66,6 @@ export class UpdateClientSuccess implements Action {
 }
 
 // DELETE
-
 export const DELETE_CLIENT = "[Admin] Delete Client";
 export const DELETE_CLIENT_FAIL = "[Admin] Delete Client Fail";
 export const DELETE_CLIENT_SUCCESS = "[Admin] Delete Client Success";
@@ -86,6 +85,14 @@ export class DeleteClientSuccess implements Action {
   constructor(public payload: Client) {}
 }
 
+// SET ACTIVE CLIENT
+export const SET_ACTIVE_CLIENT = "[Admin] Set Active Client";
+
+export class SetActiveClient implements Action {
+  readonly type = SET_ACTIVE_CLIENT;
+  constructor(public payload: Client) {}
+}
+
 export type ClientActions =
   | LoadClients
   | LoadClientsFail
@@ -98,4 +105,5 @@ export type ClientActions =
   | UpdateClientSuccess
   | DeleteClient
   | DeleteClientFail
-  | DeleteClientSuccess;
+  | DeleteClientSuccess
+  | SetActiveClient;

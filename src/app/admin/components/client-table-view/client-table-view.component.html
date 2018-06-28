@@ -11,7 +11,8 @@
     <tbody>
         <tr *ngFor="let client of clients">
             <td>
-                <a [routerLink]="['./details', client.id]">
+                <!-- <a [routerLink]="['./details', client.id]"> -->
+                <a (click)="checkClient(client)">
                     <strong>{{ isCompany(client) ? client.companyName : fullname(client) }}</strong>
                 </a>
             </td>

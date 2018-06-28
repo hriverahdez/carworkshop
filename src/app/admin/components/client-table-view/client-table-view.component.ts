@@ -9,6 +9,7 @@ import { Client, ClientType } from "../../models/client.model";
 export class ClientTableViewComponent implements OnInit {
   @Input() active: boolean;
   @Input() clients: Client[];
+  @Output() onCheckClient = new EventEmitter<Client>();
   @Output() onDeleteRequest = new EventEmitter<Client>();
 
   constructor() {}
@@ -25,5 +26,9 @@ export class ClientTableViewComponent implements OnInit {
 
   requestDelete(client: Client) {
     this.onDeleteRequest.emit(client);
+  }
+
+  checkClient(client) {
+    this.onCheckClient.emit(client);
   }
 }

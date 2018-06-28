@@ -1,11 +1,11 @@
 export const MOCK_DATA = [
   {
     id: 1,
-    date: "2018-06-28T04:33:27.000Z",
+    date: "2018-06-27T04:33:27.000Z",
     mileage: "10000",
     car_id: 1,
     maintenance_category_id: 1,
-    created_at: "2018-06-28T14:21:27.000Z",
+    created_at: "2018-06-29T14:21:27.000Z",
     updated_at: "2018-06-27 16:33:27",
     category: {
       id: 1,
@@ -20,7 +20,7 @@ export const MOCK_DATA = [
   },
   {
     id: 2,
-    date: "2018-06-27T04:33:27.000Z",
+    date: "2018-06-27T04:18:27.000Z",
     mileage: "20000",
     car_id: 1,
     maintenance_category_id: 1,

@@ -28,8 +28,8 @@ export class NextMaintenancesComponent implements OnInit, OnChanges {
   ngOnInit() {}
 
   ngOnChanges(changes): void {
-    // this.mHelper.initData(this.maintenances);
-    this.mHelper.initData(MOCK_DATA);
+    this.mHelper.initData(this.maintenances);
+    // this.mHelper.initData(MOCK_DATA);
 
     this.nextMaintenances = this.mHelper.getNextMaintenancesByDate();
     // this.nextMaintenances = this.mHelper.getNextMaintenancesByMileage();
@@ -38,11 +38,12 @@ export class NextMaintenancesComponent implements OnInit, OnChanges {
   timeLapse(maintenance: Maintenance) {
     const maintenanceDate = new Date(maintenance.date);
     const differenceUTC = maintenanceDate.valueOf() - Date.now();
+    // console.log("M - CALC:", maintenance);
     // console.log("CALC:", differenceUTC / 86400000);
-    const delta = Math.round(differenceUTC / 86400000);
+    const delta = Math.ceil(differenceUTC / 86400000);
 
     return delta >= 365 || delta <= -365
-      ? this.differenceYears(Math.round(delta / 365))
+      ? this.differenceYears(Math.ceil(delta / 365))
       : this.differenceInDays(delta);
   }
 

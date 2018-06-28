@@ -43,6 +43,11 @@ export const selectCurrentClient = createSelector(
   }
 );
 
+export const selectActiveClient = createSelector(
+  getClientsState,
+  fromClient.selectActiveClient
+);
+
 export const selectCurrentClientName = createSelector(
   selectClientEntities,
   fromRoot.getRouterState,

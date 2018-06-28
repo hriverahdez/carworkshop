@@ -34,6 +34,13 @@ export class ClientListComponent implements OnInit, OnDestroy {
     this.store.dispatch(new fromStore.LoadMaintenanceCategories());
   }
 
+  checkClient(client) {
+    this.store.dispatch(new fromStore.SetActiveClient(client));
+    this.uiStore.dispatch(
+      new fromRoot.Go({ path: ["/app/admin/details", client.id] })
+    );
+  }
+
   deleteClient(client: Client) {
     const supportMessage = `
         ${client.firstName} ${client.lastName} 

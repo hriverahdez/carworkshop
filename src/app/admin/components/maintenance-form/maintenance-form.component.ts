@@ -32,6 +32,7 @@ export class MaintenanceFormComponent implements OnInit, OnChanges {
   @Input() carId: string | number;
 
   @Output() onCreate = new EventEmitter<Maintenance>();
+  @Output() onUpdate = new EventEmitter<Maintenance>();
 
   maintenanceForm: FormGroup;
 
@@ -46,11 +47,10 @@ export class MaintenanceFormComponent implements OnInit, OnChanges {
     this.maintenanceForm = this.toFormGroup();
     if (this.maintenance) {
       this.isEdit = true;
-      //   console.log("RECV M::", this.maintenance);
-      console.log("FORM BEF::", this.maintenanceForm);
+      //   console.log("FORM BEF::", this.maintenanceForm);
       this.maintenanceForm.patchValue(this.maintenance);
       this.patchDate();
-      console.log("FORM AFT::", this.maintenanceForm);
+      //   console.log("FORM AFT::", this.maintenanceForm);
     }
   }
 
@@ -81,18 +81,24 @@ export class MaintenanceFormComponent implements OnInit, OnChanges {
 
   save(form: FormGroup) {
     const { valid, value } = form;
-    console.log(form);
+    // console.log(form);
 
     if (valid) {
       if (!this.isEdit) {
-        // this.onCreate.emit({
-        //   ...value,
-        //   date: this.convertDate(value.date),
-        //   categoryId: value.category.id
-        // });
-        console.log("VALUE ADD::", value);
+        this.onCreate.emit({
+          ...value,
+          date: this.convertDate(value.date),
+          categoryId: value.category.id
+        });
+        // console.log("VALUE ADD::", value);
       } else {
-        console.log("VALUE EDI::", value);
+        // console.log("VALUE EDI::", value);
+        this.onUpdate.emit({
+          id: this.maintenance.id,
+          ...value,
+          date: this.convertDate(value.date),
+          categoryId: value.category.id
+        });
       }
     }
   }
