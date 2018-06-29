@@ -43,7 +43,7 @@ export class NextMaintenancesComponent implements OnInit, OnChanges {
     const delta = Math.ceil(differenceUTC / 86400000);
 
     return delta >= 365 || delta <= -365
-      ? this.differenceYears(Math.ceil(delta / 365))
+      ? this.differenceYears(Math.round(delta / 365))
       : this.differenceInDays(delta);
   }
 

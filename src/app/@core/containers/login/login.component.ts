@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
 
   toFormGroup(): FormGroup {
     return this.fb.group({
+      username: [""],
       email: [""],
       password: [""]
     });

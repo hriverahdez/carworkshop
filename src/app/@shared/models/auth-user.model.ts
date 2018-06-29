@@ -7,6 +7,7 @@ export interface Role {
 export interface AuthUser {
   id?: string | number;
   name?: string;
+  username?: string;
   email?: string;
   password?: string;
   role?: Role;
