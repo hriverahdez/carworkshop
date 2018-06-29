@@ -3,8 +3,8 @@
       <h4 class="text-center">Credenciales de Acceso</h4>
       <form [formGroup]="loginForm">
           <div class="form-row">
-              <label for="">Correo Electrónico</label>
-              <input type="text" class="form-control" placeholder="juan@ejemplo.com"
+              <label for="">Usuario</label>
+              <input type="text" class="form-control" placeholder="Correo o matrícula del coche"
                 name="email" formControlName="email">
           </div>
           <div class="form-row">
@@ -13,12 +13,24 @@
                 name="password" formControlName="password">
           </div>
           <div class="form-row mt-xs">
-              <button type="submit" (click)="login(loginForm)" class="btn btn-block btn-lg btn-success">Entrar
+              <button type="submit" (click)="login(loginForm)" 
+                class="btn btn-block btn-lg btn-success"
+                [ngClass]="{ 'position-relative': (authLoading$ | async), 'position-static': !(authLoading$ | async) }"
+                [disabled]="authLoading$ | async">
+                <div id="pb_loader" 
+                    class="show"
+                    [ngClass]="{ 'show-btn-spinner': (authLoading$ | async), 'hide-btn-spinner': !(authLoading$ | async) }">
+                    <svg class="circular" width="48px" height="48px">
+                        <circle class="path-bg" cx="24" cy="24" r="15" fill="none" stroke-width="3" stroke="#eeeeee"/>
+                        <circle class="path" cx="24" cy="24" r="15" fill="none" stroke-width="3" stroke-miterlimit="10" stroke="#2c3e50"/>
+                    </svg>
+                </div>
+                Entrar
               </button>
           </div>
           <div class="form-row text-center">
               <a href="clients.html" class="small text-success">¿Perdiste tu contraseña?</a>
           </div>
         </form>
-  </div>
+  </div>  
 </div>

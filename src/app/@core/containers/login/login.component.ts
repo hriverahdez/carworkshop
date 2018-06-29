@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store";
 import { FormGroup, FormBuilder } from "@angular/forms";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "cws-login",
@@ -9,6 +10,7 @@ import { FormGroup, FormBuilder } from "@angular/forms";
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
+  authLoading$: Observable<boolean>;
   loginForm: FormGroup = this.toFormGroup();
 
   constructor(
@@ -16,7 +18,9 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authLoading$ = this.store.select(fromStore.selectAuthLoading);
+  }
 
   login(form: FormGroup) {
     const { value } = form;

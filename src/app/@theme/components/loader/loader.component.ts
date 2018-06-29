@@ -1,16 +1,16 @@
-import { Component, OnInit, Input, OnDestroy } from "@angular/core";
+import { Component, OnInit, Input, OnDestroy, OnChanges } from "@angular/core";
 
 @Component({
   selector: "cws-loader",
   templateUrl: "./loader.component.html",
   styleUrls: ["./loader.component.css"]
 })
-export class LoaderComponent implements OnInit, OnDestroy {
+export class LoaderComponent implements OnInit, OnChanges {
   defaultMinWidth: 250;
   defaultMinHeight: 250;
 
-  @Input() width;
-  @Input() height;
+  @Input("show") isShown = false;
+  display = "none";
 
   contentBoxStyles = {
     "min-width.px": 250,
@@ -20,12 +20,20 @@ export class LoaderComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit() {
-    document.getElementsByTagName("body")[0].classList.add("cws_block-scroll");
+    // document.getElementsByTagName("body")[0].classList.add("cws_block-scroll");
   }
 
-  ngOnDestroy(): void {
-    document
-      .getElementsByTagName("body")[0]
-      .classList.remove(".cws_block-scroll");
+  ngOnChanges(): void {
+    console.log("HERE:", this.isShown);
+    this.display = this.isShown ? "flex" : "none";
+    if (this.isShown) {
+      document
+        .getElementsByTagName("body")[0]
+        .classList.add("cws_block-scroll");
+    } else {
+      document
+        .getElementsByTagName("body")[0]
+        .classList.remove("cws_block-scroll");
+    }
   }
 }

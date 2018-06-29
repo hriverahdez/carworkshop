@@ -8,23 +8,25 @@ export interface AuthState {
   isLoggedIn: boolean;
   currentUser: AuthUser;
   error: CustomError;
+  loading: boolean;
 }
 
 export const initialState: AuthState = {
   isLoggedIn: false,
   currentUser: {},
-  error: {}
+  error: {},
+  loading: false
 };
 
 export function reducer(state = initialState, action: fromUser.AuthActions) {
   switch (action.type) {
-    // case fromUser.REGISTER:
-    // case fromUser.LOGIN: {
-    //   return {
-    //     ...state,
-    //     loading: true
-    //   };
-    // }
+    case fromUser.REGISTER:
+    case fromUser.LOGIN: {
+      return {
+        ...state,
+        loading: true
+      };
+    }
 
     case fromUser.LOGIN_FAIL: {
       const { status } = action.payload;
@@ -39,6 +41,7 @@ export function reducer(state = initialState, action: fromUser.AuthActions) {
 
       return {
         ...state,
+        loading: false,
         error
       };
     }
@@ -49,7 +52,8 @@ export function reducer(state = initialState, action: fromUser.AuthActions) {
       return {
         ...state,
         isLoggedIn: true,
-        currentUser
+        currentUser,
+        loading: false
       };
     }
 
@@ -77,3 +81,4 @@ export function reducer(state = initialState, action: fromUser.AuthActions) {
 export const isLoggedIn = (state: AuthState) => state.isLoggedIn;
 export const selectCurrentUser = (state: AuthState) => state.currentUser;
 export const selectError = (state: AuthState) => state.error;
+export const selectAuthLoading = (state: AuthState) => state.loading;

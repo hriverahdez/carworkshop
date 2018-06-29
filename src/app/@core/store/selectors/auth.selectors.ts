@@ -17,3 +17,8 @@ export const selectAuthError = createSelector(
   fromRoot.getAuthState,
   fromUser.selectError
 );
+
+export const selectAuthLoading = createSelector(
+  fromRoot.getAuthState,
+  fromUser.selectAuthLoading
+);
