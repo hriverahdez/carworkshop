@@ -31,6 +31,12 @@
             <label for="web">Web</label>
             <input type="text" name="web" formControlName="web" class="form-control" placeholder="www.miempresa.com">
         </div>
+        <div class="form-group col-md-12">
+            <input type="checkbox" name="socialMissionIsVisible" formControlName="socialMissionIsVisible" class="checkbox">
+            <label for="socialMission">Razón Social</label>
+            <textarea name="socialMission" formControlName="socialMission"
+                class="form-control" rows="3"></textarea>
+        </div>     
     </div>
     <div [ngClass]="{ 'mb-4 mt-5': isCompany }">
         <h6 class="text-muted">
@@ -56,8 +62,17 @@
             <input type="checkbox" name="registrationDateIsVisible" 
                 formControlName="registrationDateIsVisible" checked class="checkbox">
             <label for="position">Fecha de Alta</label>
-            <input type="date" name="registrationDate" 
-                formControlName="registrationDate" class="form-control" id="registrationDate" placeholder="">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="fui-calendar"></span>                        
+                </span>
+                <input class="form-control"
+                    placeholder="dd/MM/yyyy"
+                    name="registrationDate" formControlName="registrationDate"
+                    bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }">
+            </div>
+            <!-- <input type="date" name="registrationDate" 
+                formControlName="registrationDate" class="form-control" id="registrationDate" placeholder=""> -->
         </div>
     </div>
     <div class="form-group row">
@@ -73,8 +88,15 @@
         <div class="form-group col-md-6" *ngIf="isEdit">
             <input type="checkbox" name="registrationDateIsVisible" formControlName="registrationDateIsVisible" checked class="checkbox">
             <label for="position">Fecha de Alta</label>
-            <input type="date" name="registrationDate" 
-                formControlName="registrationDate" class="form-control" id="registrationDate" placeholder="">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="fui-calendar"></span>                        
+                </span>
+                <input class="form-control"
+                    placeholder="dd/MM/yyyy"
+                    name="registrationDate" formControlName="registrationDate"
+                    bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }">
+            </div>
         </div>
 
         <div formGroupName="passwordGroup" class="form-group col-md-4"
@@ -119,7 +141,16 @@
         <div class="form-group col-md-4">
             <input type="checkbox" name="birthdayIsVisible" formControlName="birthdayIsVisible" class="checkbox">
             <label for="birthday">Cumpleaños</label>
-            <input type="date" name="birthday" formControlName="birthday" class="form-control" placeholder="">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="fui-calendar"></span>                        
+                </span>
+                <input class="form-control"
+                    placeholder="dd/MM/yyyy"
+                    name="birthday" formControlName="birthday"
+                    bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }">
+            </div>
+            <!-- <input type="date" name="birthday" formControlName="birthday" class="form-control" placeholder=""> -->
         </div>
     </div>
     <div class="form-group row">
@@ -171,6 +202,6 @@
         <input type="button" (click)="save(clientForm)" 
             style="margin-right: 20px"
             [disabled]="!clientForm.valid || submitted" class="btn btn-inverse" value="Guardar">        
-        <a routerLink="./" class="btn btn-default">Cancelar</a>
+        <a routerLink="/app/admin" class="btn btn-default">Cancelar</a>
     </div>
 </form>

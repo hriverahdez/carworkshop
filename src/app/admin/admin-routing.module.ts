@@ -10,6 +10,7 @@ import {
 } from "./containers";
 
 import { ClientExistsGuard, MaintenanceCategoriesExistGuard } from "./guards";
+import { MaintenanceExistsGuard } from "./guards/maintenance-exists.guard";
 
 // const ROUTES: Routes = [
 //   {
@@ -79,7 +80,7 @@ const ROUTES: Routes = [
       {
         path: "editMaintenance/:maintenanceId",
         component: MaintenanceItemComponent,
-        canActivate: [MaintenanceCategoriesExistGuard],
+        canActivate: [MaintenanceCategoriesExistGuard, MaintenanceExistsGuard],
         data: {
           breadcrumb: "Editar Mantenimiento"
         }

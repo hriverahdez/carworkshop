@@ -31,7 +31,7 @@ export class ClientListComponent implements OnInit, OnDestroy {
     this.currentViewType$ = this.uiStore.select(fromRoot.selectClientsViewType);
     this.clients$ = this.store.select(fromStore.selectAllClients);
     this.store.dispatch(new fromStore.LoadClients());
-    this.store.dispatch(new fromStore.LoadMaintenanceCategories());
+    // this.store.dispatch(new fromStore.LoadMaintenanceCategories());
   }
 
   checkClient(client) {

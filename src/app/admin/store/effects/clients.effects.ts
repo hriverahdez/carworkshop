@@ -1,9 +1,17 @@
 import { Injectable } from "@angular/core";
 import { Actions, Effect } from "@ngrx/effects";
-import { ClientsService } from "../../services/clients.service";
 
 import * as fromClients from "../actions/clients.actions";
-import { switchMap, map, catchError } from "rxjs/operators";
+import * as fromMaintenance from "../actions/maintenances.actions";
+import {
+  switchMap,
+  map,
+  catchError,
+  withLatestFrom,
+  take,
+  filter,
+  tap
+} from "rxjs/operators";
 import { of } from "rxjs";
 
 import * as fromRoot from "../../../@core/store";
@@ -12,6 +20,7 @@ import {
   EntityPagination
 } from "../../../@shared/utils/paginated-response.model";
 import { Client } from "../../models/client.model";
+import { ClientsService } from "../../services";
 
 @Injectable()
 export class ClientsEffects {
@@ -72,8 +81,8 @@ export class ClientsEffects {
 
   @Effect()
   handleSuccess$ = this.actions$
-    .ofType(fromClients.ADD_CLIENT_SUCCESS)
-    .pipe(map(() => new fromRoot.Go({ path: ["/mechanic"] })));
+    .ofType(fromClients.ADD_CLIENT_SUCCESS, fromClients.UPDATE_CLIENT_SUCCESS)
+    .pipe(map(() => new fromRoot.Back()));
 
   @Effect()
   showFullscreenLoader$ = this.actions$

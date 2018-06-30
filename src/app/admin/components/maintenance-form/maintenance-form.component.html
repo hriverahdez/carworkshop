@@ -26,30 +26,24 @@
                 name="mileage" formControlName="mileage">
         </div>
         <div class="form-row col-md-3">            
-            <label for=""><strong>Fecha</strong></label>
+            <label for=""><strong>Fecha</strong></label>    
+
             <div class="input-group">
-                <span class="input-group-addon" (click)="d.toggle()">
+                <span class="input-group-addon">
                     <span class="fui-calendar"></span>                        
                 </span>
-                <input class="form-control" placeholder="yyyy-mm-dd" (blur)="d.close()"                    
-                    name="date" formControlName="date" ngbDatepicker [autoClose]="true" #d="ngbDatepicker">
+                <input class="form-control"
+                    placeholder="dd/MM/yyyy"
+                    name="date" formControlName="date"
+                    bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }">
             </div>
         </div>
     </div>
 </div>
-<!-- <div class="form-row col-md-3">            
-        <label for=""><strong>Fecha</strong></label>
-        <div class="input-group">
-            <span class="input-group-addon" (click)="d.toggle()">
-                <span class="fui-calendar"></span>                        
-            </span>
-            <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="test" (blur)="d.close()"                    
-                name="date"  ngbDatepicker [autoClose]="true" #d="ngbDatepicker">
-        </div>
-    </div> -->
+<!-- {{ maintenanceForm.value | json }} -->
 <hr>
 <button class="btn btn-primary" 
-(click)="save(maintenanceForm)">
-Guardar
-<!-- [disabled]="!maintenanceForm.valid" -->
+    (click)="save(maintenanceForm)"
+    [disabled]="!maintenanceForm.valid">
+    Guardar
 </button>

@@ -21,7 +21,34 @@
                             <span class="fui-new"></span>
                         </a>
                     </li> -->
-                    <li ngbDropdown class="dropdown">
+
+
+
+                    <li dropdown class="dropdown">
+                        <a dropdownToggle class="dropdown-toggle" data-toggle="dropdown">{{ currentUser.name }}
+                            <b class="caret"></b>
+                        </a>
+                        <span class="dropdown-arrow"></span>
+                        <ul class="dropdown-menu" *dropdownMenu>
+                            <li *ngIf="isClient">
+                                <a routerLink="./client/profile">
+                                    <span class="fui-user"></span>&nbsp;&nbsp;Mi Perfil
+                                </a>
+                            </li>
+                            <li><a href="index2.html"><span class="fui-gear"></span>&nbsp;&nbsp; Cambiar Contraseña</a></li>
+                            <li>
+                                <a routerLink="/home">View Site</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a (click)="logout()"><span class="fui-exit"></span>&nbsp;&nbsp; Cerrar Sesión</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+                    <!-- <li ngbDropdown class="dropdown">
                         <a ngbDropdownToggle class="dropdown-toggle" data-toggle="dropdown">{{ currentUser.name }}
                             <b class="caret"></b>
                         </a>
@@ -41,7 +68,7 @@
                                 <a (click)="logout()"><span class="fui-exit"></span>&nbsp;&nbsp; Cerrar Sesión</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </nav>

@@ -20,8 +20,19 @@ export class CarFormComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes): void {
     if (this.car) {
-      this.carForm.patchValue(this.car);
+      this.carForm.patchValue(this.patchCarWithCorrectDates(this.car));
     }
+  }
+
+  patchCarWithCorrectDates(car: Car) {
+    const firstRegistration = car.firstRegistration
+      ? new Date(car.firstRegistration)
+      : car.firstRegistration;
+
+    return {
+      ...car,
+      firstRegistration
+    };
   }
 
   toFormGroup(): FormGroup {
@@ -38,7 +49,7 @@ export class CarFormComponent implements OnInit, OnChanges {
       typeIsVisible: [false],
       version: [""],
       versionIsVisible: [false],
-      firstRegistration: [""],
+      firstRegistration: [new Date()],
       firstRegistrationIsVisible: [false],
       vinNumber: [""],
       vinNumberIsVisible: [false],

@@ -14,10 +14,8 @@ import {
   FormBuilder,
   Validators
 } from "@angular/forms";
-import {
-  NgbDateParserFormatter,
-  NgbDateStruct
-} from "@ng-bootstrap/ng-bootstrap";
+
+import { BsLocaleService } from "ngx-bootstrap/datepicker";
 
 @Component({
   selector: "cws-maintenance-form",
@@ -38,33 +36,21 @@ export class MaintenanceFormComponent implements OnInit, OnChanges {
 
   constructor(
     private fb: FormBuilder,
-    private dateFormatter: NgbDateParserFormatter
+    private localeService: BsLocaleService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.localeService.use("es");
+  }
 
   ngOnChanges(changes): void {
     this.maintenanceForm = this.toFormGroup();
     if (this.maintenance) {
       this.isEdit = true;
-      //   console.log("FORM BEF::", this.maintenanceForm);
-      this.maintenanceForm.patchValue(this.maintenance);
-      this.patchDate();
-      //   console.log("FORM AFT::", this.maintenanceForm);
-    }
-  }
-
-  patchDate() {
-    if (Date.parse(this.maintenance.date)) {
-      const date = new Date(this.maintenance.date);
-
-      const value = {
-        year: date.getFullYear(),
-        month: date.getMonth(),
-        day: date.getDate()
-      };
-      this.maintenanceForm.get("date").setValue(value);
-      return value;
+      this.maintenanceForm.patchValue({
+        ...this.maintenance,
+        date: new Date(this.maintenance.date)
+      });
     }
   }
 
@@ -81,13 +67,12 @@ export class MaintenanceFormComponent implements OnInit, OnChanges {
 
   save(form: FormGroup) {
     const { valid, value } = form;
-    // console.log(form);
 
+    // console.log(form);
     if (valid) {
       if (!this.isEdit) {
         this.onCreate.emit({
           ...value,
-          date: this.convertDate(value.date),
           categoryId: value.category.id
         });
         // console.log("VALUE ADD::", value);
@@ -96,24 +81,18 @@ export class MaintenanceFormComponent implements OnInit, OnChanges {
         this.onUpdate.emit({
           id: this.maintenance.id,
           ...value,
-          date: this.convertDate(value.date),
           categoryId: value.category.id
         });
       }
     }
   }
 
-  convertDate(date: { year: number; month: number; day: number }) {
-    const _date = new Date(date.year, date.month, date.day);
-    return _date.toISOString();
-  }
-
   toFormGroup(): FormGroup {
     return this.fb.group({
       carId: [this.carId],
       category: [null, Validators.required],
-      date: [null],
-      mileage: ["", Validators.pattern(/^[0-9]+$/)]
+      date: [null, Validators.required],
+      mileage: ["", [Validators.required, Validators.pattern(/^\d+$/)]]
     });
   }
 }

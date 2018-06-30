@@ -44,6 +44,8 @@ export interface Client {
   positionIsVisible?: boolean;
   web?: string;
   webIsVisible?: boolean;
+  socialMission?: string;
+  socialMissionIsVisible?: boolean;
   car_id?: number;
   car?: Car;
   created_at?: string;

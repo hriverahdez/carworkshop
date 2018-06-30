@@ -8,3 +8,8 @@ a {
 .cws_block-scroll {
     overflow: hidden !important;
 }
+
+/* Ngx-Bootstraps override datepicker color to use theme color */
+.bs-datepicker-head {
+    background-color: #2c3e50 !important;
+}

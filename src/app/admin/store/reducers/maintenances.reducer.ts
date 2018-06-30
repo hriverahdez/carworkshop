@@ -33,6 +33,7 @@ export function reducer(
     case fromMaintenances.UPDATE_MAINTENANCE_FAIL:
     case fromMaintenances.ADD_MAINTENANCE_FAIL:
     case fromMaintenances.LOAD_MAINTENANCE_CATEGORIES_FAIL:
+    case fromMaintenances.LOAD_ALL_MAINTENANCES_FAIL:
     case fromMaintenances.LOAD_CLIENT_MAINTENANCES_FAIL: {
       const error = action.payload;
       return {
@@ -46,11 +47,22 @@ export function reducer(
     case fromMaintenances.DELETE_MAINTENANCE:
     case fromMaintenances.UPDATE_MAINTENANCE:
     case fromMaintenances.ADD_MAINTENANCE:
+    case fromMaintenances.LOAD_ALL_MAINTENANCES:
     case fromMaintenances.LOAD_CLIENT_MAINTENANCES: {
       return {
         ...state,
         loading: true
       };
+    }
+
+    case fromMaintenances.LOAD_ALL_MAINTENANCES_SUCCESS: {
+      const maintenances = action.payload;
+
+      return adapter.addAll(maintenances, {
+        ...state,
+        loaded: true,
+        loading: false
+      });
     }
 
     case fromMaintenances.LOAD_CLIENT_MAINTENANCES_SUCCESS: {

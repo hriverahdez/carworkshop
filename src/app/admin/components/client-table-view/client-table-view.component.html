@@ -22,7 +22,7 @@
             <td>
                 <a [href]="'mailto:' + client.email">{{ client.email }}</a>
             </td>
-            <td>{{ client.registrationDate || '---' }}</td>
+            <td>{{ (client.registrationDate | date:'dd/MM/yyyy') || '---' }}</td>
             <td>
                 <a [routerLink]="['./client', client.id]" class="text-primary">
                     <span class="fui-new"></span>

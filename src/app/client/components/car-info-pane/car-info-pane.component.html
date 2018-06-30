@@ -16,7 +16,7 @@
             <br>{{ fullname }}</p>
         <p class="mt-xsx">
             <strong>Primera matriculación</strong>
-            <br>{{ car?.firstRegistration }}</p>
+            <br>{{ (car?.firstRegistration | date:'dd/MM/yyyy') || '---' }}</p>
         <p class="mt-xsx" *ngIf="car?.category">
             <strong>Categoría</strong>
             <br>{{ car?.category }}</p>

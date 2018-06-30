@@ -38,9 +38,23 @@ export class ClientFormComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (this.client) {
       this.isEdit = true;
-      this.clientForm.patchValue(this.client);
+      this.clientForm.patchValue(this.patchClientWithCorrectDates(this.client));
       this.clearPassValidation();
     }
+  }
+
+  patchClientWithCorrectDates(client: Client) {
+    const birthday = client.birthday
+      ? new Date(client.birthday)
+      : client.birthday;
+    const registrationDate = client.registrationDate
+      ? new Date(client.registrationDate)
+      : client.registrationDate;
+    return {
+      ...client,
+      birthday,
+      registrationDate
+    };
   }
 
   clearPassValidation() {
@@ -99,12 +113,14 @@ export class ClientFormComponent implements OnInit, OnChanges {
       companyNameIsVisible: [false],
       web: [""],
       webIsVisible: [false],
+      socialMission: [""],
+      socialMissionIsVisible: [false],
 
       firstName: ["", Validators.required],
       firstNameIsVisible: [true],
       lastName: ["", Validators.required],
       lastNameIsVisible: [true],
-      registrationDate: [""],
+      registrationDate: [new Date()],
       registrationDateIsVisible: [false],
       email: ["", [Validators.required, Validators.email]],
       emailIsVisible: [false],
