@@ -18,7 +18,12 @@ const NGX_BS_MODULES = [BsDropdownModule, BsDatepickerModule];
 import * as fromComponents from "./components";
 
 @NgModule({
-  imports: [CommonModule, FormsModule, NGX_BS_MODULES.map(m => m.forRoot())],
+  imports: [
+    CommonModule,
+    FormsModule,
+    BsDatepickerModule.forRoot(),
+    BsDropdownModule.forRoot()
+  ],
 
   declarations: [...fromComponents.components],
   exports: [...fromComponents.components, ...NGX_BS_MODULES]
