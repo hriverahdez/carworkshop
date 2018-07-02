@@ -25,7 +25,10 @@ export class CarInfoPaneComponent implements OnInit {
   }
 
   getReport() {
-    this.fdHelper.getFile(`pdf/${this.client.id}`, "Ficha mía.pdf");
+    this.fdHelper.getFile(
+      `maintenancesDatasheet/${this.client.id}`,
+      "Ficha mía.pdf"
+    );
   }
 
   downloadFile(data) {
