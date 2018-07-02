@@ -16,7 +16,7 @@ export class TokenInterceptor implements HttpInterceptor {
   private auth: AuthenticationService;
 
   // Add '*' to exclude all requests
-  private excluded = ["/login"];
+  private excluded = ["/login", "/pdftest"];
 
   constructor(private injector: Injector) {
     this.auth = this.injector.get(AuthenticationService);
@@ -55,7 +55,7 @@ export class TokenInterceptor implements HttpInterceptor {
         }
 
         // Server sends 403 when token is blacklisted
-        if (error.status === 403) {
+        if (error.status === 403 || error.status === 401) {
           this.auth.logOut(true);
         }
 

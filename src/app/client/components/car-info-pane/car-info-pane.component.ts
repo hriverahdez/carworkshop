@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, ElementRef, ViewChild } from "@angular/core";
 import { Car } from "../../../admin/models/car.model";
 import { Client } from "../../../admin/models/client.model";
+import { FileDownloadHelperService } from "../../../@core/services/file-download-helper.service";
 
 @Component({
   selector: "cws-car-info-pane",
@@ -9,8 +10,9 @@ import { Client } from "../../../admin/models/client.model";
 })
 export class CarInfoPaneComponent implements OnInit {
   @Input() client: Client;
+  @ViewChild("downloadZipLink") private downloadZipLink: ElementRef;
 
-  constructor() {}
+  constructor(private fdHelper: FileDownloadHelperService) {}
 
   ngOnInit() {}
 
@@ -20,5 +22,22 @@ export class CarInfoPaneComponent implements OnInit {
 
   get fullname() {
     return `${this.client.firstName} ${this.client.lastName}`;
+  }
+
+  getReport() {
+    this.fdHelper.getFile(`pdf/${this.client.id}`, "Ficha mía.pdf");
+  }
+
+  downloadFile(data) {
+    var blob = new Blob([data], { type: "application/pdf" });
+    var url = window.URL.createObjectURL(blob);
+
+    const link = this.downloadZipLink.nativeElement;
+    link.href = url;
+
+    link.download = "Ficha mía.pdf";
+    link.click();
+
+    window.URL.revokeObjectURL(url);
   }
 }
