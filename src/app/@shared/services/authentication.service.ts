@@ -98,6 +98,20 @@ export class AuthenticationService {
     );
   }
 
+  updateUserInfo(user: AuthUser): Observable<AuthUser> {
+    return this.http
+      .put<AuthUser>(`${environment.apiURL}/user/${user.id}`, user)
+      .pipe(
+        tap(updatedUser => {
+          this.storeUserInfo(updatedUser);
+          //   Redirect if username or password changed
+          //   if ((user as any).logout) {
+          //     this.logOut(true);
+          //   }
+        })
+      );
+  }
+
   // register(user: User): Observable<User> {
   //   let authEncoded = btoa(user.email + ":" + user.password);
   //   let headers: HttpHeaders = new HttpHeaders({

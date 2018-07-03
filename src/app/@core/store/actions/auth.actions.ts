@@ -41,6 +41,26 @@ export class RegisterSuccess implements Action {
   constructor(public payload: AuthUser) {}
 }
 
+// Update Profile
+export const UPDATE_USER_PROFILE = "[Core] Update User Profile";
+export const UPDATE_USER_PROFILE_FAIL = "[Core] Update User Profile Fail";
+export const UPDATE_USER_PROFILE_SUCCESS = "[Core] Update User Profile Success";
+
+export class UpdateUserProfile implements Action {
+  readonly type = UPDATE_USER_PROFILE;
+  constructor(public payload: AuthUser) {}
+}
+
+export class UpdateUserProfileFail implements Action {
+  readonly type = UPDATE_USER_PROFILE_FAIL;
+  constructor(public payload: any) {}
+}
+
+export class UpdateUserProfileSuccess implements Action {
+  readonly type = UPDATE_USER_PROFILE_SUCCESS;
+  constructor(public payload: AuthUser) {}
+}
+
 // Logout
 export const LOGOUT = "[Core] Log out";
 
@@ -64,4 +84,7 @@ export type AuthActions =
   | RegisterFail
   | RegisterSuccess
   | Logout
-  | SetUser;
+  | SetUser
+  | UpdateUserProfile
+  | UpdateUserProfileFail
+  | UpdateUserProfileSuccess;

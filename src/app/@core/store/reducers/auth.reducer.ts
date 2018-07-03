@@ -28,6 +28,7 @@ export function reducer(state = initialState, action: fromUser.AuthActions) {
       };
     }
 
+    case fromUser.UPDATE_USER_PROFILE_FAIL:
     case fromUser.LOGIN_FAIL: {
       const { status } = action.payload;
 
@@ -57,6 +58,7 @@ export function reducer(state = initialState, action: fromUser.AuthActions) {
       };
     }
 
+    case fromUser.UPDATE_USER_PROFILE_SUCCESS:
     case fromUser.SET_USER: {
       const currentUser = action.payload;
       return {

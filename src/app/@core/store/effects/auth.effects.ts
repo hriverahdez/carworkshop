@@ -11,6 +11,7 @@ import * as fromSelectors from "../selectors";
 import * as fromRouter from "../actions/router.actions";
 import * as fromSharedServices from "../../../@shared/services";
 import * as authActions from "../actions/auth.actions";
+import * as uiActions from "../actions/ui.actions";
 import { CustomError } from "../../../@shared/utils/custom-error";
 import { of } from "rxjs";
 
@@ -78,6 +79,39 @@ export class AuthEffects {
   //         );
   //     })
   //   );
+
+  @Effect()
+  updateUserProfile$ = this.actions$
+    .ofType(authActions.UPDATE_USER_PROFILE)
+    .pipe(
+      map((action: authActions.UpdateUserProfile) => action.payload),
+      switchMap(user =>
+        this.authService.updateUserInfo(user).pipe(
+          map(
+            updatedUser => new authActions.UpdateUserProfileSuccess(updatedUser)
+          ),
+          catchError(error => of(new authActions.UpdateUserProfileFail(error)))
+        )
+      )
+    );
+
+  @Effect()
+  showFullscreenLoader$ = this.actions$
+    .ofType(authActions.UPDATE_USER_PROFILE)
+    .pipe(map(() => new uiActions.ShowFullscreenLoader()));
+
+  @Effect()
+  hideFullscreenLoader$ = this.actions$
+    .ofType(
+      authActions.UPDATE_USER_PROFILE_FAIL,
+      authActions.UPDATE_USER_PROFILE_SUCCESS
+    )
+    .pipe(map(() => new uiActions.HideFullscreenLoader()));
+
+  @Effect()
+  returnAfterProfileUpdate$ = this.actions$
+    .ofType(authActions.UPDATE_USER_PROFILE_SUCCESS)
+    .pipe(map(() => new fromRouter.Go({ path: ["/app/admin"] })));
 
   @Effect()
   logout$ = this.actions$.ofType(authActions.LOGOUT).pipe(

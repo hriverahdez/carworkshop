@@ -11,6 +11,7 @@ import {
 
 import { ClientExistsGuard, MaintenanceCategoriesExistGuard } from "./guards";
 import { MaintenanceExistsGuard } from "./guards/maintenance-exists.guard";
+import { AdminProfileComponent } from "./containers/admin-profile/admin-profile.component";
 
 // const ROUTES: Routes = [
 //   {
@@ -100,6 +101,13 @@ const ROUTES: Routes = [
     canActivate: [ClientExistsGuard],
     data: {
       breadcrumb: "Editar Cliente"
+    }
+  },
+  {
+    path: "profile",
+    component: AdminProfileComponent,
+    data: {
+      breadcrumb: "Mi perfil"
     }
   }
 ];

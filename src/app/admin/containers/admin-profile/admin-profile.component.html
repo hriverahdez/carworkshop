@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+                
+               <cws-admin-profile-form 
+                [currentUser]="currentUser$ | async"
+                (savedProfile)="onProfileSaved($event)" ></cws-admin-profile-form>
+
+        </div>
+    </div>
+</div>
