@@ -30,8 +30,31 @@ export class SetActiveCategories implements Action {
   constructor(public payload: MaintenanceCategory[]) {}
 }
 
+// UPDATE PROFILE
+export const UPDATE_PROFILE = "[Client] Update Profile";
+export const UPDATE_PROFILE_FAIL = "[Client] Update Profile Fail";
+export const UPDATE_PROFILE_SUCCESS = "[Client] Update Profile Success";
+
+export class UpdateProfile implements Action {
+  readonly type = UPDATE_PROFILE;
+  constructor(public payload: Client) {}
+}
+
+export class UpdateProfileFail implements Action {
+  readonly type = UPDATE_PROFILE_FAIL;
+  constructor(public payload: any) {}
+}
+
+export class UpdateProfileSuccess implements Action {
+  readonly type = UPDATE_PROFILE_SUCCESS;
+  constructor(public payload: Client) {}
+}
+
 export type ClientActions =
   | LoadClientData
   | LoadClientDataFail
   | LoadClientDataSuccess
-  | SetActiveCategories;
+  | SetActiveCategories
+  | UpdateProfile
+  | UpdateProfileFail
+  | UpdateProfileSuccess;

@@ -23,6 +23,7 @@ export function reducer(
   action: fromClient.ClientActions
 ) {
   switch (action.type) {
+    case fromClient.UPDATE_PROFILE:
     case fromClient.LOAD_CLIENT_DATA: {
       return {
         ...state,
@@ -30,6 +31,7 @@ export function reducer(
       };
     }
 
+    case fromClient.UPDATE_PROFILE_FAIL:
     case fromClient.LOAD_CLIENT_DATA_FAIL: {
       const error = action.payload;
 
@@ -42,6 +44,23 @@ export function reducer(
 
     case fromClient.LOAD_CLIENT_DATA_SUCCESS: {
       const client = action.payload;
+      return {
+        ...state,
+        client,
+        loading: false
+      };
+    }
+
+    case fromClient.UPDATE_PROFILE_SUCCESS: {
+      const updatedClientData = action.payload;
+      const currentClient = state.client;
+      const client: Client = {
+        ...currentClient,
+        firstName: updatedClientData.firstName,
+        lastName: updatedClientData.lastName,
+        email: updatedClientData.email
+      };
+
       return {
         ...state,
         client,

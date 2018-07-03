@@ -1,4 +1,5 @@
 import * as fromUser from "../actions";
+import * as fromClient from "../../../client/store/actions/client.actions";
 import { AuthUser } from "../../../@shared/models/auth-user.model";
 
 import { CustomError } from "../../../@shared/utils/custom-error";
@@ -18,7 +19,10 @@ export const initialState: AuthState = {
   loading: false
 };
 
-export function reducer(state = initialState, action: fromUser.AuthActions) {
+export function reducer(
+  state = initialState,
+  action: fromUser.AuthActions | fromClient.ClientActions
+) {
   switch (action.type) {
     case fromUser.REGISTER:
     case fromUser.LOGIN: {
@@ -73,6 +77,19 @@ export function reducer(state = initialState, action: fromUser.AuthActions) {
         ...state,
         isLoggedIn: false,
         currentUser: {}
+      };
+    }
+
+    case fromClient.UPDATE_PROFILE_SUCCESS: {
+      const updatedClient = action.payload;
+      const currentUser: AuthUser = {
+        ...state.currentUser,
+        email: updatedClient.email,
+        name: `${updatedClient.firstName} ${updatedClient.lastName}`
+      };
+      return {
+        ...state,
+        currentUser
       };
     }
   }

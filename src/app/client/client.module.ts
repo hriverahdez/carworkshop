@@ -16,16 +16,23 @@ import * as fromContainers from "./containers";
 
 // components
 import * as fromComponents from "./components";
+import { ClientProfileFormComponent } from "./components/client-profile-form/client-profile-form.component";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ClientRoutingModule,
     ThemeModule,
     StoreModule.forFeature("clientState", reducers),
     EffectsModule.forFeature(effects)
   ],
-  declarations: [...fromContainers.containers, ...fromComponents.components],
+  declarations: [
+    ...fromContainers.containers,
+    ...fromComponents.components,
+    ClientProfileFormComponent
+  ],
   exports: [...fromComponents.components],
   providers: [ClientsService, MaintenancesHelperService]
 })

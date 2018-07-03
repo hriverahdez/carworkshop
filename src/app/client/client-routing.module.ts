@@ -1,6 +1,10 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { ClientHomeComponent, ProfileComponent } from "./containers";
+import {
+  ClientHomeComponent,
+  ProfileComponent,
+  ClientProfileInfoComponent
+} from "./containers";
 
 const ROUTES: Routes = [
   {
@@ -9,9 +13,16 @@ const ROUTES: Routes = [
   },
   {
     path: "profile",
-    component: ProfileComponent,
+    component: ClientProfileInfoComponent,
     data: {
       breadcrumb: "Perfil"
+    }
+  },
+  {
+    path: "editProfile",
+    component: ProfileComponent,
+    data: {
+      breadcrumb: "Editar Perfil"
     }
   }
 ];

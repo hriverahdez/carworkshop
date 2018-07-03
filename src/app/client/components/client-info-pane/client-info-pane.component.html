@@ -16,6 +16,7 @@
     <p class="mt-xs" *ngIf="!isCompany"><strong>Correo Electrónico</strong><br>{{ client.email || '---' }}</p>
     <p class="mt-xs" *ngIf="isCompany"><strong>Sitio web</strong><br>{{ client.web || '---' }}</p>
     <p class="mt-xsx"><strong>Fecha de Alta</strong><br>{{ (client.registrationDate | date:'dd/MM/yyyy') || '---' }}</p>
-    <a href="profile.html" class="btn btn-inverse mt-xs">Imprimir Perfil</a>
+    <!-- <a href="profile.html" class="btn btn-inverse mt-xs">Imprimir Perfil</a> -->
+    <a routerLink="../editProfile" class="btn btn-inverse mt-xs">Editar mis datos</a>
   </div>
 </div>

@@ -1,0 +1,25 @@
+<div class="container">
+
+    <div class="row mt-sm">
+        <div class="col-sm-3 text-center">
+            <cws-client-info-pane [client]="client$ | async"></cws-client-info-pane>
+        </div>
+        <div class="col-sm-8 col-sm-offset-1">
+
+            <cws-tabs>
+                <cws-tab [title]="'Información'" [icon]="'fui-info-circle'" [active]="true">
+
+                    <cws-profile-main-info-tab [client]="client$ | async"></cws-profile-main-info-tab>
+
+                </cws-tab>
+                <cws-tab [title]="'Contactos'" [icon]="'fui-link'">
+
+                    <cws-profile-additional-info-tab [client]="client$ | async"></cws-profile-additional-info-tab>
+
+                </cws-tab>
+            </cws-tabs>
+
+        </div>
+    </div>
+
+</div>

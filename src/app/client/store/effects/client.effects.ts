@@ -48,4 +48,20 @@ export class ClientEffects {
         return new fromClient.SetActiveCategories(activeCategories);
       })
     );
+
+  @Effect()
+  updateProfile$ = this.actions$.ofType(fromClient.UPDATE_PROFILE).pipe(
+    map((action: fromClient.UpdateProfile) => action.payload),
+    switchMap(client =>
+      this.clientsService.updateClientProfile(client).pipe(
+        map(client => new fromClient.UpdateProfileSuccess(client)),
+        catchError(error => of(new fromClient.UpdateProfileFail(error)))
+      )
+    )
+  );
+
+  @Effect()
+  redirectAfterProfileUpdate$ = this.actions$
+    .ofType(fromClient.UPDATE_PROFILE_SUCCESS)
+    .pipe(map(() => new fromRoot.Go({ path: ["/app/client"] })));
 }
