@@ -1,11 +1,11 @@
 export interface Role {
-  id?: string | number;
+  id?: number;
   name?: string;
   description?: string;
 }
 
 export interface AuthUser {
-  id?: string | number;
+  id?: number;
   name?: string;
   username?: string;
   email?: string;

@@ -38,9 +38,9 @@
                             <li *ngIf="!isClient">
                                 <a routerLink="./admin/profile"><span class="fui-gear"></span>&nbsp;&nbsp; Mi perfil</a>
                             </li>
-                            <!-- <li>
-                                <a routerLink="/home">View Site</a>
-                            </li> -->
+                            <li *ngIf="!isClient">
+                                <a routerLink="./admin/accounts"><span class="fui-user"></span>&nbsp;&nbsp; Cuentas Admin.</a>
+                            </li>
                             <li class="divider"></li>
                             <li>
                                 <a (click)="logout()"><span class="fui-exit"></span>&nbsp;&nbsp; Cerrar Sesión</a>

@@ -28,8 +28,6 @@ import * as fromGuards from "./guards";
 
 // BOOTSTRAP
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { AdminProfileComponent } from './containers/admin-profile/admin-profile.component';
-import { AdminProfileFormComponent } from './components/admin-profile-form/admin-profile-form.component';
 
 @NgModule({
   imports: [
@@ -44,7 +42,7 @@ import { AdminProfileFormComponent } from './components/admin-profile-form/admin
     StoreModule.forFeature("adminState", reducers),
     EffectsModule.forFeature(effects)
   ],
-  declarations: [...fromContainers.containers, ...fromComponents.components, AdminProfileComponent, AdminProfileFormComponent],
+  declarations: [...fromContainers.containers, ...fromComponents.components],
   providers: [...fromServices.services, ...fromGuards.guards],
   entryComponents: [fromContainers.MaintenanceItemComponent]
 })

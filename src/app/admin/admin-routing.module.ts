@@ -12,6 +12,8 @@ import {
 import { ClientExistsGuard, MaintenanceCategoriesExistGuard } from "./guards";
 import { MaintenanceExistsGuard } from "./guards/maintenance-exists.guard";
 import { AdminProfileComponent } from "./containers/admin-profile/admin-profile.component";
+import { AdminListComponent } from "./containers/admin-list/admin-list.component";
+import { AdminItemComponent } from "./containers/admin-item/admin-item.component";
 
 // const ROUTES: Routes = [
 //   {
@@ -108,6 +110,20 @@ const ROUTES: Routes = [
     component: AdminProfileComponent,
     data: {
       breadcrumb: "Mi perfil"
+    }
+  },
+  {
+    path: "accounts",
+    component: AdminListComponent,
+    data: {
+      breadcrumb: "Administradores"
+    }
+  },
+  {
+    path: "addAccount",
+    component: AdminItemComponent,
+    data: {
+      breadcrumb: "Agregar administrador"
     }
   }
 ];

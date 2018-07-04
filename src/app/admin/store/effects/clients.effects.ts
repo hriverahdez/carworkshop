@@ -69,7 +69,7 @@ export class ClientsEffects {
   );
 
   @Effect()
-  deleteBrand$ = this.actions$.ofType(fromClients.DELETE_CLIENT).pipe(
+  deleteClient$ = this.actions$.ofType(fromClients.DELETE_CLIENT).pipe(
     map((action: fromClients.DeleteClient) => action.payload),
     switchMap(client =>
       this.clientsService.delete(client).pipe(

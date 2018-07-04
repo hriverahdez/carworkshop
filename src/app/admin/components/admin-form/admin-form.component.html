@@ -1,0 +1,48 @@
+<h4>Agregar administrador</h4>
+<hr>
+<div class="form" [formGroup]="adminForm">
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label for="">
+                <strong>Nombre completo</strong>
+            </label>
+            <input type="text" class="form-control" placeholder="Juan Pérez"
+                name="name" formControlName="name">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="">
+                <strong>Usuario</strong>
+            </label>
+            <input type="text" class="form-control" placeholder="juan"
+                name="username" formControlName="username">
+        </div>
+        <div class="form-group col-md-6">            
+            <label for=""><strong>Email</strong></label>                    
+            <input type="email" class="form-control" placeholder="juan@example.com"
+                name="email" formControlName="email">
+        </div>
+    </div>
+    <hr>
+    <div class="row">        
+        <div [formGroup]="adminForm.get('passwordGroup')" class="form-group col-md-6">
+            <label for=""><strong>Contraseña</strong></label>                    
+            <input type="password" class="form-control"
+                name="password" formControlName="password">
+        </div>
+        <div [formGroup]="adminForm.get('passwordGroup')" class="form-group col-md-6">
+            <label for=""><strong>Repetir contraseña</strong></label>                    
+            <input type="password" class="form-control"
+                name="passwordRepeat" formControlName="passwordRepeat">
+        </div>
+    </div>
+</div>
+<hr>
+<button class="btn btn-primary" 
+    style="margin-right: 10px"
+    (click)="save(adminForm)"
+    [disabled]="!adminForm.valid">
+    Guardar
+</button>
+<a routerLink="/app/admin/accounts" class="btn btn-default">Cancelar</a>

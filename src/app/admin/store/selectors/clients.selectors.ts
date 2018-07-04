@@ -6,7 +6,7 @@ import * as fromClient from "../reducers/clients.reducer";
 import { Client } from "../../models/client.model";
 
 export const getClientsState = createSelector(
-  fromFeature.selectClientsState,
+  fromFeature.selectAdminState,
   (state: fromFeature.AdminState) => state.clients
 );
 

@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row mt-sm">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-10 text-left">
+                    <a routerLink="../addAccount" class="btn btn-inverse">Agregar</a>
+                </div>                
+            </div>
+            <hr>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre y Apellidos</th>                        
+                        <th>Correo Electronico</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let admin of admins$ | async">
+                        <td>
+                            <strong>{{ admin.name }}</strong>
+                        </td>                        
+                        <td>
+                            {{ admin.email }}
+                        </td>
+                        <td>
+                            <!-- <a [routerLink]="['./admin', admin.id]" class="text-primary">
+                                <span class="fui-new"></span>
+                            </a> | -->
+                            <a *ngIf="(currentUser$ | async).id !== admin.id" (click)="delete(admin)" class="stext-danger">
+                                <span class="fui-trash"></span>
+                            </a>
+                        </td>
+                    </tr>        
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>

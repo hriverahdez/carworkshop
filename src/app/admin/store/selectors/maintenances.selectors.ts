@@ -5,7 +5,7 @@ import * as fromFeature from "../reducers";
 import * as fromMaintenance from "../reducers/maintenances.reducer";
 
 export const getMaintenancesState = createSelector(
-  fromFeature.selectClientsState,
+  fromFeature.selectAdminState,
   (state: fromFeature.AdminState) => state.maintenances
 );
 

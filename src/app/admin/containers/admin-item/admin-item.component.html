@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+                
+                <cws-admin-form 
+                [admin]="admin$ | async"
+                (saved)="onCreateAdmin($event)"
+                 ></cws-admin-form>
+
+        </div>
+    </div>
+</div>
