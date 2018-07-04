@@ -12,12 +12,20 @@ import * as fromGuards from "./guards";
 const ROUTES: Routes = [
   {
     path: "home",
-    component: LandingPageComponent,
+    component: LoginComponent,
     canActivate: [fromGuards.SessionNotExpiredGuard],
     data: {
-      breadcrumb: "Home"
+      breadcrumb: "Login"
     }
   },
+  //   {
+  //     path: "home",
+  //     component: LandingPageComponent,
+  //     canActivate: [fromGuards.SessionNotExpiredGuard],
+  //     data: {
+  //       breadcrumb: "Home"
+  //     }
+  //   },
   {
     path: "app",
     component: LayoutComponent,

@@ -1,3 +1,14 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 70%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 .position-static {
     position: static;
 }
