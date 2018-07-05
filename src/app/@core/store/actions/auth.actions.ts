@@ -106,6 +106,27 @@ export class ClearRequestPasswordRecoveryStatus implements Action {
   readonly type = CLEAR_REQUEST_PASSWORD_RECOVERY_STATUS;
 }
 
+export const RESET_LOST_PASSWORD = "[Core] Reset Lost Password";
+export const RESET_LOST_PASSWORD_FAIL = "[Core] Reset Lost Password Fail";
+export const RESET_LOST_PASSWORD_SUCCESS = "[Core] Reset Lost Password Success";
+
+export class ResetLostPassword implements Action {
+  readonly type = RESET_LOST_PASSWORD;
+  constructor(
+    public payload: { token: string; email: string; password: string }
+  ) {}
+}
+
+export class ResetLostPasswordFail implements Action {
+  readonly type = RESET_LOST_PASSWORD_FAIL;
+  constructor(public payload: { success: boolean; error: string }) {}
+}
+
+export class ResetLostPasswordSuccess implements Action {
+  readonly type = RESET_LOST_PASSWORD_SUCCESS;
+  constructor(public payload: { success: boolean; message: string }) {}
+}
+
 export type AuthActions =
   | Login
   | LoginFail
@@ -121,4 +142,7 @@ export type AuthActions =
   | RequestPasswordRecoveryEmail
   | RequestPasswordRecoveryEmailFail
   | RequestPasswordRecoveryEmailSuccess
-  | ClearRequestPasswordRecoveryStatus;
+  | ClearRequestPasswordRecoveryStatus
+  | ResetLostPassword
+  | ResetLostPasswordFail
+  | ResetLostPasswordSuccess;

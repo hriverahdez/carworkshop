@@ -97,15 +97,18 @@ export function reducer(
       };
     }
 
+    case fromUser.RESET_LOST_PASSWORD:
     case fromUser.REQUEST_PASSWORD_RECOVERY_EMAIL: {
       return { ...state, loading: true };
     }
 
+    case fromUser.RESET_LOST_PASSWORD_FAIL:
     case fromUser.REQUEST_PASSWORD_RECOVERY_EMAIL_FAIL: {
       const passwordRecoveryError = action.payload.error;
       return { ...state, passwordRecoveryError, loading: false };
     }
 
+    case fromUser.RESET_LOST_PASSWORD_SUCCESS:
     case fromUser.REQUEST_PASSWORD_RECOVERY_EMAIL_SUCCESS: {
       const passwordRecoveryMessage = action.payload.message;
       return { ...state, passwordRecoveryMessage, loading: false };

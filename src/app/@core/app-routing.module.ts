@@ -4,7 +4,8 @@ import {
   LayoutComponent,
   LoginComponent,
   LandingPageComponent,
-  PasswordRecoveryComponent
+  PasswordRecoveryComponent,
+  PasswordResetComponent
 } from "./containers";
 
 // guards
@@ -28,9 +29,19 @@ const ROUTES: Routes = [
   //     }
   //   },
   {
-    path: "password/recovery",
-    component: PasswordRecoveryComponent,
-    data: { breadcrumb: "Recuperar contrasena" }
+    path: "password",
+    children: [
+      {
+        path: "recovery",
+        component: PasswordRecoveryComponent,
+        data: { breadcrumb: "Recuperar contrasena" }
+      },
+      {
+        path: "reset/:token",
+        component: PasswordResetComponent,
+        data: { breadcrumb: "Restablecer contrasena" }
+      }
+    ]
   },
   {
     path: "app",

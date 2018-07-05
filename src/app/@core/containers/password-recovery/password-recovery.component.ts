@@ -1,10 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, FormControl } from "@angular/forms";
 import { Observable } from "rxjs";
 
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store";
-import { catchError } from "rxjs/operators";
 
 @Component({
   selector: "cws-password-recovery",
@@ -17,8 +16,6 @@ export class PasswordRecoveryComponent implements OnInit {
 
   passwordRecoveryMessage$: Observable<string>;
   passwordRecoveryError$: Observable<string>;
-
-  error = null;
 
   constructor(
     private fb: FormBuilder,
@@ -43,5 +40,9 @@ export class PasswordRecoveryComponent implements OnInit {
     return this.fb.group({
       email: [""]
     });
+  }
+
+  get emailControl() {
+    return this.recoveryForm.get("email") as FormControl;
   }
 }

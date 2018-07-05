@@ -106,8 +106,23 @@ export class AuthEffects {
             (res: { success: boolean; message: string }) =>
               new authActions.RequestPasswordRecoveryEmailSuccess(res)
           ),
-          catchError(error =>
-            of(new authActions.RequestPasswordRecoveryEmailFail(error))
+          catchError(res =>
+            of(new authActions.RequestPasswordRecoveryEmailFail(res.error))
+          )
+        )
+      )
+    );
+
+  @Effect()
+  resetLostPassword$ = this.actions$
+    .ofType(authActions.RESET_LOST_PASSWORD)
+    .pipe(
+      map((action: authActions.ResetLostPassword) => action.payload),
+      switchMap(data =>
+        this.authService.resetLostPassword(data).pipe(
+          map(res => new authActions.ResetLostPasswordSuccess(res)),
+          catchError(res =>
+            of(new authActions.ResetLostPasswordFail(res.error))
           )
         )
       )
