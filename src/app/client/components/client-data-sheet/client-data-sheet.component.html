@@ -1,83 +1,83 @@
 <h4>Ficha Técnica</h4>
 <hr>
 <div class="row mt-xs">
-    <div class="col-md-3" *ngIf="fieldIsVisible('model')">
+    <div class="col-md-3" *ngIf="modelVisible">
         <strong>Modelo</strong>
         <p>{{ car.model }}</p>
     </div>
-    <div class="col-md-3" *ngIf="fieldIsVisible('vinNumber')">
+    <div class="col-md-3" *ngIf="vinNumberVisible">
         <strong>Número de bastidor (VIN)</strong>
         <p>{{ car.vinNumber || '---' }}</p>
     </div>
-    <div class="col-md-3" *ngIf="fieldIsVisible('variant')">
+    <div class="col-md-3" *ngIf="variantVisible">
         <strong>Variante</strong>
         <p>{{ car.variant || '---' }}</p>
     </div>
-    <div class="col-md-3" *ngIf="fieldIsVisible('type')">
+    <div class="col-md-3" *ngIf="typeVisible">
         <strong>Tipo</strong>
         <p>{{ car.type || '---' }}</p>
     </div>
 </div>
 <div class="row mt-xs">
-    <div class="col-md-3" *ngIf="fieldIsVisible('version')">
+    <div class="col-md-3" *ngIf="versionVisible">
         <strong>Versión</strong>
         <p>{{ car.version || '---' }}</p>
     </div>
-    <div class="col-md-3" *ngIf="fieldIsVisible('engineBrand')">
+    <div class="col-md-3" *ngIf="engineBrandVisible">
         <strong>Marca del motor</strong>
         <p>{{ car.engineBrand || '---' }}</p>
     </div>
-    <div class="col-md-3" *ngIf="fieldIsVisible('engineCode')">
+    <div class="col-md-3" *ngIf="engineCodeVisible">
         <strong>Código del motor</strong>
         <p>{{ car.engineCode || '---' }}</p>
     </div>
-    <div class="col-md-3" *ngIf="fieldIsVisible('tires')">
+    <div class="col-md-3" *ngIf="tiresVisible">
         <strong>Neumáticos</strong>
         <p>{{ car.tires || '---' }}</p>
     </div>
 </div>
 <div class="row mt-xs">
-    <div class="col-md-3" *ngIf="fieldIsVisible('cilinderAmount')">
+    <div class="col-md-3" *ngIf="cilinderAmountVisible">
         <strong>Número de cilindros</strong>
         <p>{{ car.cilinderAmount || '---' }}</p>
     </div>
-    <div class="col-md-3" *ngIf="fieldIsVisible('cilinderVolume')">
+    <div class="col-md-3" *ngIf="cilinderVolumeVisible">
         <strong>Cilindrada</strong>
         <p>{{ car.cilinderVolume || '---' }}</p>
     </div>
-    <div class="col-md-3" *ngIf="fieldIsVisible('potencyKW')">
+    <div class="col-md-3" *ngIf="potencyKWVisible">
         <strong>Potencia KW</strong>
         <p>{{ car.potencyKW || '---' }}</p>
     </div>
-    <div class="col-md-3" *ngIf="fieldIsVisible('potencyCV')">
+    <div class="col-md-3" *ngIf="potencyCVVisible">
         <strong>Potencia CV</strong>
         <p>{{ car.potencyCV || '---' }}</p>
     </div>
 </div>
 <div class="row mt-xs">
-    <div class="col-md-3" *ngIf="fieldIsVisible('emisionLevel')">
+    <div class="col-md-3" *ngIf="emisionLevelVisible">
         <strong>Nivel de emisiones</strong>
         <p>{{ car.emisionLevel || '---' }}</p>
     </div>
-    <div class="col-md-3" *ngIf="fieldIsVisible('fuel')">
+    <div class="col-md-3" *ngIf="fuelVisible">
         <strong>Combustible</strong>
         <p>{{ car.fuel || '---' }}</p>
     </div>
-    <div class="col-md-3" *ngIf="fieldIsVisible('radioCode')">
+    <div class="col-md-3" *ngIf="radioCodeVisible">
         <strong>Código de radio</strong>
         <p>{{ car.radioCode || '---' }}</p>
     </div>
-    <div class="col-md-3" *ngIf="fieldIsVisible('keyCode')">
+    <div class="col-md-3" *ngIf="keyCodeVisible">
         <strong>Código de llaves</strong>
         <p>{{ car.keyCode || '---' }}</p>
     </div>    
 </div>
 <div class="row mt-xs">
-    <div class="col-md-12" *ngIf="fieldIsVisible('observations')">
+    <div class="col-md-12" *ngIf="observationsVisible">
         <strong>Observaciones</strong>
         <p>{{ car.observations || '---' }}</p>
     </div>
-    <div class="col-md-12" *ngIf="fieldIsVisible('maintenanceReset')">
+    <div class="col-md-12" *ngIf="maintenanceResetVisible">
         <strong>Reset Mantenimiento</strong>
         <p>{{ car.maintenanceReset || '---' }}</p>
     </div>

@@ -13,7 +13,7 @@
         <strong>Correo Electrónico</strong>
         <p>{{ client.email }}</p>
     </div>    
-    <div class="col-md-6">
+    <div class="col-md-6" *ngIf="client.dniIsVisible">
         <strong>DNI / NIF</strong>
         <p>{{ client.dni || '---' }}</p>
     </div>
@@ -21,13 +21,11 @@
         <strong>Vinculado a</strong>
         <p>{{ client.linkedTo }}</p>
     </div>    
-    <div class="col-md-12">
+    <div class="col-md-12" *ngIf="client.socialMissionIsVisible">
         <strong>Razón Social</strong>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.</p>
+        <p>{{ client.socialMission || '---' }}</p>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12" *ngIf="client.observationsIsVisible">
         <strong>Observaciones</strong>
         <p>{{ client.observations || '---' }}</p>
     </div>
