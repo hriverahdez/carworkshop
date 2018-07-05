@@ -10,13 +10,17 @@ export interface AuthState {
   currentUser: AuthUser;
   error: CustomError;
   loading: boolean;
+  passwordRecoveryMessage: string;
+  passwordRecoveryError: string;
 }
 
 export const initialState: AuthState = {
   isLoggedIn: false,
   currentUser: {},
   error: {},
-  loading: false
+  loading: false,
+  passwordRecoveryMessage: "",
+  passwordRecoveryError: ""
 };
 
 export function reducer(
@@ -92,6 +96,28 @@ export function reducer(
         currentUser
       };
     }
+
+    case fromUser.REQUEST_PASSWORD_RECOVERY_EMAIL: {
+      return { ...state, loading: true };
+    }
+
+    case fromUser.REQUEST_PASSWORD_RECOVERY_EMAIL_FAIL: {
+      const passwordRecoveryError = action.payload.error;
+      return { ...state, passwordRecoveryError, loading: false };
+    }
+
+    case fromUser.REQUEST_PASSWORD_RECOVERY_EMAIL_SUCCESS: {
+      const passwordRecoveryMessage = action.payload.message;
+      return { ...state, passwordRecoveryMessage, loading: false };
+    }
+
+    case fromUser.CLEAR_REQUEST_PASSWORD_RECOVERY_STATUS: {
+      return {
+        ...state,
+        passwordRecoveryError: "",
+        passwordRecoveryMessage: ""
+      };
+    }
   }
 
   return state;
@@ -101,3 +127,8 @@ export const isLoggedIn = (state: AuthState) => state.isLoggedIn;
 export const selectCurrentUser = (state: AuthState) => state.currentUser;
 export const selectError = (state: AuthState) => state.error;
 export const selectAuthLoading = (state: AuthState) => state.loading;
+
+export const selectPasswordRecoveryMessage = (state: AuthState) =>
+  state.passwordRecoveryMessage;
+export const selectPasswordRecoveryError = (state: AuthState) =>
+  state.passwordRecoveryError;

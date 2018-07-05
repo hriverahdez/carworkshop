@@ -16,7 +16,7 @@ export class TokenInterceptor implements HttpInterceptor {
   private auth: AuthenticationService;
 
   // Add '*' to exclude all requests
-  private excluded = ["/login", "/pdftest"];
+  private excluded = ["/login", "/password/reset"];
 
   constructor(private injector: Injector) {
     this.auth = this.injector.get(AuthenticationService);

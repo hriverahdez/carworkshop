@@ -22,3 +22,13 @@ export const selectAuthLoading = createSelector(
   fromRoot.getAuthState,
   fromUser.selectAuthLoading
 );
+
+export const selectPasswordRecoveryMessage = createSelector(
+  fromRoot.getAuthState,
+  fromUser.selectPasswordRecoveryMessage
+);
+
+export const selectPasswordRecoveryError = createSelector(
+  fromRoot.getAuthState,
+  fromUser.selectPasswordRecoveryError
+);

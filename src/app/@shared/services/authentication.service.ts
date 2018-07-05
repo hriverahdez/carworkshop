@@ -112,6 +112,13 @@ export class AuthenticationService {
       );
   }
 
+  requestPasswordRecoveryEmail(data) {
+    return this.http.post<{ message: string }>(
+      `${environment.apiURL}/password/reset`,
+      data
+    );
+  }
+
   // register(user: User): Observable<User> {
   //   let authEncoded = btoa(user.email + ":" + user.password);
   //   let headers: HttpHeaders = new HttpHeaders({

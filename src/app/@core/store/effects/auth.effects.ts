@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 
 import { Store } from "@ngrx/store";
 
-import { map, switchMap, catchError } from "rxjs/operators";
+import { map, switchMap, catchError, delay } from "rxjs/operators";
 
 import * as fromFeature from "../reducers";
 import * as fromSelectors from "../selectors";
@@ -93,6 +93,35 @@ export class AuthEffects {
           catchError(error => of(new authActions.UpdateUserProfileFail(error)))
         )
       )
+    );
+
+  @Effect()
+  requestPasswordRecovery$ = this.actions$
+    .ofType(authActions.REQUEST_PASSWORD_RECOVERY_EMAIL)
+    .pipe(
+      map((action: authActions.RequestPasswordRecoveryEmail) => action.payload),
+      switchMap(data =>
+        this.authService.requestPasswordRecoveryEmail(data).pipe(
+          map(
+            (res: { success: boolean; message: string }) =>
+              new authActions.RequestPasswordRecoveryEmailSuccess(res)
+          ),
+          catchError(error =>
+            of(new authActions.RequestPasswordRecoveryEmailFail(error))
+          )
+        )
+      )
+    );
+
+  @Effect()
+  clearPasswordRecoveryStatus$ = this.actions$
+    .ofType(
+      authActions.REQUEST_PASSWORD_RECOVERY_EMAIL_FAIL,
+      authActions.REQUEST_PASSWORD_RECOVERY_EMAIL_SUCCESS
+    )
+    .pipe(
+      delay(4000),
+      map(() => new authActions.ClearRequestPasswordRecoveryStatus())
     );
 
   @Effect()

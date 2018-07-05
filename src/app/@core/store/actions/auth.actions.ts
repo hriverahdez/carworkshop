@@ -76,6 +76,36 @@ export class SetUser implements Action {
   constructor(public payload: AuthUser) {}
 }
 
+// Password recovery
+export const REQUEST_PASSWORD_RECOVERY_EMAIL =
+  "[Core] Request Password Recovery Email";
+export const REQUEST_PASSWORD_RECOVERY_EMAIL_FAIL =
+  "[Core] Request Password Recovery Email Fail";
+export const REQUEST_PASSWORD_RECOVERY_EMAIL_SUCCESS =
+  "[Core] Request Password Recovery Email Success";
+
+export const CLEAR_REQUEST_PASSWORD_RECOVERY_STATUS =
+  "[Core] Clear Request Password Recovery Status";
+
+export class RequestPasswordRecoveryEmail implements Action {
+  readonly type = REQUEST_PASSWORD_RECOVERY_EMAIL;
+  constructor(public payload: { email: string }) {}
+}
+
+export class RequestPasswordRecoveryEmailFail implements Action {
+  readonly type = REQUEST_PASSWORD_RECOVERY_EMAIL_FAIL;
+  constructor(public payload: { success: boolean; error: string }) {}
+}
+
+export class RequestPasswordRecoveryEmailSuccess implements Action {
+  readonly type = REQUEST_PASSWORD_RECOVERY_EMAIL_SUCCESS;
+  constructor(public payload: { success: boolean; message: string }) {}
+}
+
+export class ClearRequestPasswordRecoveryStatus implements Action {
+  readonly type = CLEAR_REQUEST_PASSWORD_RECOVERY_STATUS;
+}
+
 export type AuthActions =
   | Login
   | LoginFail
@@ -87,4 +117,8 @@ export type AuthActions =
   | SetUser
   | UpdateUserProfile
   | UpdateUserProfileFail
-  | UpdateUserProfileSuccess;
+  | UpdateUserProfileSuccess
+  | RequestPasswordRecoveryEmail
+  | RequestPasswordRecoveryEmailFail
+  | RequestPasswordRecoveryEmailSuccess
+  | ClearRequestPasswordRecoveryStatus;

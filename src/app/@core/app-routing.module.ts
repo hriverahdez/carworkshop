@@ -3,7 +3,8 @@ import { RouterModule, Routes, PreloadAllModules } from "@angular/router";
 import {
   LayoutComponent,
   LoginComponent,
-  LandingPageComponent
+  LandingPageComponent,
+  PasswordRecoveryComponent
 } from "./containers";
 
 // guards
@@ -26,6 +27,11 @@ const ROUTES: Routes = [
   //       breadcrumb: "Home"
   //     }
   //   },
+  {
+    path: "password/recovery",
+    component: PasswordRecoveryComponent,
+    data: { breadcrumb: "Recuperar contrasena" }
+  },
   {
     path: "app",
     component: LayoutComponent,
