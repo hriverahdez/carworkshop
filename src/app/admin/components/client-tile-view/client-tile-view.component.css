@@ -3,8 +3,9 @@
 }
 
 .tile:hover .tile-image.big-illustration {
-    width: 115px;
-    height: 115px;
+    width: 116px;
+    height: 116px;
+    margin-top: 15px;
 }
 
 .tile-delete-btn {

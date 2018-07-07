@@ -13,14 +13,15 @@ import * as fromSharedServices from "../../../@shared/services";
 import * as authActions from "../actions/auth.actions";
 import * as uiActions from "../actions/ui.actions";
 import { CustomError } from "../../../@shared/utils/custom-error";
-import { of } from "rxjs";
+import { of, pipe } from "rxjs";
 
 @Injectable()
 export class AuthEffects {
   constructor(
     private actions$: Actions,
     private store: Store<fromFeature.AppState>,
-    private authService: fromSharedServices.AuthenticationService
+    private authService: fromSharedServices.AuthenticationService,
+    private snackbar: fromSharedServices.SnackBarService
   ) {}
 
   @Effect()
@@ -29,7 +30,9 @@ export class AuthEffects {
     switchMap(credentials => {
       return this.authService.login(credentials).pipe(
         map(user => new authActions.LoginSuccess(user)),
-        catchError(error => of(new authActions.LoginFail(error)))
+        catchError(errorResponse =>
+          of(new authActions.LoginFail(errorResponse))
+        )
       );
     })
   );
@@ -67,18 +70,16 @@ export class AuthEffects {
       })
     );
 
-  //   @Effect({ dispatch: false })
-  //   loginFail$ = this.actions$.ofType(authActions.LOGIN_FAIL).pipe(
-  //     switchMap(action => {
-  //       return this.store
-  //         .select(fromSelectors.getLoginError)
-  //         .pipe(
-  //           map((error: CustomError) =>
-  //             this.snackbar.openSimpleSnackBar(error.message)
-  //           )
-  //         );
-  //     })
-  //   );
+  /** Wait 5 after last error and clear error message */
+  @Effect()
+  loginFailure$ = this.actions$.ofType(authActions.LOGIN_FAIL).pipe(
+    switchMap(action =>
+      of(action).pipe(
+        delay(5000),
+        map(() => new authActions.LoginFail({}))
+      )
+    )
+  );
 
   @Effect()
   updateUserProfile$ = this.actions$
@@ -90,7 +91,13 @@ export class AuthEffects {
           map(
             updatedUser => new authActions.UpdateUserProfileSuccess(updatedUser)
           ),
-          catchError(error => of(new authActions.UpdateUserProfileFail(error)))
+          catchError(errorResponse => {
+            this.snackbar.openSimpleSnackBar(
+              errorResponse.error.error,
+              "Cerrar"
+            );
+            return of(new authActions.UpdateUserProfileFail(errorResponse));
+          })
         )
       )
     );
@@ -128,6 +135,7 @@ export class AuthEffects {
       )
     );
 
+  /** Wait 5 seconds after last error and clear password recovery/reset error message */
   @Effect()
   clearPasswordRecoveryStatus$ = this.actions$
     .ofType(
@@ -135,8 +143,12 @@ export class AuthEffects {
       authActions.REQUEST_PASSWORD_RECOVERY_EMAIL_SUCCESS
     )
     .pipe(
-      delay(4000),
-      map(() => new authActions.ClearRequestPasswordRecoveryStatus())
+      switchMap(action =>
+        of(action).pipe(
+          delay(5000),
+          map(() => new authActions.ClearRequestPasswordRecoveryStatus())
+        )
+      )
     );
 
   @Effect()

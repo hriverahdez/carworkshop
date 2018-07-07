@@ -47,13 +47,16 @@
                 <form [formGroup]="loginForm">
                     <div class="form-row">
                         <label for="">Usuario</label>
-                        <input type="text" class="form-control" placeholder="Correo o matrícula del coche"
+                        <input type="text" class="form-control" placeholder="Usuario"
                             name="username" formControlName="username">
                     </div>
                     <div class="form-row">
                         <label for="">Contraseña</label>
                         <input type="password" class="form-control" placeholder="Contraseña"
                             name="password" formControlName="password">
+                    </div>
+                    <div class="form-row text-center text-danger" *ngIf="!!(authError$ | async).message">
+                        <small>{{ (authError$ | async).message }}</small>
                     </div>
                     <div class="form-row mt-xs">
                         <button type="submit" (click)="login(loginForm)" 

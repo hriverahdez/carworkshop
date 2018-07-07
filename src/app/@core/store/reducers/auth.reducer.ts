@@ -36,15 +36,21 @@ export function reducer(
       };
     }
 
-    case fromUser.UPDATE_USER_PROFILE_FAIL:
+    case fromUser.UPDATE_USER_PROFILE_FAIL: {
+      return {
+        ...state,
+        loading: false
+      };
+    }
+
     case fromUser.LOGIN_FAIL: {
       const { status } = action.payload;
 
       const error: CustomError = {
         code: status,
         message:
-          status === 401 || status === 400
-            ? "Usuario o contraseña incorrectos"
+          status === 401
+            ? "Usuario y contraseña incorrectos"
             : httpErrorMessages[status]
       };
 

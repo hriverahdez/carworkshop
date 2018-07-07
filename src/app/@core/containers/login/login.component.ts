@@ -3,6 +3,7 @@ import { Store } from "@ngrx/store";
 import * as fromStore from "../../store";
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { Observable } from "rxjs";
+import { CustomError } from "../../../@shared/utils/custom-error";
 
 @Component({
   selector: "cws-login",
@@ -12,6 +13,7 @@ import { Observable } from "rxjs";
 export class LoginComponent implements OnInit {
   authLoading$: Observable<boolean>;
   loginForm: FormGroup = this.toFormGroup();
+  authError$: Observable<CustomError>;
 
   constructor(
     private store: Store<fromStore.AppState>,
@@ -20,6 +22,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.authLoading$ = this.store.select(fromStore.selectAuthLoading);
+    this.authError$ = this.store.select(fromStore.selectAuthError);
   }
 
   login(form: FormGroup) {

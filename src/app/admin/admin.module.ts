@@ -34,7 +34,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     CommonModule,
     ReactiveFormsModule,
     AdminRoutingModule,
-    SharedModule,
+    // SharedModule,
     ThemeModule,
     ClientModule,
     // NgbModule.forRoot(),

@@ -7,7 +7,7 @@ import {
   HTTP_INTERCEPTORS
 } from "@angular/common/http";
 
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { AuthenticationService } from "../../services";
 import { map, mergeMap, catchError } from "rxjs/operators";
 
@@ -59,7 +59,8 @@ export class TokenInterceptor implements HttpInterceptor {
           this.auth.logOut(true);
         }
 
-        return Observable.throw(error);
+        // return Observable.throw(error);
+        return throwError(error);
       })
     );
   }

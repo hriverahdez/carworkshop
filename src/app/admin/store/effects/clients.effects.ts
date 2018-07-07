@@ -21,12 +21,14 @@ import {
 } from "../../../@shared/utils/paginated-response.model";
 import { Client } from "../../models/client.model";
 import { ClientsService } from "../../services";
+import { SnackBarService } from "../../../@shared/services";
 
 @Injectable()
 export class ClientsEffects {
   constructor(
     private actions$: Actions,
-    private clientsService: ClientsService
+    private clientsService: ClientsService,
+    private snackbar: SnackBarService
   ) {}
 
   @Effect()
@@ -52,7 +54,14 @@ export class ClientsEffects {
     switchMap(client =>
       this.clientsService.add(client).pipe(
         map(newClient => new fromClients.AddClientSuccess(newClient)),
-        catchError(error => of(new fromClients.AddClientFail(error)))
+        catchError(errorResponse => {
+          this.snackbar.openSimpleSnackBar(
+            errorResponse.error.error,
+            "Cerrar",
+            6000
+          );
+          return of(new fromClients.AddClientFail(errorResponse));
+        })
       )
     )
   );
@@ -63,7 +72,14 @@ export class ClientsEffects {
     switchMap((client: Client) =>
       this.clientsService.update(client).pipe(
         map(client => new fromClients.UpdateClientSuccess(client)),
-        catchError(error => of(new fromClients.UpdateClientFail(error)))
+        catchError(errorResponse => {
+          this.snackbar.openSimpleSnackBar(
+            errorResponse.error.error,
+            "Cerrar",
+            6000
+          );
+          return of(new fromClients.UpdateClientFail(errorResponse));
+        })
       )
     )
   );

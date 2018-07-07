@@ -3,7 +3,7 @@ import { AbstractDataService } from "../../@shared/utils/abstract-data-service";
 import { Client } from "../models/client.model";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 
 @Injectable()
@@ -18,6 +18,6 @@ export class ClientsService extends AbstractDataService<Client> {
         `${environment.apiURL}/updateClientProfile/${client.id}`,
         client
       )
-      .pipe(catchError(error => Observable.throw(error)));
+      .pipe(catchError(error => throwError(error)));
   }
 }

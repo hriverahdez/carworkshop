@@ -32,6 +32,7 @@ import * as fromComponents from "./components";
 // guards
 import * as fromGuards from "./guards";
 import { ThemeModule } from "../@theme/theme.module";
+import { SharedModule } from "../@shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ThemeModule } from "../@theme/theme.module";
     ReactiveFormsModule,
     HttpClientModule,
     ThemeModule,
+    SharedModule,
 
     AppRoutingModule,
     StoreModule.forRoot(reducers),

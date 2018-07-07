@@ -23,7 +23,6 @@ import { CustomValidator } from "../../../@shared/utils/custom-validation";
   styleUrls: ["./client-form.component.css"]
 })
 export class ClientFormComponent implements OnInit, OnChanges {
-  submitted = false;
   @Input() client: Client;
   @Output() onCreate = new EventEmitter<Client>();
   @Output() onUpdate = new EventEmitter<Client>();
@@ -47,9 +46,11 @@ export class ClientFormComponent implements OnInit, OnChanges {
     const birthday = client.birthday
       ? new Date(client.birthday)
       : client.birthday;
+
     const registrationDate = client.registrationDate
       ? new Date(client.registrationDate)
       : client.registrationDate;
+
     return {
       ...client,
       birthday,
@@ -71,7 +72,7 @@ export class ClientFormComponent implements OnInit, OnChanges {
         const newClient = !this.isCompany
           ? this.clearCompanyFields(value)
           : value;
-        this.submitted = true;
+
         this.onCreate.emit({
           ...newClient,
           password: value.passwordGroup.password
@@ -80,7 +81,7 @@ export class ClientFormComponent implements OnInit, OnChanges {
         const updatedClient = !this.isCompany
           ? this.clearCompanyFields(value)
           : value;
-        this.submitted = true;
+
         this.onUpdate.emit({
           id: this.client.id,
           ...updatedClient

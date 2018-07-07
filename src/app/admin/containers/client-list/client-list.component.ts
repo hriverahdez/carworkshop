@@ -44,7 +44,8 @@ export class ClientListComponent implements OnInit, OnDestroy {
   deleteClient(client: Client) {
     const supportMessage = `
         ${client.firstName} ${client.lastName} 
-        - Coche: ${client.car.brand} ${client.car.model}
+        - Coche: ${client.car.brand} ${client.car.model} 
+        (${client.car.plateNumber})
     `;
 
     this.dialogSubs = this.dialogService

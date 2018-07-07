@@ -201,7 +201,7 @@
     <div class="col-sm-12 text-center">
         <input type="button" (click)="save(clientForm)" 
             style="margin-right: 20px"
-            [disabled]="!clientForm.valid || submitted" class="btn btn-inverse" value="Guardar">        
+            [disabled]="!clientForm.valid" class="btn btn-inverse" value="Guardar">        
         <a routerLink="/app/admin" class="btn btn-default">Cancelar</a>
     </div>
 </form>

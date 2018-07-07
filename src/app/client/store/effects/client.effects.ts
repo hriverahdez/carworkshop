@@ -11,6 +11,7 @@ import {
 } from "../../../admin/services";
 import { Store } from "@ngrx/store";
 import { Client } from "../../../admin/models/client.model";
+import { SnackBarService } from "../../../@shared/services";
 
 @Injectable()
 export class ClientEffects {
@@ -18,7 +19,8 @@ export class ClientEffects {
     private actions$: Actions,
     private usStore$: Store<fromRoot.AppState>,
     private clientsService: ClientsService,
-    private mHelper: MaintenancesHelperService
+    private mHelper: MaintenancesHelperService,
+    private snackbar: SnackBarService
   ) {}
 
   @Effect()
@@ -55,7 +57,10 @@ export class ClientEffects {
     switchMap(client =>
       this.clientsService.updateClientProfile(client).pipe(
         map(client => new fromClient.UpdateProfileSuccess(client)),
-        catchError(error => of(new fromClient.UpdateProfileFail(error)))
+        catchError(errorResponse => {
+          this.snackbar.openSimpleSnackBar(errorResponse.error.error, "Cerrar");
+          return of(new fromClient.UpdateProfileFail(errorResponse));
+        })
       )
     )
   );
@@ -64,4 +69,14 @@ export class ClientEffects {
   redirectAfterProfileUpdate$ = this.actions$
     .ofType(fromClient.UPDATE_PROFILE_SUCCESS)
     .pipe(map(() => new fromRoot.Go({ path: ["/app/client"] })));
+
+  @Effect()
+  showFullscreenLoader$ = this.actions$
+    .ofType(fromClient.UPDATE_PROFILE)
+    .pipe(map(() => new fromRoot.ShowFullscreenLoader()));
+
+  @Effect()
+  hideFullscreenLoader$ = this.actions$
+    .ofType(fromClient.UPDATE_PROFILE_FAIL, fromClient.UPDATE_PROFILE_SUCCESS)
+    .pipe(map(() => new fromRoot.HideFullscreenLoader()));
 }
