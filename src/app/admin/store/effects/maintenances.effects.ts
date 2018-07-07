@@ -42,7 +42,7 @@ export class MaintenancesEffects {
     );
 
   @Effect()
-  loadClientMaintenancess$ = this.actions$
+  loadClientMaintenances$ = this.actions$
     .ofType(fromMaintenance.LOAD_CLIENT_MAINTENANCES)
     .pipe(
       map((action: fromMaintenance.LoadClientMaintenances) => action.payload),
@@ -137,16 +137,18 @@ export class MaintenancesEffects {
     )
     .pipe(map(() => new fromRoot.Back()));
 
-  //   @Effect()
-  //   showLoader$ = this.actions$
-  //     .ofType(fromMaintenance.LOAD_CLIENT_MAINTENANCES)
-  //     .pipe(map(() => new fromRoot.ShowFullscreenLoader()));
+  @Effect()
+  showLoader$ = this.actions$
+    .ofType(fromMaintenance.ADD_MAINTENANCE, fromMaintenance.UPDATE_MAINTENANCE)
+    .pipe(map(() => new fromRoot.ShowFullscreenLoader()));
 
-  //   @Effect()
-  //   hideLoader$ = this.actions$
-  //     .ofType(
-  //       fromMaintenance.LOAD_CLIENT_MAINTENANCES_SUCCESS,
-  //       fromMaintenance.LOAD_CLIENT_MAINTENANCES_FAIL
-  //     )
-  //     .pipe(map(() => new fromRoot.HideFullscreenLoader()));
+  @Effect()
+  hideLoader$ = this.actions$
+    .ofType(
+      fromMaintenance.ADD_MAINTENANCE_FAIL,
+      fromMaintenance.ADD_MAINTENANCE_SUCCESS,
+      fromMaintenance.UPDATE_MAINTENANCE_FAIL,
+      fromMaintenance.UPDATE_MAINTENANCE_SUCCESS
+    )
+    .pipe(map(() => new fromRoot.HideFullscreenLoader()));
 }

@@ -16,12 +16,14 @@ import { of } from "rxjs";
 import * as fromRoot from "../../../@core/store";
 import { AuthUser } from "../../../@shared/models/auth-user.model";
 import { AdminsService } from "../../services/admins.service";
+import { SnackBarService } from "../../../@shared/services";
 
 @Injectable()
 export class AdminsEffects {
   constructor(
     private actions$: Actions,
-    private adminsService: AdminsService
+    private adminsService: AdminsService,
+    private snackbar: SnackBarService
   ) {}
 
   @Effect()
@@ -42,7 +44,10 @@ export class AdminsEffects {
     switchMap(admin =>
       this.adminsService.add(admin).pipe(
         map(newClient => new fromAdmins.AddAdminSuccess(newClient)),
-        catchError(error => of(new fromAdmins.AddAdminFail(error)))
+        catchError(errorResponse => {
+          this.snackbar.openSimpleSnackBar(errorResponse.error.error, "Cerrar");
+          return of(new fromAdmins.AddAdminFail(errorResponse));
+        })
       )
     )
   );
