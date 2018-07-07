@@ -3,9 +3,9 @@ import { ActivatedRoute } from "@angular/router";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store";
 import { Observable } from "rxjs";
-import { MaintenanceCategory } from "../../models/maintenance-category.model";
-import { Maintenance } from "../../models/maintenance.model";
 import { tap } from "rxjs/operators";
+import { MaintenanceCategory } from "../../../@core/models/maintenance-category.model";
+import { Maintenance } from "../../../@core/models/maintenance.model";
 
 @Component({
   selector: "cws-maintenance-item",

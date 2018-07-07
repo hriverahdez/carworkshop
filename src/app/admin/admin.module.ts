@@ -26,18 +26,12 @@ import * as fromServices from "./services";
 // guards
 import * as fromGuards from "./guards";
 
-// BOOTSTRAP
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     AdminRoutingModule,
-    // SharedModule,
     ThemeModule,
-    ClientModule,
-    // NgbModule.forRoot(),
 
     StoreModule.forFeature("adminState", reducers),
     EffectsModule.forFeature(effects)

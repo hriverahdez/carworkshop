@@ -1,7 +1,7 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
 
 import * as fromClients from "../actions/clients.actions";
-import { Client } from "../../models/client.model";
+import { Client } from "../../../@core/models/client.model";
 
 export interface State extends EntityState<Client> {
   loaded: boolean;

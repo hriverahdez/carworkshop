@@ -1,12 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable, Subscription } from "rxjs";
-import { Client } from "../../models/client.model";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store";
-import { MaintenanceCategory } from "../../models/maintenance-category.model";
-import { Maintenance } from "../../models/maintenance.model";
 import { withLatestFrom, switchMap, map } from "rxjs/operators";
 import { DialogService } from "../../../@shared/services";
+import { Client } from "../../../@core/models/client.model";
+import { Maintenance } from "../../../@core/models/maintenance.model";
 
 @Component({
   selector: "cws-client-details",

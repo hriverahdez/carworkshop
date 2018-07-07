@@ -1,6 +1,6 @@
 import { Action } from "@ngrx/store";
-import { Client } from "../../../admin/models/client.model";
-import { MaintenanceCategory } from "../../../admin/models/maintenance-category.model";
+import { Client } from "../../../@core/models/client.model";
+import { MaintenanceCategory } from "../../../@core/models/maintenance-category.model";
 
 export const LOAD_CLIENT_DATA = "[Client] Load Client Data";
 export const LOAD_CLIENT_DATA_FAIL = "[Client] Load Client Data Fail";

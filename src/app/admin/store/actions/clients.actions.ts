@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { Client } from "../../models/client.model";
+import { Client } from "../../../@core/models/client.model";
 
 // LOAD
 

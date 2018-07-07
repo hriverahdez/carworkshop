@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
-import { Maintenance } from "../../../admin/models/maintenance.model";
-import { MaintenanceCategory } from "../../../admin/models/maintenance-category.model";
+import { Maintenance } from "../../../@core/models/maintenance.model";
+import { MaintenanceCategory } from "../../../@core/models/maintenance-category.model";
 
 @Component({
   selector: "cws-maintenance-history",
@@ -14,6 +14,7 @@ export class MaintenanceHistoryComponent implements OnInit {
   @Input() maintenanceCategories: MaintenanceCategory[];
 
   @Input() userIsAdmin: boolean = false;
+  @Output() onEditRequest = new EventEmitter<Maintenance>();
   @Output() onDeleteRequest = new EventEmitter<Maintenance>();
 
   constructor() {}
@@ -28,6 +29,10 @@ export class MaintenanceHistoryComponent implements OnInit {
 
   applyFilter(category) {
     this.currentFilter = category ? category : null;
+  }
+
+  requestEdit(maintenance) {
+    this.onEditRequest.emit(maintenance);
   }
 
   requestDelete(maintenance) {

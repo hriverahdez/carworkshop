@@ -6,8 +6,6 @@ import {
   EventEmitter,
   OnChanges
 } from "@angular/core";
-import { MaintenanceCategory } from "../../models/maintenance-category.model";
-import { Maintenance } from "../../models/maintenance.model";
 import {
   FormControl,
   FormGroup,
@@ -16,6 +14,8 @@ import {
 } from "@angular/forms";
 
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
+import { MaintenanceCategory } from "../../../@core/models/maintenance-category.model";
+import { Maintenance } from "../../../@core/models/maintenance.model";
 
 @Component({
   selector: "cws-maintenance-form",

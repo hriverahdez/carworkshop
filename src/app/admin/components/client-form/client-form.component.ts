@@ -13,9 +13,9 @@ import {
   FormGroup,
   Validators
 } from "@angular/forms";
-import { Client } from "../../models/client.model";
 
 import { CustomValidator } from "../../../@shared/utils/custom-validation";
+import { Client } from "../../../@core/models/client.model";
 
 @Component({
   selector: "cws-client-form",

@@ -8,7 +8,7 @@ import {
 } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { CustomValidator } from "../../../@shared/utils/custom-validation";
-import { Client } from "../../../admin/models/client.model";
+import { Client } from "../../../@core/models/client.model";
 
 @Component({
   selector: "cws-client-profile-form",

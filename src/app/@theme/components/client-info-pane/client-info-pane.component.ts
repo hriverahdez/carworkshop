@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Client, ClientType } from "../../../admin/models/client.model";
+import { Client, ClientType } from "../../../@core/models/client.model";
 
 @Component({
   selector: "cws-client-info-pane",

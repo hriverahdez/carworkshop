@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { AbstractDataService } from "../../@shared/utils/abstract-data-service";
-import { Maintenance } from "../models/maintenance.model";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
 import { catchError } from "rxjs/operators";
-import { MaintenanceCategory } from "../models/maintenance-category.model";
+import { Maintenance } from "../../@core/models/maintenance.model";
+import { MaintenanceCategory } from "../../@core/models/maintenance-category.model";
 
 @Injectable()
 export class MaintenancesService extends AbstractDataService<Maintenance> {

@@ -5,13 +5,11 @@ import * as fromRoot from "../../../@core/store";
 import * as fromClient from "../actions/client.actions";
 import { switchMap, map, catchError, withLatestFrom } from "rxjs/operators";
 import { of } from "rxjs";
-import {
-  ClientsService,
-  MaintenancesHelperService
-} from "../../../admin/services";
+import { ClientsService } from "../../../admin/services";
 import { Store } from "@ngrx/store";
-import { Client } from "../../../admin/models/client.model";
 import { SnackBarService } from "../../../@shared/services";
+import { MaintenancesHelperService } from "../../../@core/services/maintenances-helper.service";
+import { Client } from "../../../@core/models/client.model";
 
 @Injectable()
 export class ClientEffects {

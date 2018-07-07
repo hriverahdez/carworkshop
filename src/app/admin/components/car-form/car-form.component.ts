@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Car } from "../../models/car.model";
+import { Car } from "../../../@core/models/car.model";
 
 @Component({
   selector: "cws-car-form",

@@ -2,9 +2,7 @@ import { Injectable } from "@angular/core";
 import { Maintenance } from "../models/maintenance.model";
 import { MaintenanceCategory } from "../models/maintenance-category.model";
 
-import { MOCK_DATA } from "./mock-data";
-
-@Injectable()
+@Injectable({ providedIn: "root" })
 export class MaintenancesHelperService {
   _maintenances: Maintenance[];
 

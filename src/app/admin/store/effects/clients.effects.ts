@@ -19,9 +19,9 @@ import {
   Pagination,
   EntityPagination
 } from "../../../@shared/utils/paginated-response.model";
-import { Client } from "../../models/client.model";
 import { ClientsService } from "../../services";
 import { SnackBarService } from "../../../@shared/services";
+import { Client } from "../../../@core/models/client.model";
 
 @Injectable()
 export class ClientsEffects {

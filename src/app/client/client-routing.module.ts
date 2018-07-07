@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import {
   ClientHomeComponent,
-  ProfileComponent,
+  ClientProfileComponent,
   ClientProfileInfoComponent
 } from "./containers";
 
@@ -20,7 +20,7 @@ const ROUTES: Routes = [
   },
   {
     path: "editProfile",
-    component: ProfileComponent,
+    component: ClientProfileComponent,
     data: {
       breadcrumb: "Editar Perfil"
     }

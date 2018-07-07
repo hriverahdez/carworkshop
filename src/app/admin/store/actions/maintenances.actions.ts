@@ -1,8 +1,8 @@
 import { Action } from "@ngrx/store";
-import { Maintenance } from "../../models/maintenance.model";
-import { Client } from "../../models/client.model";
 import { Observable } from "rxjs";
-import { MaintenanceCategory } from "../../models/maintenance-category.model";
+import { Client } from "../../../@core/models/client.model";
+import { Maintenance } from "../../../@core/models/maintenance.model";
+import { MaintenanceCategory } from "../../../@core/models/maintenance-category.model";
 
 // LOAD
 export const LOAD_CLIENT_MAINTENANCES = "[Admin] Load Client Maintenances";

@@ -1,6 +1,6 @@
 import * as fromClient from "../actions/client.actions";
-import { Client } from "../../../admin/models/client.model";
-import { MaintenanceCategory } from "../../../admin/models/maintenance-category.model";
+import { Client } from "../../../@core/models/client.model";
+import { MaintenanceCategory } from "../../../@core/models/maintenance-category.model";
 
 export interface State {
   client: Client;

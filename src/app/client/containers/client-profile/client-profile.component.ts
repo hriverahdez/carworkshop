@@ -1,15 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { Client, ClientType } from "../../../admin/models/client.model";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store";
+import { Client } from "../../../@core/models/client.model";
 
 @Component({
-  selector: "cws-profile",
-  templateUrl: "./profile.component.html",
-  styleUrls: ["./profile.component.css"]
+  selector: "cws-client-profile",
+  templateUrl: "./client-profile.component.html",
+  styleUrls: ["./client-profile.component.css"]
 })
-export class ProfileComponent implements OnInit {
+export class ClientProfileComponent implements OnInit {
   client$: Observable<Client>;
 
   constructor(private store: Store<fromStore.ClientState>) {}

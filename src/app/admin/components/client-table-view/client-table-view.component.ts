@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { Client, ClientType } from "../../models/client.model";
+import { Client, ClientType } from "../../../@core/models/client.model";
 
 @Component({
   selector: "cws-client-table-view",

@@ -3,9 +3,9 @@ import { Store } from "@ngrx/store";
 
 import * as fromStore from "../../store";
 import { Observable } from "rxjs";
-import { Client } from "../../../admin/models/client.model";
-import { Maintenance } from "../../../admin/models/maintenance.model";
-import { MaintenanceCategory } from "../../../admin/models/maintenance-category.model";
+import { Client } from "../../../@core/models/client.model";
+import { Maintenance } from "../../../@core/models/maintenance.model";
+import { MaintenanceCategory } from "../../../@core/models/maintenance-category.model";
 
 @Component({
   selector: "cws-client-home",

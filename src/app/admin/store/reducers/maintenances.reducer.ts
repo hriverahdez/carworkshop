@@ -1,8 +1,8 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
 
 import * as fromMaintenances from "../actions/maintenances.actions";
-import { Maintenance } from "../../models/maintenance.model";
-import { MaintenanceCategory } from "../../models/maintenance-category.model";
+import { Maintenance } from "../../../@core/models/maintenance.model";
+import { MaintenanceCategory } from "../../../@core/models/maintenance-category.model";
 
 export interface State extends EntityState<Maintenance> {
   loaded: boolean;

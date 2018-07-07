@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, ElementRef, ViewChild } from "@angular/core";
-import { Car } from "../../../admin/models/car.model";
-import { Client } from "../../../admin/models/client.model";
 import { FileDownloadHelperService } from "../../../@core/services/file-download-helper.service";
+import { Client } from "../../../@core/models/client.model";
 
 @Component({
   selector: "cws-car-info-pane",

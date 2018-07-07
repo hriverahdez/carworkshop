@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Car } from "../../../admin/models/car.model";
+import { Car } from "../../../@core/models/car.model";
 
 @Component({
   selector: "cws-client-data-sheet",

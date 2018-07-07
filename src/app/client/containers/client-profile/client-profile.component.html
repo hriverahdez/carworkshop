@@ -1,0 +1,9 @@
+<div class="container">
+
+    <div class="row mt-sm">
+        
+        <cws-client-profile-form [currentUser]="client$ | async" (savedProfile)="onProfileSaved($event)"></cws-client-profile-form>
+
+    </div>
+
+</div>

@@ -6,10 +6,10 @@ import {
   Output,
   OnChanges
 } from "@angular/core";
-import { Car } from "../../../admin/models/car.model";
-import { Maintenance } from "../../../admin/models/maintenance.model";
 import { MOCK_DATA } from "../../../admin/services/mock-data";
-import { MaintenancesHelperService } from "../../../admin/services";
+import { Car } from "../../../@core/models/car.model";
+import { Maintenance } from "../../../@core/models/maintenance.model";
+import { MaintenancesHelperService } from "../../../@core/services/maintenances-helper.service";
 
 @Component({
   selector: "cws-next-maintenances",

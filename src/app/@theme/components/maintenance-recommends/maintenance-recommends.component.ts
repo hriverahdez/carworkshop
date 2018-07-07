@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { MaintenanceCategory } from "../../../admin/models/maintenance-category.model";
+import { MaintenanceCategory } from "../../../@core/models/maintenance-category.model";
 
 @Component({
   selector: "cws-maintenance-recommends",

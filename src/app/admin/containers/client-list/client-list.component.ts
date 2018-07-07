@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Observable, Subscription } from "rxjs";
-import { Client } from "../../models/client.model";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store";
 import * as fromRoot from "../../../@core/store";
 import { ClientsViewTypes } from "../../../@core/store/shared/ui-clients-view-types";
 import { DialogService } from "../../../@shared/services";
-import { MaintenancesHelperService } from "../../services";
+import { Client } from "../../../@core/models/client.model";
 
 @Component({
   selector: "cws-client-list",

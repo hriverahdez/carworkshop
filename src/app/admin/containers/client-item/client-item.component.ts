@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { Client } from "../../models/client.model";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store/";
 import { tap } from "rxjs/operators";
+import { Client } from "../../../@core/models/client.model";
 
 @Component({
   selector: "cws-client-item",

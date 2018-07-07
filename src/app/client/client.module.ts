@@ -5,7 +5,7 @@ import { ClientRoutingModule } from "./client-routing.module";
 
 import { ThemeModule } from "../@theme/theme.module";
 
-import { ClientsService, MaintenancesHelperService } from "../admin/services";
+import { ClientsService } from "../admin/services";
 
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
@@ -16,7 +16,7 @@ import * as fromContainers from "./containers";
 
 // components
 import * as fromComponents from "./components";
-import { ClientProfileFormComponent } from "./components/client-profile-form/client-profile-form.component";
+
 import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
@@ -28,12 +28,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     StoreModule.forFeature("clientState", reducers),
     EffectsModule.forFeature(effects)
   ],
-  declarations: [
-    ...fromContainers.containers,
-    ...fromComponents.components,
-    ClientProfileFormComponent
-  ],
-  exports: [...fromComponents.components],
-  providers: [ClientsService, MaintenancesHelperService]
+  declarations: [...fromContainers.containers, ...fromComponents.components],
+  providers: [ClientsService]
 })
 export class ClientModule {}

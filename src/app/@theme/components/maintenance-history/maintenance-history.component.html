@@ -26,7 +26,7 @@
                 <td>{{ maintenance.category?.name }}</td>
                 <td>{{ maintenance.mileage || '---' }}</td>
                 <td *ngIf="userIsAdmin">
-                    <a [routerLink]="['../../editMaintenance', maintenance.id]" class="text-primary">
+                    <a (click)="requestEdit(maintenance)" class="text-primary">
                         <span class="fui-new"></span>
                     </a> |
                     <a (click)="requestDelete(maintenance)" class="text-danger">

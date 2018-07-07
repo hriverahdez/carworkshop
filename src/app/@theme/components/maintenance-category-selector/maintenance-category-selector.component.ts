@@ -7,8 +7,8 @@ import {
   Output,
   OnChanges
 } from "@angular/core";
-import { MaintenanceCategory } from "../../../admin/models/maintenance-category.model";
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
+import { MaintenanceCategory } from "../../../@core/models/maintenance-category.model";
 
 const MAINTENANCE_CATEGORIES_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,

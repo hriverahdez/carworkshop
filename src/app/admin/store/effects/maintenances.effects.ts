@@ -15,8 +15,8 @@ import { of, Observable } from "rxjs";
 import * as fromRoot from "../../../@core/store";
 
 import { MaintenancesService } from "../../services";
-import { Client } from "../../models/client.model";
-import { Maintenance } from "../../models/maintenance.model";
+import { Client } from "../../../@core/models/client.model";
+import { Maintenance } from "../../../@core/models/maintenance.model";
 
 @Injectable()
 export class MaintenancesEffects {
