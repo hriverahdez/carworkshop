@@ -1,5 +1,5 @@
 header {
-  background: #2c3e50;
+  background: #2e375f;
   color: #fff;
   height: 73px;
 }
@@ -70,9 +70,14 @@ h4 {
 
 
 ul.nav li.divider p {
-  padding: 12px 1px 0;
+  padding: 16px 1px 0;
   margin-bottom: 0;
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-size: 15px;
+}
+ul.nav li.divider p.text-muted {
+  font-size: 15px;
+  padding: 14px 6px 0px;
 }
 
 ul.bcrumb > li > a {
@@ -197,6 +202,34 @@ section {
     margin-bottom: 15px;
 }
 
+h2.tile-title {
+  font-size: 28px !important;
+}
+
+.tile-a {
+  margin-bottom: 0;
+  border-radius: 6px 6px 0 0;
+}
+
+.tile-label {
+  background: #48c9b0;
+  text-align: center;
+  padding: 8px 0 5px;
+  border-radius: 0 0 6px 6px;
+  color:#fff;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.tile-border {
+  border-radius: 6px;
+}
+
+.tile-image {
+    height: 75px;
+    margin: 21px 0 17px;
+}
+
 .feature-detail .border {
     margin-left: 0px !important;
 }
@@ -271,4 +304,16 @@ section {
 .notify-warning {
   border-left: 3px solid #f1c40f;
   background: #fcf8e3;
+}
+
+h1.text-lg {
+  font-size: 64px;
+}
+
+h2.tile-title {
+    font-size: 48px;
+}
+
+.bg-primary {
+  background: #2e375f;
 }

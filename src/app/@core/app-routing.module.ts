@@ -62,6 +62,8 @@ const ROUTES: Routes = [
       {
         path: "client",
         loadChildren: "../client/client.module#ClientModule",
+        canActivate: [fromGuards.ClientGuard],
+        canActivateChild: [fromGuards.ClientGuard],
         data: {
           breadcrumb: "Inicio"
         }

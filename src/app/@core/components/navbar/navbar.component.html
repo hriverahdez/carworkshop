@@ -35,6 +35,12 @@
                                     <span class="fui-user"></span>&nbsp;&nbsp;Mi Perfil
                                 </a>
                             </li>
+                            <li *ngIf="isClient">
+                                <a routerLink="./client/editProfile">
+                                    <span class="fui-user"></span>&nbsp;&nbsp;Editar mis datos
+                                </a>
+                            </li>
+
                             <li *ngIf="!isClient">
                                 <a routerLink="./admin/profile"><span class="fui-gear"></span>&nbsp;&nbsp; Mi perfil</a>
                             </li>

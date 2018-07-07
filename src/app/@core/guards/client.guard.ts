@@ -8,7 +8,7 @@ import { map, filter, tap } from "rxjs/operators";
 import { AuthUser } from "../../@shared/models/auth-user.model";
 
 @Injectable()
-export class AdminGuard implements CanActivate, CanActivateChild {
+export class ClientGuard implements CanActivate {
   constructor(
     private store: Store<fromStore.AppState>,
     private router: Router
@@ -16,7 +16,7 @@ export class AdminGuard implements CanActivate, CanActivateChild {
 
   canActivate(): Observable<boolean> {
     return this.store.select(fromStore.selectCurrentUser).pipe(
-      map(user => this.isAdmin(user)),
+      map(user => this.isClient(user)),
       tap(isAdmin => (!isAdmin ? this.router.navigate(["/app/client"]) : null))
     );
   }
@@ -25,7 +25,7 @@ export class AdminGuard implements CanActivate, CanActivateChild {
     return this.canActivate();
   }
 
-  isAdmin(user: AuthUser) {
-    return user.role.name === "mechanic" || user.role.name === "superadmin";
+  isClient(user: AuthUser) {
+    return user.role.name === "client" || user.role.name === "superadmin";
   }
 }
