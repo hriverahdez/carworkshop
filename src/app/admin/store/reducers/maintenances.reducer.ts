@@ -1,5 +1,6 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
 
+import * as fromClients from "../actions/clients.actions";
 import * as fromMaintenances from "../actions/maintenances.actions";
 import { Maintenance } from "../../../@core/models/maintenance.model";
 import { MaintenanceCategory } from "../../../@core/models/maintenance-category.model";
@@ -26,7 +27,7 @@ export const initialState: State = adapter.getInitialState({
 
 export function reducer(
   state = initialState,
-  action: fromMaintenances.MaintenanceActions
+  action: fromMaintenances.MaintenanceActions | fromClients.ClientActions
 ) {
   switch (action.type) {
     case fromMaintenances.DELETE_MAINTENANCE_FAIL:
@@ -92,6 +93,19 @@ export function reducer(
     case fromMaintenances.DELETE_MAINTENANCE_SUCCESS: {
       const deletedMaintenance = action.payload;
       return adapter.removeOne(deletedMaintenance.id, state);
+    }
+
+    case fromClients.LOAD_CLIENTS_SUCCESS: {
+      const clients = action.payload;
+      const maintenances = clients.reduce((acc, curr) => {
+        return acc.concat(curr.car.maintenances);
+      }, []);
+
+      return adapter.addAll(maintenances, {
+        ...state,
+        loaded: true,
+        loading: false
+      });
     }
 
     default: {

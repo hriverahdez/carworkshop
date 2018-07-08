@@ -3,7 +3,8 @@ import { RouterModule, Routes } from "@angular/router";
 import {
   DashboardComponent,
   DataSheetComponent,
-  DashboardLayoutComponent
+  DashboardLayoutComponent,
+  NextMaintenancesComponent
 } from "./containers";
 
 const ROUTES: Routes = [
@@ -21,6 +22,13 @@ const ROUTES: Routes = [
         component: DataSheetComponent,
         data: {
           breadcrumb: "Ficha Técnica"
+        }
+      },
+      {
+        path: "nextMaintenances",
+        component: NextMaintenancesComponent,
+        data: {
+          breadcrumb: "Próximos Mantenimientos"
         }
       }
     ]

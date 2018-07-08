@@ -7,7 +7,6 @@ export interface State extends EntityState<Client> {
   loaded: boolean;
   loading: boolean;
   error: any;
-  //   activeClient: Client;
 }
 
 export const adapter: EntityAdapter<Client> = createEntityAdapter<Client>();
@@ -16,7 +15,6 @@ export const initialState: State = adapter.getInitialState({
   loaded: false,
   loading: false,
   error: ""
-  //   activeClient: {}
 });
 
 export function reducer(
@@ -66,11 +64,6 @@ export function reducer(
       return adapter.removeOne(deletedClient.id, state);
     }
 
-    // case fromClients.SET_ACTIVE_CLIENT: {
-    //   const activeClient = action.payload;
-    //   return { ...state, activeClient };
-    // }
-
     default: {
       return state;
     }
@@ -78,7 +71,6 @@ export function reducer(
 }
 
 export const selectClientsLoaded = (state: State) => state.loaded;
-// export const selectActiveClient = (state: State) => state.activeClient;
 
 export const {
   selectIds: selectClientIds,

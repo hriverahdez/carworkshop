@@ -18,3 +18,8 @@ export const selectActiveClientCar = createSelector(
   selectActiveClient,
   (client: Client) => client.car
 );
+
+export const selectActiveClientMaintenances = createSelector(
+  selectActiveClient,
+  (client: Client) => client && client.car && client.car.maintenances
+);

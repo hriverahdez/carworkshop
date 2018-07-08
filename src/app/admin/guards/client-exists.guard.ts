@@ -33,13 +33,6 @@ export class ClientExistsGuard implements CanActivate {
     );
   }
 
-  //   hasClient(id: string): Observable<boolean> {
-  //     return this.store.select(fromStore.selectClientEntities).pipe(
-  //       map(entities => !!entities[id]),
-  //       take(1)
-  //     );
-  //   }
-
   checkStore(): Observable<boolean> {
     return this.store.select(fromStore.selectClientsLoaded).pipe(
       tap(loaded => {

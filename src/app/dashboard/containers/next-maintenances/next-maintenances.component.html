@@ -1,0 +1,4 @@
+<cws-next-maintenances-list 
+    [userIsAdmin]="(currentUser$ | async).role.name !== 'client'"
+    [car]="(car$ | async)"
+    [maintenances]="maintenances$ | async"></cws-next-maintenances-list>

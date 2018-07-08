@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Observable, Subscription } from "rxjs";
+import { Observable, Subscription, of } from "rxjs";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store";
 import * as fromRoot from "../../../@core/store";
@@ -36,6 +36,7 @@ export class ClientListComponent implements OnInit, OnDestroy {
   }
 
   checkClient(client) {
+    // this.store.dispatch(new fromStore.SetActiveClientMaintenances(client));
     this.rootStore.dispatch(new fromRoot.SetActiveClient(client));
     this.rootStore.dispatch(
       new fromRoot.Go({ path: ["/app/admin/details", client.id] })

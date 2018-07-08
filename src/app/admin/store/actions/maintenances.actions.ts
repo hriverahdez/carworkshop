@@ -130,6 +130,14 @@ export class DeleteMaintenanceSuccess implements Action {
   constructor(public payload: Maintenance) {}
 }
 
+// export const SET_ACTIVE_CLIENT_MAINTENANCES =
+//   "[Admin] Set Active Client Maintenances";
+
+// export class SetActiveClientMaintenances implements Action {
+//   readonly type = SET_ACTIVE_CLIENT_MAINTENANCES;
+//   constructor(public payload: Client) {}
+// }
+
 export type MaintenanceActions =
   | LoadClientMaintenances
   | LoadClientMaintenancesFail
@@ -149,3 +157,4 @@ export type MaintenanceActions =
   | DeleteMaintenance
   | DeleteMaintenanceFail
   | DeleteMaintenanceSuccess;
+//   | SetActiveClientMaintenances;
