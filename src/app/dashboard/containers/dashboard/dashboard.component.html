@@ -1,0 +1,37 @@
+<div class="container">
+
+    <div class="row mt-sm">
+        <div class="col-sm-3 text-center">
+          
+            <cws-client-info-pane [client]="client$ | async"></cws-client-info-pane>
+    
+        </div>
+        <div class="col-sm-9 right-content">
+    
+            <div class="row demo-tiles">
+                <div class="col-md-6">
+                    <cws-dashboard-panel
+                        [mainText]="(client$ | async).car?.plateNumber"
+                        [hasSupportText]="true"
+                        [supportText]="(client$ | async).car?.brand + ' ' + (client$ | async).car?.model"
+                        [hasSupportLink]="true"
+                        [supportLinkText]="'Ficha Técnica'"
+                        [supportLinkUrl]="'#/app/admin/client'"></cws-dashboard-panel>
+                </div>
+                <div class="col-md-6">
+                    <cws-dashboard-panel
+                        [mainText]="'Próximos'"
+                        [hasSupportText]="true"
+                        [supportText]="'Mantenimientos'"
+                        [hasSupportLink]="true"
+                        [supportLinkText]="'Listar'"
+                        [supportLinkUrl]="'/app/admin/client'"></cws-dashboard-panel>
+                </div>
+            </div>
+            <hr>
+            <h4 class="text-center">Historiales</h4>
+    
+        </div>
+      </div>
+
+</div>

@@ -9,6 +9,7 @@ import * as fromFeature from "../reducers";
 import * as fromSelectors from "../selectors";
 
 import * as fromRouter from "../actions/router.actions";
+import * as fromSharedActions from "../actions/shared.actions";
 import * as fromSharedServices from "../../../@shared/services";
 import * as authActions from "../actions/auth.actions";
 import * as uiActions from "../actions/ui.actions";
@@ -171,11 +172,14 @@ export class AuthEffects {
 
   @Effect()
   logout$ = this.actions$.ofType(authActions.LOGOUT).pipe(
-    map(() => {
+    switchMap(() => {
       this.authService.logOut();
-      return new fromRouter.Go({
-        path: ["/home"]
-      });
+      return [
+        new fromRouter.Go({
+          path: ["/home"]
+        }),
+        new fromSharedActions.ClearActiveClient()
+      ];
     })
   );
 }

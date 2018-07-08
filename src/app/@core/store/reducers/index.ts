@@ -15,11 +15,13 @@ import {
 
 import * as fromUI from "./ui.reducers";
 import * as fromAuth from "./auth.reducer";
+import * as fromShared from "./shared.reducer";
 
 export interface AppState {
   ui: fromUI.State;
   auth: fromAuth.AuthState;
   router: fromRouter.RouterReducerState<RouterStateUrl>;
+  shared: fromShared.State;
 }
 
 export interface RouterStateUrl {
@@ -31,7 +33,8 @@ export interface RouterStateUrl {
 export const reducers: ActionReducerMap<AppState> = {
   ui: fromUI.reducer,
   auth: fromAuth.reducer,
-  router: fromRouter.routerReducer
+  router: fromRouter.routerReducer,
+  shared: fromShared.reducer
 };
 
 export const getRouterState = createFeatureSelector<
@@ -41,6 +44,8 @@ export const getRouterState = createFeatureSelector<
 export const getUIState = createFeatureSelector<fromUI.State>("ui");
 
 export const getAuthState = createFeatureSelector<fromAuth.AuthState>("auth");
+
+export const getSharedState = createFeatureSelector<fromShared.State>("shared");
 
 export class CustomSerializer
   implements fromRouter.RouterStateSerializer<RouterStateUrl> {

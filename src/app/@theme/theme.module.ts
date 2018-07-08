@@ -16,7 +16,7 @@ const NGX_BS_MODULES = [BsDropdownModule, BsDatepickerModule];
 
 // components
 import * as fromComponents from "./components";
-import { ClientDashboardComponent } from './components/client-dashboard/client-dashboard.component';
+// import { ClientDashboardComponent } from './components/client-dashboard/client-dashboard.component';
 
 @NgModule({
   imports: [
@@ -26,7 +26,7 @@ import { ClientDashboardComponent } from './components/client-dashboard/client-d
     BsDropdownModule.forRoot()
   ],
 
-  declarations: [...fromComponents.components, ClientDashboardComponent],
+  declarations: [...fromComponents.components],
   exports: [...fromComponents.components, ...NGX_BS_MODULES]
 })
 export class ThemeModule {}
