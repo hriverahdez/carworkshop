@@ -1,4 +1,14 @@
-<h4>Ficha Técnica</h4>
+<div class="row mt-xsx">
+    <div class="col-md-8">
+        <h4 class="text-xs-center">Ficha Técnica
+            <br>
+            <small class="small">{{ car.brand | uppercase }} {{ car.model | uppercase }} ({{ car.plateNumber | uppercase }})</small>
+        </h4>
+    </div>
+    <div class="col-md-3 col-md-offset-1 text-center">
+        <a (click)="getReport()" class="btn btn-danger">Descargar Ficha Técnica</a>
+    </div>
+</div>
 <hr>
 <div class="row mt-xs">
     <div class="col-md-3" *ngIf="modelVisible">

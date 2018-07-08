@@ -1,4 +1,12 @@
-import { Component, OnInit, Input } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  ElementRef,
+  ViewChild,
+  EventEmitter,
+  Output
+} from "@angular/core";
 import { Car } from "../../../@core/models/car.model";
 
 @Component({
@@ -9,16 +17,15 @@ import { Car } from "../../../@core/models/car.model";
 export class ClientDataSheetComponent implements OnInit {
   @Input() car: Car;
   @Input() userIsAdmin: boolean = false;
+  @Output() downloadDataSheet = new EventEmitter();
 
   constructor() {}
 
   ngOnInit() {}
 
-  // DOESN'T WORK WHEN MINIFIED
-  //   fieldIsVisible(fieldName: string) {
-  //     if (this.userIsAdmin) return true;
-  //     return this.car && this.car[fieldName] && this.car[`${fieldName}IsVisible`];
-  //   }
+  getReport() {
+    this.downloadDataSheet.emit();
+  }
 
   get modelVisible() {
     if (this.userIsAdmin) return true;

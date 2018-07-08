@@ -1,11 +1,29 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { DashboardComponent } from "./containers/dashboard/dashboard.component";
+import {
+  DashboardComponent,
+  DataSheetComponent,
+  DashboardLayoutComponent
+} from "./containers";
 
 const ROUTES: Routes = [
   {
     path: "",
-    component: DashboardComponent
+    component: DashboardLayoutComponent,
+
+    children: [
+      {
+        path: "",
+        component: DashboardComponent
+      },
+      {
+        path: "dataSheet",
+        component: DataSheetComponent,
+        data: {
+          breadcrumb: "Ficha Técnica"
+        }
+      }
+    ]
   }
 ];
 

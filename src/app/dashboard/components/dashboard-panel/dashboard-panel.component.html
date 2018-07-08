@@ -7,7 +7,7 @@
     <small class="text-uppercase" *ngIf="hasSupportText">{{ supportText }}</small>
     <br>
 </div>
-<a [href]="supportLinkUrl" *ngIf="hasSupportLink">
+<a [routerLink]="supportLinkUrl" *ngIf="hasSupportLink">
     <div class="tile-label">
         <small class="">{{ supportLinkText }}</small>
     </div>

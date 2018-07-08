@@ -1,0 +1,16 @@
+<div class="container">
+
+    <div class="row mt-sm">
+        <div class="col-sm-3 text-center">
+            
+            <cws-client-info-pane [client]="client$ | async"></cws-client-info-pane>
+    
+        </div>
+        <div class="col-sm-9 right-content">
+    
+            <router-outlet></router-outlet>
+
+        </div>
+    </div>
+
+</div>
