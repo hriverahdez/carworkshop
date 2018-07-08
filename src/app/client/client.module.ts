@@ -17,6 +17,9 @@ import * as fromContainers from "./containers";
 // components
 import * as fromComponents from "./components";
 
+// guards
+import * as fromGuards from "./guards";
+
 import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
@@ -29,6 +32,6 @@ import { ReactiveFormsModule } from "@angular/forms";
     EffectsModule.forFeature(effects)
   ],
   declarations: [...fromContainers.containers, ...fromComponents.components],
-  providers: [ClientsService]
+  providers: [ClientsService, ...fromGuards.guards]
 })
 export class ClientModule {}
