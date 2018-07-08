@@ -16,7 +16,6 @@ const NGX_BS_MODULES = [BsDropdownModule, BsDatepickerModule];
 
 // components
 import * as fromComponents from "./components";
-// import { ClientDashboardComponent } from './components/client-dashboard/client-dashboard.component';
 
 @NgModule({
   imports: [

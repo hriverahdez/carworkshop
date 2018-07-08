@@ -9,7 +9,7 @@ import { MaintenanceCategorySelectorComponent } from "./maintenance-category-sel
 import { MaintenanceHistoryComponent } from "./maintenance-history/maintenance-history.component";
 import { MaintenanceRecommendsComponent } from "./maintenance-recommends/maintenance-recommends.component";
 
-import { NextMaintenancesComponent } from "./next-maintenances/next-maintenances.component";
+import { NextMaintenancesListComponent } from "./next-maintenances-list/next-maintenances-list.component";
 
 import { ProfileAdditionalInfoTabComponent } from "./profile-additional-info-tab/profile-additional-info-tab.component";
 import { ProfileMainInfoTabComponent } from "./profile-main-info-tab/profile-main-info-tab.component";
@@ -28,7 +28,7 @@ export const components: any[] = [
 
   MaintenanceHistoryComponent,
   MaintenanceRecommendsComponent,
-  NextMaintenancesComponent,
+  NextMaintenancesListComponent,
 
   ProfileAdditionalInfoTabComponent,
   ProfileMainInfoTabComponent,
@@ -48,7 +48,7 @@ export * from "./maintenance-category-selector/maintenance-category-selector.com
 export * from "./maintenance-history/maintenance-history.component";
 export * from "./maintenance-recommends/maintenance-recommends.component";
 
-export * from "./next-maintenances/next-maintenances.component";
+export * from "./next-maintenances-list/next-maintenances-list.component";
 
 export * from "./profile-main-info-tab/profile-main-info-tab.component";
 export * from "./profile-additional-info-tab/profile-additional-info-tab.component";

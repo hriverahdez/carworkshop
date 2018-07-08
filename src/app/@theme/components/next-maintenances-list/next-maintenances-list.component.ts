@@ -6,17 +6,16 @@ import {
   Output,
   OnChanges
 } from "@angular/core";
-import { MOCK_DATA } from "../../../admin/services/mock-data";
 import { Car } from "../../../@core/models/car.model";
 import { Maintenance } from "../../../@core/models/maintenance.model";
 import { MaintenancesHelperService } from "../../../@core/services/maintenances-helper.service";
 
 @Component({
-  selector: "cws-next-maintenances",
-  templateUrl: "./next-maintenances.component.html",
-  styleUrls: ["./next-maintenances.component.css"]
+  selector: "cws-next-maintenances-list",
+  templateUrl: "./next-maintenances-list.component.html",
+  styleUrls: ["./next-maintenances-list.component.css"]
 })
-export class NextMaintenancesComponent implements OnInit, OnChanges {
+export class NextMaintenancesListComponent implements OnInit {
   @Input() userIsAdmin: boolean = false;
   @Input() car: Car;
   @Input() maintenances: Maintenance[];
@@ -29,9 +28,10 @@ export class NextMaintenancesComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes): void {
     this.mHelper.initData(this.maintenances);
-    // this.mHelper.initData(MOCK_DATA);
 
     this.nextMaintenances = this.mHelper.getNextMaintenancesByDate();
+
+    /* Use this method if maintenances should be prioritized by mileage */
     // this.nextMaintenances = this.mHelper.getNextMaintenancesByMileage();
   }
 
