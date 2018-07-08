@@ -2,6 +2,8 @@ import { CarInfoPaneComponent } from "./car-info-pane/car-info-pane.component";
 import { ClientDataSheetComponent } from "./client-data-sheet/client-data-sheet.component";
 import { ClientInfoPaneComponent } from "./client-info-pane/client-info-pane.component";
 
+import { DashboardPanelComponent } from "./dashboard-panel/dashboard-panel.component";
+
 import { LoadingBoxComponent } from "./loading-box/loading-box.component";
 import { LoaderComponent } from "./loader/loader.component";
 
@@ -21,6 +23,9 @@ export const components: any[] = [
   CarInfoPaneComponent,
   ClientDataSheetComponent,
   ClientInfoPaneComponent,
+
+  DashboardPanelComponent,
+
   LoadingBoxComponent,
   LoaderComponent,
   MaintenanceCategorySelectorComponent,
@@ -39,6 +44,8 @@ export const components: any[] = [
 export * from "./car-info-pane/car-info-pane.component";
 export * from "./client-info-pane/client-info-pane.component";
 export * from "./client-data-sheet/client-data-sheet.component";
+
+export * from "./dashboard-panel/dashboard-panel.component";
 
 export * from "./loading-box/loading-box.component";
 export * from "./loader/loader.component";

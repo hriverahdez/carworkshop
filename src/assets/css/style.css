@@ -9,16 +9,14 @@ footer {
 }
 
 .footer-banner {
-  background: #2c3e50;
-    margin-left: 0;
-}
-
-.footer-banner ul li {
-    border-top: 1px solid #2ecc71;
+  background: #2e375f;
+  margin-left: 0;
+  padding: 25px 0 20px;
+  min-height: 0px;
 }
 
 .content-body {
-  padding-bottom:95px;
+  padding-bottom:45px;
   font-size: 16px !important;
 }
 
@@ -64,9 +62,13 @@ h3 {
 
 h4 {
   font-size: 24px;
-  margin-top: 25px;
+  margin-top: 0;
 }
 
+.table a {
+  font-weight: bold;
+  color: #f0683e;
+}
 
 
 ul.nav li.divider p {
@@ -84,12 +86,43 @@ ul.bcrumb > li > a {
   padding-left: 5px;
   padding-right: 5px;
 }
+.navbar-toggle::before {
+  color: #fff;
+}
+
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-toggle::before:active {
+  color: #f0683e;
+}
+
+.no-large {
+  display: none;
+}
+
+.right-content {
+  border-left: 1px solid #f1f1f1;
+  padding-left:25px;
+  min-height: 500px;
+}
 
 @media (max-width: 576px) {
     ul.nav li.divider {
         display: none
     }
+    .no-small{
+      display: none;
+    }
+    .no-large {
+      display: block;
+    }
+    .text-xs-center {
+      text-align: center;
+    }
+    .right-content {
+      min-height: 0;
+    }
 }
+
 
 /*.dropdown-menu > li > a {
     padding: 8px 16px;
@@ -208,17 +241,22 @@ h2.tile-title {
 
 .tile-a {
   margin-bottom: 0;
+  padding-bottom: 25px;
   border-radius: 6px 6px 0 0;
 }
 
 .tile-label {
-  background: #48c9b0;
+  background: #f0683e;
   text-align: center;
   padding: 8px 0 5px;
   border-radius: 0 0 6px 6px;
   color:#fff;
   font-weight: bold;
   margin-bottom: 20px;
+}
+
+a:hover {
+  color: #f0683e;
 }
 
 .tile-border {
@@ -315,5 +353,13 @@ h2.tile-title {
 }
 
 .bg-primary {
-  background: #2e375f;
+  background: #f0683e;
+}
+
+.btn-inverse, ul.pagination li.active a {
+  background-color: #2e375f
+}
+
+.btn-danger, ul.pagination li a:hover, ul.pagination li.active a:hover {
+  background-color: #f0683e
 }
