@@ -1,5 +1,5 @@
-<h4>Información Principal</h4>
-<hr>
+<!-- <h4>Información Principal</h4>
+<hr> -->
 <div class="row mt-xs">
     <div class="col-md-12" *ngIf="isCompany">
         <strong>Nombre y Apellidos del contacto</strong>
@@ -13,19 +13,19 @@
         <strong>Correo Electrónico</strong>
         <p>{{ client.email }}</p>
     </div>    
-    <div class="col-md-6" *ngIf="client.dniIsVisible">
+    <div class="col-md-6" *ngIf="client.dniIsVisible || userIsAdmin">
         <strong>DNI / NIF</strong>
         <p>{{ client.dni || '---' }}</p>
     </div>
-    <div class="col-md-6" *ngIf="client.linkedTo && client.linkedToIsVisible">
+    <div class="col-md-6" *ngIf="client.linkedTo && client.linkedToIsVisible || userIsAdmin">
         <strong>Vinculado a</strong>
-        <p>{{ client.linkedTo }}</p>
+        <p>{{ client.linkedTo || '---' }}</p>
     </div>    
-    <div class="col-md-12" *ngIf="client.socialMissionIsVisible">
+    <div class="col-md-12" *ngIf="client.socialMissionIsVisible || userIsAdmin">
         <strong>Razón Social</strong>
         <p>{{ client.socialMission || '---' }}</p>
     </div>
-    <div class="col-md-12" *ngIf="client.observationsIsVisible">
+    <div class="col-md-12" *ngIf="client.observationsIsVisible || userIsAdmin">
         <strong>Observaciones</strong>
         <p>{{ client.observations || '---' }}</p>
     </div>

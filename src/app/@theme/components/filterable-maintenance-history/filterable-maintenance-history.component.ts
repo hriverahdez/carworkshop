@@ -3,11 +3,11 @@ import { Maintenance } from "../../../@core/models/maintenance.model";
 import { MaintenanceCategory } from "../../../@core/models/maintenance-category.model";
 
 @Component({
-  selector: "cws-maintenance-history",
-  templateUrl: "./maintenance-history.component.html",
-  styleUrls: ["./maintenance-history.component.css"]
+  selector: "cws-filterable-maintenance-history",
+  templateUrl: "./filterable-maintenance-history.component.html",
+  styleUrls: ["./filterable-maintenance-history.component.css"]
 })
-export class MaintenanceHistoryComponent implements OnInit {
+export class FilterableMaintenanceHistoryComponent implements OnInit {
   currentFilter = null;
 
   @Input() maintenanceHistory: Maintenance[];

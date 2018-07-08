@@ -8,6 +8,7 @@ import { Client, ClientType } from "../../../@core/models/client.model";
 })
 export class ProfileMainInfoTabComponent implements OnInit {
   @Input() client: Client;
+  @Input() userIsAdmin: boolean = false;
 
   constructor() {}
 

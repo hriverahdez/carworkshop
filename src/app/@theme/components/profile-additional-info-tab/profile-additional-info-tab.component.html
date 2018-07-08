@@ -1,38 +1,38 @@
-<h4>Información adicional</h4>
-<hr>
-<div class="row mt-xs">    
-    <div class="col-md-12">
+<!-- <h4>Información adicional</h4>
+<hr> -->
+<div class="row mt-xs">
+    <div class="col-md-12" *ngIf="client.addressIsVisible || userIsAdmin">
         <strong>Dirección</strong>
         <p>{{ client.address || '---' }}</p>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" *ngIf="client.localityIsVisible || userIsAdmin">
         <strong>Localidad</strong>
         <p>{{ client.locality || '---' }}</p>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" *ngIf="client.zipCodeIsVisible || userIsAdmin">
         <strong>Código Postal</strong>
         <p>{{ client.zipCode || '---' }}</p>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" *ngIf="client.genderIsVisible || userIsAdmin">
         <strong>Género</strong>
         <p>{{ client.gender === 'M' ? 'Masculino' : 'Femenino' }}</p>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" *ngIf="client.birthdayIsVisible || userIsAdmin">
         <strong>Cumpleaños</strong>
         <p>{{ (client.birthday | date:'dd/MM/yyyy') || '---' }}</p>
     </div>
 </div>
 <div class="row">
     <hr>
-    <div class="col-md-6">
+    <div class="col-md-6" *ngIf="client.homePhone || userIsAdmin">
         <strong>Telefono (Casa)</strong>
         <p>{{ client.homePhone || '---' }}</p>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" *ngIf="client.mobilePhone || userIsAdmin">
         <strong>Telefono (Movil)</strong>
         <p>{{ client.mobilePhone || '---' }}</p>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" *ngIf="client.otherPhone || userIsAdmin">
         <strong>Telefono (Otro)</strong>
         <p>{{ client.otherPhone || '---' }}</p>
     </div>    
