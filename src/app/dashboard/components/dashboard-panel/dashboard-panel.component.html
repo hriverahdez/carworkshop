@@ -1,11 +1,11 @@
 <div class="tile tile-a">
-    <a [href]="mainLinkUrl" *ngIf="hasMainLink && hasIcon">
+    <a [routerLink]="mainLinkNoExtras" [queryParams]="{filter: mainLinkRouteExtras}" *ngIf="hasMainLink && hasIcon">
         <img [src]="'assets/img/icons/all/' + iconName + '.png'" [alt]="iconName" class="tile-image">
     </a>
     <img *ngIf="hasIcon && !hasMainLink" [src]="'assets/img/icons/all/' + iconName + '.png'" [alt]="iconName" class="tile-image">
     <h3 class="tile-title">{{ mainText }}</h3>
     <small class="text-uppercase" *ngIf="hasSupportText">{{ supportText }}</small>
-    <br>
+    <!-- <br> -->
 </div>
 <a [routerLink]="supportLinkUrl" *ngIf="hasSupportLink">
     <div class="tile-label">

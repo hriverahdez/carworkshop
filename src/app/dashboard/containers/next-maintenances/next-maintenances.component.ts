@@ -13,19 +13,23 @@ import { switchMap } from "rxjs/operators";
   styleUrls: ["./next-maintenances.component.css"]
 })
 export class NextMaintenancesComponent implements OnInit {
-  currentUser$: Observable<AuthUser>;
   car$: Observable<Car>;
   maintenances$: Observable<Maintenance[]>;
+  currentUserIsAdmin$: Observable<boolean>;
 
   constructor(private rootStore: Store<fromRoot.AppState>) {}
 
   ngOnInit() {
-    this.currentUser$ = this.rootStore.select(fromRoot.selectCurrentUser);
+    this.currentUserIsAdmin$ = this.rootStore.select(
+      fromRoot.selectCurrentUserIsAdmin
+    );
+
+    // this.currentUser$ = this.rootStore.select(fromRoot.selectCurrentUser);
     this.car$ = this.rootStore.select(fromRoot.selectActiveClientCar);
 
-    this.maintenances$ = this.currentUser$.pipe(
-      switchMap((user: AuthUser) => {
-        return user && user.role && user.role.name !== "client"
+    this.maintenances$ = this.currentUserIsAdmin$.pipe(
+      switchMap(isAdmin => {
+        return isAdmin
           ? this.rootStore.select(
               fromRoot.selectActiveClientMaintenancesAsAdmin
             )

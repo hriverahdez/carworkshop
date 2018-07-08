@@ -24,4 +24,18 @@ export class DashboardPanelComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  get mainLinkNoExtras() {
+    if (this.hasMainLink) {
+      const extras = this.mainLinkUrl.split("?filter=")[0];
+      return extras;
+    }
+  }
+
+  get mainLinkRouteExtras() {
+    if (this.hasMainLink) {
+      const extras = this.mainLinkUrl.split("?filter=")[1];
+      return extras;
+    }
+  }
 }

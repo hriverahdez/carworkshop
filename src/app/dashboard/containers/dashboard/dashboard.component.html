@@ -1,9 +1,9 @@
 <div class="row demo-tiles">
     <div class="col-md-6">
         <cws-dashboard-panel
-            [mainText]="(client$ | async).car?.plateNumber"
+            [mainText]="(car$ | async)?.plateNumber"
             [hasSupportText]="true"
-            [supportText]="(client$ | async).car?.brand + ' ' + (client$ | async).car?.model"
+            [supportText]="(car$ | async)?.brand + ' ' + (car$ | async)?.model"
             [hasSupportLink]="true"
             [supportLinkText]="'Ficha Técnica'"
             [supportLinkUrl]="'./dataSheet'"></cws-dashboard-panel>
@@ -20,3 +20,30 @@
 </div>
 <hr>
 <h4 class="text-center">Historiales</h4>
+<div class="row demo-tiles mt-xs">
+
+    <div class="col-md-3" *ngFor="let category of maintenanceCategories$ | async">
+        <cws-dashboard-panel
+            [mainText]="'Próximos'"
+            [hasSupportLink]="currentUserIsAdmin$ | async"
+            [hasIcon]="true"
+            [iconName]="'battery'"
+            [hasMainLink]="true"
+            [mainLinkUrl]="'./maintenanceHistory?filter='+category.id"
+            [supportLinkText]="'Añadir Mantenimiento'"
+            [supportLinkUrl]="'../../../../addMaintenance/' + (car$ | async)?.id"></cws-dashboard-panel>
+        <!-- <div class="tile tile-a">
+            <a href="historic2.html" title="Historial">
+                <img src="assets/img/icons/all/battery.png" alt="Chat" class="tile-image">
+            </a>
+            <h3 class="tile-title">Bateria</h3>
+            
+        </div>
+        <a href="#">
+            <div class="tile-label">
+                <small class="">Añadir Mantenimiento</small>
+            </div>
+        </a> -->
+    </div>
+    
+</div>

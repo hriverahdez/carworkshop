@@ -1,0 +1,28 @@
+<div class="row mt-xsx">
+    <div class="col-md-8">
+        <h4 class="text-xs-center">Perfil del Cliente
+            <br>
+            <cws-car-name [car]="car$ | async"></cws-car-name>
+        </h4>
+    </div>
+    <div class="col-md-3 col-md-offset-1 text-center">
+        <div class="btn-group">
+            <button (click)="activeView = 'PRIMARY'" class="btn btn-default" [ngClass]="{ 'btn-inverse': activeView === 'PRIMARY' }">
+                <i class="fui-info-circle"></i>
+            </button>
+            <button (click)="activeView = 'SECONDARY'" class="btn" [ngClass]="{ 'btn-inverse': activeView === 'SECONDARY' }">
+                <i class="fui-link"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<hr>
+<cws-profile-main-info-tab 
+    [hidden]="activeView !== 'PRIMARY'"
+    [userIsAdmin]="currentUserIsAdmin$ | async"
+    [client]="client$ | async"></cws-profile-main-info-tab>
+
+<cws-profile-additional-info-tab 
+    [hidden]="activeView !== 'SECONDARY'"
+    [userIsAdmin]="currentUserIsAdmin$ | async"
+    [client]="client$ | async"></cws-profile-additional-info-tab>

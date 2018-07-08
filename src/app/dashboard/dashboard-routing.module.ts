@@ -4,7 +4,8 @@ import {
   DashboardComponent,
   DataSheetComponent,
   DashboardLayoutComponent,
-  NextMaintenancesComponent
+  NextMaintenancesComponent,
+  ClientInfoComponent
 } from "./containers";
 
 const ROUTES: Routes = [
@@ -29,6 +30,13 @@ const ROUTES: Routes = [
         component: NextMaintenancesComponent,
         data: {
           breadcrumb: "Próximos Mantenimientos"
+        }
+      },
+      {
+        path: "profileInfo",
+        component: ClientInfoComponent,
+        data: {
+          breadcrumb: "Perfil del Cliente"
         }
       }
     ]

@@ -13,6 +13,11 @@ export const selectCurrentUser = createSelector(
   fromUser.selectCurrentUser
 );
 
+export const selectCurrentUserIsAdmin = createSelector(
+  selectCurrentUser,
+  user => user && user.role && user.role.name !== "client"
+);
+
 export const selectAuthError = createSelector(
   fromRoot.getAuthState,
   fromUser.selectError
