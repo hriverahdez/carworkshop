@@ -1,6 +1,6 @@
 import { createSelector } from "@ngrx/store";
 
-import * as fromRoot from "../../../@core/store";
+import * as fromRoot from "../../../@core/store/reducers/";
 import * as fromFeature from "../reducers";
 import * as fromClient from "../reducers/clients.reducer";
 

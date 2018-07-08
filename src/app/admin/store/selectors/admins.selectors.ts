@@ -1,6 +1,6 @@
 import { createSelector } from "@ngrx/store";
 
-import * as fromRoot from "../../../@core/store";
+import * as fromRoot from "../../../@core/store/reducers";
 import * as fromFeature from "../reducers";
 import * as fromAdmin from "../reducers/admins.reducer";
 import { AuthUser } from "../../../@shared/models/auth-user.model";

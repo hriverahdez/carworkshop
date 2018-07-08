@@ -9,12 +9,12 @@
     <div class="col-md-8">
         <h4 class="text-xs-center">Próximos Mantenimientos
             <br>
-            <small class="small">{{ car.brand | uppercase }} {{car.model | uppercase}} ({{car.plateNumber | uppercase}})</small>
+            <cws-car-name [car]="car"></cws-car-name>
         </h4>
     </div>
     <div class="col-md-3 col-md-offset-1 text-center" *ngIf="userIsAdmin">
-        <a href="mant2.html" class="btn btn-danger">Añadir Mantenimiento</a>
-        <!-- <a [routerLink]="['../../addMaintenance', car.id]" class="btn btn-inverse">Agregar mantenimiento</a> -->
+        <!-- <a href="mant2.html" class="btn btn-danger">Añadir Mantenimiento</a> -->
+        <a [routerLink]="['../../../addMaintenance', car.id]" class="btn btn-danger">Agregar mantenimiento</a>
     </div>
 </div>
 <hr>

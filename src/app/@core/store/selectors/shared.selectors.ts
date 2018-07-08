@@ -1,6 +1,7 @@
 import { createSelector } from "@ngrx/store";
 
 import * as fromFeature from "../reducers";
+import * as fromAdmin from "../../../admin/store/selectors";
 import * as fromShared from "../reducers/shared.reducer";
 import { Client } from "../../models/client.model";
 
@@ -17,6 +18,14 @@ export const selectActiveClientLoaded = createSelector(
 export const selectActiveClientCar = createSelector(
   selectActiveClient,
   (client: Client) => client.car
+);
+
+export const selectActiveClientMaintenancesAsAdmin = createSelector(
+  selectActiveClient,
+  fromAdmin.selectAllMaintenances,
+  (client: Client, allMaintenances) => {
+    return allMaintenances.filter(m => m["carId"] === client.car.id);
+  }
 );
 
 export const selectActiveClientMaintenances = createSelector(

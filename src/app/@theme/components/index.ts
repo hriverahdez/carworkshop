@@ -16,9 +16,11 @@ import { ProfileMainInfoTabComponent } from "./profile-main-info-tab/profile-mai
 
 import { TabsComponent } from "./tabs/tabs.component";
 import { TabComponent } from "./tab/tab.component";
+import { CarNameComponent } from "./car-name/car-name.component";
 
 export const components: any[] = [
   CarInfoPaneComponent,
+  CarNameComponent,
   ClientDataSheetComponent,
   ClientInfoPaneComponent,
 
@@ -38,6 +40,7 @@ export const components: any[] = [
 ];
 
 export * from "./car-info-pane/car-info-pane.component";
+export * from "./car-name/car-name.component";
 export * from "./client-info-pane/client-info-pane.component";
 export * from "./client-data-sheet/client-data-sheet.component";
 

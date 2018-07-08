@@ -16,11 +16,13 @@ const NGX_BS_MODULES = [BsDropdownModule, BsDatepickerModule];
 
 // components
 import * as fromComponents from "./components";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     BsDatepickerModule.forRoot(),
     BsDropdownModule.forRoot()
   ],
