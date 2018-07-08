@@ -7,7 +7,7 @@ import { catchError } from "rxjs/operators";
 import { Maintenance } from "../../@core/models/maintenance.model";
 import { MaintenanceCategory } from "../../@core/models/maintenance-category.model";
 
-@Injectable()
+@Injectable({ providedIn: "root" })
 export class MaintenancesService extends AbstractDataService<Maintenance> {
   constructor(public http: HttpClient) {
     super(http, "maintenances");

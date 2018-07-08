@@ -46,30 +46,6 @@ export class LoadAllMaintenancesSuccess implements Action {
   constructor(public payload: Maintenance[]) {}
 }
 
-// LOAD CATEGORIES
-export const LOAD_MAINTENANCE_CATEGORIES =
-  "[Admin] Load Maintenance Categories";
-export const LOAD_MAINTENANCE_CATEGORIES_FAIL =
-  "[Admin] Load Maintenance Categories Fail";
-export const LOAD_MAINTENANCE_CATEGORIES_SUCCESS =
-  "[Admin] Load Maintenance Categories Success";
-
-export class LoadMaintenanceCategories implements Action {
-  readonly type = LOAD_MAINTENANCE_CATEGORIES;
-}
-
-export class LoadMaintenanceCategoriesFail implements Action {
-  readonly type = LOAD_MAINTENANCE_CATEGORIES_FAIL;
-
-  constructor(public payload: any) {}
-}
-
-export class LoadMaintenanceCategoriesSuccess implements Action {
-  readonly type = LOAD_MAINTENANCE_CATEGORIES_SUCCESS;
-
-  constructor(public payload: MaintenanceCategory[]) {}
-}
-
 // ADD
 export const ADD_MAINTENANCE = "[Admin] Add Maintenance";
 export const ADD_MAINTENANCE_FAIL = "[Admin] Add Maintenance Fail";
@@ -145,9 +121,6 @@ export type MaintenanceActions =
   | LoadAllMaintenances
   | LoadAllMaintenancesFail
   | LoadAllMaintenancesSuccess
-  | LoadMaintenanceCategories
-  | LoadMaintenanceCategoriesFail
-  | LoadMaintenanceCategoriesSuccess
   | AddMaintenance
   | AddMaintenanceFail
   | AddMaintenanceSuccess

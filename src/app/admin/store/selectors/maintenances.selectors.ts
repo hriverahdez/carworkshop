@@ -34,16 +34,6 @@ export const selectMaintenancesLoaded = createSelector(
   fromMaintenance.selectMaintenancesLoaded
 );
 
-export const selectMaintenanceCategories = createSelector(
-  getMaintenancesState,
-  fromMaintenance.selectMaintenanceCategories
-);
-
-export const selectMaintenanceCategoriesLoaded = createSelector(
-  getMaintenancesState,
-  fromMaintenance.selectMaintenanceCategoriesLoaded
-);
-
 export const selectCurrentMaintenance = createSelector(
   selectMaintenanceEntities,
   fromRoot.getRouterState,

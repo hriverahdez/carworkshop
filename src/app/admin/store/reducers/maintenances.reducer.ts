@@ -9,8 +9,6 @@ export interface State extends EntityState<Maintenance> {
   loaded: boolean;
   loading: boolean;
   error: any;
-  categories: MaintenanceCategory[];
-  categoriesLoaded: boolean;
 }
 
 export const adapter: EntityAdapter<Maintenance> = createEntityAdapter<
@@ -20,9 +18,7 @@ export const adapter: EntityAdapter<Maintenance> = createEntityAdapter<
 export const initialState: State = adapter.getInitialState({
   loaded: false,
   loading: false,
-  error: "",
-  categories: [],
-  categoriesLoaded: false
+  error: ""
 });
 
 export function reducer(
@@ -33,7 +29,6 @@ export function reducer(
     case fromMaintenances.DELETE_MAINTENANCE_FAIL:
     case fromMaintenances.UPDATE_MAINTENANCE_FAIL:
     case fromMaintenances.ADD_MAINTENANCE_FAIL:
-    case fromMaintenances.LOAD_MAINTENANCE_CATEGORIES_FAIL:
     case fromMaintenances.LOAD_ALL_MAINTENANCES_FAIL:
     case fromMaintenances.LOAD_CLIENT_MAINTENANCES_FAIL: {
       const error = action.payload;
@@ -70,11 +65,6 @@ export function reducer(
       const maintenances = action.payload;
 
       return adapter.addMany(maintenances, { ...state, loading: false });
-    }
-
-    case fromMaintenances.LOAD_MAINTENANCE_CATEGORIES_SUCCESS: {
-      const categories = action.payload;
-      return { ...state, categories, categoriesLoaded: true };
     }
 
     case fromMaintenances.ADD_MAINTENANCE_SUCCESS: {
@@ -115,9 +105,6 @@ export function reducer(
 }
 
 export const selectMaintenancesLoaded = (state: State) => state.loaded;
-export const selectMaintenanceCategories = (state: State) => state.categories;
-export const selectMaintenanceCategoriesLoaded = (state: State) =>
-  state.categoriesLoaded;
 
 export const {
   selectIds: selectMaintenanceIds,

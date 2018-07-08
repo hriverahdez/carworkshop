@@ -8,15 +8,15 @@ import { Observable, of } from "rxjs";
 import { tap, map, switchMap, filter, take, catchError } from "rxjs/operators";
 
 import { Store } from "@ngrx/store";
-import * as fromStore from "../store";
+import * as fromRoot from "../../@core/store";
 
 @Injectable()
 export class MaintenanceCategoriesExistGuard implements CanActivate {
-  constructor(private store: Store<fromStore.AdminState>) {}
+  constructor(private store: Store<fromRoot.AppState>) {}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
+  ): Observable<boolean> {
     return this.checkStore().pipe(
       switchMap(() => of(true)),
       catchError(() => of(false))
@@ -24,10 +24,10 @@ export class MaintenanceCategoriesExistGuard implements CanActivate {
   }
 
   checkStore(): Observable<boolean> {
-    return this.store.select(fromStore.selectMaintenanceCategoriesLoaded).pipe(
+    return this.store.select(fromRoot.selectMaintenanceCategoriesLoaded).pipe(
       tap(loaded => {
         if (!loaded) {
-          this.store.dispatch(new fromStore.LoadMaintenanceCategories());
+          this.store.dispatch(new fromRoot.LoadMaintenanceCategories());
         }
       }),
       filter(loaded => loaded),

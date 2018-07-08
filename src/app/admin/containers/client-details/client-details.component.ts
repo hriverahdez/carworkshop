@@ -37,9 +37,9 @@ export class ClientDetailsComponent implements OnInit {
       )
     );
 
-    this.maintenanceCategories$ = this.store.select(
-      fromStore.selectMaintenanceCategories
-    );
+    // this.maintenanceCategories$ = this.store.select(
+    //   fromStore.selectMaintenanceCategories
+    // );
     this.store.dispatch(new fromStore.LoadClientMaintenances(this.client$));
   }
 

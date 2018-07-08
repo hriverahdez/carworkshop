@@ -23,3 +23,13 @@ export const selectActiveClientMaintenances = createSelector(
   selectActiveClient,
   (client: Client) => client && client.car && client.car.maintenances
 );
+
+export const selectMaintenanceCategories = createSelector(
+  fromFeature.getSharedState,
+  fromShared.selectMaintenanceCategories
+);
+
+export const selectMaintenanceCategoriesLoaded = createSelector(
+  fromFeature.getSharedState,
+  fromShared.selectMaintenanceCategoriesLoaded
+);

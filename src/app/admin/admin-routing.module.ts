@@ -30,7 +30,7 @@ const ROUTES: Routes = [
     data: {
       breadcrumb: "Detalles"
     },
-    canActivate: [ClientExistsGuard]
+    canActivate: [ClientExistsGuard, MaintenanceCategoriesExistGuard]
   },
   {
     path: "addMaintenance/:carId",

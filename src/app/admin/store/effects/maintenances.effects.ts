@@ -92,23 +92,6 @@ export class MaintenancesEffects {
   //     );
 
   @Effect()
-  loadCategories$ = this.actions$
-    .ofType(fromMaintenance.LOAD_MAINTENANCE_CATEGORIES)
-    .pipe(
-      switchMap(() =>
-        this.maintenancesService.getAllCategories().pipe(
-          map(
-            categories =>
-              new fromMaintenance.LoadMaintenanceCategoriesSuccess(categories)
-          ),
-          catchError(error =>
-            of(new fromMaintenance.LoadMaintenanceCategoriesFail(error))
-          )
-        )
-      )
-    );
-
-  @Effect()
   addMaintenance$ = this.actions$.ofType(fromMaintenance.ADD_MAINTENANCE).pipe(
     map((action: fromMaintenance.AddMaintenance) => action.payload),
     switchMap(maintenance =>

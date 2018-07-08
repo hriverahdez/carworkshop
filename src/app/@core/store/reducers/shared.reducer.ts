@@ -1,18 +1,21 @@
 import * as sharedActions from "../actions/shared.actions";
 import { Client } from "../../../@core/models/client.model";
+import { MaintenanceCategory } from "../../models/maintenance-category.model";
 
 export interface State {
   client: Client;
   loaded: boolean;
   loading: boolean;
-  //   activeCategories: MaintenanceCategory[];
+  categories: MaintenanceCategory[];
+  categoriesLoaded: boolean;
 }
 
 export const initialState: State = {
   client: {},
   loaded: false,
-  loading: false
-  // activeCategories: []
+  loading: false,
+  categories: [],
+  categoriesLoaded: false
 };
 
 export function reducer(
@@ -33,6 +36,11 @@ export function reducer(
       return initialState;
     }
 
+    case sharedActions.LOAD_MAINTENANCE_CATEGORIES_SUCCESS: {
+      const categories = action.payload;
+      return { ...state, categories, categoriesLoaded: true };
+    }
+
     default: {
       return state;
     }
@@ -41,3 +49,6 @@ export function reducer(
 
 export const selectActiveClient = (state: State) => state.client;
 export const selectActiveClientLoaded = (state: State) => state.loaded;
+export const selectMaintenanceCategories = (state: State) => state.categories;
+export const selectMaintenanceCategoriesLoaded = (state: State) =>
+  state.categoriesLoaded;
