@@ -29,7 +29,8 @@ export class ClientEffects {
       switchMap(([action, state]) =>
         this.clientsService.getOne(state.auth.currentUser.clientID).pipe(
           map(client => {
-            return new fromClient.LoadClientDataSuccess(client);
+            // return new fromClient.LoadClientDataSuccess(client);
+            return new fromRoot.SetActiveClient(client);
           }),
           catchError(error => of(new fromClient.LoadClientDataFail(error)))
         )

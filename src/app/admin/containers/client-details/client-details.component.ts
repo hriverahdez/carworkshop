@@ -27,7 +27,7 @@ export class ClientDetailsComponent implements OnInit {
 
   ngOnInit() {
     // this.client$ = this.store.select(fromStore.selectCurrentClient);
-    this.client$ = this.store.select(fromStore.selectActiveClient);
+    // this.client$ = this.store.select(fromStore.selectActiveClient);
     this.allMaintenances$ = this.store.select(fromStore.selectAllMaintenances);
 
     this.clientMaintenances$ = this.allMaintenances$.pipe(

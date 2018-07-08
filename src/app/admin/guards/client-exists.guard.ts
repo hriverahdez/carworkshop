@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { CanActivate, ActivatedRouteSnapshot } from "@angular/router";
 
 import { Store } from "@ngrx/store";
+import * as fromRoot from "../../@core/store";
 import * as fromStore from "../store";
 
 import { tap, map, switchMap, filter, take, catchError } from "rxjs/operators";
@@ -9,7 +10,10 @@ import { Observable } from "rxjs";
 
 @Injectable()
 export class ClientExistsGuard implements CanActivate {
-  constructor(private store: Store<fromStore.AdminState>) {}
+  constructor(
+    private store: Store<fromStore.AdminState>,
+    private rootStore: Store<fromRoot.AppState>
+  ) {}
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return this.checkStore().pipe(
@@ -21,7 +25,7 @@ export class ClientExistsGuard implements CanActivate {
     return this.store.select(fromStore.selectClientEntities).pipe(
       map(entities => {
         if (!!entities[id]) {
-          this.store.dispatch(new fromStore.SetActiveClient(entities[id]));
+          this.rootStore.dispatch(new fromRoot.SetActiveClient(entities[id]));
         }
         return !!entities[id];
       }),

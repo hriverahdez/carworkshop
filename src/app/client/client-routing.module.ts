@@ -5,11 +5,18 @@ import {
   ClientProfileComponent,
   ClientProfileInfoComponent
 } from "./containers";
+import { ClientLoadedGuard } from "./guards";
 
 const ROUTES: Routes = [
   {
     path: "",
-    component: ClientHomeComponent
+    // component: ClientHomeComponent
+    loadChildren: "../dashboard/dashboard.module#DashboardModule",
+    data: {
+      breadcrumb: "Dashboard"
+    },
+    canActivate: [ClientLoadedGuard],
+    canActivateChild: [ClientLoadedGuard]
   },
   {
     path: "profile",

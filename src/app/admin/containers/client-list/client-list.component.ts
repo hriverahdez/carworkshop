@@ -21,21 +21,23 @@ export class ClientListComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<fromStore.AdminState>,
-    private uiStore: Store<fromRoot.AppState>,
+    private rootStore: Store<fromRoot.AppState>,
     private dialogService: DialogService
   ) {}
 
   ngOnInit() {
-    this.isLoading$ = this.uiStore.select(fromRoot.selectAppIsLoadingBox);
-    this.currentViewType$ = this.uiStore.select(fromRoot.selectClientsViewType);
+    this.isLoading$ = this.rootStore.select(fromRoot.selectAppIsLoadingBox);
+    this.currentViewType$ = this.rootStore.select(
+      fromRoot.selectClientsViewType
+    );
     this.clients$ = this.store.select(fromStore.selectAllClients);
     this.store.dispatch(new fromStore.LoadClients());
     // this.store.dispatch(new fromStore.LoadMaintenanceCategories());
   }
 
   checkClient(client) {
-    this.store.dispatch(new fromStore.SetActiveClient(client));
-    this.uiStore.dispatch(
+    this.rootStore.dispatch(new fromRoot.SetActiveClient(client));
+    this.rootStore.dispatch(
       new fromRoot.Go({ path: ["/app/admin/details", client.id] })
     );
   }

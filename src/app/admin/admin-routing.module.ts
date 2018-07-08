@@ -5,7 +5,6 @@ import {
   ClientListComponent,
   ClientDetailsComponent,
   ClientItemComponent,
-  DashboardComponent,
   MaintenanceItemComponent
 } from "./containers";
 
@@ -15,81 +14,41 @@ import { AdminProfileComponent } from "./containers/admin-profile/admin-profile.
 import { AdminListComponent } from "./containers/admin-list/admin-list.component";
 import { AdminItemComponent } from "./containers/admin-item/admin-item.component";
 
-// const ROUTES: Routes = [
-//   {
-//     path: "",
-//     component: DashboardComponent
-//   },
-//   {
-//     path: "clients",
-//     data: {
-//       breadcrumb: "Clientes"
-//     },
-//     children: [
-//       {
-//         path: "",
-//         component: ClientListComponent
-//       },
-//       {
-//         path: "details/:clientId",
-//         component: ClientDetailsComponent,
-//         canActivate: [ClientExistsGuard],
-//         data: {
-//           breadcrumb: "Detalles"
-//         }
-//       }
-//     ]
-//   },
-//   {
-//     path: "client",
-//     component: ClientItemComponent,
-//     data: {
-//       breadcrumb: "Agregar Cliente"
-//     }
-//   },
-//   {
-//     path: "client/:clientId",
-//     component: ClientItemComponent,
-//     data: {
-//       breadcrumb: "Editar Cliente"
-//     }
-//   }
-// ];
-
 const ROUTES: Routes = [
   {
     path: "",
-    children: [
-      {
-        path: "",
-        component: ClientListComponent
-      },
-      {
-        path: "details/:clientId",
-        component: ClientDetailsComponent,
-        canActivate: [ClientExistsGuard, MaintenanceCategoriesExistGuard],
-        data: {
-          breadcrumb: "Detalles"
-        }
-      },
-      {
-        path: "addMaintenance/:carId",
-        component: MaintenanceItemComponent,
-        canActivate: [MaintenanceCategoriesExistGuard],
-        data: {
-          breadcrumb: "Agregar Mantenimiento"
-        }
-      },
-      {
-        path: "editMaintenance/:maintenanceId",
-        component: MaintenanceItemComponent,
-        canActivate: [MaintenanceCategoriesExistGuard, MaintenanceExistsGuard],
-        data: {
-          breadcrumb: "Editar Mantenimiento"
-        }
-      }
-    ]
+    component: ClientListComponent
   },
+  {
+    path: "details/:clientId",
+    // component: ClientDetailsComponent,
+    // canActivate: [ClientExistsGuard, MaintenanceCategoriesExistGuard],
+    // data: {
+    //   breadcrumb: "Detalles"
+    // }
+    loadChildren: "../dashboard/dashboard.module#DashboardModule",
+    data: {
+      breadcrumb: "Detalles"
+    },
+    canActivate: [ClientExistsGuard]
+  },
+  {
+    path: "addMaintenance/:carId",
+    component: MaintenanceItemComponent,
+    canActivate: [MaintenanceCategoriesExistGuard],
+    data: {
+      breadcrumb: "Agregar Mantenimiento"
+    }
+  },
+  {
+    path: "editMaintenance/:maintenanceId",
+    component: MaintenanceItemComponent,
+    canActivate: [MaintenanceCategoriesExistGuard, MaintenanceExistsGuard],
+    data: {
+      breadcrumb: "Editar Mantenimiento"
+    }
+  },
+
   {
     path: "client",
     component: ClientItemComponent,
