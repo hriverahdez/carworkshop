@@ -15,32 +15,12 @@ export class FileDownloadHelperService {
       .get<Blob>(`${environment.apiURL}/${endpoint}`, {
         responseType: "blob" as "json"
       })
-      .subscribe(data => {
-        var blob = new Blob([data], { type: "application/pdf" });
-        //   var url = window.URL.createObjectURL(blob);
+      .pipe(
+        map(data => {
+          var blob = new Blob([data], { type: "application/pdf" });
 
-        //   const link = targetEl.nativeElement;
-        //   link.href = url;
-        saveAs(blob, filename);
-
-        //   link.download = "Ficha mía.pdf";
-        //   return link;
-      });
-    // return this.http
-    //   .get<Blob>(`http://localhost:9000/api/pdftest`, {
-    //     responseType: "blob" as "json"
-    //   })
-    //   .subscribe(data => {
-    //     var blob = new Blob([data], { type: "application/pdf" });
-    //     //   var url = window.URL.createObjectURL(blob);
-
-    //     //   const link = targetEl.nativeElement;
-    //     //   link.href = url;
-    //     saveAs(blob, filename);
-
-    //     //   link.download = "Ficha mía.pdf";
-    //     //   return link;
-    //   });
-    //   .subscribe(data => this.downloadFile(data), error => console.log(error));
+          saveAs(blob, filename);
+        })
+      );
   }
 }

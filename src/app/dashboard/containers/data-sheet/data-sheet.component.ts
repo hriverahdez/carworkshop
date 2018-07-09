@@ -34,10 +34,11 @@ export class DataSheetComponent implements OnInit, OnDestroy {
   }
 
   onDownloadDatasheet() {
-    this.fdHelper.getFile(
-      `maintenancesDatasheet/${this.activeClientID}`,
-      "Ficha mía.pdf"
-    );
+    // this.fdHelper.getFile(
+    //   `maintenancesDatasheet/${this.activeClientID}`,
+    //   "Ficha mía.pdf"
+    // );
+    this.rootStore.dispatch(new fromRoot.DownloadClientDatasheet());
   }
 
   ngOnDestroy() {
