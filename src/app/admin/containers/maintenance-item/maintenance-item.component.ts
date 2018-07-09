@@ -17,6 +17,7 @@ export class MaintenanceItemComponent implements OnInit {
   maintenanceCategories$: Observable<MaintenanceCategory[]>;
   carId;
   maintenance$: Observable<Maintenance>;
+  initialCategory = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,7 +26,10 @@ export class MaintenanceItemComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // console.log(this.route.snapshot.paramMap.get("carId"));
+    if (this.route.snapshot.queryParams["category"]) {
+      this.initialCategory = this.route.snapshot.queryParams["category"];
+    }
+
     this.maintenance$ = this.store
       .select(fromStore.selectCurrentMaintenance)
       .pipe(tap((maintenance: Maintenance = null) => maintenance));

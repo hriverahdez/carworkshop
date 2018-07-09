@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { PanelLink } from "../../models/panel-link.model";
 
 @Component({
   selector: "cws-dashboard-panel",
@@ -8,34 +9,19 @@ import { Component, OnInit, Input } from "@angular/core";
 export class DashboardPanelComponent implements OnInit {
   @Input() mainText: string;
 
+  @Input() hasSupportText: boolean = false;
+  @Input() supportText: string;
+
   @Input() hasIcon: boolean = false;
   @Input() iconName: string;
 
   @Input() hasMainLink: boolean = false;
-  @Input() mainLinkUrl: string;
-
-  @Input() hasSupportText: boolean = false;
-  @Input() supportText: string;
+  @Input() mainLink: PanelLink;
 
   @Input() hasSupportLink: boolean = false;
-  @Input() supportLinkText: string;
-  @Input() supportLinkUrl: string;
+  @Input() supportLink: PanelLink;
 
   constructor() {}
 
   ngOnInit() {}
-
-  get mainLinkNoExtras() {
-    if (this.hasMainLink) {
-      const extras = this.mainLinkUrl.split("?filter=")[0];
-      return extras;
-    }
-  }
-
-  get mainLinkRouteExtras() {
-    if (this.hasMainLink) {
-      const extras = this.mainLinkUrl.split("?filter=")[1];
-      return extras;
-    }
-  }
 }

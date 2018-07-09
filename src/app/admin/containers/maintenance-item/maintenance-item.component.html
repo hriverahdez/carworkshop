@@ -5,6 +5,7 @@
         <div class="col-md-12">
 
             <cws-maintenance-form 
+                [initialCategory]="initialCategory"
                 [maintenance]="maintenance$ | async"
                 [carId]="carId" 
                 [maintenanceCategories]="maintenanceCategories$ | async"

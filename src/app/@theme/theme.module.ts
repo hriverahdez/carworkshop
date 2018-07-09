@@ -6,7 +6,8 @@ import { FormsModule } from "@angular/forms";
 import {
   BsDropdownModule,
   BsDatepickerModule,
-  defineLocale
+  defineLocale,
+  BsLocaleService
 } from "ngx-bootstrap";
 
 import { esLocale } from "ngx-bootstrap/locale";
@@ -30,4 +31,8 @@ import { RouterModule } from "@angular/router";
   declarations: [...fromComponents.components],
   exports: [...fromComponents.components, ...NGX_BS_MODULES]
 })
-export class ThemeModule {}
+export class ThemeModule {
+  constructor(private localeService: BsLocaleService) {
+    this.localeService.use("es");
+  }
+}

@@ -13,7 +13,6 @@ import {
   Validators
 } from "@angular/forms";
 
-import { BsLocaleService } from "ngx-bootstrap/datepicker";
 import { MaintenanceCategory } from "../../../@core/models/maintenance-category.model";
 import { Maintenance } from "../../../@core/models/maintenance.model";
 
@@ -25,6 +24,7 @@ import { Maintenance } from "../../../@core/models/maintenance.model";
 export class MaintenanceFormComponent implements OnInit, OnChanges {
   isEdit: boolean = false;
 
+  @Input() initialCategory = null;
   @Input() maintenanceCategories: MaintenanceCategory[];
   @Input() maintenance: Maintenance;
   @Input() carId: string | number;
@@ -34,17 +34,18 @@ export class MaintenanceFormComponent implements OnInit, OnChanges {
 
   maintenanceForm: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private localeService: BsLocaleService
-  ) {}
+  constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {
-    this.localeService.use("es");
-  }
+  ngOnInit() {}
 
   ngOnChanges(changes): void {
     this.maintenanceForm = this.toFormGroup();
+    if (this.initialCategory) {
+      const initialCategory = this.maintenanceCategories.find(
+        c => c.id === +this.initialCategory
+      );
+      this.maintenanceForm.get("category").setValue(initialCategory);
+    }
     if (this.maintenance) {
       this.isEdit = true;
       this.maintenanceForm.patchValue({

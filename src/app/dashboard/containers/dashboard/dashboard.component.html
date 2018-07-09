@@ -5,8 +5,8 @@
             [hasSupportText]="true"
             [supportText]="(car$ | async)?.brand + ' ' + (car$ | async)?.model"
             [hasSupportLink]="true"
-            [supportLinkText]="'Ficha Técnica'"
-            [supportLinkUrl]="'./dataSheet'"></cws-dashboard-panel>
+            [supportLink]="mainPanels.dataSheet"
+            ></cws-dashboard-panel>
     </div>
     <div class="col-md-4">
         <cws-dashboard-panel
@@ -14,8 +14,8 @@
             [hasSupportText]="true"
             [supportText]="'Mantenimientos'"
             [hasSupportLink]="true"
-            [supportLinkText]="'Ver'"
-            [supportLinkUrl]="'./nextMaintenances'"></cws-dashboard-panel>
+            [supportLink]="mainPanels.nextMaintenances"
+            ></cws-dashboard-panel>
     </div>
     <div class="col-md-4">
         <cws-dashboard-panel
@@ -23,24 +23,37 @@
             [hasSupportText]="true"
             [supportText]="'General'"
             [hasSupportLink]="true"
-            [supportLinkText]="'Ver'"
-            [supportLinkUrl]="'./maintenanceHistory'"></cws-dashboard-panel>
+            [supportLink]="mainPanels.maintenanceHistory"
+            ></cws-dashboard-panel>
     </div>
 </div>
 <hr>
 <h4 class="text-center">Historiales Comunes</h4>
 <div class="row demo-tiles mt-xs">
 
-    <div class="col-md-3 custom-panel" *ngFor="let category of commonCategories">
+    <!-- <div class="col-md-3 custom-panel" *ngFor="let category of commonCategories">
         <cws-dashboard-panel
             [mainText]="category.name"
-            [hasSupportLink]="currentUserIsAdmin$ | async"
             [hasIcon]="true"
             [iconName]="category.iconName"
             [hasMainLink]="true"
-            [mainLinkUrl]="'./maintenanceHistory?filter='+category.id"
+            [mainLinkUrl]=" './maintenanceHistory?filter=' + category.id"
+
+            [hasSupportLink]="currentUserIsAdmin$ | async"
             [supportLinkText]="'Añadir Mantenimiento'"
-            [supportLinkUrl]="'../../../../addMaintenance/' + (car$ | async)?.id"></cws-dashboard-panel>
+            [supportLinkUrl]=" '../../../../addMaintenance/' + (car$ | async)?.id + '?category=' + category.id"></cws-dashboard-panel>
+            <br>       
+    </div> -->
+    <div class="col-md-3 custom-panel" *ngFor="let category of commonCategories">
+        <cws-dashboard-panel
+            [mainText]="category.name"
+            [hasIcon]="true"
+            [iconName]="category.iconName"
+            [hasMainLink]="true"
+            [mainLink]="category.mainLink"
+
+            [hasSupportLink]="currentUserIsAdmin$ | async"
+            [supportLink]="category.supportLink"></cws-dashboard-panel>
             <br>       
     </div>
 
