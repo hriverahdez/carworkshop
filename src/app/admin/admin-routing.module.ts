@@ -8,11 +8,11 @@ import {
   MaintenanceItemComponent
 } from "./containers";
 
-import { ClientExistsGuard, MaintenanceCategoriesExistGuard } from "./guards";
-import { MaintenanceExistsGuard } from "./guards/maintenance-exists.guard";
+import { ClientExistsGuard, MaintenanceExistsGuard } from "./guards";
 import { AdminProfileComponent } from "./containers/admin-profile/admin-profile.component";
 import { AdminListComponent } from "./containers/admin-list/admin-list.component";
 import { AdminItemComponent } from "./containers/admin-item/admin-item.component";
+import { MaintenanceCategoriesExistGuard } from "../@core/guards";
 
 const ROUTES: Routes = [
   {

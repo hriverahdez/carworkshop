@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { ClientHomeComponent, ClientProfileComponent } from "./containers";
 import { ClientLoadedGuard } from "./guards";
+import { MaintenanceCategoriesExistGuard } from "../@core/guards";
 
 const ROUTES: Routes = [
   {
@@ -11,8 +12,8 @@ const ROUTES: Routes = [
     data: {
       breadcrumb: "Dashboard"
     },
-    canActivate: [ClientLoadedGuard],
-    canActivateChild: [ClientLoadedGuard]
+    canActivate: [ClientLoadedGuard, MaintenanceCategoriesExistGuard],
+    canActivateChild: [ClientLoadedGuard, MaintenanceCategoriesExistGuard]
   },
   {
     path: "editProfile",
