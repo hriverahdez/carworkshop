@@ -42,3 +42,8 @@ export const selectMaintenanceCategoriesLoaded = createSelector(
   fromFeature.getSharedState,
   fromShared.selectMaintenanceCategoriesLoaded
 );
+
+export const selectSharedStateLoading = createSelector(
+  fromFeature.getSharedState,
+  fromShared.selectSharedStateLoading
+);

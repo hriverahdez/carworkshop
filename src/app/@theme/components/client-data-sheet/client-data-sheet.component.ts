@@ -17,6 +17,7 @@ import { Car } from "../../../@core/models/car.model";
 export class ClientDataSheetComponent implements OnInit {
   @Input() car: Car;
   @Input() userIsAdmin: boolean = false;
+  @Input() downloadInProgress: boolean = false;
   @Output() downloadDataSheet = new EventEmitter();
 
   constructor() {}

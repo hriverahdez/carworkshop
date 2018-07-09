@@ -1,1 +1,3 @@
-<cws-client-data-sheet [car]="activeClientCar$ | async" (downloadDataSheet)="onDownloadDatasheet()"></cws-client-data-sheet>
+<cws-client-data-sheet 
+    [downloadInProgress]="downloadInProgress$ | async"
+    [car]="activeClientCar$ | async" (downloadDataSheet)="onDownloadDatasheet()"></cws-client-data-sheet>

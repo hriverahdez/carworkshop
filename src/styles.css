@@ -29,3 +29,14 @@ a {
 /* .custom-panel .flex-panel {
     height: 90%;
 } */
+
+.v-centered-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 70%;
+    max-width: 500px;
+    margin: 0 auto;
+}

@@ -1,3 +1,5 @@
+import { ButtonWithLoaderComponent } from "./button-with-loader/button-with-loader.component";
+
 import { CarInfoPaneComponent } from "./car-info-pane/car-info-pane.component";
 import { CarNameComponent } from "./car-name/car-name.component";
 import { ClientDataSheetComponent } from "./client-data-sheet/client-data-sheet.component";
@@ -19,6 +21,8 @@ import { TabComponent } from "./tab/tab.component";
 import { FilterableMaintenanceHistoryComponent } from "./filterable-maintenance-history/filterable-maintenance-history.component";
 
 export const components: any[] = [
+  ButtonWithLoaderComponent,
+
   CarInfoPaneComponent,
   CarNameComponent,
   ClientDataSheetComponent,
@@ -40,6 +44,8 @@ export const components: any[] = [
   TabsComponent,
   TabComponent
 ];
+
+export * from "./button-with-loader/button-with-loader.component";
 
 export * from "./car-info-pane/car-info-pane.component";
 export * from "./car-name/car-name.component";

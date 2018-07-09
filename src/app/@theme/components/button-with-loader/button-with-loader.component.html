@@ -1,0 +1,16 @@
+<button type="submit" (click)="sendClick()" 
+    class="btn btn-lg" 
+    [class]="'btn-' + buttonClass"
+    [class.btn-block]="full"
+    [ngClass]="{ 'position-relative': isLoading, 'position-static': !isLoading }"
+    [disabled]="isLoading">
+    <div id="pb_loader" 
+        class="show"
+        [ngClass]="{ 'show-btn-spinner': isLoading, 'hide-btn-spinner': !isLoading }">
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="15" fill="none" stroke-width="3" stroke="#eeeeee"/>
+            <circle class="path" cx="24" cy="24" r="15" fill="none" stroke-width="3" stroke-miterlimit="10" stroke="#2e375f"/>
+        </svg>
+    </div>
+    {{ buttonLabel }}
+</button>

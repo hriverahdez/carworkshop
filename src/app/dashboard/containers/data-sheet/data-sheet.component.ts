@@ -18,6 +18,8 @@ export class DataSheetComponent implements OnInit, OnDestroy {
 
   activeClientID;
 
+  downloadInProgress$: Observable<boolean>;
+
   constructor(
     private rootStore: Store<fromRoot.AppState>,
     private fdHelper: FileDownloadHelperService
@@ -30,6 +32,10 @@ export class DataSheetComponent implements OnInit, OnDestroy {
 
     this.activeClientCar$ = this.rootStore.select(
       fromRoot.selectActiveClientCar
+    );
+
+    this.downloadInProgress$ = this.rootStore.select(
+      fromRoot.selectSharedStateLoading
     );
   }
 

@@ -8,7 +8,8 @@ import {
   catchError,
   withLatestFrom,
   filter,
-  takeLast
+  takeLast,
+  delay
 } from "rxjs/operators";
 import { of, Observable } from "rxjs";
 
@@ -64,6 +65,7 @@ export class SharedEffects {
   downloadDatasheet$ = this.actions$
     .ofType(fromShared.DOWNLOAD_CLIENT_DATASHEET)
     .pipe(
+      delay(500),
       withLatestFrom(this.rootStore$.select(fromSelectors.selectActiveClient)),
       switchMap(([action, activeClient]) => {
         const endpoint = `maintenancesDatasheet/${activeClient.id}`;
@@ -79,13 +81,13 @@ export class SharedEffects {
       })
     );
 
-  @Effect()
-  showFullscreenLoader$ = this.actions$
-    .ofType(fromShared.DOWNLOAD_CLIENT_DATASHEET)
-    .pipe(map(() => new fromUI.ShowFullscreenLoader()));
+  //   @Effect()
+  //   showFullscreenLoader$ = this.actions$
+  //     .ofType(fromShared.DOWNLOAD_CLIENT_DATASHEET)
+  //     .pipe(map(() => new fromUI.ShowFullscreenLoader()));
 
-  @Effect()
-  hideFullscreenLoader$ = this.actions$
-    .ofType(fromShared.DOWNLOAD_CLIENT_DATASHEET_SUCCESS)
-    .pipe(map(() => new fromUI.HideFullscreenLoader()));
+  //   @Effect()
+  //   hideFullscreenLoader$ = this.actions$
+  //     .ofType(fromShared.DOWNLOAD_CLIENT_DATASHEET_SUCCESS)
+  //     .pipe(map(() => new fromUI.HideFullscreenLoader()));
 }

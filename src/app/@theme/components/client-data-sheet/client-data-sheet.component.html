@@ -5,8 +5,12 @@
             <cws-car-name [car]="car"></cws-car-name>
         </h4>
     </div>
-    <div class="col-md-3 col-md-offset-1 text-center">
-        <a (click)="getReport()" class="btn btn-danger">Descargar Ficha Técnica</a>
+    <div class="col-md-4 text-right">
+        <cws-button-with-loader             
+            [buttonClass]="'danger'"
+            [isLoading]="downloadInProgress"
+            [buttonLabel]="'Descargar Ficha'" 
+            (clicked)="getReport()"></cws-button-with-loader>
     </div>
 </div>
 <hr>
