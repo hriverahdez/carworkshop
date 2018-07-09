@@ -23,6 +23,7 @@ import { Maintenance } from "../../../@core/models/maintenance.model";
 import { Store } from "@ngrx/store";
 import { MaintenancesService } from "../../../admin/services";
 import { FileDownloadHelperService } from "../../services/file-download-helper.service";
+import { SnackBarService } from "../../../@shared/services";
 
 @Injectable()
 export class SharedEffects {
@@ -30,7 +31,8 @@ export class SharedEffects {
     private actions$: Actions,
     private maintenancesService: MaintenancesService,
     private rootStore$: Store<fromRoot.AppState>,
-    private fdHelper: FileDownloadHelperService
+    private fdHelper: FileDownloadHelperService,
+    private snackbar: SnackBarService
   ) {}
 
   @Effect()
@@ -81,13 +83,15 @@ export class SharedEffects {
       })
     );
 
-  //   @Effect()
-  //   showFullscreenLoader$ = this.actions$
-  //     .ofType(fromShared.DOWNLOAD_CLIENT_DATASHEET)
-  //     .pipe(map(() => new fromUI.ShowFullscreenLoader()));
-
-  //   @Effect()
-  //   hideFullscreenLoader$ = this.actions$
-  //     .ofType(fromShared.DOWNLOAD_CLIENT_DATASHEET_SUCCESS)
-  //     .pipe(map(() => new fromUI.HideFullscreenLoader()));
+  @Effect({ dispatch: false })
+  downloadDatasheetFailed$ = this.actions$
+    .ofType(fromShared.DOWNLOAD_CLIENT_DATASHEET_FAIL)
+    .pipe(
+      map(() =>
+        this.snackbar.openSimpleSnackBar(
+          "Oops, al parecer hubo un error en el servidor. Intente de nuevo",
+          "Cerrar"
+        )
+      )
+    );
 }
