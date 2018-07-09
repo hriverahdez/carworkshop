@@ -31,6 +31,7 @@ export class MaintenanceFormComponent implements OnInit, OnChanges {
 
   @Output() onCreate = new EventEmitter<Maintenance>();
   @Output() onUpdate = new EventEmitter<Maintenance>();
+  @Output() onCancel = new EventEmitter();
 
   maintenanceForm: FormGroup;
 
@@ -95,5 +96,9 @@ export class MaintenanceFormComponent implements OnInit, OnChanges {
       date: [null, Validators.required],
       mileage: ["", [Validators.required, Validators.pattern(/^\d+$/)]]
     });
+  }
+
+  cancel() {
+    this.onCancel.emit();
   }
 }

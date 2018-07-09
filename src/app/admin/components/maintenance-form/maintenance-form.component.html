@@ -49,8 +49,18 @@
 </div>
 <!-- {{ maintenanceForm.value | json }} -->
 <hr>
-<button class="btn btn-primary" 
-    (click)="save(maintenanceForm)"
-    [disabled]="!maintenanceForm.valid">
-    Guardar
-</button>
+<div class="col-sm-12 text-center">
+
+    <button class="btn btn-danger" 
+        (click)="save(maintenanceForm)"
+        style="margin-right: 20px"
+        [disabled]="!maintenanceForm.valid">
+        Guardar
+    </button>
+    <button class="btn btn-default" 
+        (click)="cancel()">
+        Cancelar
+    </button>
+
+</div>
+

@@ -49,4 +49,8 @@ export class MaintenanceItemComponent implements OnInit {
     // console.log(maintenance);
     this.store.dispatch(new fromStore.UpdateMaintenance(maintenance));
   }
+
+  cancel() {
+    this.rootStore.dispatch(new fromRoot.Back());
+  }
 }
