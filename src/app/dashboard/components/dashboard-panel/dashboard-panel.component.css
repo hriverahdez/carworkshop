@@ -1,0 +1,12 @@
+.tile-a {
+    height: 66%;
+}
+
+.tile-a .tile-image {
+    transition: all .1s linear;
+}
+
+.tile-a:hover .tile-image {
+    height: 77px;
+    margin: 21px 0 15px;
+}

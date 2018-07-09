@@ -1,7 +1,21 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-6"><h4>Historial</h4></div>
     <div class="col-md-6" style="margin-top: 18px">
         <cws-maintenance-category-selector 
+            [categories]="maintenanceCategories" 
+            (onSelectedCategory)="applyFilter($event)"></cws-maintenance-category-selector>
+    </div>
+</div> -->
+<div class="row mt-xsx">
+    <div class="col-md-6">
+        <h4 class="text-xs-center">Historial {{ currentFilter ? ' de ' + currentFilter.name : 'General' }}
+            <br>
+            <cws-car-name [car]="car"></cws-car-name>
+        </h4>
+    </div>
+    <div class="col-md-6 text-center">
+        <cws-maintenance-category-selector 
+            [value]="currentFilter"
             [categories]="maintenanceCategories" 
             (onSelectedCategory)="applyFilter($event)"></cws-maintenance-category-selector>
     </div>
@@ -26,9 +40,12 @@
                 <td>{{ maintenance.category?.name }}</td>
                 <td>{{ maintenance.mileage || '---' }}</td>
                 <td *ngIf="userIsAdmin">
-                    <a (click)="requestEdit(maintenance)" class="text-primary">
+                    <a [routerLink]="[ '/app/admin/editMaintenance', maintenance.id ]" class="text-primary">
                         <span class="fui-new"></span>
                     </a> |
+                    <!-- <a (click)="requestEdit(maintenance)" class="text-primary">
+                        <span class="fui-new"></span>
+                    </a> | -->
                     <a (click)="requestDelete(maintenance)" class="text-danger">
                         <span class="fui-trash"></span>
                     </a>

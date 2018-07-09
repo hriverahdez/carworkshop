@@ -39,12 +39,7 @@
                             <b class="caret"></b>
                         </a>
                         <span class="dropdown-arrow"></span>
-                        <ul class="dropdown-menu" *dropdownMenu>
-                            <li *ngIf="isClient">
-                                <a routerLink="./client/profile">
-                                    <span class="fui-user"></span>&nbsp;&nbsp;Mi Perfil
-                                </a>
-                            </li>
+                        <ul class="dropdown-menu" *dropdownMenu>                            
                             <li *ngIf="isClient">
                                 <a routerLink="./client/editProfile">
                                     <span class="fui-user"></span>&nbsp;&nbsp;Editar mis datos

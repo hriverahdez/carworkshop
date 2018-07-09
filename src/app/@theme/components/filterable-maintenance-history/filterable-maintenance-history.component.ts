@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 import { Maintenance } from "../../../@core/models/maintenance.model";
 import { MaintenanceCategory } from "../../../@core/models/maintenance-category.model";
+import { Car } from "../../../@core/models/car.model";
 
 @Component({
   selector: "cws-filterable-maintenance-history",
@@ -9,6 +10,8 @@ import { MaintenanceCategory } from "../../../@core/models/maintenance-category.
 })
 export class FilterableMaintenanceHistoryComponent implements OnInit {
   currentFilter = null;
+  @Input() initialFilter;
+  @Input() car: Car;
 
   @Input() maintenanceHistory: Maintenance[];
   @Input() maintenanceCategories: MaintenanceCategory[];
@@ -19,7 +22,11 @@ export class FilterableMaintenanceHistoryComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.currentFilter = this.maintenanceCategories.find(
+      c => c.id === +this.initialFilter
+    );
+  }
 
   filterMaintenance(maintenance) {
     if (this.currentFilter) {

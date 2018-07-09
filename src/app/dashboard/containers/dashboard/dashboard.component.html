@@ -1,5 +1,5 @@
 <div class="row demo-tiles">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <cws-dashboard-panel
             [mainText]="(car$ | async)?.plateNumber"
             [hasSupportText]="true"
@@ -8,32 +8,42 @@
             [supportLinkText]="'Ficha Técnica'"
             [supportLinkUrl]="'./dataSheet'"></cws-dashboard-panel>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <cws-dashboard-panel
             [mainText]="'Próximos'"
             [hasSupportText]="true"
             [supportText]="'Mantenimientos'"
             [hasSupportLink]="true"
-            [supportLinkText]="'Listar'"
+            [supportLinkText]="'Ver'"
             [supportLinkUrl]="'./nextMaintenances'"></cws-dashboard-panel>
+    </div>
+    <div class="col-md-4">
+        <cws-dashboard-panel
+            [mainText]="'Historial'"
+            [hasSupportText]="true"
+            [supportText]="'General'"
+            [hasSupportLink]="true"
+            [supportLinkText]="'Ver'"
+            [supportLinkUrl]="'./maintenanceHistory'"></cws-dashboard-panel>
     </div>
 </div>
 <hr>
-<h4 class="text-center">Historiales</h4>
+<h4 class="text-center">Historiales Comunes</h4>
 <div class="row demo-tiles mt-xs">
 
-    <div class="col-md-3" *ngFor="let category of maintenanceCategories$ | async">
+    <div class="col-md-3 custom-panel" *ngFor="let category of commonCategories">
         <cws-dashboard-panel
-            [mainText]="'Próximos'"
+            [mainText]="category.name"
             [hasSupportLink]="currentUserIsAdmin$ | async"
             [hasIcon]="true"
-            [iconName]="'battery'"
+            [iconName]="category.iconName"
             [hasMainLink]="true"
             [mainLinkUrl]="'./maintenanceHistory?filter='+category.id"
             [supportLinkText]="'Añadir Mantenimiento'"
             [supportLinkUrl]="'../../../../addMaintenance/' + (car$ | async)?.id"></cws-dashboard-panel>
-            <br>
-        
+            <br>       
     </div>
+
+    
     
 </div>

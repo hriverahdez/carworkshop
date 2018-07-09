@@ -1,3 +1,7 @@
-<p>
-  maintenance-history works!
-</p>
+<cws-filterable-maintenance-history
+    [initialFilter]="filterById"
+    [userIsAdmin]="currentUserIsAdmin$ | async"
+    [car]="activeClientCar$ | async"
+    (onDeleteRequest)="deleteMaintenance($event)"
+    [maintenanceCategories]="maintenanceCategories$ | async"
+    [maintenanceHistory]="activeClientMaintenances$ | async"></cws-filterable-maintenance-history>

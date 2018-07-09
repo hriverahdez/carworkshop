@@ -1,0 +1,4 @@
+.demo-tiles {
+    display: flex;
+    flex-wrap: wrap;
+}

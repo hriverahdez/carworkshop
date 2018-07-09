@@ -31,4 +31,49 @@ export class DashboardComponent implements OnInit {
       fromRoot.selectMaintenanceCategories
     );
   }
+
+  get commonCategories() {
+    return [
+      {
+        id: 2,
+        iconName: "filter",
+        name: "Filtro de aceite"
+      },
+      {
+        id: 3,
+        iconName: "air-filter",
+        name: "Filtro de aire"
+      },
+      {
+        id: 4,
+        iconName: "fuel-filter",
+        name: "Filtro combustible"
+      },
+      {
+        id: 5,
+        iconName: "sparkplug",
+        name: "Cambio Bujías"
+      },
+      {
+        id: 7,
+        iconName: "brake",
+        name: "Frenos"
+      },
+      {
+        id: 9,
+        iconName: "levels-revision",
+        name: "Puntos Básicos"
+      },
+      {
+        id: 10,
+        iconName: "full-revision",
+        name: "Revisión Completa"
+      },
+      {
+        id: 11,
+        iconName: "inspection",
+        name: "Inspección (VW)"
+      }
+    ];
+  }
 }
