@@ -25,3 +25,7 @@ a {
 .content-body {
     min-height: calc(100vh - 196px)
 }
+
+/* .custom-panel .flex-panel {
+    height: 90%;
+} */
