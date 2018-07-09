@@ -17,19 +17,21 @@
 <div class=" navbar-default">
     <div class="container">
         <nav class="navbar" role="navigation">
-            <!-- <div class="navbar-header">
-                <button type="button" class="navbar-toggle" (click)="isCollapsed = !isCollapsed" data-toggle="collapse" data-target="#navbar-collapse-01">
-                    <span class="sr-only">Toggle navigation</span>
-                </button>
-            </div> -->
+            
             <div class="collapse navbar-collapse" [ngClass]="{'in': !isCollapsed}" id="navbar-collapse-01">
+                
                 <!-- BREADCRUMBS -->
                 <ul class="nav navbar-nav navbar-left bcrumb">
-                    <li *ngFor="let breadcrumb of breadcrumbs" class="bcrumb-link">
-                        <a [routerLink]="[breadcrumb.url]" style="display: inline-block !important;">
-                            {{ breadcrumb.label }}
-                        </a>
-                    </li>
+                    <ng-container *ngFor="let breadcrumb of breadcrumbs; last as isLast">
+                        <li class="bcrumb-link" *ngIf="!isLast">
+                            <a [routerLink]="[breadcrumb.url]"                                 
+                                style="display: inline-block !important;">
+                                {{ breadcrumb.label }}
+                            </a>
+                        </li>
+                        <li class="divider" *ngIf="isLast"><p class="text-muted">{{ breadcrumb.label }}</p></li>
+                        <li class="divider" *ngIf="!isLast"><p class="fui-arrow-right"></p></li>
+                    </ng-container>
                 </ul>
 
                 <!-- USER MENU -->
