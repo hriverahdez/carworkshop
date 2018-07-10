@@ -8,6 +8,7 @@ import {
   ClientInfoComponent,
   MaintenanceHistoryComponent
 } from "./containers";
+import { RecommendationsComponent } from "./containers/recommendations/recommendations.component";
 
 const ROUTES: Routes = [
   {
@@ -45,6 +46,13 @@ const ROUTES: Routes = [
         component: MaintenanceHistoryComponent,
         data: {
           breadcrumb: "Historial"
+        }
+      },
+      {
+        path: "recommendations",
+        component: RecommendationsComponent,
+        data: {
+          breadcrumb: "Recomendaciones de Mantenimiento"
         }
       }
     ]

@@ -12,6 +12,7 @@ interface MainPanels {
   dataSheet?: PanelLink;
   nextMaintenances?: PanelLink;
   maintenanceHistory?: PanelLink;
+  recommendations?: PanelLink;
 }
 
 @Component({
@@ -42,6 +43,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     maintenanceHistory: {
       url: "./maintenanceHistory",
+      text: "Ver"
+    },
+
+    recommendations: {
+      url: "./recommendations",
       text: "Ver"
     }
   };

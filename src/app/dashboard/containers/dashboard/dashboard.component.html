@@ -1,5 +1,5 @@
 <div class="row demo-tiles">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <cws-dashboard-panel
             [mainText]="(car$ | async)?.plateNumber"
             [hasSupportText]="true"
@@ -8,7 +8,7 @@
             [supportLink]="mainPanels.dataSheet"
             ></cws-dashboard-panel>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <cws-dashboard-panel
             [mainText]="'Próximos'"
             [hasSupportText]="true"
@@ -17,13 +17,22 @@
             [supportLink]="mainPanels.nextMaintenances"
             ></cws-dashboard-panel>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <cws-dashboard-panel
             [mainText]="'Historial'"
             [hasSupportText]="true"
             [supportText]="'General'"
             [hasSupportLink]="true"
             [supportLink]="mainPanels.maintenanceHistory"
+            ></cws-dashboard-panel>
+    </div>
+    <div class="col-md-3">
+        <cws-dashboard-panel
+            [mainText]="'Recomendaciones'"
+            [hasSupportText]="true"
+            [supportText]="'de Mantenimiento'"
+            [hasSupportLink]="true"
+            [supportLink]="mainPanels.recommendations"
             ></cws-dashboard-panel>
     </div>
 </div>
