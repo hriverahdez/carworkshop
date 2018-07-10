@@ -1,13 +1,4 @@
-export interface Pagination {
-  current_page: number;
-  from: number;
-  last_page: number;
-  per_page: number;
-  to: number;
-  total: number;
-}
-
-export interface EntityPagination<T> {
+export interface PaginatedResponse<T> {
   current_page?: number;
   data: T[];
   from?: number;
@@ -20,8 +11,4 @@ export interface EntityPagination<T> {
   per_page?: number;
   to?: number;
   total?: number;
-}
-
-export interface PaginatedResponse {
-  pagination?: Pagination;
 }

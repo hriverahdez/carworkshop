@@ -7,13 +7,11 @@ import { switchMap, map, catchError } from "rxjs/operators";
 import { of } from "rxjs";
 
 import * as fromRoot from "../../../@core/store";
-import {
-  Pagination,
-  EntityPagination
-} from "../../../@shared/utils/paginated-response.model";
+
 import { ClientsService } from "../../services";
 import { SnackBarService } from "../../../@shared/services";
 import { Client } from "../../../@core/models/client.model";
+import { PaginatedResponse } from "../../../@shared/models/paginated-response.model";
 
 @Injectable()
 export class ClientsEffects {
@@ -27,14 +25,9 @@ export class ClientsEffects {
   loadClients$ = this.actions$.ofType(fromClients.LOAD_CLIENTS).pipe(
     switchMap(() =>
       this.clientsService.getAll().pipe(
-        map(
-          (response: {
-            pagination: Pagination;
-            clients: EntityPagination<Client>;
-          }) => {
-            return new fromClients.LoadClientsSuccess(response.clients.data);
-          }
-        ),
+        map((response: PaginatedResponse<Client>) => {
+          return new fromClients.LoadClientsSuccess(response.data);
+        }),
         catchError(error => of(new fromClients.LoadClientsFail(error)))
       )
     )

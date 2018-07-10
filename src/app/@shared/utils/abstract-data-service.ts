@@ -2,8 +2,8 @@ import { HttpClient } from "@angular/common/http";
 
 import { environment } from "../../../environments/environment";
 import { catchError } from "rxjs/operators";
-// import "rxjs/add/observable/throw";
 import { Observable, throwError } from "rxjs";
+import { PaginatedResponse } from "../models/paginated-response.model";
 
 export abstract class AbstractDataService<T> {
   constructor(protected http: HttpClient, protected endpointName: string) {}
@@ -11,7 +11,7 @@ export abstract class AbstractDataService<T> {
   /**
    * Makes an Http GET request to fetch all entities from the REST API backend
    */
-  getAll(): Observable<T[]> {
+  getAll(): Observable<T[]> | Observable<PaginatedResponse<T>> {
     return this.http
       .get<T[]>(`${environment.apiURL}/${this.endpointName}`)
       .pipe(catchError(error => throwError(error)));
