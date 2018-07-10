@@ -49,3 +49,23 @@ export const selectCurrentClientName = createSelector(
     return router.state && entities[router.state.params.clientId].firstName;
   }
 );
+
+export const selectClientsPagination = createSelector(
+  getClientsState,
+  fromClient.selectClientsPagination
+);
+
+export const selectPaginatedClients = createSelector(
+  selectAllClients,
+  selectClientsPagination,
+  (clients, pagination) => {
+    const startItem = (pagination.activePage - 1) * pagination.pageSize;
+    const endItem = pagination.activePage * pagination.pageSize;
+    return clients.slice(startItem, endItem);
+  }
+);
+
+export const selectClientsPaginationSize = createSelector(
+  selectClientsPagination,
+  pagination => pagination.pageSize
+);

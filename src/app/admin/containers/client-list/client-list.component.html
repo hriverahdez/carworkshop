@@ -13,16 +13,27 @@
             <hr>
             <cws-client-tile-view              
                 [active]="(currentViewType$ | async) === 'TILES'"
-                [clients]="clients$ | async"
+                [clients]="paginatedClients$ | async"
                 (onCheckClient)="checkClient($event)"
                 (onDeleteRequest)="deleteClient($event)"></cws-client-tile-view>
             <cws-client-table-view                 
                 [active]="(currentViewType$ | async) === 'TABLE'"
-                [clients]="clients$ | async"
+                [clients]="paginatedClients$ | async"
                 (onCheckClient)="checkClient($event)"
                 (onDeleteRequest)="deleteClient($event)"></cws-client-table-view>
 
             <cws-loading-box *ngIf="isLoading$ | async"></cws-loading-box>
+
+            <div class="row mt-md">
+                <div class="col-sm-12 text-center">
+                    <pagination 
+                        [nextText]="'Siguiente'"
+                        [previousText]="'Anterior'"
+                        [totalItems]="totalClients$ | async" 
+                        [itemsPerPage]="pageSize$ | async"
+                        (pageChanged)="pageChanged($event)"></pagination>
+                </div>
+            </div>
         </div>
     </div>
 </div>

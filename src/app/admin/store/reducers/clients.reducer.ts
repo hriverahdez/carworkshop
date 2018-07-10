@@ -2,11 +2,13 @@ import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
 
 import * as fromClients from "../actions/clients.actions";
 import { Client } from "../../../@core/models/client.model";
+import { Pagination } from "../../../@core/models/pagination.model";
 
 export interface State extends EntityState<Client> {
   loaded: boolean;
   loading: boolean;
   error: any;
+  pagination: Pagination;
 }
 
 export const adapter: EntityAdapter<Client> = createEntityAdapter<Client>();
@@ -14,7 +16,8 @@ export const adapter: EntityAdapter<Client> = createEntityAdapter<Client>();
 export const initialState: State = adapter.getInitialState({
   loaded: false,
   loading: false,
-  error: ""
+  error: "",
+  pagination: { activePage: 1, pageSize: 2 }
 });
 
 export function reducer(
@@ -64,6 +67,14 @@ export function reducer(
       return adapter.removeOne(deletedClient.id, state);
     }
 
+    case fromClients.CHANGE_PAGE: {
+      const pagination = action.payload;
+      return {
+        ...state,
+        pagination
+      };
+    }
+
     default: {
       return state;
     }
@@ -71,6 +82,7 @@ export function reducer(
 }
 
 export const selectClientsLoaded = (state: State) => state.loaded;
+export const selectClientsPagination = (state: State) => state.pagination;
 
 export const {
   selectIds: selectClientIds,

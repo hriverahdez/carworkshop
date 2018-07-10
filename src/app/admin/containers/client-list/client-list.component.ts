@@ -6,6 +6,8 @@ import * as fromRoot from "../../../@core/store";
 import { ClientsViewTypes } from "../../../@core/shared/ui-clients-view-types";
 import { DialogService } from "../../../@shared/services";
 import { Client } from "../../../@core/models/client.model";
+import { PageChangedEvent } from "ngx-bootstrap";
+import { Pagination } from "../../../@core/models/pagination.model";
 
 @Component({
   selector: "cws-client-list",
@@ -14,10 +16,14 @@ import { Client } from "../../../@core/models/client.model";
 })
 export class ClientListComponent implements OnInit, OnDestroy {
   clients$: Observable<Client[]>;
+  paginatedClients$: Observable<Client[]>;
   isLoading$: Observable<boolean>;
   currentViewType$: Observable<ClientsViewTypes>;
 
   dialogSubs: Subscription;
+
+  totalClients$: Observable<number>;
+  pageSize$: Observable<number>;
 
   constructor(
     private store: Store<fromStore.AdminState>,
@@ -31,6 +37,13 @@ export class ClientListComponent implements OnInit, OnDestroy {
       fromRoot.selectClientsViewType
     );
     this.clients$ = this.store.select(fromStore.selectAllClients);
+
+    this.paginatedClients$ = this.store.select(
+      fromStore.selectPaginatedClients
+    );
+
+    this.totalClients$ = this.store.select(fromStore.selectClientTotal);
+    this.pageSize$ = this.store.select(fromStore.selectClientsPaginationSize);
     this.store.dispatch(new fromStore.LoadClients());
   }
 
@@ -64,5 +77,14 @@ export class ClientListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.dialogSubs ? this.dialogSubs.unsubscribe() : null;
+  }
+
+  pageChanged(event: PageChangedEvent): void {
+    const pagination: Pagination = {
+      activePage: event.page,
+      pageSize: event.itemsPerPage
+    };
+
+    this.store.dispatch(new fromStore.ChangePage(pagination));
   }
 }

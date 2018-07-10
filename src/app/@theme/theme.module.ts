@@ -8,13 +8,14 @@ import {
   BsDropdownModule,
   BsDatepickerModule,
   defineLocale,
-  BsLocaleService
+  BsLocaleService,
+  PaginationModule
 } from "ngx-bootstrap";
 
 import { esLocale } from "ngx-bootstrap/locale";
 defineLocale("es", esLocale);
 
-const NGX_BS_MODULES = [BsDropdownModule, BsDatepickerModule];
+const NGX_BS_MODULES = [BsDropdownModule, BsDatepickerModule, PaginationModule];
 
 // components
 import * as fromComponents from "./components";
@@ -25,7 +26,8 @@ import * as fromComponents from "./components";
     FormsModule,
     RouterModule,
     BsDatepickerModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    PaginationModule.forRoot()
   ],
 
   declarations: [...fromComponents.components],

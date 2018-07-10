@@ -25,8 +25,8 @@ export class ClientsEffects {
   loadClients$ = this.actions$.ofType(fromClients.LOAD_CLIENTS).pipe(
     switchMap(() =>
       this.clientsService.getAll().pipe(
-        map((response: PaginatedResponse<Client>) => {
-          return new fromClients.LoadClientsSuccess(response.data);
+        map((response: Client[]) => {
+          return new fromClients.LoadClientsSuccess(response);
         }),
         catchError(error => of(new fromClients.LoadClientsFail(error)))
       )

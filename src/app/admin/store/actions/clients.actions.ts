@@ -1,5 +1,6 @@
 import { Action } from "@ngrx/store";
 import { Client } from "../../../@core/models/client.model";
+import { Pagination } from "../../../@core/models/pagination.model";
 
 // LOAD
 
@@ -85,6 +86,13 @@ export class DeleteClientSuccess implements Action {
   constructor(public payload: Client) {}
 }
 
+export const CHANGE_PAGE = "[Admin] Change Page";
+
+export class ChangePage implements Action {
+  readonly type = CHANGE_PAGE;
+  constructor(public payload: Pagination) {}
+}
+
 export type ClientActions =
   | LoadClients
   | LoadClientsFail
@@ -97,4 +105,5 @@ export type ClientActions =
   | UpdateClientSuccess
   | DeleteClient
   | DeleteClientFail
-  | DeleteClientSuccess;
+  | DeleteClientSuccess
+  | ChangePage;
