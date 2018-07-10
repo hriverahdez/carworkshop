@@ -121,7 +121,11 @@ export class MaintenancesEffects {
 
   @Effect()
   showLoader$ = this.actions$
-    .ofType(fromMaintenance.ADD_MAINTENANCE, fromMaintenance.UPDATE_MAINTENANCE)
+    .ofType(
+      fromMaintenance.ADD_MAINTENANCE,
+      fromMaintenance.UPDATE_MAINTENANCE,
+      fromMaintenance.DELETE_MAINTENANCE
+    )
     .pipe(map(() => new fromRoot.ShowFullscreenLoader()));
 
   @Effect()
@@ -130,7 +134,9 @@ export class MaintenancesEffects {
       fromMaintenance.ADD_MAINTENANCE_FAIL,
       fromMaintenance.ADD_MAINTENANCE_SUCCESS,
       fromMaintenance.UPDATE_MAINTENANCE_FAIL,
-      fromMaintenance.UPDATE_MAINTENANCE_SUCCESS
+      fromMaintenance.UPDATE_MAINTENANCE_SUCCESS,
+      fromMaintenance.DELETE_MAINTENANCE_FAIL,
+      fromMaintenance.DELETE_MAINTENANCE_SUCCESS
     )
     .pipe(map(() => new fromRoot.HideFullscreenLoader()));
 }

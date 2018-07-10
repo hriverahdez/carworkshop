@@ -128,7 +128,6 @@ export class AuthenticationService {
     this.http.get(`${environment.apiURL}/logout`);
     localStorage.removeItem("token");
     localStorage.removeItem("currentUser");
-    console.log("DID TRY TO LOG OUT");
     if (redirect) this.router.navigateByUrl(this.logoutRedirectUrl);
   }
 }
