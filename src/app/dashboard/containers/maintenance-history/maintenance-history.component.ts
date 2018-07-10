@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Maintenance } from "../../../@core/models/maintenance.model";
 import { Observable, Subscription } from "rxjs";
@@ -15,7 +15,7 @@ import { DialogService } from "../../../@shared/services";
   templateUrl: "./maintenance-history.component.html",
   styleUrls: ["./maintenance-history.component.css"]
 })
-export class MaintenanceHistoryComponent implements OnInit {
+export class MaintenanceHistoryComponent implements OnInit, OnDestroy {
   filterById = null;
   activeClientCar$: Observable<Car>;
   currentUserIsAdmin$: Observable<boolean>;
@@ -82,5 +82,9 @@ export class MaintenanceHistoryComponent implements OnInit {
               )
             : null
       );
+  }
+
+  ngOnDestroy(): void {
+    if (this.dialogSubs) this.dialogSubs.unsubscribe();
   }
 }
