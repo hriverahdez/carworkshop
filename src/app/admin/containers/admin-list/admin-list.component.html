@@ -24,17 +24,15 @@
                         <td>
                             {{ admin.email }}
                         </td>
-                        <td>
-                            <!-- <a [routerLink]="['./admin', admin.id]" class="text-primary">
-                                <span class="fui-new"></span>
-                            </a> | -->
-                            <a *ngIf="(currentUser$ | async).id !== admin.id" (click)="delete(admin)" class="stext-danger">
+                        <td>                            
+                            <a *ngIf="(currentUser$ | async).id !== admin.id" (click)="delete(admin)" class="text-danger">
                                 <span class="fui-trash"></span>
                             </a>
                         </td>
                     </tr>        
                 </tbody>
             </table>
+            <cws-loading-box *ngIf="isLoading$ | async"></cws-loading-box>
             
         </div>
     </div>

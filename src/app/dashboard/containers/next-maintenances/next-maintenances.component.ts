@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Observable, of } from "rxjs";
+import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 import * as fromRoot from "../../../@core/store";
 import { Maintenance } from "../../../@core/models/maintenance.model";
@@ -24,7 +24,6 @@ export class NextMaintenancesComponent implements OnInit {
       fromRoot.selectCurrentUserIsAdmin
     );
 
-    // this.currentUser$ = this.rootStore.select(fromRoot.selectCurrentUser);
     this.car$ = this.rootStore.select(fromRoot.selectActiveClientCar);
 
     this.maintenances$ = this.currentUserIsAdmin$.pipe(

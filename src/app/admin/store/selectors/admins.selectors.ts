@@ -42,8 +42,3 @@ export const selectCurrentAdmin = createSelector(
     return router.state && entities[router.state.params.adminId];
   }
 );
-
-// export const selectActiveClient = createSelector(
-//   getAdmins,
-//   fromAdmin.selectActiveClient
-// );

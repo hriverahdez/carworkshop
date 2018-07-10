@@ -44,27 +44,6 @@ export class AddAdminSuccess implements Action {
   constructor(public payload: AuthUser) {}
 }
 
-// UPDATE
-
-// export const UPDATE_CLIENT = "[Admin] Update Client";
-// export const UPDATE_CLIENT_FAIL = "[Admin] Update Client Fail";
-// export const UPDATE_CLIENT_SUCCESS = "[Admin] Update Client Success";
-
-// export class UpdateClient implements Action {
-//   readonly type = UPDATE_CLIENT;
-//   constructor(public payload: AuthUser) {}
-// }
-
-// export class UpdateClientFail implements Action {
-//   readonly type = UPDATE_CLIENT_FAIL;
-//   constructor(public payload: any) {}
-// }
-
-// export class UpdateClientSuccess implements Action {
-//   readonly type = UPDATE_CLIENT_SUCCESS;
-//   constructor(public payload: AuthUser) {}
-// }
-
 // DELETE
 export const DELETE_ADMIN = "[Admin] Delete Admin";
 export const DELETE_ADMIN_FAIL = "[Admin] Delete Admin Fail";

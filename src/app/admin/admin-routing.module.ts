@@ -3,7 +3,6 @@ import { RouterModule, Routes } from "@angular/router";
 
 import {
   ClientListComponent,
-  ClientDetailsComponent,
   ClientItemComponent,
   MaintenanceItemComponent
 } from "./containers";
@@ -21,11 +20,6 @@ const ROUTES: Routes = [
   },
   {
     path: "details/:clientId",
-    // component: ClientDetailsComponent,
-    // canActivate: [ClientExistsGuard, MaintenanceCategoriesExistGuard],
-    // data: {
-    //   breadcrumb: "Detalles"
-    // }
     loadChildren: "../dashboard/dashboard.module#DashboardModule",
     data: {
       breadcrumb: "Detalles"

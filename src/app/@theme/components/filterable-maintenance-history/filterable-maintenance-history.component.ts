@@ -17,7 +17,7 @@ export class FilterableMaintenanceHistoryComponent implements OnInit {
   @Input() maintenanceCategories: MaintenanceCategory[];
 
   @Input() userIsAdmin: boolean = false;
-  @Output() onEditRequest = new EventEmitter<Maintenance>();
+
   @Output() onDeleteRequest = new EventEmitter<Maintenance>();
 
   constructor() {}
@@ -36,10 +36,6 @@ export class FilterableMaintenanceHistoryComponent implements OnInit {
 
   applyFilter(category) {
     this.currentFilter = category ? category : null;
-  }
-
-  requestEdit(maintenance) {
-    this.onEditRequest.emit(maintenance);
   }
 
   requestDelete(maintenance) {

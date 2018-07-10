@@ -50,7 +50,6 @@ export const DOWNLOAD_CLIENT_DATASHEET_SUCCESS =
 
 export class DownloadClientDatasheet implements Action {
   readonly type = DOWNLOAD_CLIENT_DATASHEET;
-  //   constructor(public payload: Observable<Client>) {}
 }
 
 export class DownloadClientDatasheetFail implements Action {

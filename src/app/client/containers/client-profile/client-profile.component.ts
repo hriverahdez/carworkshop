@@ -19,13 +19,11 @@ export class ClientProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.client$ = this.store.select(fromStore.selectClientData);
     this.client$ = this.rootStore.select(fromRoot.selectActiveClient);
     this.store.dispatch(new fromStore.LoadClientData());
   }
 
   onProfileSaved(client) {
-    // console.log("CLIENT::", client);
     this.store.dispatch(new fromStore.UpdateProfile(client));
   }
 }

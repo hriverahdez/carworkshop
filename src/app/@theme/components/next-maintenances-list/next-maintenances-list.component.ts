@@ -1,11 +1,5 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  EventEmitter,
-  Output,
-  OnChanges
-} from "@angular/core";
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
+
 import { Car } from "../../../@core/models/car.model";
 import { Maintenance } from "../../../@core/models/maintenance.model";
 import { MaintenancesHelperService } from "../../../@core/services/maintenances-helper.service";
@@ -35,13 +29,18 @@ export class NextMaintenancesListComponent implements OnInit {
     // this.nextMaintenances = this.mHelper.getNextMaintenancesByMileage();
   }
 
+  /**
+   * Calculate time difference between the mantenance's date and today
+   * and display it in a friendly format
+   */
   timeLapse(maintenance: Maintenance) {
     const maintenanceDate = new Date(maintenance.date);
     const differenceUTC = maintenanceDate.valueOf() - Date.now();
-    // console.log("M - CALC:", maintenance);
-    // console.log("CALC:", differenceUTC / 86400000);
+
+    // 8640000 millisecs = 1 day
     const delta = Math.ceil(differenceUTC / 86400000);
 
+    // If delta is 365 or more then difference is in years
     return delta >= 365 || delta <= -365
       ? this.differenceYears(Math.round(delta / 365))
       : this.differenceInDays(delta);
@@ -53,8 +52,6 @@ export class NextMaintenancesListComponent implements OnInit {
       "1": "Mañana",
       "-1": "Ayer"
     };
-
-    // console.log(delta);
 
     if (aliases[delta]) {
       return aliases[delta];

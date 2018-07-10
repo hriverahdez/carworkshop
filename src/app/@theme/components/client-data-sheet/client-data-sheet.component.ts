@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ElementRef,
-  ViewChild,
-  EventEmitter,
-  Output
-} from "@angular/core";
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 import { Car } from "../../../@core/models/car.model";
 
 @Component({

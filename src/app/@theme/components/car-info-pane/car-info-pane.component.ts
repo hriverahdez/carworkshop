@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, ElementRef, ViewChild } from "@angular/core";
-import { FileDownloadHelperService } from "../../../@core/services/file-download-helper.service";
+import { Component, OnInit, Input } from "@angular/core";
 import { Client } from "../../../@core/models/client.model";
 
 @Component({
@@ -9,9 +8,8 @@ import { Client } from "../../../@core/models/client.model";
 })
 export class CarInfoPaneComponent implements OnInit {
   @Input() client: Client;
-  @ViewChild("downloadZipLink") private downloadZipLink: ElementRef;
 
-  constructor(private fdHelper: FileDownloadHelperService) {}
+  constructor() {}
 
   ngOnInit() {}
 
@@ -21,25 +19,5 @@ export class CarInfoPaneComponent implements OnInit {
 
   get fullname() {
     return `${this.client.firstName} ${this.client.lastName}`;
-  }
-
-  getReport() {
-    this.fdHelper.getFile(
-      `maintenancesDatasheet/${this.client.id}`,
-      "Ficha mía.pdf"
-    );
-  }
-
-  downloadFile(data) {
-    var blob = new Blob([data], { type: "application/pdf" });
-    var url = window.URL.createObjectURL(blob);
-
-    const link = this.downloadZipLink.nativeElement;
-    link.href = url;
-
-    link.download = "Ficha mía.pdf";
-    link.click();
-
-    window.URL.revokeObjectURL(url);
   }
 }

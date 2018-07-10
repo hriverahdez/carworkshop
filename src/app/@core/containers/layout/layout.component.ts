@@ -30,7 +30,6 @@ export class LayoutComponent implements OnInit {
     this.currentUser$ = this.store.select(fromStore.selectCurrentUser);
     this.breadcrumbs$ = this.store.select(fromStore.selectBreadcrumbs);
     this.appLoading$ = this.store.select(fromStore.selectAppIsLoadingFull);
-    // this.appLoading$.subscribe(v => console.log(v));
   }
 
   logout() {

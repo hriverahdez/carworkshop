@@ -28,7 +28,6 @@ export function reducer(
   action: fromUser.AuthActions | fromClient.ClientActions
 ) {
   switch (action.type) {
-    case fromUser.REGISTER:
     case fromUser.LOGIN: {
       return {
         ...state,
@@ -61,7 +60,6 @@ export function reducer(
       };
     }
 
-    case fromUser.REGISTER_SUCCESS:
     case fromUser.LOGIN_SUCCESS: {
       const currentUser = action.payload;
       return {

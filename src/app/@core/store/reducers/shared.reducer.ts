@@ -1,4 +1,5 @@
 import * as sharedActions from "../actions/shared.actions";
+import * as fromClient from "../../../client/store/actions/client.actions";
 import { Client } from "../../../@core/models/client.model";
 import { MaintenanceCategory } from "../../models/maintenance-category.model";
 
@@ -20,7 +21,7 @@ export const initialState: State = {
 
 export function reducer(
   state = initialState,
-  action: sharedActions.SharedActions
+  action: sharedActions.SharedActions | fromClient.ClientActions
 ) {
   switch (action.type) {
     case sharedActions.SET_ACTIVE_CLIENT: {
@@ -34,6 +35,21 @@ export function reducer(
 
     case sharedActions.CLEAR_ACTIVE_CLIENT: {
       return initialState;
+    }
+
+    case fromClient.UPDATE_PROFILE_SUCCESS: {
+      const updatedProfile = action.payload;
+      const client: Client = {
+        ...state.client,
+        email: updatedProfile.email,
+        firstName: updatedProfile.firstName,
+        lastName: updatedProfile.lastName
+      };
+
+      return {
+        ...state,
+        client
+      };
     }
 
     case sharedActions.LOAD_MAINTENANCE_CATEGORIES_SUCCESS: {

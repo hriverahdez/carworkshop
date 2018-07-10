@@ -1,6 +1,6 @@
 import { Action } from "@ngrx/store";
 import { BreadCrumb } from "../../models/breadcrumb.model";
-import { ClientsViewTypes } from "../shared/ui-clients-view-types";
+import { ClientsViewTypes } from "../../shared/ui-clients-view-types";
 
 // Fullscreen loader
 export const SHOW_FULLSCREEN_LOADER = "[UI] Show Fullscreen loader";

@@ -35,18 +35,17 @@ export class MaintenanceItemComponent implements OnInit {
       .pipe(tap((maintenance: Maintenance = null) => maintenance));
 
     this.carId = this.route.snapshot.paramMap.get("carId");
+
     this.maintenanceCategories$ = this.rootStore.select(
       fromRoot.selectMaintenanceCategories
     );
   }
 
   create(maintenance: Maintenance) {
-    // console.log(maintenance);
     this.store.dispatch(new fromStore.AddMaintenance(maintenance));
   }
 
   update(maintenance: Maintenance) {
-    // console.log(maintenance);
     this.store.dispatch(new fromStore.UpdateMaintenance(maintenance));
   }
 

@@ -20,14 +20,6 @@ const ROUTES: Routes = [
       breadcrumb: "Login"
     }
   },
-  //   {
-  //     path: "home",
-  //     component: LandingPageComponent,
-  //     canActivate: [fromGuards.SessionNotExpiredGuard],
-  //     data: {
-  //       breadcrumb: "Home"
-  //     }
-  //   },
   {
     path: "password",
     children: [
@@ -55,7 +47,6 @@ const ROUTES: Routes = [
         canActivate: [fromGuards.AdminGuard],
         canActivateChild: [fromGuards.AdminGuard],
         data: {
-          //   breadcrumb: "Dashboard"
           breadcrumb: "Clientes"
         }
       },

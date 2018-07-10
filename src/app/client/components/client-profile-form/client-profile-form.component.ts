@@ -30,10 +30,11 @@ export class ClientProfileFormComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes): void {
     if (this.currentUser) {
-      //   this.userForm.patchValue(this.currentUser);
       this.userForm.get("firstName").setValue(this.currentUser.firstName);
       this.userForm.get("lastName").setValue(this.currentUser.lastName);
       this.userForm.get("email").setValue(this.currentUser.email);
+    } else {
+      this.userForm.disable();
     }
   }
 
@@ -75,5 +76,12 @@ export class ClientProfileFormComponent implements OnInit, OnChanges {
       lastName: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]]
     });
+  }
+
+  get passwordsDontMatch() {
+    if (this.wantsPasswordChange) {
+      const passwordGroup = this.userForm.get("passwordGroup") as FormGroup;
+      return passwordGroup.hasError("childrenNotEqual");
+    }
   }
 }

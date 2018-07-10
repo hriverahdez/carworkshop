@@ -8,6 +8,9 @@ export class MaintenancesHelperService {
 
   constructor() {}
 
+  /**
+   * Initialize maintenances data to be processed
+   */
   initData(maintenances) {
     this._maintenances = maintenances;
   }

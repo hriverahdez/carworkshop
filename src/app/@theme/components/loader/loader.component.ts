@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy, OnChanges } from "@angular/core";
+import { Component, OnInit, Input, OnChanges } from "@angular/core";
 
 @Component({
   selector: "cws-loader",
@@ -14,7 +14,6 @@ export class LoaderComponent implements OnInit, OnChanges {
   ngOnInit() {}
 
   ngOnChanges(): void {
-    // console.log("HERE:", this.isShown);
     this.display = this.isShown ? "flex" : "none";
     if (this.isShown) {
       document

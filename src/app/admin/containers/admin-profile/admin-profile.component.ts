@@ -19,7 +19,6 @@ export class AdminProfileComponent implements OnInit {
   }
 
   onProfileSaved(user: AuthUser) {
-    // console.log(user);
     this.rootStore.dispatch(new fromRoot.UpdateUserProfile(user));
   }
 }

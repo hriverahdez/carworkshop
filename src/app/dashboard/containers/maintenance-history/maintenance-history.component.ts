@@ -53,5 +53,7 @@ export class MaintenanceHistoryComponent implements OnInit {
     );
   }
 
+  // TODO: Delete this.
+  // AND TODO: Update currentUser info when profile updates
   deleteMaintenance(maintenance) {}
 }

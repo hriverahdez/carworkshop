@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Observable, Subscription, of } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store";
 import * as fromRoot from "../../../@core/store";
-import { ClientsViewTypes } from "../../../@core/store/shared/ui-clients-view-types";
+import { ClientsViewTypes } from "../../../@core/shared/ui-clients-view-types";
 import { DialogService } from "../../../@shared/services";
 import { Client } from "../../../@core/models/client.model";
 
@@ -32,11 +32,9 @@ export class ClientListComponent implements OnInit, OnDestroy {
     );
     this.clients$ = this.store.select(fromStore.selectAllClients);
     this.store.dispatch(new fromStore.LoadClients());
-    // this.store.dispatch(new fromStore.LoadMaintenanceCategories());
   }
 
   checkClient(client) {
-    // this.store.dispatch(new fromStore.SetActiveClientMaintenances(client));
     this.rootStore.dispatch(new fromRoot.SetActiveClient(client));
     this.rootStore.dispatch(
       new fromRoot.Go({ path: ["/app/admin/details", client.id] })
@@ -65,6 +63,6 @@ export class ClientListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.dialogSubs ? this.dialogSubs.unsubscribe : null;
+    this.dialogSubs ? this.dialogSubs.unsubscribe() : null;
   }
 }

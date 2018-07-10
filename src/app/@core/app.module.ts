@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
 
-// CONFIG
+// ENVIRONMENT CONFIG
 import { environment } from "../../environments/environment";
 
 // STORE
@@ -16,12 +16,15 @@ import {
   StoreRouterConnectingModule,
   RouterStateSerializer
 } from "@ngrx/router-store";
+
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 // APP RELATED
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppInterceptor } from "../@shared/utils/interceptor/token.interceptor";
+import { SharedModule } from "../@shared/shared.module";
+import { ThemeModule } from "../@theme/theme.module";
 
 // containers
 import * as fromContainers from "./containers";
@@ -31,8 +34,6 @@ import * as fromComponents from "./components";
 
 // guards
 import * as fromGuards from "./guards";
-import { ThemeModule } from "../@theme/theme.module";
-import { SharedModule } from "../@shared/shared.module";
 
 @NgModule({
   declarations: [

@@ -15,7 +15,7 @@ import { map, mergeMap, catchError } from "rxjs/operators";
 export class TokenInterceptor implements HttpInterceptor {
   private auth: AuthenticationService;
 
-  // Add '*' to exclude all requests
+  /** Add '*' to array exclude all requests */
   private excluded = ["/login", "/password"];
 
   constructor(private injector: Injector) {
@@ -59,7 +59,6 @@ export class TokenInterceptor implements HttpInterceptor {
           this.auth.logOut(true);
         }
 
-        // return Observable.throw(error);
         return throwError(error);
       })
     );

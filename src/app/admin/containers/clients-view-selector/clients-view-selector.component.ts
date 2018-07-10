@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
 import * as fromRoot from "../../../@core/store";
-import { ClientsViewTypes } from "../../../@core/store/shared/ui-clients-view-types";
+import { ClientsViewTypes } from "../../../@core/shared/ui-clients-view-types";
 import { Observable } from "rxjs";
 
 @Component({

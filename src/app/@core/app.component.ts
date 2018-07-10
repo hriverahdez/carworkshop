@@ -6,6 +6,6 @@ import { setTheme } from "ngx-bootstrap/utils";
   template: `<router-outlet></router-outlet>`
 })
 export class AppComponent {
-  title = "app";
+  title = "Talleres Cruz Verde";
   constructor() {}
 }

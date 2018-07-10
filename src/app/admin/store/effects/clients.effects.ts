@@ -3,15 +3,7 @@ import { Actions, Effect } from "@ngrx/effects";
 
 import * as fromClients from "../actions/clients.actions";
 import * as fromMaintenance from "../actions/maintenances.actions";
-import {
-  switchMap,
-  map,
-  catchError,
-  withLatestFrom,
-  take,
-  filter,
-  tap
-} from "rxjs/operators";
+import { switchMap, map, catchError } from "rxjs/operators";
 import { of } from "rxjs";
 
 import * as fromRoot from "../../../@core/store";

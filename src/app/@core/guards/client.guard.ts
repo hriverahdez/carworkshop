@@ -17,7 +17,7 @@ export class ClientGuard implements CanActivate {
   canActivate(): Observable<boolean> {
     return this.store.select(fromStore.selectCurrentUser).pipe(
       map(user => this.isClient(user)),
-      tap(isAdmin => (!isAdmin ? this.router.navigate(["/app/client"]) : null))
+      tap(isClient => (!isClient ? this.router.navigate(["/app/admin"]) : null))
     );
   }
 
@@ -26,6 +26,6 @@ export class ClientGuard implements CanActivate {
   }
 
   isClient(user: AuthUser) {
-    return user.role.name === "client" || user.role.name === "superadmin";
+    return user.role.name === "client";
   }
 }

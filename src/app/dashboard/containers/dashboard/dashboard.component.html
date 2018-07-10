@@ -30,20 +30,7 @@
 <hr>
 <h4 class="text-center">Historiales Comunes</h4>
 <div class="row demo-tiles mt-xs">
-
-    <!-- <div class="col-md-3 custom-panel" *ngFor="let category of commonCategories">
-        <cws-dashboard-panel
-            [mainText]="category.name"
-            [hasIcon]="true"
-            [iconName]="category.iconName"
-            [hasMainLink]="true"
-            [mainLinkUrl]=" './maintenanceHistory?filter=' + category.id"
-
-            [hasSupportLink]="currentUserIsAdmin$ | async"
-            [supportLinkText]="'Añadir Mantenimiento'"
-            [supportLinkUrl]=" '../../../../addMaintenance/' + (car$ | async)?.id + '?category=' + category.id"></cws-dashboard-panel>
-            <br>       
-    </div> -->
+    
     <div class="col-md-3 custom-panel" *ngFor="let category of commonCategories">
         <cws-dashboard-panel
             [mainText]="category.name"
@@ -56,7 +43,5 @@
             [supportLink]="category.supportLink"></cws-dashboard-panel>
             <br>
     </div>
-
-    
     
 </div>

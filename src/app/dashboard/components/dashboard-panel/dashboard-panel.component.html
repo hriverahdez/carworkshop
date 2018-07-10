@@ -6,7 +6,6 @@
     <small class="text-uppercase" *ngIf="hasSupportText">{{ supportText }}</small>
     
     <img *ngIf="hasIcon && !hasMainLink" [src]="'assets/img/icons/all/' + iconName + '.png'" [alt]="iconName" class="tile-image">
-    <!-- <br> -->
 </div>
 <a [routerLink]="supportLink.url" [queryParams]="supportLink.queryParams" *ngIf="hasSupportLink">
     <div class="tile-label">

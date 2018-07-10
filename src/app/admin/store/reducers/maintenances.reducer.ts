@@ -39,7 +39,6 @@ export function reducer(
       };
     }
 
-    // case fromMaintenances.LOAD_MAINTENANCE_CATEGORIES:
     case fromMaintenances.DELETE_MAINTENANCE:
     case fromMaintenances.UPDATE_MAINTENANCE:
     case fromMaintenances.ADD_MAINTENANCE:

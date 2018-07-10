@@ -2,15 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, Effect } from "@ngrx/effects";
 
 import * as fromAdmins from "../actions/admins.actions";
-import {
-  switchMap,
-  map,
-  catchError,
-  withLatestFrom,
-  take,
-  filter,
-  tap
-} from "rxjs/operators";
+import { switchMap, map, catchError } from "rxjs/operators";
 import { of } from "rxjs";
 
 import * as fromRoot from "../../../@core/store";
@@ -52,17 +44,6 @@ export class AdminsEffects {
     )
   );
 
-  //   @Effect()
-  //   updateClient$ = this.actions$.ofType(fromAdmins.UPDATE_CLIENT).pipe(
-  //     map((action: fromAdmins.UpdateClient) => action.payload),
-  //     switchMap((client: AuthUser) =>
-  //       this.adminsService.update(client).pipe(
-  //         map(client => new fromAdmins.UpdateClientSuccess(client)),
-  //         catchError(error => of(new fromAdmins.UpdateClientFail(error)))
-  //       )
-  //     )
-  //   );
-
   @Effect()
   deleteAdmin$ = this.actions$.ofType(fromAdmins.DELETE_ADMIN).pipe(
     map((action: fromAdmins.DeleteAdmin) => action.payload),
@@ -89,13 +70,13 @@ export class AdminsEffects {
     .ofType(fromAdmins.ADD_ADMIN_SUCCESS, fromAdmins.ADD_ADMIN_FAIL)
     .pipe(map(() => new fromRoot.HideFullscreenLoader()));
 
-  //   @Effect()
-  //   showLoadingBox$ = this.actions$
-  //     .ofType(fromAdmins.LOAD_CLIENTS)
-  //     .pipe(map(() => new fromRoot.ShowLoadingBox()));
+  @Effect()
+  showLoadingBox$ = this.actions$
+    .ofType(fromAdmins.LOAD_ADMINS)
+    .pipe(map(() => new fromRoot.ShowLoadingBox()));
 
-  //   @Effect()
-  //   hideLoadingBox$ = this.actions$
-  //     .ofType(fromAdmins.LOAD_CLIENTS_SUCCESS, fromAdmins.LOAD_CLIENTS_FAIL)
-  //     .pipe(map(() => new fromRoot.HideLoadingBox()));
+  @Effect()
+  hideLoadingBox$ = this.actions$
+    .ofType(fromAdmins.LOAD_ADMINS_SUCCESS, fromAdmins.LOAD_ADMINS_FAIL)
+    .pipe(map(() => new fromRoot.HideLoadingBox()));
 }

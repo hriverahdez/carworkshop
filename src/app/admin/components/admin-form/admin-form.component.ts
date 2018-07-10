@@ -50,4 +50,9 @@ export class AdminFormComponent implements OnInit {
       )
     });
   }
+
+  get passwordsDontMatch() {
+    const passwordGroup = this.adminForm.get("passwordGroup") as FormGroup;
+    return passwordGroup.hasError("childrenNotEqual");
+  }
 }

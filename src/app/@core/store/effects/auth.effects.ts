@@ -38,38 +38,22 @@ export class AuthEffects {
     })
   );
 
-  //   @Effect()
-  //   register$ = this.actions$
-  //     .ofType(authActions.REGISTER)
-  //     .pipe(
-  //       map((action: authActions.Register) => action.payload),
-  //       switchMap(user =>
-  //         this.authService
-  //           .register(user)
-  //           .pipe(
-  //             map(
-  //               registeredUser => new authActions.RegisterSuccess(registeredUser)
-  //             ),
-  //             catchError(error => of(new authActions.RegisterFail(error)))
-  //           )
-  //       )
-  //     );
-
+  /**
+   * Redirect to proper user-home based on role
+   */
   @Effect()
-  loginSuccess$ = this.actions$
-    .ofType(authActions.LOGIN_SUCCESS, authActions.REGISTER_SUCCESS)
-    .pipe(
-      map((action: authActions.LoginSuccess) => {
-        const user = action.payload;
-        return user.role.name === "mechanic"
-          ? new fromRouter.Go({
-              path: ["/app/admin"]
-            })
-          : new fromRouter.Go({
-              path: ["/app/client"]
-            });
-      })
-    );
+  loginSuccess$ = this.actions$.ofType(authActions.LOGIN_SUCCESS).pipe(
+    map((action: authActions.LoginSuccess) => {
+      const user = action.payload;
+      return user.role.name === "mechanic" || user.role.name === "superadmin"
+        ? new fromRouter.Go({
+            path: ["/app/admin"]
+          })
+        : new fromRouter.Go({
+            path: ["/app/client"]
+          });
+    })
+  );
 
   /** Wait 5 after last error and clear error message */
   @Effect()

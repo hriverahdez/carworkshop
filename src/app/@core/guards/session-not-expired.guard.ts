@@ -20,6 +20,9 @@ export class SessionNotExpiredGuard implements CanActivate {
     return this.checkStore();
   }
 
+  /**
+   * Sets authenticated user in store (if authenticated) when page is refreshed
+   */
   checkStore(): Observable<boolean> {
     return this.store.select(fromStore.selectCurrentUser).pipe(
       tap(user => {

@@ -16,6 +16,8 @@ export class AdminListComponent implements OnInit {
   admins$: Observable<AuthUser[]>;
   currentUser$: Observable<AuthUser>;
 
+  isLoading$: Observable<boolean>;
+
   dialogSubs: Subscription;
 
   constructor(
@@ -25,6 +27,7 @@ export class AdminListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.isLoading$ = this.rootStore.select(fromRoot.selectAppIsLoadingBox);
     this.currentUser$ = this.rootStore.select(fromRoot.selectCurrentUser);
     this.admins$ = this.store.select(fromStore.selectAllAdmins);
     this.store.dispatch(new fromStore.LoadAdmins());

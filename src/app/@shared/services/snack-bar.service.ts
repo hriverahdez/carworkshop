@@ -1,5 +1,9 @@
 import { Injectable } from "@angular/core";
-import { MatSnackBar } from "@angular/material";
+import {
+  MatSnackBar,
+  MatSnackBarVerticalPosition,
+  MatSnackBarHorizontalPosition
+} from "@angular/material";
 
 @Injectable({ providedIn: "root" })
 export class SnackBarService {
@@ -8,11 +12,13 @@ export class SnackBarService {
   openSimpleSnackBar(
     message: string,
     action?: string,
-    duration: number = 5000
+    duration: number = 5000,
+    verticalPosition: MatSnackBarVerticalPosition = "top",
+    horizontalPosition: MatSnackBarHorizontalPosition = "right"
   ) {
     this.snackBar.open(message, action, {
-      verticalPosition: "top",
-      horizontalPosition: "right",
+      verticalPosition,
+      horizontalPosition,
       duration
     });
   }

@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
 
 // BOOTSTRAP
 import {
@@ -17,7 +18,6 @@ const NGX_BS_MODULES = [BsDropdownModule, BsDatepickerModule];
 
 // components
 import * as fromComponents from "./components";
-import { RouterModule } from "@angular/router";
 
 @NgModule({
   imports: [
@@ -32,6 +32,9 @@ import { RouterModule } from "@angular/router";
   exports: [...fromComponents.components, ...NGX_BS_MODULES]
 })
 export class ThemeModule {
+  /** Setting NGX-BOOTSTRAP's Locale to Spanish to
+   *  display components such as datepicker in that language
+   */
   constructor(private localeService: BsLocaleService) {
     this.localeService.use("es");
   }

@@ -19,8 +19,6 @@
             <br>{{ (car?.firstRegistration | date:'dd/MM/yyyy') || '---' }}</p>
         <p class="mt-xsx" *ngIf="car?.category">
             <strong>Categoría</strong>
-            <br>{{ car?.category }}</p>
-        <!-- <a class="download-zip-link" #downloadZipLink style="display: none;"></a>
-        <a (click)="getReport()" class="btn btn-inverse mt-sm">Descargar Ficha Técnica</a> -->
+            <br>{{ car?.category }}</p>        
     </div>
 </div>

@@ -46,20 +46,6 @@ export function reducer(state = initialState, action: fromAdmins.AdminActions) {
       return adapter.addOne(newAdmin, { ...state, loading: false });
     }
 
-    // case fromAdmins.UPDATE_ADMIN_SUCCESS: {
-    //   const client = action.payload;
-    //   return adapter.updateOne(
-    //     { id: client.id, changes: client },
-    //     { ...state, loading: false }
-    //   );
-    // case fromAdmins.UPDATE_ADMIN_SUCCESS: {
-    //   const client = action.payload;
-    //   return adapter.updateOne(
-    //     { id: client.id, changes: client },
-    //     { ...state, loading: false }
-    //   );
-    // }}
-
     case fromAdmins.DELETE_ADMIN_SUCCESS: {
       const deletedAdmin = action.payload;
       return adapter.removeOne(deletedAdmin.id, state);
@@ -72,7 +58,6 @@ export function reducer(state = initialState, action: fromAdmins.AdminActions) {
 }
 
 export const selectAdminsLoaded = (state: State) => state.loaded;
-// export const selectActiveClient = (state: State) => state.activeClient;
 
 export const {
   selectIds: selectAdminIds,

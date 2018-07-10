@@ -1,25 +1,19 @@
 import { Injectable } from "@angular/core";
 import { Actions, Effect } from "@ngrx/effects";
 
-import * as fromMaintenance from "../actions/maintenances.actions";
-import {
-  switchMap,
-  map,
-  catchError,
-  withLatestFrom,
-  filter,
-  takeLast
-} from "rxjs/operators";
+import { switchMap, map, catchError, filter } from "rxjs/operators";
 import { of, Observable } from "rxjs";
+import { Store } from "@ngrx/store";
 
 import * as fromRoot from "../../../@core/store";
 import * as fromStore from "../reducers";
 import * as fromSelectors from "../selectors";
+import * as fromMaintenance from "../actions/maintenances.actions";
+
+import { Maintenance } from "../../../@core/models/maintenance.model";
+import { Client } from "../../../@core/models/client.model";
 
 import { MaintenancesService } from "../../services";
-import { Client } from "../../../@core/models/client.model";
-import { Maintenance } from "../../../@core/models/maintenance.model";
-import { Store } from "@ngrx/store";
 
 @Injectable()
 export class MaintenancesEffects {
@@ -69,27 +63,6 @@ export class MaintenancesEffects {
         )
       )
     );
-
-  //   @Effect()
-  //   setActiveClientMaintenances$ = this.actions$
-  //     .ofType(fromMaintenance.SET_ACTIVE_CLIENT_MAINTENANCES)
-  //     .pipe(
-  //       map(
-  //         (action: fromMaintenance.SetActiveClientMaintenances) => action.payload
-  //       ),
-  //       withLatestFrom(this.store$.select(fromSelectors.selectAllMaintenances)),
-  //       switchMap(([client, allMaintenances]) => {
-  //         const maintenances = allMaintenances.filter(
-  //           m => m["car_id"] === client.car.id
-  //         );
-  //         return of(
-  //           new fromRoot.SetActiveClient({
-  //             ...client,
-  //             car: { ...client.car, maintenances }
-  //           })
-  //         );
-  //       })
-  //     );
 
   @Effect()
   addMaintenance$ = this.actions$.ofType(fromMaintenance.ADD_MAINTENANCE).pipe(

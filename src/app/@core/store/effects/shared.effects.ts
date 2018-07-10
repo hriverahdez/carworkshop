@@ -52,17 +52,6 @@ export class SharedEffects {
       )
     );
 
-  // @Effect()
-  // downloadDatasheet$ = this.actions$.ofType(fromShared.DOWNLOAD_CLIENT_DATASHEET).pipe(
-  //     map((action: fromShared.DownloadClientDatasheet) => action.payload),
-  //     switchMap(client$ => client$.pipe(
-  //         map(client => {
-  //             const endpoint = `maintenancesDatasheet/${client.id}`
-  //             return this.fdHelper.getFile()
-  //         })
-  //     ))
-  // )
-
   @Effect()
   downloadDatasheet$ = this.actions$
     .ofType(fromShared.DOWNLOAD_CLIENT_DATASHEET)
@@ -74,6 +63,7 @@ export class SharedEffects {
         const fileName = `Ficha - ${activeClient.firstName} ${
           activeClient.lastName
         } (${activeClient.car.plateNumber}).pdf`;
+
         return this.fdHelper.getFile(endpoint, fileName).pipe(
           map(() => new fromShared.DownloadClientDatasheetSuccess()),
           catchError(error =>

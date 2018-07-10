@@ -1,6 +1,6 @@
 import * as fromUI from "../actions/ui.actions";
 import { BreadCrumb } from "../../models/breadcrumb.model";
-import { ClientsViewTypes } from "../shared/ui-clients-view-types";
+import { ClientsViewTypes } from "../../shared/ui-clients-view-types";
 
 export interface State {
   isLoadingFull: boolean;

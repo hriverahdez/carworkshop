@@ -26,7 +26,6 @@ export class ClientItemComponent implements OnInit {
   }
 
   update(client: Client) {
-    console.log("CLIENT::", client);
     this.store.dispatch(new fromStore.UpdateClient(client));
   }
 }

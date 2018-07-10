@@ -5,7 +5,7 @@ import { ConfirmDialogData } from "../../models/confirm-dialog-data.model";
 @Component({
   selector: "rst-confirm-dialog",
   templateUrl: "./confirm-dialog.component.html",
-  styleUrls: ["./confirm-dialog.component.scss"]
+  styleUrls: ["./confirm-dialog.component.css"]
 })
 export class ConfirmDialogComponent implements OnInit {
   defaultTitle = "Delete";

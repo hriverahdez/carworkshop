@@ -3,16 +3,14 @@ import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 
 import { AdminRoutingModule } from "./admin-routing.module";
+import { SharedModule } from "../@shared/shared.module";
+import { ThemeModule } from "../@theme/theme.module";
 
 import { StoreModule } from "@ngrx/store";
 import { reducers, effects } from "./store";
 import { EffectsModule } from "@ngrx/effects";
 
 import { AppInterceptor } from "../@shared/utils/interceptor/token.interceptor";
-import { SharedModule } from "../@shared/shared.module";
-
-import { ClientModule } from "../client/client.module";
-import { ThemeModule } from "../@theme/theme.module";
 
 // containers
 import * as fromContainers from "./containers";

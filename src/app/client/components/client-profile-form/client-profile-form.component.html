@@ -31,20 +31,30 @@
                 <input type="checkbox" (change)="togglePasswordChange()"> ¿Cambiar contraseña?
             </label>                            
         </div>
-        <div [formGroup]="passwordGroup" class="form-group col-md-6" *ngIf="wantsPasswordChange">
+        <div [formGroup]="passwordGroup"
+            [ngClass]="{'has-error': passwordsDontMatch}" 
+            class="form-group col-md-6" *ngIf="wantsPasswordChange">
             <label for=""><strong>Contraseña</strong></label>                    
             <input type="password" class="form-control"
                 name="password" formControlName="password">
+            <div class="help-block" *ngIf="passwordsDontMatch">
+                Las contraseñas no coinciden
+            </div>
         </div>
-        <div [formGroup]="passwordGroup" class="form-group col-md-6" *ngIf="wantsPasswordChange">
+        <div [formGroup]="passwordGroup" 
+            [ngClass]="{'has-error': passwordsDontMatch}" 
+            class="form-group col-md-6" *ngIf="wantsPasswordChange">
             <label for=""><strong>Repetir contraseña</strong></label>                    
             <input type="password" class="form-control"
                 name="passwordRepeat" formControlName="passwordRepeat">
+            <div class="help-block" *ngIf="passwordsDontMatch">
+                Las contraseñas no coinciden
+            </div>
         </div>
     </div>
 </div>
 <hr>
-<button class="btn btn-primary" 
+<button class="btn btn-danger" 
     style="margin-right: 10px"
     (click)="save(userForm)"
     [disabled]="!userForm.valid">

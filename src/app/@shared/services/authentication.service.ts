@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 
-// import { tokenNotExpired } from "angular2-jwt";
 import { RequestOptions } from "@angular/http";
 import { environment } from "../../../environments/environment";
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
@@ -87,7 +86,6 @@ export class AuthenticationService {
           success: boolean;
           data: { user: AuthUser; token: string };
         }) => {
-          // console.log("LOGIN RESPONSE::", loginResponse);
           if (loginResponse.success) {
             this.storeUserInfo(loginResponse.data.user);
             this.saveTokenInLocalStorage(loginResponse.data.token);
@@ -104,10 +102,6 @@ export class AuthenticationService {
       .pipe(
         tap(updatedUser => {
           this.storeUserInfo(updatedUser);
-          //   Redirect if username or password changed
-          //   if ((user as any).logout) {
-          //     this.logOut(true);
-          //   }
         })
       );
   }
@@ -125,25 +119,6 @@ export class AuthenticationService {
       data
     );
   }
-
-  // register(user: User): Observable<User> {
-  //   let authEncoded = btoa(user.email + ":" + user.password);
-  //   let headers: HttpHeaders = new HttpHeaders({
-  //     Authorization: "Basic " + authEncoded
-  //   });
-  //   return this.http
-  //     .post<User>(
-  //       `${environment.apiURL}/users`,
-  //       { access_token: environment.masterKey, ...user },
-  //       { headers: headers, reportProgress: true }
-  //     )
-  //     .pipe(
-  //       map((registerResponse: any) => {
-  //         this.storeUserInfo(registerResponse.token, registerResponse.user);
-  //         return registerResponse.user;
-  //       })
-  //     );
-  // }
 
   /**
    * Log out user

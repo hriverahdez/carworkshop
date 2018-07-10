@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AbstractDataService } from "../../@shared/utils/abstract-data-service";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { environment } from "../../../environments/environment";
 import { catchError } from "rxjs/operators";
 import { Maintenance } from "../../@core/models/maintenance.model";
@@ -18,12 +18,12 @@ export class MaintenancesService extends AbstractDataService<Maintenance> {
       .get<MaintenanceCategory[]>(
         `${environment.apiURL}/maintenances/categories`
       )
-      .pipe(catchError(error => Observable.throw(error)));
+      .pipe(catchError(error => throwError(error)));
   }
 
   getByClientId(id: string | number): Observable<Maintenance[]> {
     return this.http
       .get<Maintenance[]>(`${environment.apiURL}/maintenances/${id}`)
-      .pipe(catchError(error => Observable.throw(error)));
+      .pipe(catchError(error => throwError(error)));
   }
 }
