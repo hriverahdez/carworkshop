@@ -93,6 +93,13 @@ export class ChangePage implements Action {
   constructor(public payload: Pagination) {}
 }
 
+export const CHANGE_PAGE_SIZE = "[Admin] Change Page Size";
+
+export class ChangePageSize implements Action {
+  readonly type = CHANGE_PAGE_SIZE;
+  constructor(public payload: number) {}
+}
+
 export type ClientActions =
   | LoadClients
   | LoadClientsFail
@@ -106,4 +113,5 @@ export type ClientActions =
   | DeleteClient
   | DeleteClientFail
   | DeleteClientSuccess
-  | ChangePage;
+  | ChangePage
+  | ChangePageSize;

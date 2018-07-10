@@ -1,0 +1,9 @@
+<div class="form-inline">
+    <div class="form-group">
+        <label>Mostrar: &nbsp; </label>
+        <select class="form-control" [ngModel]="defaultSize" (ngModelChange)="onSizeChange($event)">                    
+            <option *ngFor="let size of availablePageSizes" [value]="size">{{ size }}</option>        
+        </select> 
+        &nbsp; {{ elementsName }}
+    </div>
+</div>

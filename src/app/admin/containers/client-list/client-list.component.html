@@ -2,8 +2,13 @@
     <div class="row mt-sm">
         <div class="col-sm-12">
             <div class="row">
-                <div class="col-md-10 text-left">
+                <div class="col-md-4 text-left">
+                    <cws-page-size-selector 
+                        [elementsName]="'Clientes'"
+                        [defaultSize]="pageSize$ | async"
+                        (sizeChanged)="onPageSizeChange($event)"></cws-page-size-selector>
                 </div>
+                <div class="col-md-6"></div>
                 <div class="col-md-2 text-center">
                     <a routerLink="./client" class="btn btn-danger"><i class="fui-plus"></i></a>&nbsp;&nbsp;&nbsp;
                     <cws-clients-view-selector></cws-clients-view-selector>

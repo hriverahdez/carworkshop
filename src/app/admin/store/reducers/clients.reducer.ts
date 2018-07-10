@@ -17,7 +17,7 @@ export const initialState: State = adapter.getInitialState({
   loaded: false,
   loading: false,
   error: "",
-  pagination: { activePage: 1, pageSize: 2 }
+  pagination: { activePage: 1, pageSize: 15 }
 });
 
 export function reducer(
@@ -69,6 +69,15 @@ export function reducer(
 
     case fromClients.CHANGE_PAGE: {
       const pagination = action.payload;
+      return {
+        ...state,
+        pagination
+      };
+    }
+
+    case fromClients.CHANGE_PAGE_SIZE: {
+      const pageSize = action.payload;
+      const pagination: Pagination = { ...state.pagination, pageSize };
       return {
         ...state,
         pagination

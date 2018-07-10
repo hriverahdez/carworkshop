@@ -13,6 +13,7 @@ import { MaintenanceRecommendsComponent } from "./maintenance-recommends/mainten
 
 import { NextMaintenancesListComponent } from "./next-maintenances-list/next-maintenances-list.component";
 
+import { PageSizeSelectorComponent } from "./page-size-selector/page-size-selector.component";
 import { ProfileAdditionalInfoTabComponent } from "./profile-additional-info-tab/profile-additional-info-tab.component";
 import { ProfileMainInfoTabComponent } from "./profile-main-info-tab/profile-main-info-tab.component";
 
@@ -38,6 +39,7 @@ export const components: any[] = [
 
   NextMaintenancesListComponent,
 
+  PageSizeSelectorComponent,
   ProfileAdditionalInfoTabComponent,
   ProfileMainInfoTabComponent,
 
@@ -62,6 +64,7 @@ export * from "./maintenance-recommends/maintenance-recommends.component";
 
 export * from "./next-maintenances-list/next-maintenances-list.component";
 
+export * from "./page-size-selector/page-size-selector.component";
 export * from "./profile-main-info-tab/profile-main-info-tab.component";
 export * from "./profile-additional-info-tab/profile-additional-info-tab.component";
 

@@ -78,6 +78,10 @@ export class ClientListComponent implements OnInit, OnDestroy {
       );
   }
 
+  onPageSizeChange(size) {
+    this.store.dispatch(new fromStore.ChangePageSize(size));
+  }
+
   ngOnDestroy(): void {
     this.dialogSubs ? this.dialogSubs.unsubscribe() : null;
   }
