@@ -27,6 +27,7 @@
             <div class="row mt-md">
                 <div class="col-sm-12 text-center">
                     <pagination 
+                        [ngModel]="activePage$ | async"
                         [nextText]="'Siguiente'"
                         [previousText]="'Anterior'"
                         [totalItems]="totalClients$ | async" 

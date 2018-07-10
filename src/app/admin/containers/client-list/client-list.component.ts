@@ -24,6 +24,7 @@ export class ClientListComponent implements OnInit, OnDestroy {
 
   totalClients$: Observable<number>;
   pageSize$: Observable<number>;
+  activePage$: Observable<number>;
 
   constructor(
     private store: Store<fromStore.AdminState>,
@@ -44,6 +45,8 @@ export class ClientListComponent implements OnInit, OnDestroy {
 
     this.totalClients$ = this.store.select(fromStore.selectClientTotal);
     this.pageSize$ = this.store.select(fromStore.selectClientsPaginationSize);
+    this.activePage$ = this.store.select(fromStore.selectClientsActivePage);
+
     this.store.dispatch(new fromStore.LoadClients());
   }
 

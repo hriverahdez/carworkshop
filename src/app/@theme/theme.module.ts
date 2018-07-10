@@ -31,7 +31,7 @@ import * as fromComponents from "./components";
   ],
 
   declarations: [...fromComponents.components],
-  exports: [...fromComponents.components, ...NGX_BS_MODULES]
+  exports: [...fromComponents.components, ...NGX_BS_MODULES, FormsModule]
 })
 export class ThemeModule {
   /** Setting NGX-BOOTSTRAP's Locale to Spanish to

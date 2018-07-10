@@ -23,9 +23,11 @@ export class FilterableMaintenanceHistoryComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.currentFilter = this.maintenanceCategories.find(
-      c => c.id === +this.initialFilter
-    );
+    if (this.initialFilter) {
+      this.currentFilter = this.maintenanceCategories.find(
+        c => c.id === +this.initialFilter
+      );
+    }
   }
 
   filterMaintenance(maintenance) {

@@ -65,6 +65,11 @@ export const selectPaginatedClients = createSelector(
   }
 );
 
+export const selectClientsActivePage = createSelector(
+  selectClientsPagination,
+  pagination => pagination.activePage
+);
+
 export const selectClientsPaginationSize = createSelector(
   selectClientsPagination,
   pagination => pagination.pageSize
