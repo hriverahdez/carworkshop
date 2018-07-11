@@ -27,7 +27,7 @@ export class MaintenanceCategorySelectorComponent
   @Input() value: MaintenanceCategory = null;
 
   private onTouch: Function;
-  private onModelChange: Function;
+  private onModelChange: (value: MaintenanceCategory) => void = () => {};
 
   @Input() hasLabel: boolean = false;
   @Input() showDefault: boolean = true;
