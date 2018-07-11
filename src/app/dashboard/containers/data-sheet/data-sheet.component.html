@@ -1,3 +1,4 @@
 <cws-client-data-sheet 
+    [userIsAdmin]="userIsAdmin$ | async"
     [downloadInProgress]="downloadInProgress$ | async"
     [car]="activeClientCar$ | async" (downloadDataSheet)="onDownloadDatasheet()"></cws-client-data-sheet>

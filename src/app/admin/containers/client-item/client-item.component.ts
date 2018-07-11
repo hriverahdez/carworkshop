@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store/";
+import * as fromRoot from "../../../@core/store/";
 import { tap } from "rxjs/operators";
 import { Client } from "../../../@core/models/client.model";
 
@@ -13,7 +14,10 @@ import { Client } from "../../../@core/models/client.model";
 export class ClientItemComponent implements OnInit {
   client$: Observable<Client>;
 
-  constructor(private store: Store<fromStore.AdminState>) {}
+  constructor(
+    private store: Store<fromStore.AdminState>,
+    private rootStore: Store<fromRoot.AppState>
+  ) {}
 
   ngOnInit() {
     this.client$ = this.store
@@ -27,5 +31,9 @@ export class ClientItemComponent implements OnInit {
 
   update(client: Client) {
     this.store.dispatch(new fromStore.UpdateClient(client));
+  }
+
+  cancel() {
+    this.rootStore.dispatch(new fromRoot.Back());
   }
 }

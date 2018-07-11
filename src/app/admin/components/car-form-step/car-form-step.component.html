@@ -1,0 +1,166 @@
+<div [formGroup]="carForm">
+    <div class="mb-4 mt-5">
+        <h6 class="text-muted">Información del coche</h6>
+        <small>Seleccione los campos que quiere que se muestren en la ficha de cliente</small>
+        <hr>
+    </div>
+    <div class="form-group row">
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="plateNumberIsVisible" formControlName="plateNumberIsVisible" class="checkbox">
+            <label for="plate">Matrícula *</label>
+            <input type="text" name="plateNumber" formControlName="plateNumber"
+                class="form-control" id="plate" placeholder="2589HJK">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="brandIsVisible" formControlName="brandIsVisible" checked class="checkbox">
+            <label for="brand">Marca * </label>
+            <input type="text" name="brand" formControlName="brand"
+                class="form-control" id="brand" name="lastname" placeholder="Volkswagen">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="modelIsVisible" formControlName="modelIsVisible" checked class="checkbox">
+            <label for="model">Modelo *</label>
+            <input type="email" name="model" formControlName="model"
+                class="form-control" id="model" placeholder="Golf">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="variantIsVisible" formControlName="variantIsVisible" class="checkbox">
+            <label for="variant">Variante</label>
+            <input type="text" name="variant" formControlName="variant"
+                class="form-control" id="variant" placeholder="VI">
+        </div>    
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="typeIsVisible" formControlName="typeIsVisible" class="checkbox">
+            <label for="type">Tipo</label>
+            <input type="text" name="type" formControlName="type"
+                class="form-control" id="type" placeholder="5K1">
+        </div>  
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="versionIsVisible" formControlName="versionIsVisible" class="checkbox">
+            <label for="version">Versión</label>
+            <input type="text" name="version" formControlName="version"
+                class="form-control" id="version" placeholder="1.6 TDI">
+        </div>    
+    </div>
+    <div class="form-group row">
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="firstRegistrationIsVisible" formControlName="firstRegistrationIsVisible" class="checkbox">
+            <label for="firstRegistration">Primera Matriculación</label>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="fui-calendar"></span>                        
+                </span>
+                <input class="form-control"
+                    placeholder="dd/MM/yyyy"
+                    name="firstRegistration" formControlName="firstRegistration"
+                    bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }">
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="vinNumberIsVisible" formControlName="vinNumberIsVisible" class="checkbox">
+            <label for="frameSerial">Número Bastidor (VIN)</label>
+            <input type="text" name="vinNumber" formControlName="vinNumber"
+                class="form-control" id="frameSerial" name="frameSerial" placeholder="WVWZZZ5K1JY87458778">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="fuelIsVisible" formControlName="fuelIsVisible" class="checkbox">
+            <label for="fuel">Combustible</label>
+            <input type="text" name="fuel" formControlName="fuel"
+                class="form-control" placeholder="Diesel">
+        </div>
+    </div>                            
+    <div class="form-group row">
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="engineBrandIsVisible" formControlName="engineBrandIsVisible" class="checkbox">
+            <label for="engineBrand">Marca del Motor</label>
+            <input type="text" name="engineBrand" formControlName="engineBrand"
+                class="form-control" placeholder="VAG">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="engineCodeIsVisible" formControlName="engineCodeIsVisible" class="checkbox">
+            <label for="engineSerial">Código del motor</label>
+            <input type="text" name="engineCode" formControlName="engineCode"
+                class="form-control" placeholder="CAYB">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="cilinderAmountIsVisible" formControlName="cilinderAmountIsVisible" class="checkbox">
+            <label for="cilinders">Número de Cilindros</label>
+            <input type="text" name="cilinderAmount" formControlName="cilinderAmount"
+                class="form-control" placeholder="4">
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="cilinderVolumeIsVisible" formControlName="cilinderVolumeIsVisible" class="checkbox">
+            <label for="cilinderVolume">Cilindrada (cm. cúbicos)</label>
+            <input type="text" name="cilinderVolume" formControlName="cilinderVolume"
+                class="form-control" placeholder="1600">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="potencyKWIsVisible" formControlName="potencyKWIsVisible" class="checkbox">
+            <label for="potency">Potencia (KW)</label>
+            <input type="text" name="potencyKW" formControlName="potencyKW"
+                class="form-control" placeholder="60">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="potencyCVIsVisible" formControlName="potencyCVIsVisible" class="checkbox">
+            <label for="potency2">Potencia (CV)</label>
+            <input type="text" name="potencyCV" formControlName="potencyCV"
+                class="form-control" placeholder="90">
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="tiresIsVisible" formControlName="tiresIsVisible" class="checkbox">
+            <label for="tires">Neumáticos</label>
+            <input type="text" name="tires" formControlName="tires"
+                class="form-control" placeholder="205/55 R16 91V">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="categoryIsVisible" formControlName="categoryIsVisible" class="checkbox">
+            <label for="category">Categoría del vehículo</label>
+            <input type="text" name="category" formControlName="category"
+                class="form-control" placeholder="Cupé">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="emisionLevelIsVisible" formControlName="emisionLevelIsVisible" class="checkbox">
+            <label for="emisionLevel">Nivel de emisiones</label>
+            <input type="text" name="emisionLevel" formControlName="emisionLevel"
+                class="form-control" placeholder="EURO5">
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="radioCodeIsVisible" formControlName="radioCodeIsVisible" class="checkbox">
+            <label for="radioCode">Código de Radio</label>
+            <input type="text" name="radioCode" formControlName="radioCode"
+                class="form-control" placeholder="5897">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="checkbox" name="keyCodeIsVisible" formControlName="keyCodeIsVisible" class="checkbox">
+            <label for="keyCode">Código de Llaves</label>
+            <input type="text" name="keyCode" formControlName="keyCode"
+                class="form-control" placeholder="58771569825">
+        </div>                               
+    </div>
+    
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <input type="checkbox" name="maintenanceResetIsVisible" formControlName="maintenanceResetIsVisible" class="checkbox">
+            <label for="radioCode">Reset Mantenimiento</label>
+            <textarea name="maintenanceReset" formControlName="maintenanceReset"
+                class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group col-md-6">
+            <input type="checkbox" name="observationsIsVisible" formControlName="observationsIsVisible" class="checkbox">
+            <label for="radioCode">Observaciones</label>
+            <textarea name="observations" formControlName="observations"
+                class="form-control" rows="3"></textarea>
+        </div>                                
+    </div>
+    </div>

@@ -23,6 +23,8 @@ import * as fromServices from "./services";
 
 // guards
 import * as fromGuards from "./guards";
+import { ClientFormStepComponent } from './components/client-form-step/client-form-step.component';
+import { CarFormStepComponent } from './components/car-form-step/car-form-step.component';
 
 @NgModule({
   imports: [
@@ -34,7 +36,7 @@ import * as fromGuards from "./guards";
     StoreModule.forFeature("adminState", reducers),
     EffectsModule.forFeature(effects)
   ],
-  declarations: [...fromContainers.containers, ...fromComponents.components],
+  declarations: [...fromContainers.containers, ...fromComponents.components, ClientFormStepComponent, CarFormStepComponent],
   providers: [...fromServices.services, ...fromGuards.guards],
   entryComponents: [fromContainers.MaintenanceItemComponent]
 })

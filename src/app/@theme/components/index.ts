@@ -21,6 +21,9 @@ import { TabsComponent } from "./tabs/tabs.component";
 import { TabComponent } from "./tab/tab.component";
 import { FilterableMaintenanceHistoryComponent } from "./filterable-maintenance-history/filterable-maintenance-history.component";
 
+import { WizardComponent } from "./wizard/wizard.component";
+import { WizardStepComponent } from "./wizard-step/wizard-step.component";
+
 export const components: any[] = [
   ButtonWithLoaderComponent,
 
@@ -44,7 +47,10 @@ export const components: any[] = [
   ProfileMainInfoTabComponent,
 
   TabsComponent,
-  TabComponent
+  TabComponent,
+
+  WizardComponent,
+  WizardStepComponent
 ];
 
 export * from "./button-with-loader/button-with-loader.component";
@@ -70,3 +76,6 @@ export * from "./profile-additional-info-tab/profile-additional-info-tab.compone
 
 export * from "./tabs/tabs.component";
 export * from "./tab/tab.component";
+
+export * from "./wizard/wizard.component";
+export * from "./wizard-step/wizard-step.component";

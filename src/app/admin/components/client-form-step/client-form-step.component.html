@@ -1,4 +1,5 @@
-<!-- <form [formGroup]="clientForm">
+<form [formGroup]="clientForm">
+    <h6>Los campos marcados con * son requeridos</h6>
     <div class="form-group row mb-5">
         <div class="col-sm-12">
             <label for="inputLastName">Seleccione el tipo de cliente</label>
@@ -9,7 +10,7 @@
         </div>
     </div>
     <div *ngIf="isCompany">
-        <h6 class="text-muted">Información de la empresa</h6>
+        <h6>Información de la empresa</h6>
         <small>Seleccione los campos que quiere que se muestren en la ficha de cliente</small>
         <hr>
     </div>
@@ -39,7 +40,7 @@
         </div>     
     </div>
     <div [ngClass]="{ 'mb-4 mt-5': isCompany }">
-        <h6 class="text-muted">
+        <h6>
             {{ !isCompany ? 'Información personal' : 'Datos del contacto de la empresa' }}
         </h6>
         <small>Seleccione los campos que quiere que se muestren en la ficha de cliente</small>
@@ -192,27 +193,5 @@
             <input type="text" name="otherPhone" formControlName="otherPhone" class="form-control" placeholder="364597">
         </div>
     </div>
-
-    <cws-car-form [parent]="clientForm" [car]="client?.car"></cws-car-form>
-
-    <div class="col-sm-12 text-center">
-        <input type="button" (click)="save(clientForm)" 
-            style="margin-right: 20px"
-            [disabled]="!clientForm.valid" class="btn btn-danger" value="Guardar">        
-        <a routerLink="/app/admin" class="btn btn-default">Cancelar</a>
-    </div>
-</form> -->
-
-<cws-wizard 
-    [canGoNext]="parentForm.get('client')? parentForm.get('client').valid : isEdit" 
-    [canFinish]="parentForm.get('car')? parentForm.get('car').valid : isEdit"
-    (finished)="save(parentForm)"
-    [hasCancelButton]="true"
-    (canceled)="cancel()">
-    <cws-wizard-step>
-        <cws-client-form-step [client]="client" [parent]="parentForm"></cws-client-form-step>
-    </cws-wizard-step>
-    <cws-wizard-step>
-        <cws-car-form-step [car]="client?.car" [parent]="parentForm"></cws-car-form-step>
-    </cws-wizard-step>    
-</cws-wizard>
+    
+</form>

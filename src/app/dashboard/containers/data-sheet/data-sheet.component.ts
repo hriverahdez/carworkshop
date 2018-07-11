@@ -14,10 +14,15 @@ export class DataSheetComponent implements OnInit {
   activeClientCar$: Observable<Car>;
 
   downloadInProgress$: Observable<boolean>;
+  userIsAdmin$: Observable<boolean>;
 
   constructor(private rootStore: Store<fromRoot.AppState>) {}
 
   ngOnInit() {
+    this.userIsAdmin$ = this.rootStore.select(
+      fromRoot.selectCurrentUserIsAdmin
+    );
+
     this.activeClientCar$ = this.rootStore.select(
       fromRoot.selectActiveClientCar
     );

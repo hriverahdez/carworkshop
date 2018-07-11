@@ -4,18 +4,11 @@ import {
   Input,
   Output,
   EventEmitter,
-  OnChanges,
-  SimpleChanges
+  OnChanges
 } from "@angular/core";
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators
-} from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 
-import { CustomValidator } from "../../../@shared/utils/custom-validation";
-import { Client } from "../../../@core/models/client.model";
+import { Client, ClientType } from "../../../@core/models/client.model";
 
 @Component({
   selector: "cws-client-form",
@@ -26,43 +19,20 @@ export class ClientFormComponent implements OnInit, OnChanges {
   @Input() client: Client;
   @Output() onCreate = new EventEmitter<Client>();
   @Output() onUpdate = new EventEmitter<Client>();
+  @Output() canceled = new EventEmitter();
 
-  clientForm: FormGroup = this.toFormGroup();
+  parentForm: FormGroup = this.fb.group({});
+
   isEdit: boolean = false;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {}
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes): void {
     if (this.client) {
       this.isEdit = true;
-      this.clientForm.patchValue(this.patchClientWithCorrectDates(this.client));
-      this.clearPassValidation();
     }
-  }
-
-  patchClientWithCorrectDates(client: Client) {
-    const birthday = client.birthday
-      ? new Date(client.birthday)
-      : client.birthday;
-
-    const registrationDate = client.registrationDate
-      ? new Date(client.registrationDate)
-      : client.registrationDate;
-
-    return {
-      ...client,
-      birthday,
-      registrationDate
-    };
-  }
-
-  clearPassValidation() {
-    const passGroup = this.clientForm.get("passwordGroup") as FormGroup;
-    passGroup.clearValidators();
-    passGroup.get("password").clearValidators();
-    passGroup.get("passwordRepeat").clearValidators();
   }
 
   save(form: FormGroup) {
@@ -70,24 +40,30 @@ export class ClientFormComponent implements OnInit, OnChanges {
     if (valid) {
       if (!this.isEdit) {
         const newClient = !this.isCompany
-          ? this.clearCompanyFields(value)
-          : value;
+          ? this.clearCompanyFields(value.client)
+          : value.client;
 
         this.onCreate.emit({
           ...newClient,
-          password: value.passwordGroup.password
+          password: value.client.passwordGroup.password,
+          car: value.car
         });
       } else {
         const updatedClient = !this.isCompany
-          ? this.clearCompanyFields(value)
-          : value;
+          ? this.clearCompanyFields(value.client)
+          : value.client;
 
         this.onUpdate.emit({
           id: this.client.id,
-          ...updatedClient
+          ...updatedClient,
+          car: value.car
         });
       }
     }
+  }
+
+  cancel() {
+    this.canceled.emit();
   }
 
   clearCompanyFields(client: Client) {
@@ -98,83 +74,19 @@ export class ClientFormComponent implements OnInit, OnChanges {
       webIsVisible,
       companyName,
       companyNameIsVisible,
+      socialMission,
+      socialMissionIsVisible,
       ...rest
     } = client;
 
     return rest;
   }
 
-  toFormGroup(): FormGroup {
-    return this.fb.group({
-      type: ["HOMEUSER"],
-
-      position: [""],
-      positionIsVisible: [false],
-      companyName: [""],
-      companyNameIsVisible: [false],
-      web: [""],
-      webIsVisible: [false],
-      socialMission: [""],
-      socialMissionIsVisible: [false],
-
-      firstName: ["", Validators.required],
-      firstNameIsVisible: [true],
-      lastName: ["", Validators.required],
-      lastNameIsVisible: [true],
-      registrationDate: [new Date()],
-      registrationDateIsVisible: [false],
-      email: ["", [Validators.required, Validators.email]],
-      emailIsVisible: [false],
-      passwordGroup: this.fb.group(
-        {
-          password: ["", Validators.required],
-          passwordRepeat: ["", Validators.required]
-        },
-        {
-          validator: CustomValidator.childrenEqual
-        }
-      ),
-      dni: [""],
-      dniIsVisible: [false],
-      gender: ["M"],
-      genderIsVisible: [false],
-      birthday: [""],
-      birthdayIsVisible: [false],
-      address: [""],
-      addressIsVisible: [false],
-      locality: [""],
-      localityIsVisible: [false],
-      zipCode: [""],
-      zipCodeIsVisible: [false],
-      linkedTo: [""],
-      linkedToIsVisible: [false],
-      homePhone: [""],
-      homePhoneIsVisible: [false],
-      mobilePhone: [""],
-      mobilePhoneIsVisible: [false],
-      otherPhone: [""],
-      otherPhoneIsVisible: [false]
-    });
-  }
-
   get clientType() {
-    return this.clientForm.get("type") as FormControl;
+    return this.parentForm.get("client").get("type") as FormControl;
   }
 
   get isCompany() {
-    return this.clientType.value === "COMPANY";
-  }
-
-  get emailControl() {
-    return this.clientForm.get("email") as FormControl;
-  }
-
-  get emailControlInvalid() {
-    return this.emailControl.hasError("email");
-  }
-
-  get passwordsDontMatch() {
-    const passwordGroup = this.clientForm.get("passwordGroup") as FormGroup;
-    return passwordGroup.hasError("childrenNotEqual");
+    return this.clientType.value === ClientType.Company;
   }
 }

@@ -3,13 +3,13 @@
 
         <div class="col-sm-12" style="max-width: 1200px;">
 
-            <h4>Los campos marcados con * son requeridos</h4>
             <div class="card-body">
 
                 <cws-client-form 
                     [client]="client$ | async" 
                     (onCreate)="create($event)"
-                    (onUpdate)="update($event)"></cws-client-form>
+                    (onUpdate)="update($event)"
+                    (canceled)="cancel()"></cws-client-form>
 
             </div>
         </div>

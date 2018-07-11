@@ -1,0 +1,23 @@
+<div class="tab-content mt-xsx" role="tablist">
+    <ng-content></ng-content>
+    <hr class="mt-sm">
+    <div class="row">
+        <div class="col-sm-3 text-left">
+            <button *ngIf="hasCancelButton" class="btn btn-default" (click)="cancel()" >
+                Cancelar
+            </button>
+        </div>
+        <div class="col-sm-9 text-right">
+            <button *ngIf="!isFirstStep" [disabled]="!canGoBack" class="btn btn-danger" (click)="prevStep()" style="margin-right: 10px" role="tab">
+                Atrás
+            </button>
+            <button *ngIf="!isLastStep" [disabled]="!canGoNext" class="btn btn-danger" (click)="nextStep()" role="tab">
+                Continuar
+            </button>
+            <button *ngIf="isLastStep" [disabled]="!canFinish" class="btn btn-danger" (click)="finish()" role="tab">
+                Finalizar
+            </button>
+        </div>
+        
+    </div>
+</div>
